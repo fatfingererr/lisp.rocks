@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='http://www.lisp.rocks/' rel='self' type='application/rss+xml'/>
+<title>
+(print &quot;Lisp Rocks&quot;)
+</title>
+<link>
+http://www.lisp.rocks/
+</link>
+<description>
+Lisp Rocks
+</description>
+<lastBuildDate>
+Tue, 26 Dec 2017 22:12:26 +0800
+</lastBuildDate>
+<generator>
+clj-rss
+</generator>
+<item>
+<guid>
+http://www.lisp.rocks/posts-output/2017-12-23-使用ferrent把Clojure編譯成DLL/
+</guid>
+<link>
+http://www.lisp.rocks/posts-output/2017-12-23-使用ferrent把Clojure編譯成DLL/
+</link>
+<title>
+使用 Ferrent 將 Clojure code 編譯成 DLL
+</title>
+<description>
+&lt;blockquote&gt;&lt;p&gt; 本文處理的 Clojure code 是指僅依賴 Clojure 基本語法的程式碼 &lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;br&gt;&lt;h2&gt;&lt;a name=&quot;下載&amp;#95;ferrent&quot;&gt;&lt;/a&gt;下載 Ferrent&lt;/h2&gt; &lt;hr&gt;&lt;/p&gt;&lt;p&gt;首先先到 &lt;a href='https://ferret-lang.org'&gt;Ferrent&lt;/a&gt; 抓 &lt;a href='https://ferret-lang.org/builds/ferret.jar'&gt;ferret.jar&lt;/a&gt; ，使用下載的 jar 就可以對個別的 clj 轉換成 C++ 程式碼&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;h2&gt;&lt;a name=&quot;撰寫&amp;#95;simple.clj&quot;&gt;&lt;/a&gt;撰寫 simple.clj&lt;/h2&gt; &lt;hr&gt;&lt;/p&gt;&lt;p&gt;我們先寫一個使用到 Clojure 數學函式庫的函數，舉例來說，自訂一個波的函數：&lt;/p&gt;&lt;p&gt;務必使用【&lt;b&gt;main&lt;/b&gt;】做主函數，否則後面會無法編成 C++ ，儘管我們只是要做 DLL&lt;/p&gt;&lt;p&gt;&lt;div class=&quot;language-klipse&quot;&gt;&lt;pre&gt;&lt;code class=&quot;eval-clojure&quot;&gt;;; my-wave.clj
+
+&amp;#40;defn main
+  &amp;quot;3 cosθ + 2 sin&amp;#40;θ-π&amp;#41;&amp;quot;
+  &amp;#91;theta&amp;#93;
+  &amp;#40;+ &amp;#40;&amp;#42; &amp;#40;Math/cos theta&amp;#41; 3&amp;#41; &amp;#40;&amp;#42; 2 &amp;#40;Math/sin &amp;#40;- theta Math/PI&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;println &amp;#40;main &amp;#40;/ Math/PI 4&amp;#41;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;我們可以在 Clojure 中調用 my-wave 函數來使用：&lt;/p&gt;&lt;p&gt;&lt;div class=&quot;language-klipse&quot;&gt;&lt;pre&gt;&lt;code class=&quot;eval-clojure&quot;&gt;&amp;#40;main &amp;#40;/ Math/PI 4&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;假如我們把 my-wave.clj 與 ferret.jar 放在一起，在一個資料夾底下：&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;dir
+# 2017-10-17  02:28         5,325,127 ferret.jar
+# 2017-12-24  16:07               163 my-wave.clj
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;接著我們透過 java 指令將 clj 轉成 c++ 檔案：&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;java -jar ferret.jar -i my-wave.clj
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 23 Dec 2017 00:00:00 +0800
+</pubDate>
+</item>
+</channel>
+</rss>

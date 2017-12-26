@@ -1,7 +1,7 @@
 {:site-title         "(print \"Lisp Rocks\")"
  :author             "fatfingererr"
  :description        "Lisp Rocks"
- :site-url           "http://www.lisp.rocks/"
+ :site-url           "http://lisp.rocks/"
  :post-root          "posts"
  :page-root          "pages"
  :post-root-uri      "posts-output"
@@ -16,7 +16,7 @@
  :sass-src           nil
  :sass-dest          nil
  :theme              "lambda-funk"
- :resources          ["img"]
+ :resources          ["img" "CNAME" "README.md"]
  :keep-files         [".git"]
  :disqus?            false
  :disqus-shortname   "fatfingererr"

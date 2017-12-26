@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
-<atom:link href='http://www.lisp.rocks/' rel='self' type='application/rss+xml'/>
+<atom:link href='http://lisp.rocks/' rel='self' type='application/rss+xml'/>
 <title>
 (print &quot;Lisp Rocks&quot;)
 </title>
 <link>
-http://www.lisp.rocks/
+http://lisp.rocks/
 </link>
 <description>
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 26 Dec 2017 22:12:26 +0800
+Tue, 26 Dec 2017 23:20:56 +0800
 </lastBuildDate>
 <generator>
 clj-rss

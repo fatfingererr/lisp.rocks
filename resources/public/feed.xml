@@ -12,62 +12,29 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 26 Dec 2017 23:30:18 +0800
+Wed, 27 Dec 2017 00:54:32 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
 <item>
 <guid>
-http://lisp.rocks/posts-output/2017-12-26-Hello-World/
+http://lisp.rocks/posts-output/2017-12-26-回顧2017感謝篇/
 </guid>
 <link>
-http://lisp.rocks/posts-output/2017-12-26-Hello-World/
+http://lisp.rocks/posts-output/2017-12-26-回顧2017感謝篇/
 </link>
 <title>
-Hello-World
+回顧2017 (感謝篇)
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;hello&amp;#95;world&quot;&gt;&lt;/a&gt;Hello World&lt;/h2&gt;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;不知不覺又到了 2017 年尾，今年比起去年有了很大幅度的沉澱與成長&lt;/p&gt;&lt;p&gt;總結一句話的話，就是大概知道 &lt;strong&gt;「自己理想中的能力，與目前自己的大約差距」&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;我就依序在各方面做一些紀錄，同時也感謝一些朋友與前輩（以 GitHub ID 稱呼）&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;今年年初過年期間的那 7-8 天，我把 &lt;a href='https://github.com/emacs-china/Spacemacs-rocks'&gt;子龍山人的 Spacemacs Rocks&lt;/a&gt; 全部看完&lt;/p&gt;&lt;p&gt;從那時候起開始使用 &lt;a href='https://github.com/syl20bnr/spacemacs'&gt;Spacemacs&lt;/a&gt; ，我已經記不得 2016 我怎麼還願意使用 Emacs&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;今年要總結成長最多的，就是在使用 Emacs 這件事上面！&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;對我工作各方面都有 10x 效率 的提升&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;不過有兩個人對我使用 Emacs 有非常重要的影響，分別是：&lt;/p&gt;&lt;p&gt;1 . &lt;a href='https://github.com/emacs-tw/emacs-101-beginner-survival-guide'&gt;Emacs 101 新手求生指南&lt;/a&gt; 作者的 &lt;a href='https://github.com/kuanyui'&gt;kuanyui&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2 . &lt;a href='http://coldnew.github.io/COSCUP2013_org-mode/slide.html'&gt;Org-mode : Emacs 下的瑞士軍刀&lt;/a&gt; 作者的 &lt;a href='https://github.com/coldnew'&gt;coldnew&lt;/a&gt;&lt;/p&gt;&lt;p&gt;這兩位大大都出沒在 &lt;a href='https://telegram.me/joinchat/CJbTID9kpknioj9rYv6zgg'&gt;Telegram 的 EmacsTW 頻道&lt;/a&gt; ，很熱心的解答了我許多問題&lt;/p&gt;&lt;p&gt;在 2016 我看 Emacs 101 新手指南時，經常在頻道中問很白癡的問題&lt;/p&gt;&lt;p&gt;但是那時候 kuanyui 大大都很熱心的解答，那時候我使用 &lt;a href='https://github.com/overtone/emacs-live'&gt;Emacs-live&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;印象最深刻是我在 Emacs 101 新手指南第二、三章的時候&lt;/p&gt;&lt;p&gt;第一次使用 C-x i 指令，插入另一份文件到目前文件之中，我覺得這功能實在太酷了！&lt;/p&gt;&lt;p&gt;在此之前，我除了 Matlab 以及大學用過的 DevC++ 之外，沒有任何編輯器使用經驗&lt;/p&gt;&lt;p&gt;這大概是我 2016 能活下來的原因吧，儘管是回顧 2017 ，但還是想在提一下 2016 的往事&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;除此之外，就是 &lt;a href='https://clojure.tw'&gt;ClojureTW&lt;/a&gt; 的 &lt;a href='https://github.com/cataska'&gt;cataska&lt;/a&gt; 大大從 2015 到現在(2017)一直堅持辦活動！&lt;/p&gt;&lt;p&gt;讓我保持著對 LISP 持續學習沒有中斷。&lt;/p&gt;&lt;p&gt;更重要的是，今年 Emacs 在 COSCUP2017 上面有單獨的議程軌！&lt;/p&gt;&lt;p&gt;更更更重要的是，我居然有機會可以上去分享！&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;可能對於其他都是 IT 業界、軟硬體工程師的許多朋友來說，這好像不是什麼大事情&lt;/p&gt;&lt;p&gt;但對於我來說，是一個很大的自信心的鼓舞和肯定，我很高興前輩們願意給予機會QQ！&lt;/p&gt;&lt;p&gt;我從以前都不是特別會寫程式的人，每次在 Telegram 看到大家著一堆名詞，我都不了解&lt;/p&gt;&lt;p&gt;其實內心還是有點小沮喪啦&amp;#x2026; 但更多就是多聽多學&amp;#x2026;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;像是 caasi 大大每次都會在 &lt;a href='http://cschat.tw'&gt;cschat.tw&lt;/a&gt; 上面分享很多很不錯的資訊，都來不及讀&lt;/p&gt;&lt;p&gt;我當然知道我的本業和大家差距很大，但大家討論的東西我真的非常有興趣&lt;/p&gt;&lt;p&gt;這中間 coldnew 和 irc 上面的 letoh 大大不嫌棄給我許多很基礎的回覆，和指引都很感謝&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;比起去年， &lt;strong&gt;今年下半年在 Telegram 上面耍白癡的頻率開始降低&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;很重要的原因，就是我慢慢對「設計模式」、「重構」、「寫測試」有了更清楚的概念&lt;/p&gt;&lt;p&gt;可以大概知道怎麼樣去 Google 搜尋，找到答案&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;除此之外，在日常中無形對我有正面影響的更多朋友，我也都十分感謝&lt;/p&gt;&lt;p&gt;例如 Carl, Rudi, Jeffery, Albert, whitglint, Mioaski, Superbil, pertercmd, b4283 &amp;#x2026;&lt;/p&gt;&lt;p&gt;以及 Twitter 上面許多陌生推友，例如 M157q 以及他的 RSS 機器人&lt;/p&gt;&lt;p&gt;但是還是有許多要學習的地方，會繼續努力，前進 2018 ！&lt;/p&gt;
 </description>
 <enclosure>
 
 </enclosure>
 <pubDate>
 Tue, 26 Dec 2017 00:00:00 +0800
-</pubDate>
-</item>
-<item>
-<guid>
-http://lisp.rocks/posts-output/2017-12-23-使用ferrent把Clojure編譯成DLL/
-</guid>
-<link>
-http://lisp.rocks/posts-output/2017-12-23-使用ferrent把Clojure編譯成DLL/
-</link>
-<title>
-使用 Ferrent 將 Clojure code 編譯成 DLL
-</title>
-<description>
-&lt;blockquote&gt;&lt;p&gt; 本文處理的 Clojure code 是指僅依賴 Clojure 基本語法的程式碼 &lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;br&gt;&lt;h2&gt;&lt;a name=&quot;下載&amp;#95;ferrent&quot;&gt;&lt;/a&gt;下載 Ferrent&lt;/h2&gt; &lt;hr&gt;&lt;/p&gt;&lt;p&gt;首先先到 &lt;a href='https://ferret-lang.org'&gt;Ferrent&lt;/a&gt; 抓 &lt;a href='https://ferret-lang.org/builds/ferret.jar'&gt;ferret.jar&lt;/a&gt; ，使用下載的 jar 就可以對個別的 clj 轉換成 C++ 程式碼&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;h2&gt;&lt;a name=&quot;撰寫&amp;#95;simple.clj&quot;&gt;&lt;/a&gt;撰寫 simple.clj&lt;/h2&gt; &lt;hr&gt;&lt;/p&gt;&lt;p&gt;我們先寫一個使用到 Clojure 數學函式庫的函數，舉例來說，自訂一個波的函數：&lt;/p&gt;&lt;p&gt;務必使用【&lt;b&gt;main&lt;/b&gt;】做主函數，否則後面會無法編成 C++ ，儘管我們只是要做 DLL&lt;/p&gt;&lt;p&gt;&lt;div class=&quot;language-klipse&quot;&gt;&lt;pre&gt;&lt;code class=&quot;eval-clojure&quot;&gt;;; my-wave.clj
-
-&amp;#40;defn main
-  &amp;quot;3 cosθ + 2 sin&amp;#40;θ-π&amp;#41;&amp;quot;
-  &amp;#91;theta&amp;#93;
-  &amp;#40;+ &amp;#40;&amp;#42; &amp;#40;Math/cos theta&amp;#41; 3&amp;#41; &amp;#40;&amp;#42; 2 &amp;#40;Math/sin &amp;#40;- theta Math/PI&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
-
-&amp;#40;println &amp;#40;main &amp;#40;/ Math/PI 4&amp;#41;&amp;#41;&amp;#41;
- &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;我們可以在 Clojure 中調用 my-wave 函數來使用：&lt;/p&gt;&lt;p&gt;&lt;div class=&quot;language-klipse&quot;&gt;&lt;pre&gt;&lt;code class=&quot;eval-clojure&quot;&gt;&amp;#40;main &amp;#40;/ Math/PI 4&amp;#41;&amp;#41;
- &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;假如我們把 my-wave.clj 與 ferret.jar 放在一起，在一個資料夾底下：&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;dir
-# 2017-10-17  02:28         5,325,127 ferret.jar
-# 2017-12-24  16:07               163 my-wave.clj
- &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;接著我們透過 java 指令將 clj 轉成 c++ 檔案：&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;java -jar ferret.jar -i my-wave.clj
- &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;&lt;/p&gt;
-</description>
-<enclosure>
-
-</enclosure>
-<pubDate>
-Sat, 23 Dec 2017 00:00:00 +0800
 </pubDate>
 </item>
 </channel>

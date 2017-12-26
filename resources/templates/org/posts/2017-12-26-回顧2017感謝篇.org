@@ -1,0 +1,100 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "回顧2017 (感謝篇)" :layout :post :tags ["life" "review" "thanks"] :toc false}
+#+END_SRC
+* 
+
+** 
+
+不知不覺又到了 2017 年尾，今年比起去年有了很大幅度的沉澱與成長
+
+總結一句話的話，就是大概知道 *「自己理想中的能力，與目前自己的大約差距」*
+
+我就依序在各方面做一些紀錄，同時也感謝一些朋友與前輩（以 GitHub ID 稱呼）
+
+<br>
+
+今年年初過年期間的那 7-8 天，我把 [[https://github.com/emacs-china/Spacemacs-rocks][子龍山人的 Spacemacs Rocks]] 全部看完
+
+從那時候起開始使用 [[https://github.com/syl20bnr/spacemacs][Spacemacs]] ，我已經記不得 2016 我怎麼還願意使用 Emacs
+
+
+<br>
+
+*今年要總結成長最多的，就是在使用 Emacs 這件事上面！*
+
+*對我工作各方面都有 10x 效率 的提升*
+
+<br>
+
+不過有兩個人對我使用 Emacs 有非常重要的影響，分別是：
+
+1 . [[https://github.com/emacs-tw/emacs-101-beginner-survival-guide][Emacs 101 新手求生指南]] 作者的 [[https://github.com/kuanyui][kuanyui]]
+
+2 . [[http://coldnew.github.io/COSCUP2013_org-mode/slide.html][Org-mode : Emacs 下的瑞士軍刀]] 作者的 [[https://github.com/coldnew][coldnew]]
+
+這兩位大大都出沒在 [[https://telegram.me/joinchat/CJbTID9kpknioj9rYv6zgg][Telegram 的 EmacsTW 頻道]] ，很熱心的解答了我許多問題
+
+在 2016 我看 Emacs 101 新手指南時，經常在頻道中問很白癡的問題
+
+但是那時候 kuanyui 大大都很熱心的解答，那時候我使用 [[https://github.com/overtone/emacs-live][Emacs-live]]
+
+<br>
+
+印象最深刻是我在 Emacs 101 新手指南第二、三章的時候
+
+第一次使用 C-x i 指令，插入另一份文件到目前文件之中，我覺得這功能實在太酷了！
+
+在此之前，我除了 Matlab 以及大學用過的 DevC++ 之外，沒有任何編輯器使用經驗
+
+這大概是我 2016 能活下來的原因吧，儘管是回顧 2017 ，但還是想在提一下 2016 的往事
+
+<br>
+
+除此之外，就是 [[https://clojure.tw][ClojureTW]] 的 [[https://github.com/cataska][cataska]] 大大從 2015 到現在(2017)一直堅持辦活動！
+
+讓我保持著對 LISP 持續學習沒有中斷。
+
+更重要的是，今年 Emacs 在 COSCUP2017 上面有單獨的議程軌！
+
+更更更重要的是，我居然有機會可以上去分享！
+
+<br>
+
+可能對於其他都是 IT 業界、軟硬體工程師的許多朋友來說，這好像不是什麼大事情
+
+但對於我來說，是一個很大的自信心的鼓舞和肯定，我很高興前輩們願意給予機會QQ！
+
+我從以前都不是特別會寫程式的人，每次在 Telegram 看到大家著一堆名詞，我都不了解
+
+其實內心還是有點小沮喪啦... 但更多就是多聽多學...
+
+<br>
+
+像是 caasi 大大每次都會在 [[http://cschat.tw][cschat.tw]] 上面分享很多很不錯的資訊，都來不及讀
+
+我當然知道我的本業和大家差距很大，但大家討論的東西我真的非常有興趣
+
+這中間 coldnew 和 irc 上面的 letoh 大大不嫌棄給我許多很基礎的回覆，和指引都很感謝
+
+<br>
+
+比起去年， *今年下半年在 Telegram 上面耍白癡的頻率開始降低*
+
+很重要的原因，就是我慢慢對「設計模式」、「重構」、「寫測試」有了更清楚的概念
+
+可以大概知道怎麼樣去 Google 搜尋，找到答案
+
+<br>
+
+除此之外，在日常中無形對我有正面影響的更多朋友，我也都十分感謝
+
+例如 Carl, Rudi, Jeffery, Albert, whitglint, Mioaski, Superbil, pertercmd, b4283 ...
+
+以及 Twitter 上面許多陌生推友，例如 M157q 以及他的 RSS 機器人
+
+但是還是有許多要學習的地方，會繼續努力，前進 2018 ！
+
+
+
+

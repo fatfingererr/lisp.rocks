@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 26 Dec 2017 23:20:56 +0800
+Tue, 26 Dec 2017 23:30:18 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2017-12-26-Hello-World/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2017-12-26-Hello-World/
+</link>
+<title>
+Hello-World
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;hello&amp;#95;world&quot;&gt;&lt;/a&gt;Hello World&lt;/h2&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 26 Dec 2017 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2017-12-23-使用ferrent把Clojure編譯成DLL/

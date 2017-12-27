@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 02:04:54 +0800
+Thu, 28 Dec 2017 02:05:48 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -124,7 +124,7 @@ http://lisp.rocks/posts-output/0099-01-01-Blog-範例-Chartjs/
 Blog 範例 - ChartJS
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;這篇僅單純在本部落格測試使用 ChartJS 的範例&lt;/p&gt;&lt;p&gt;方便未來文章中要插入資料圖表時做參考使用&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;canvas id=&quot;myChart&quot; width=&quot;400&quot; height=&quot;200&quot;&gt;&lt;/canvas&gt; &lt;script src=&quot;data/plot_example.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;這篇僅單純在本部落格測試使用 ChartJS 的範例&lt;/p&gt;&lt;p&gt;方便未來文章中要插入資料圖表時做參考使用&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;canvas id=&quot;myChart&quot; width=&quot;400&quot; height=&quot;200&quot;&gt;&lt;/canvas&gt; &lt;script src=&quot;//data/plot_example.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

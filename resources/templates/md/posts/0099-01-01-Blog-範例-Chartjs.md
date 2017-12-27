@@ -12,5 +12,5 @@
 
 <script src="http://www.chartjs.org/dist/2.7.1/Chart.bundle.js"></script>
 <canvas id="myChart" width="400" height="200"></canvas>
-<script src="data/plot_example.js"></script>
+<script src="../../data/plot_example.js"></script>
 

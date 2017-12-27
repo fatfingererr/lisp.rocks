@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Archives</title>
-    <link rel="canonical" href="http://lisp.rocks/archives/">
+    <title>(print &quot;Lisp Rocks&quot;): 在 Emacs 中安靜地執行 async-shell-command</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -37,7 +37,7 @@
         <div id="navbar" class="navbar-collapse collapse" style="position: absolute; right: 0;">
             <ul class="nav navbar-nav">
                 <li ><a href="/">Home</a></li>
-                <li  class="active" ><a href="/archives/">Archives</a></li>
+                <li ><a href="/archives/">Archives</a></li>
                 
                 <li >
                     <a href="/pages-output/about/">About</a>
@@ -53,26 +53,67 @@
             <div>
                 <div id="content">
                     
-<div id="posts">
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
+    </div>
+    <h2>在 Emacs 中安靜地執行 async-shell-command</h2>
+        <div id="post-date">
+            December 27, 2017
+        </div>
+</div>
+<div>
     
-        <h4>2017 December</h4>
-        <ul>
-        
-        <li>
-            Dec 27 - <a href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">在 Emacs 中安靜地執行 async-shell-command</a>
-        </li>
-        
-        <li>
-            Dec 27 - <a href="/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">Emacs 中處理 Windows 路徑轉換</a>
-        </li>
-        
-        <li>
-            Dec 26 - <a href="/posts-output/2017-12-26-回顧2017感謝篇/">回顧2017 (感謝篇)</a>
-        </li>
-        
-        </ul>
-    
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>安靜地在 Emacs 中執行 async-shell-command 有兩種方式：</p><ol><li>display-buffer-alist (不推)</li></ol><pre><code>如果你想要對所有的 &lt;code&gt;async-shell-command&lt;/code&gt; 都安靜執行，可以透過：
 
+    &#40;add-to-list 'display-buffer-alist
+      '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;
+
+在 Spacemacs 中可以加入在 `dotspacemacs/user-config` 中
+
+缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒
+
+例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</code></pre><ol><li>call-process-shell-command</li></ol><pre><code>使用 &lt;code&gt;call-process-shell-command&lt;/code&gt; 要留意指令後需要添加 &lt;code&gt;nil 0&lt;/code&gt; 參數：
+
+    &#40;call-process-shell-command
+        &#40;async-shell-command 
+            ... ;; 做你想做的事情 
+           &#41; nil 0&#41;
+
+這種方式對個別 async-shell-command 可以分別操作</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/"></a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">Emacs 中處理 Windows 路徑轉換 &raquo;</a>
+        
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/";
+            this.page.identifier = "在 Emacs 中安靜地執行 async-shell-command";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
 </div>
 
                 </div>

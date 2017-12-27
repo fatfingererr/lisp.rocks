@@ -10,7 +10,7 @@
 
 安靜地在 Emacs 中執行 async-shell-command 有兩種方式：
 
-**** display-buffer-alist (不推)
+*** display-buffer-alist (不推)
 
 如果你想要對所有的 =async-shell-command= 都安靜執行，可以透過：
 
@@ -25,7 +25,7 @@
 
 例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法
 
-**** call-process-shell-command
+*** call-process-shell-command
 
 使用 =call-process-shell-command= 要留意指令後需要添加 =nil 0= 參數：
 

@@ -58,24 +58,36 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Emacs 中處理 Windows 路徑轉換</h2>
+    <h2>在 Emacs 中安靜地執行 async-shell-command</h2>
         <div id="post-date">
             December 27, 2017
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中使用 Emacs 時，處理路徑轉換很麻煩，因為你從各種函數中拿到的路徑可能會有：</p><p>1 . 像是 Linux 系統中的路徑，例如 <code>&#126;/.spacemacs.d/</code></p><p>2 . 像是 Windows 系統中的路徑，例如 <code>c:\ \ Users \ \ myName</code> ( Spacemacs 默認 c 是小寫 )</p><p>3 . 又或是兩者的混合版本，例如 <code>c:/Users/myName</code> ，這種最麻煩</p><p><br></p><p>這樣在背景執行例如 <code>async-shell-command</code> 就會很不方便</p><p>所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; path&#41;</code></pre><p>或是：</p><pre><code>&#40;replace-regexp-in-string &quot;/&quot; &#40;regexp-quote &quot;\\&quot;&#41; path&#41;</code></pre><p>這樣就沒問題了，搭配 <code>projectile-project-root</code> 就能輕鬆在跟目錄下執行 bat scripts ！</p>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>安靜地在 Emacs 中執行 async-shell-command 有兩種方式：</p><ol><li>display-buffer-alist (不推)</li></ol><pre><code>如果你想要對所有的 &lt;code&gt;async-shell-command&lt;/code&gt; 都安靜執行，可以透過：
+
+    &#40;add-to-list 'display-buffer-alist
+      '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;
+
+在 Spacemacs 中可以加入在 `dotspacemacs/user-config` 中
+
+缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒
+
+例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</code></pre><ol><li>call-process-shell-command</li></ol><pre><code>使用 &lt;code&gt;call-process-shell-command&lt;/code&gt; 要留意指令後需要添加 &lt;code&gt;nil 0&lt;/code&gt; 參數：
+
+    &#40;call-process-shell-command
+        &#40;async-shell-command 
+            ... ;; 做你想做的事情 
+           &#41; nil 0&#41;
+
+這種方式對個別 async-shell-command 可以分別操作</code></pre>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/emacs/">emacs</a>
-    
-    <a href="/tags-output/windows/">windows</a>
-    
-    <a href="/tags-output/spacemacs/">spacemacs</a>
+    <a href="/tags-output/"></a>
     
 </div>
 
@@ -85,7 +97,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2017-12-26-回顧2017感謝篇/">回顧2017 (感謝篇) &raquo;</a>
+        <a class="right" href="/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">Emacs 中處理 Windows 路徑轉換 &raquo;</a>
         
     </div>
 </div>

@@ -8,13 +8,13 @@ var config = {
             backgroundColor: window.chartColors.red,
             borderColor: window.chartColors.red,
             data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
+                1,
+                2,
+                3,
+                4,
+                3,
+                2,
+                1
             ],
             fill: false,
         }, {
@@ -23,13 +23,13 @@ var config = {
             backgroundColor: window.chartColors.blue,
             borderColor: window.chartColors.blue,
             data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
+                2,
+                3,
+                4,
+                3,
+                5,
+                2,
+                5
             ],
         }]
     },

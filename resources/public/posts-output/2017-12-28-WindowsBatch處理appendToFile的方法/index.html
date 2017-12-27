@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): 在 Emacs 中安靜地執行 async-shell-command</title>
-    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">
+    <title>(print &quot;Lisp Rocks&quot;): Windows batch 中處理 append file 的方法</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -58,42 +58,38 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>在 Emacs 中安靜地執行 async-shell-command</h2>
+    <h2>Windows batch 中處理 append file 的方法</h2>
         <div id="post-date">
-            December 27, 2017
+            December 28, 2017
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>安靜地在 Emacs 中執行 async-shell-command 有兩種方式：</p><p><br></p><h3><a name="1.&#95;display-buffer-alist"></a>1. display-buffer-alist</h3><p>如果你想要對所有的 <code>async-shell-command</code> 都安靜執行，可以透過：</p><pre><code>&#40;add-to-list 'display-buffer-alist
-  '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;</code></pre><p>在 Spacemacs 中可以把上面兩行加入在 <code>dotspacemacs/user-config</code> 裡面</p><p>缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒</p><p>例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</p><p><br> </p><h3><a name="2.&#95;call-process-shell-command"></a>2. call-process-shell-command</h3><p>使用 <code>call-process-shell-command</code> 要留意指令後需要添加 <code>nil 0</code> 參數：</p><pre><code>&#40;call-process-shell-command
-    &#40;async-shell-command 
-        ... ;; 做你想做的事情 
-       &#41; nil 0&#41;</code></pre><p>這種方式對個別 async-shell-command 可以分別操作，但是缺點是他會問你要不要開新的 buffer</p><p>如果你是有透過 after-save-hook 之類的會高頻率地呼叫 asnc-shellc-ommand，那這個方法會很煩</p><p>可能就要選第一個方法</p><p><br></p><h3><a name="3.&#95;shell-command&#95;+&#95;kill-buffer"></a>3. shell-command + kill-buffer</h3><p>如果你的 shell-command 跑起來很快就結束，又會高頻率地呼叫到的話</p><p>可以考慮使用 shell-command 而非 async 然後搭配 kill-buffer 來解決一堆 shell command buffer 的問題</p><p>也就是說，把 call-process-shell-command 中換成：</p><pre><code>&#40;call-process-shell-command
-    &#40;shell-command 
-        ... ;; 做你想做的事情 
-       &#41;
-    &#40;kill-buffer &quot;&#42;Shell Command Output&#42;&quot; nil 0&#41;</code></pre><p>這樣即可，就留意可能會頓一下因為是在執行 shell-command</p>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中如果要透過 batch 來 append file 有三種方法</p><p><br></p><h3><a name="單行&#95;append"></a>單行 Append</h3><p>如果內容單行可以解決，可以透過 <code>&gt;&gt; file.txt echo something</code> 來做</p><p>這個指令特別的地方在於 <code>echo</code> 可以放在 <code>&gt;&gt; file.txt</code> 之後，沒有那麼直覺</p><p>如果遇到有空格或是特殊符號，可以先用 <code>set</code> 的方法建立內容</p><p>但是因為 <code>set</code> 完可能會有雙引號 <code>&quot;</code> ，要解除得用 <code>%VAR:&quot;=%</code> 處理</p><pre><code>REM 1. 有空格
+set insertString1=&quot;hello world&quot;
+set insertString1=%insertString1%
+&gt;&gt; file1.txt echo insertString1
+
+REM 2. 有特殊字符（例如 &lt; 和 &gt; ）使用 &#94; 前置處理
+set insertString2=&quot;include &#94;&lt;stdio&#94;&gt;&quot;
+set insertString2=%insertString2%
+&gt;&gt; file2.txt echo insertString2</code></pre><p><br></p><h3><a name="刪除舊有內容，全新&#95;append&#95;(&#95;相當於&#95;write&#95;)"></a>刪除舊有內容，全新 Append ( 相當於 Write )</h3><p>可以透過 <code>type</code> 指令完成，例如：</p><pre><code>type src&#95;file.txt &gt; target&#95;file.txt</code></pre><p><br></p><h3><a name="在原有內容上&#95;append"></a>在原有內容上 Append</h3><p>然而更多的是在原有內容上 Append</p><p>所以可以透過 <code>copy /b</code> 以及 <code>+</code> 的方式處理：</p><pre><code>copy /b append&#95;file.txt+src&#95;file.txt append&#95;file.txt</code></pre>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/config/">config</a>
+    <a href="/tags-output/batch/">batch</a>
     
-    <a href="/tags-output/emacs/">emacs</a>
-    
-    <a href="/tags-output/spacemacs/">spacemacs</a>
+    <a href="/tags-output/windows/">windows</a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/">&laquo; Windows batch 中處理 append file 的方法</a>
         
-        
-        <a class="right" href="/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">Emacs 中處理 Windows 路徑轉換 &raquo;</a>
+        <a class="right" href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">在 Emacs 中安靜地執行 async-shell-command &raquo;</a>
         
     </div>
 
@@ -102,8 +98,8 @@
 
     <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = "http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/";
-            this.page.identifier = "在 Emacs 中安靜地執行 async-shell-command";
+            this.page.url = "http://lisp.rocks/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/";
+            this.page.identifier = "Windows batch 中處理 append file 的方法";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -1,0 +1,53 @@
+    {:title "Windows batch 中處理 append file 的方法" :layout :post :tags ["windows" "batch"] :toc false}
+
+
+# 
+
+
+## 
+
+在 Windows 中如果要透過 batch 來 append file 有三種方法
+
+<br>
+
+
+### 單行 Append
+
+如果內容單行可以解決，可以透過 `>> file.txt echo something` 來做
+
+這個指令特別的地方在於 `echo` 可以放在 `>> file.txt` 之後，沒有那麼直覺
+
+如果遇到有空格或是特殊符號，可以先用 `set` 的方法建立內容
+
+但是因為 `set` 完可能會有雙引號 `"` ，要解除得用 `%VAR:"=%` 處理
+
+    REM 1. 有空格
+    set insertString1="hello world"
+    set insertString1=%insertString1%
+    >> file1.txt echo insertString1
+    
+    REM 2. 有特殊字符（例如 < 和 > ）使用 ^ 前置處理
+    set insertString2="include ^<stdio^>"
+    set insertString2=%insertString2%
+    >> file2.txt echo insertString2
+
+<br>
+
+
+### 刪除舊有內容，全新 Append ( 相當於 Write )
+
+可以透過 `type` 指令完成，例如：
+
+    type src_file.txt > target_file.txt
+
+<br>
+
+
+### 在原有內容上 Append
+
+然而更多的是在原有內容上 Append
+
+所以可以透過 `copy /b` 以及 `+` 的方式處理：
+
+    copy /b append_file.txt+src_file.txt append_file.txt
+

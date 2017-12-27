@@ -20,9 +20,7 @@ REM 1. 有空格
 set insert_string_1="hello world"
 >> file1.txt echo insert_string_1
 
-REM 2. 有特殊字符（例如 < 和 > ）使用 ^ 前置處理
-set insert_string_2="include ^<stdio^>"
+REM 2. 有特殊字符（例如 < 和 > ）使用 ^ 前置處理set insert_string_2="include ^<stdio^>"
 >> file2.txt echo insert_string_2
-
 #+END_SRC
 

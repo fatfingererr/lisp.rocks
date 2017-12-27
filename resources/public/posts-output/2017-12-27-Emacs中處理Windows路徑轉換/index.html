@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Tags</title>
-    <link rel="canonical" href="http://lisp.rocks/tags/">
+    <title>(print &quot;Lisp Rocks&quot;): Emacs中處理Windows路徑轉換</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -53,22 +53,51 @@
             <div>
                 <div id="content">
                     
-<div id="tags-page">
-    <div id="page-header">
-        <h2>Tags</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
+    </div>
+    <h2>Emacs中處理Windows路徑轉換</h2>
+        <div id="post-date">
+            December 27, 2017
+        </div>
+</div>
+<div>
+    
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中使用 Emacs 時，處理路徑轉換很麻煩，因為你從各種函數中拿到的路徑可能會有：</p><p>1 . 像是 Linux 系統中的路徑，例如 <code>&#126;/.spacemacs.d/</code></p><p>2 . 像是 Windows 系統中的路徑，例如 <code>c:\ \ Users \ \ myName</code> ( Spacemacs 默認 =c: &#92; &#92; = 是小寫 )</p><p>3 . 又或是兩者的混合版本，例如 <code>c:/Users/myName</code> ，這種最麻煩</p><p><br></p><p>這樣在背景執行例如 <code>async-shell-command</code> 就會很不方便</p><p>所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; path&#41;</code></pre><p>或是：</p><pre><code>&#40;replace-regexp-in-string &quot;/&quot; &#40;regexp-quote &quot;\\&quot;&#41; path&#41;</code></pre><p>這樣就沒問題了，搭配 <code>projectile-project-root</code> 就能輕鬆在跟目錄下執行 bat scripts ！</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/"></a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts-output/2017-12-26-回顧2017感謝篇/">回顧2017 (感謝篇) &raquo;</a>
+        
     </div>
 
-    <ul class="tag">
-        
-        <li><a href="/tags-output/"></a></li>
-        
-        <li><a href="/tags-output/thanks/">thanks</a></li>
-        
-        <li><a href="/tags-output/review/">review</a></li>
-        
-        <li><a href="/tags-output/life/">life</a></li>
-        
-    </ul>
+    
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/";
+            this.page.identifier = "Emacs中處理Windows路徑轉換";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
 </div>
 
                 </div>

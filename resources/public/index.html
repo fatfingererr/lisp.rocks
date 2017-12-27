@@ -58,24 +58,20 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>回顧2017 (感謝篇)</h2>
+    <h2>Emacs中處理Windows路徑轉換</h2>
         <div id="post-date">
-            December 26, 2017
+            December 27, 2017
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>不知不覺又到了 2017 年尾，今年比起去年有了很大幅度的沉澱與成長</p><p>總結一句話的話，就是大概知道 <strong>「自己理想中的能力，與目前自己的大約差距」</strong></p><p>我就依序在各方面做一些紀錄，同時也感謝一些朋友與前輩（以 GitHub ID 稱呼）</p><p><br></p><p>今年年初過年期間的那 7-8 天，我把 <a href='https://github.com/emacs-china/Spacemacs-rocks'>子龍山人的 Spacemacs Rocks</a> 全部看完</p><p>從那時候起開始使用 <a href='https://github.com/syl20bnr/spacemacs'>Spacemacs</a> ，我已經記不得 2016 我怎麼還願意使用 Emacs</p><p><br></p><p><strong>今年要總結成長最多的，就是在使用 Emacs 這件事上面！</strong></p><p><strong>對我工作各方面都有 10x 效率 的提升</strong></p><p><br></p><p>不過有兩個人對我使用 Emacs 有非常重要的影響，分別是：</p><p>1 . <a href='https://github.com/emacs-tw/emacs-101-beginner-survival-guide'>Emacs 101 新手求生指南</a> 作者的 <a href='https://github.com/kuanyui'>kuanyui</a></p><p>2 . <a href='http://coldnew.github.io/COSCUP2013_org-mode/slide.html'>Org-mode : Emacs 下的瑞士軍刀</a> 作者的 <a href='https://github.com/coldnew'>coldnew</a></p><p>這兩位大大都出沒在 <a href='https://telegram.me/joinchat/CJbTID9kpknioj9rYv6zgg'>Telegram 的 EmacsTW 頻道</a> ，很熱心的解答了我許多問題</p><p>在 2016 我看 Emacs 101 新手指南時，經常在頻道中問很白癡的問題</p><p>但是那時候 kuanyui 大大都很熱心的解答，那時候我使用 <a href='https://github.com/overtone/emacs-live'>Emacs-live</a></p><p><br></p><p>印象最深刻是我在 Emacs 101 新手指南第二、三章的時候</p><p>第一次使用 C-x i 指令，插入另一份文件到目前文件之中，我覺得這功能實在太酷了！</p><p>在此之前，我除了 Matlab 以及大學用過的 DevC++ 之外，沒有任何編輯器使用經驗</p><p>這大概是我 2016 能活下來的原因吧，儘管是回顧 2017 ，但還是想在提一下 2016 的往事</p><p><br></p><p>除此之外，就是 <a href='https://clojure.tw'>ClojureTW</a> 的 <a href='https://github.com/cataska'>cataska</a> 大大從 2015 到現在(2017)一直堅持辦活動！</p><p>讓我保持著對 LISP 持續學習沒有中斷。</p><p>更重要的是，今年 Emacs 在 COSCUP2017 上面有單獨的議程軌！</p><p>更更更重要的是，我居然有機會可以上去分享！</p><p><br></p><p>可能對於其他都是 IT 業界、軟硬體工程師的許多朋友來說，這好像不是什麼大事情</p><p>但對於我來說，是一個很大的自信心的鼓舞和肯定，我很高興前輩們願意給予機會QQ！</p><p>我從以前都不是特別會寫程式的人，每次在 Telegram 看到大家著一堆名詞，我都不了解</p><p>其實內心還是有點小沮喪啦&#x2026; 但更多就是多聽多學&#x2026;</p><p><br></p><p>像是 caasi 大大每次都會在 <a href='http://cschat.tw'>cschat.tw</a> 上面分享很多很不錯的資訊，都來不及讀</p><p>我當然知道我的本業和大家差距很大，但大家討論的東西我真的非常有興趣</p><p>這中間 coldnew 和 irc 上面的 letoh 大大不嫌棄給我許多很基礎的回覆，和指引都很感謝</p><p><br></p><p>比起去年， <strong>今年下半年在 Telegram 上面耍白癡的頻率開始降低</strong></p><p>很重要的原因，就是我慢慢對「設計模式」、「重構」、「寫測試」有了更清楚的概念</p><p>可以大概知道怎麼樣去 Google 搜尋，找到答案</p><p><br></p><p>除此之外，在日常中無形對我有正面影響的更多朋友，我也都十分感謝</p><p>例如 Carl, Rudi, Jeffery, Albert, whitglint, Mioaski, Superbil, pertercmd, b4283 &#x2026;</p><p>以及 Twitter 上面許多陌生推友，例如 M157q 以及他的 RSS 機器人</p><p>但是還是有許多要學習的地方，會繼續努力，前進 2018 ！</p>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中使用 Emacs 時，處理路徑轉換很麻煩，因為你從各種函數中拿到的路徑可能會有：</p><p>1 . 像是 Linux 系統中的路徑，例如 <code>&#126;/.spacemacs.d/</code></p><p>2 . 像是 Windows 系統中的路徑，例如 <code>c:\ \ Users \ \ myName</code> ( Spacemacs 默認 =c: &#92; &#92; = 是小寫 )</p><p>3 . 又或是兩者的混合版本，例如 <code>c:/Users/myName</code> ，這種最麻煩</p><p><br></p><p>這樣在背景執行例如 <code>async-shell-command</code> 就會很不方便</p><p>所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; path&#41;</code></pre><p>或是：</p><pre><code>&#40;replace-regexp-in-string &quot;/&quot; &#40;regexp-quote &quot;\\&quot;&#41; path&#41;</code></pre><p>這樣就沒問題了，搭配 <code>projectile-project-root</code> 就能輕鬆在跟目錄下執行 bat scripts ！</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/thanks/">thanks</a>
-    
-    <a href="/tags-output/review/">review</a>
-    
-    <a href="/tags-output/life/">life</a>
+    <a href="/tags-output/"></a>
     
 </div>
 
@@ -84,6 +80,8 @@
 
     <div id="prev-next">
         
+        
+        <a class="right" href="/posts-output/2017-12-26-回顧2017感謝篇/">回顧2017 (感謝篇) &raquo;</a>
         
     </div>
 </div>

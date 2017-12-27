@@ -12,7 +12,7 @@
 
 1 . 像是 Linux 系統中的路徑，例如 =~/.spacemacs.d/=
 
-2 . 像是 Windows 系統中的路徑，例如 =c:\\Users\\myName= ( Spacemacs 默認 =c:\\= 是小寫 )
+2 . 像是 Windows 系統中的路徑，例如 =c:\ \ Users \ \ myName= ( Spacemacs 默認 =c: \ \ = 是小寫 )
 
 3 . 又或是兩者的混合版本，例如 =c:/Users/myName= ，這種最麻煩
 
@@ -33,5 +33,6 @@
 #+END_SRC
 
 這樣就沒問題了，搭配 =projectile-project-root= 就能輕鬆在跟目錄下執行 bat scripts ！
+
 
 

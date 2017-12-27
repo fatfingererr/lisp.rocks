@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 27 Dec 2017 01:04:58 +0800
+Wed, 27 Dec 2017 10:46:52 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/
+</link>
+<title>
+Emacs中處理Windows路徑轉換
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 Windows 中使用 Emacs 時，處理路徑轉換很麻煩，因為你從各種函數中拿到的路徑可能會有：&lt;/p&gt;&lt;p&gt;1 . 像是 Linux 系統中的路徑，例如 &lt;code&gt;&amp;#126;/.spacemacs.d/&lt;/code&gt;&lt;/p&gt;&lt;p&gt;2 . 像是 Windows 系統中的路徑，例如 &lt;code&gt;c:\ \ Users \ \ myName&lt;/code&gt; ( Spacemacs 默認 =c: &amp;#92; &amp;#92; = 是小寫 )&lt;/p&gt;&lt;p&gt;3 . 又或是兩者的混合版本，例如 &lt;code&gt;c:/Users/myName&lt;/code&gt; ，這種最麻煩&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;這樣在背景執行例如 &lt;code&gt;async-shell-command&lt;/code&gt; 就會很不方便&lt;/p&gt;&lt;p&gt;所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;replace-regexp-in-string &amp;quot;\/&amp;quot; &amp;quot;\\\\&amp;quot; path&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或是：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;replace-regexp-in-string &amp;quot;/&amp;quot; &amp;#40;regexp-quote &amp;quot;\\&amp;quot;&amp;#41; path&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這樣就沒問題了，搭配 &lt;code&gt;projectile-project-root&lt;/code&gt; 就能輕鬆在跟目錄下執行 bat scripts ！&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 27 Dec 2017 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2017-12-26-回顧2017感謝篇/

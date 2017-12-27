@@ -66,7 +66,7 @@
 <div>
     
     <h1><a name=""></a></h1><h2><a name=""></a></h2><p>安靜地在 Emacs 中執行 async-shell-command 有兩種方式：</p><p><br></p><h3><a name="1.&#95;display-buffer-alist"></a>1. display-buffer-alist</h3><p>如果你想要對所有的 <code>async-shell-command</code> 都安靜執行，可以透過：</p><pre><code>&#40;add-to-list 'display-buffer-alist
-  '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;</code></pre><p>在 Spacemacs 中可以加入在 <code>dotspacemacs/user-config</code> 中</p><p>缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒</p><p>例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</p><h3><a name="2.&#95;call-process-shell-command"></a>2. call-process-shell-command</h3><p>使用 <code>call-process-shell-command</code> 要留意指令後需要添加 <code>nil 0</code> 參數：</p><pre><code>&#40;call-process-shell-command
+  '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;</code></pre><p>在 Spacemacs 中可以加入在 <code>dotspacemacs/user-config</code> 中</p><p>缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒</p><p>例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</p><p><br> </p><h3><a name="2.&#95;call-process-shell-command"></a>2. call-process-shell-command</h3><p>使用 <code>call-process-shell-command</code> 要留意指令後需要添加 <code>nil 0</code> 參數：</p><pre><code>&#40;call-process-shell-command
     &#40;async-shell-command 
         ... ;; 做你想做的事情 
        &#41; nil 0&#41;</code></pre><p>這種方式對個別 async-shell-command 可以分別操作，但是缺點是他會問你要不要開新的 buffer</p><p>如果你是有透過 after-save-hook 之類的會高頻率地呼叫 asnc-shellc-ommand，那這個方法會很煩</p><p>可能就要選第一個方法</p>

@@ -1,6 +1,6 @@
 #+OPTIONS: toc:nil
 #+BEGIN_SRC json :noexport:
-{:title "在 Emacs 中安靜地執行 async-shell-command" :layout :post :tags [""] :toc false}
+{:title "在 Emacs 中安靜地執行 async-shell-command" :layout :post :tags ["emacs" "spacemacs" "config"] :toc false}
 #+END_SRC
 * 
 

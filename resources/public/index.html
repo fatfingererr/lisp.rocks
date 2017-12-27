@@ -65,7 +65,7 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中使用 Emacs 時，處理路徑轉換很麻煩，因為你從各種函數中拿到的路徑可能會有：</p><p>1 . 像是 Linux 系統中的路徑，例如 <code>&#126;/.spacemacs.d/</code></p><p>2 . 像是 Windows 系統中的路徑，例如 <code>c:\ \ Users \ \ myName</code> ( Spacemacs 默認 =c: &#92; &#92; = 是小寫 )</p><p>3 . 又或是兩者的混合版本，例如 <code>c:/Users/myName</code> ，這種最麻煩</p><p><br></p><p>這樣在背景執行例如 <code>async-shell-command</code> 就會很不方便</p><p>所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; path&#41;</code></pre><p>或是：</p><pre><code>&#40;replace-regexp-in-string &quot;/&quot; &#40;regexp-quote &quot;\\&quot;&#41; path&#41;</code></pre><p>這樣就沒問題了，搭配 <code>projectile-project-root</code> 就能輕鬆在跟目錄下執行 bat scripts ！</p>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中使用 Emacs 時，處理路徑轉換很麻煩，因為你從各種函數中拿到的路徑可能會有：</p><p>1 . 像是 Linux 系統中的路徑，例如 <code>&#126;/.spacemacs.d/</code></p><p>2 . 像是 Windows 系統中的路徑，例如 <code>c:\ \ Users \ \ myName</code> ( Spacemacs 默認 c 是小寫 )</p><p>3 . 又或是兩者的混合版本，例如 <code>c:/Users/myName</code> ，這種最麻煩</p><p><br></p><p>這樣在背景執行例如 <code>async-shell-command</code> 就會很不方便</p><p>所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; path&#41;</code></pre><p>或是：</p><pre><code>&#40;replace-regexp-in-string &quot;/&quot; &#40;regexp-quote &quot;\\&quot;&#41; path&#41;</code></pre><p>這樣就沒問題了，搭配 <code>projectile-project-root</code> 就能輕鬆在跟目錄下執行 bat scripts ！</p>
 </div>
 
 <div id="post-tags">

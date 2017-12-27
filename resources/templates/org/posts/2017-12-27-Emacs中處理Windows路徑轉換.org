@@ -35,3 +35,4 @@
 這樣就沒問題了，搭配 =projectile-project-root= 就能輕鬆在跟目錄下執行 bat scripts ！
 
 
+

@@ -1,6 +1,6 @@
 #+OPTIONS: toc:nil
 #+BEGIN_SRC json :noexport:
-{:title "Windows batch 中處理 append file 的方法" :layout :post :tags [""] :toc false}
+{:title "Windows batch 中處理 append file 的方法" :layout :post :tags ["windows" "batch"] :toc false}
 #+END_SRC
 * 
 
@@ -54,4 +54,5 @@ type src_file.txt > target_file.txt
 #+BEGIN_SRC bat
 copy /b append_file.txt+src_file.txt append_file.txt
 #+END_SRC
+
 

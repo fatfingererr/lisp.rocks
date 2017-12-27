@@ -8,8 +8,10 @@
 
 安靜地在 Emacs 中執行 async-shell-command 有兩種方式：
 
+<br>
 
-### display-buffer-alist (不推)
+
+### 1. display-buffer-alist
 
 如果你想要對所有的 `async-shell-command` 都安靜執行，可以透過：
 
@@ -23,7 +25,7 @@
 例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法
 
 
-### call-process-shell-command
+### 2. call-process-shell-command
 
 使用 `call-process-shell-command` 要留意指令後需要添加 `nil 0` 參數：
 
@@ -32,5 +34,9 @@
             ... ;; 做你想做的事情 
            ) nil 0)
 
-這種方式對個別 async-shell-command 可以分別操作
+這種方式對個別 async-shell-command 可以分別操作，但是缺點是他會問你要不要開新的 buffer
+
+如果你是有透過 after-save-hook 之類的會高頻率地呼叫 asnc-shellc-ommand，那這個方法會很煩
+
+可能就要選第一個方法
 

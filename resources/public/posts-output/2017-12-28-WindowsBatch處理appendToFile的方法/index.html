@@ -71,7 +71,7 @@ set insertString1=%insertString1%
 &gt;&gt; file1.txt echo insertString1
 
 REM 2. 有特殊字符（例如 &lt; 和 &gt; ）使用 &#94; 前置處理
-set insertString2=&quot;include &#94;&lt;stdio&#94;&gt;&quot;
+set insertString2=&quot;#include &#94;&lt;stdio&#94;&gt;&quot;
 set insertString2=%insertString2%
 &gt;&gt; file2.txt echo insertString2</code></pre><p><br></p><h3><a name="刪除舊有內容，全新&#95;append&#95;(&#95;相當於&#95;write&#95;)"></a>刪除舊有內容，全新 Append ( 相當於 Write )</h3><p>可以透過 <code>type</code> 指令完成，例如：</p><pre><code>type src&#95;file.txt &gt; target&#95;file.txt</code></pre><p><br></p><h3><a name="在原有內容上&#95;append"></a>在原有內容上 Append</h3><p>然而更多的是在原有內容上 Append</p><p>所以可以透過 <code>copy /b</code> 以及 <code>+</code> 的方式處理：</p><pre><code>copy /b append&#95;file.txt+src&#95;file.txt append&#95;file.txt</code></pre>
 </div>
@@ -89,7 +89,7 @@ set insertString2=%insertString2%
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">在 Emacs 中安靜地執行 async-shell-command &raquo;</a>
+        <a class="right" href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">Emacs 中安靜地執行 async-shell-command &raquo;</a>
         
     </div>
 

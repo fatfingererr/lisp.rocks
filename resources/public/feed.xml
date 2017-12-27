@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 00:20:25 +0800
+Thu, 28 Dec 2017 00:21:04 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -34,7 +34,7 @@ set insertString1=%insertString1%
 &amp;gt;&amp;gt; file1.txt echo insertString1
 
 REM 2. 有特殊字符（例如 &amp;lt; 和 &amp;gt; ）使用 &amp;#94; 前置處理
-set insertString2=&amp;quot;include &amp;#94;&amp;lt;stdio&amp;#94;&amp;gt;&amp;quot;
+set insertString2=&amp;quot;#include &amp;#94;&amp;lt;stdio&amp;#94;&amp;gt;&amp;quot;
 set insertString2=%insertString2%
 &amp;gt;&amp;gt; file2.txt echo insertString2&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;刪除舊有內容，全新&amp;#95;append&amp;#95;(&amp;#95;相當於&amp;#95;write&amp;#95;)&quot;&gt;&lt;/a&gt;刪除舊有內容，全新 Append ( 相當於 Write )&lt;/h3&gt;&lt;p&gt;可以透過 &lt;code&gt;type&lt;/code&gt; 指令完成，例如：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;type src&amp;#95;file.txt &amp;gt; target&amp;#95;file.txt&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;在原有內容上&amp;#95;append&quot;&gt;&lt;/a&gt;在原有內容上 Append&lt;/h3&gt;&lt;p&gt;然而更多的是在原有內容上 Append&lt;/p&gt;&lt;p&gt;所以可以透過 &lt;code&gt;copy /b&lt;/code&gt; 以及 &lt;code&gt;+&lt;/code&gt; 的方式處理：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;copy /b append&amp;#95;file.txt+src&amp;#95;file.txt append&amp;#95;file.txt&lt;/code&gt;&lt;/pre&gt;
 </description>
@@ -53,7 +53,7 @@ http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-
 http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/
 </link>
 <title>
-在 Emacs 中安靜地執行 async-shell-command
+Emacs 中安靜地執行 async-shell-command
 </title>
 <description>
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;安靜地在 Emacs 中執行 async-shell-command 有兩種方式：&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;1.&amp;#95;display-buffer-alist&quot;&gt;&lt;/a&gt;1. display-buffer-alist&lt;/h3&gt;&lt;p&gt;如果你想要對所有的 &lt;code&gt;async-shell-command&lt;/code&gt; 都安靜執行，可以透過：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;add-to-list 'display-buffer-alist

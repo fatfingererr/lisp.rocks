@@ -1,4 +1,4 @@
-    {:title "在 Emacs 中安靜地執行 async-shell-command" :layout :post :tags ["emacs" "spacemacs" "config"] :toc false}
+    {:title "Emacs 中安靜地執行 async-shell-command" :layout :post :tags ["emacs" "spacemacs" "config"] :toc false}
 
 
 # 

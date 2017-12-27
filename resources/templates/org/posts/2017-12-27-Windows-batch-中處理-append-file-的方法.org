@@ -15,7 +15,14 @@
 
 如果遇到有空格或是特殊符號，可以先用 =set= 的方法建立內容
 
-#+BEGIN_SRC batch
+#+BEGIN_SRC sh
+REM 1. 有空格
+set insert_string_1="hello world"
+>> file1.txt echo insert_string_1
+
+REM 2. 有特殊字符（例如 < 和 > ）使用 ^ 前置處理
+set insert_string_2="include ^<stdio^>"
+>> file2.txt echo insert_string_2
 
 #+END_SRC
 

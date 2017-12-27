@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 01:03:57 +0800
+Thu, 28 Dec 2017 01:04:40 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://lisp.rocks/posts-output/2017-12-28-測試chartjs/
 測試chartjs
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;data/plot_example.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; &lt;div id=&quot;container&quot; style=&quot;width: 75%;&quot;&gt; &lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt; &lt;/div&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;data/plot_example.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; &lt;div id=&quot;container&quot; style=&quot;width: 75%;&quot;&gt; &lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt; &lt;/div&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

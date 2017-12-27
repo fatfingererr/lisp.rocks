@@ -1,9 +1,0 @@
-#+OPTIONS: toc:nil
-#+BEGIN_SRC json :noexport:
-{:title "Windows-batch-file-如何-echo-有-quote-的內容" :layout :post :tags [""] :toc false}
-#+END_SRC
-* 
-
-
-** 
-

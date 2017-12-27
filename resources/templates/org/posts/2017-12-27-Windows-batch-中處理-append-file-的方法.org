@@ -1,0 +1,21 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "Windows batch 中處理 append file 的方法" :layout :post :tags [""] :toc false}
+#+END_SRC
+* 
+
+
+** 
+
+在 Windows 中如果要透過 batch 來 append file 有三種方法
+
+如果內容單行可以解決，可以透過 =>> file.txt echo something= 來做
+
+這個指令特別的地方在於 =echo= 可以放在 ==>> file.txt== 之後，沒有那麼直覺
+
+如果遇到有空格或是特殊符號，可以先用 =set= 的方法建立內容
+
+#+BEGIN_SRC batch
+
+#+END_SRC
+

@@ -17,4 +17,3 @@
 <script src="data/plot_example.js"></script>
 #+END_EXPORT
 
-

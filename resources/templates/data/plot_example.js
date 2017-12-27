@@ -2,7 +2,7 @@
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["王大毛", "孫小毛", "小甜甜", "許唇美", "豬哥亮"],
+      labels: ['fff', 'b', 'fff', 'geger', 'egerger'],
       datasets: [{
         label: '十月：銷售業績',
         data: [4, 1, 3, 7, 2],

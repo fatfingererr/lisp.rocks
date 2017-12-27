@@ -1,5 +1,5 @@
 #+OPTIONS: toc:nil
-#+HTML: <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+#+HTML: <script src="js/plot_example.js"></scripts>
 #+BEGIN_SRC json :noexport:
 {:title "測試chartjs" :layout :post :tags [""] :toc false}
 #+END_SRC

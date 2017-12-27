@@ -18,7 +18,7 @@
     (add-to-list 'display-buffer-alist
       '("\\*Async Shell Command\\*.*" display-buffer-no-window))
 
-在 Spacemacs 中可以加入在 `dotspacemacs/user-config` 中
+在 Spacemacs 中可以把上面兩行加入在 `dotspacemacs/user-config` 裡面
 
 缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒
 
@@ -41,4 +41,21 @@
 如果你是有透過 after-save-hook 之類的會高頻率地呼叫 asnc-shellc-ommand，那這個方法會很煩
 
 可能就要選第一個方法
+
+
+### 3. shell-command + kill-buffer
+
+如果你的 shell-command 跑起來很快就結束，又會高頻率地呼叫到的話
+
+可以考慮使用 shell-command 而非 async 然後搭配 kill-buffer 來解決一堆 shell command buffer 的問題
+
+也就是說，把 call-process-shell-command 中換成：
+
+    (call-process-shell-command
+        (shell-command 
+            ... ;; 做你想做的事情 
+           )
+        (kill-buffer "*Shell Command Output*" nil 0)
+
+這樣即可，就留意可能會頓一下因為是在執行 shell-command
 

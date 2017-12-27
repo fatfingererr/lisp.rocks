@@ -1,5 +1,5 @@
 #+OPTIONS: toc:nil
-#+HTML: Literal HTML code for export
+#+HTML: <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 #+BEGIN_SRC json :noexport:
 {:title "測試chartjs" :layout :post :tags [""] :toc false}
 #+END_SRC
@@ -11,7 +11,6 @@
 測試chartjs
 
 #+BEGIN_EXPORT html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <div style="width:400px;">
   <canvas id="heyChart"></canvas>
 </div>

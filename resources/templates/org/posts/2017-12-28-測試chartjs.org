@@ -10,7 +10,7 @@
 測試chartjs
 
 #+BEGIN_EXPORT html
-<script src="js/plot_example.js"></scripts>
+<script src="data/plot_example.js"></scripts>
 <div style="width:400px;">
   <canvas id="heyChart"></canvas>
 </div>

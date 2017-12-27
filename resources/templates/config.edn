@@ -16,7 +16,7 @@
  :sass-src           nil
  :sass-dest          nil
  :theme              "lambda-funk"
- :resources          ["img" "js" "CNAME" "README.md"]
+ :resources          ["img" "data" "CNAME" "README.md"]
  :keep-files         [".git"]
  :disqus?            false
  :disqus-shortname   "fatfingererr"

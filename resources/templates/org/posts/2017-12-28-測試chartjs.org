@@ -1,4 +1,5 @@
 #+OPTIONS: toc:nil
+#+HTML: Literal HTML code for export
 #+BEGIN_SRC json :noexport:
 {:title "測試chartjs" :layout :post :tags [""] :toc false}
 #+END_SRC
@@ -15,11 +16,11 @@
   <canvas id="heyChart"></canvas>
 </div>
 <script>
-  var ctx = document.getElementById(\"heyChart\");
+  var ctx = document.getElementById("heyChart");
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [\"王大毛\", \"孫小毛\", \"小甜甜\", \"許唇美\", \"豬哥亮\"],
+      labels: ["王大毛", "孫小毛", "小甜甜", "許唇美", "豬哥亮"],
       datasets: [{
         label: '十月：銷售業績',
         data: [4, 1, 3, 7, 2],

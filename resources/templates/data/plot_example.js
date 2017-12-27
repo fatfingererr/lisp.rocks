@@ -1,5 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script>
   var ctx = document.getElementById("heyChart");
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -35,4 +33,3 @@
       }
     }
   });
-</script>

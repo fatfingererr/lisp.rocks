@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Windows batch 中處理 append file 的方法</title>
-    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/">
+    <title>(print &quot;Lisp Rocks&quot;): 測試chartjs</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-28-測試chartjs/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -58,40 +58,59 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Windows batch 中處理 append file 的方法</h2>
+    <h2>測試chartjs</h2>
         <div id="post-date">
             December 28, 2017
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中如果要透過 batch 來 append file 有三種方法</p><p><br></p><h3><a name="單行&#95;append"></a>單行 Append</h3><p>如果內容單行可以解決，可以透過 <code>&gt;&gt; file.txt echo something</code> 來做</p><p>這個指令特別的地方在於 <code>echo</code> 可以放在 <code>&gt;&gt; file.txt</code> 之後，沒有那麼直覺</p><p>如果遇到有空格或是特殊符號，可以先用 <code>set</code> 的方法建立內容</p><p>但是因為 <code>set</code> 完可能會有雙引號 <code>&quot;</code> ，要解除得用 <code>%VAR:&quot;=%</code> 處理</p><pre><code>REM 1. 有空格
-set insertString1=&quot;hello world&quot;
-set insertString1=%insertString1%
-&gt;&gt; file1.txt echo insertString1
-
-REM 2. 有特殊字符（例如 &lt; 和 &gt; ）使用 &#94; 前置處理
-set insertString2=&quot;#include &#94;&lt;stdio&#94;&gt;&quot;
-set insertString2=%insertString2%
-&gt;&gt; file2.txt echo insertString2</code></pre><p><br></p><h3><a name="刪除舊有內容，全新&#95;append&#95;(&#95;相當於&#95;write&#95;)"></a>刪除舊有內容，全新 Append ( 相當於 Write )</h3><p>可以透過 <code>type</code> 指令完成，例如：</p><pre><code>type src&#95;file.txt &gt; target&#95;file.txt</code></pre><p><br></p><h3><a name="在原有內容上&#95;append"></a>在原有內容上 Append</h3><p>然而更多的是在原有內容上 Append</p><p>所以可以透過 <code>copy /b</code> 以及 <code>+</code> 的方式處理：</p><pre><code>copy /b append&#95;file.txt+src&#95;file.txt append&#95;file.txt</code></pre>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>測試chartjs</p><p><script src="<a href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js">https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js</a>"></script> <div style="width:400px;">   <canvas id="heyChart"></canvas> </div> <script>   var ctx = document.getElementById("heyChart");   var myChart = new Chart(ctx, {<pre><code>type: 'bar',
+data: {
+  labels: &#91;&quot;王大毛&quot;, &quot;孫小毛&quot;, &quot;小甜甜&quot;, &quot;許唇美&quot;, &quot;豬哥亮&quot;&#93;,
+  datasets: &#91;{
+    label: '十月：銷售業績',
+    data: &#91;4, 1, 3, 7, 2&#93;,
+    backgroundColor: &#91;
+      'rgba&#40;255, 99, 132, 0.2&#41;',
+      'rgba&#40;54, 162, 235, 0.2&#41;',
+      'rgba&#40;255, 206, 86, 0.2&#41;',
+      'rgba&#40;75, 192, 192, 0.2&#41;',
+      'rgba&#40;153, 102, 255, 0.2&#41;'
+    &#93;,
+    borderColor: &#91;
+      'rgba&#40;255,99,132,1&#41;',
+      'rgba&#40;54, 162, 235, 1&#41;',
+      'rgba&#40;255, 206, 86, 1&#41;',
+      'rgba&#40;75, 192, 192, 1&#41;',
+      'rgba&#40;153, 102, 255, 1&#41;'
+    &#93;,
+    borderWidth: 1
+  }&#93;
+},
+options: {
+  scales: {
+    yAxes: &#91;{
+      ticks: {
+        beginAtZero:true,
+      }
+    }&#93;
+  }
+} </code></pre>  }); </script></p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/batch/">batch</a>
-    
-    <a href="/tags-output/windows/">windows</a>
+    <a href="/tags-output/"></a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts-output/2017-12-28-測試chartjs/">&laquo; 測試chartjs</a>
         
-        
-        <a class="right" href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">Emacs 中安靜地執行 async-shell-command &raquo;</a>
+        <a class="right" href="/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/">Windows batch 中處理 append file 的方法 &raquo;</a>
         
     </div>
 
@@ -100,8 +119,8 @@ set insertString2=%insertString2%
 
     <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = "http://lisp.rocks/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/";
-            this.page.identifier = "Windows batch 中處理 append file 的方法";
+            this.page.url = "http://lisp.rocks/posts-output/2017-12-28-測試chartjs/";
+            this.page.identifier = "測試chartjs";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

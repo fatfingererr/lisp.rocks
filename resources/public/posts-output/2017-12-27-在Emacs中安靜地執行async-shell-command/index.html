@@ -65,23 +65,11 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>安靜地在 Emacs 中執行 async-shell-command 有兩種方式：</p><ol><li>display-buffer-alist (不推)</li></ol><pre><code>如果你想要對所有的 &lt;code&gt;async-shell-command&lt;/code&gt; 都安靜執行，可以透過：
-
-    &#40;add-to-list 'display-buffer-alist
-      '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;
-
-在 Spacemacs 中可以加入在 `dotspacemacs/user-config` 中
-
-缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒
-
-例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</code></pre><ol><li>call-process-shell-command</li></ol><pre><code>使用 &lt;code&gt;call-process-shell-command&lt;/code&gt; 要留意指令後需要添加 &lt;code&gt;nil 0&lt;/code&gt; 參數：
-
-    &#40;call-process-shell-command
-        &#40;async-shell-command 
-            ... ;; 做你想做的事情 
-           &#41; nil 0&#41;
-
-這種方式對個別 async-shell-command 可以分別操作</code></pre>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>安靜地在 Emacs 中執行 async-shell-command 有兩種方式：</p><h3><a name="display-buffer-alist&#95;(不推)"></a>display-buffer-alist (不推)</h3><p>如果你想要對所有的 <code>async-shell-command</code> 都安靜執行，可以透過：</p><pre><code>&#40;add-to-list 'display-buffer-alist
+  '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;</code></pre><p>在 Spacemacs 中可以加入在 <code>dotspacemacs/user-config</code> 中</p><p>缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒</p><p>例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</p><h3><a name="call-process-shell-command"></a>call-process-shell-command</h3><p>使用 <code>call-process-shell-command</code> 要留意指令後需要添加 <code>nil 0</code> 參數：</p><pre><code>&#40;call-process-shell-command
+    &#40;async-shell-command 
+        ... ;; 做你想做的事情 
+       &#41; nil 0&#41;</code></pre><p>這種方式對個別 async-shell-command 可以分別操作</p>
 </div>
 
 <div id="post-tags">

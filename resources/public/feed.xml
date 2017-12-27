@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 27 Dec 2017 11:23:54 +0800
+Wed, 27 Dec 2017 11:24:30 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,23 +28,11 @@ http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-
 在 Emacs 中安靜地執行 async-shell-command
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;安靜地在 Emacs 中執行 async-shell-command 有兩種方式：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;display-buffer-alist (不推)&lt;/li&gt;&lt;/ol&gt;&lt;pre&gt;&lt;code&gt;如果你想要對所有的 &amp;lt;code&amp;gt;async-shell-command&amp;lt;/code&amp;gt; 都安靜執行，可以透過：
-
-    &amp;#40;add-to-list 'display-buffer-alist
-      '&amp;#40;&amp;quot;\\&amp;#42;Async Shell Command\\&amp;#42;.&amp;#42;&amp;quot; display-buffer-no-window&amp;#41;&amp;#41;
-
-在 Spacemacs 中可以加入在 `dotspacemacs/user-config` 中
-
-缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒
-
-例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;&lt;li&gt;call-process-shell-command&lt;/li&gt;&lt;/ol&gt;&lt;pre&gt;&lt;code&gt;使用 &amp;lt;code&amp;gt;call-process-shell-command&amp;lt;/code&amp;gt; 要留意指令後需要添加 &amp;lt;code&amp;gt;nil 0&amp;lt;/code&amp;gt; 參數：
-
-    &amp;#40;call-process-shell-command
-        &amp;#40;async-shell-command 
-            ... ;; 做你想做的事情 
-           &amp;#41; nil 0&amp;#41;
-
-這種方式對個別 async-shell-command 可以分別操作&lt;/code&gt;&lt;/pre&gt;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;安靜地在 Emacs 中執行 async-shell-command 有兩種方式：&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;display-buffer-alist&amp;#95;(不推)&quot;&gt;&lt;/a&gt;display-buffer-alist (不推)&lt;/h3&gt;&lt;p&gt;如果你想要對所有的 &lt;code&gt;async-shell-command&lt;/code&gt; 都安靜執行，可以透過：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;add-to-list 'display-buffer-alist
+  '&amp;#40;&amp;quot;\\&amp;#42;Async Shell Command\\&amp;#42;.&amp;#42;&amp;quot; display-buffer-no-window&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 Spacemacs 中可以加入在 &lt;code&gt;dotspacemacs/user-config&lt;/code&gt; 中&lt;/p&gt;&lt;p&gt;缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒&lt;/p&gt;&lt;p&gt;例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;call-process-shell-command&quot;&gt;&lt;/a&gt;call-process-shell-command&lt;/h3&gt;&lt;p&gt;使用 &lt;code&gt;call-process-shell-command&lt;/code&gt; 要留意指令後需要添加 &lt;code&gt;nil 0&lt;/code&gt; 參數：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;call-process-shell-command
+    &amp;#40;async-shell-command 
+        ... ;; 做你想做的事情 
+       &amp;#41; nil 0&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這種方式對個別 async-shell-command 可以分別操作&lt;/p&gt;
 </description>
 <enclosure>
 

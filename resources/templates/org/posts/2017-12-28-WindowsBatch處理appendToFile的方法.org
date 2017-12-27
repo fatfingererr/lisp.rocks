@@ -28,7 +28,7 @@ set insertString1=%insertString1%
 >> file1.txt echo insertString1
 
 REM 2. 有特殊字符（例如 < 和 > ）使用 ^ 前置處理
-set insertString2="include ^<stdio^>"
+set insertString2="#include ^<stdio^>"
 set insertString2=%insertString2%
 >> file2.txt echo insertString2
 #+END_SRC

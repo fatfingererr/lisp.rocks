@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 00:40:11 +0800
+Thu, 28 Dec 2017 00:40:58 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,9 +28,9 @@ http://lisp.rocks/posts-output/2017-12-28-測試chartjs/
 測試chartjs
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=\&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js\&quot;&gt;&lt;/script&gt; &lt;div style=&quot;width:400px;&quot;&gt;   &lt;canvas id=&quot;heyChart&quot;&gt;&lt;/canvas&gt; &lt;/div&gt; &lt;script&gt;   var ctx = document.getElementById(&quot;heyChart&quot;);   var myChart = new Chart(ctx, {&lt;pre&gt;&lt;code&gt;type: 'bar',
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js&quot;&gt;&lt;/script&gt; &lt;div style=&quot;width:400px;&quot;&gt;   &lt;canvas id=&quot;heyChart&quot;&gt;&lt;/canvas&gt; &lt;/div&gt; &lt;script&gt;   var ctx = document.getElementById(\&quot;heyChart\&quot;);   var myChart = new Chart(ctx, {&lt;pre&gt;&lt;code&gt;type: 'bar',
 data: {
-  labels: &amp;#91;&amp;quot;王大毛&amp;quot;, &amp;quot;孫小毛&amp;quot;, &amp;quot;小甜甜&amp;quot;, &amp;quot;許唇美&amp;quot;, &amp;quot;豬哥亮&amp;quot;&amp;#93;,
+  labels: &amp;#91;\&amp;quot;王大毛\&amp;quot;, \&amp;quot;孫小毛\&amp;quot;, \&amp;quot;小甜甜\&amp;quot;, \&amp;quot;許唇美\&amp;quot;, \&amp;quot;豬哥亮\&amp;quot;&amp;#93;,
   datasets: &amp;#91;{
     label: '十月：銷售業績',
     data: &amp;#91;4, 1, 3, 7, 2&amp;#93;,

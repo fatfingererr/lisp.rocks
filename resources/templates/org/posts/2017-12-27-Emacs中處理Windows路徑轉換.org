@@ -14,9 +14,24 @@
 
 2 . 像是 Windows 系統中的路徑，例如 =c:\\Users\\myName= ( Spacemacs 默認 =c:\\= 是小寫 )
 
-3 . 又或是兩者的混合版本，例如 =c:/Users/myName= 
+3 . 又或是兩者的混合版本，例如 =c:/Users/myName= ，這種最麻煩
+
+<br>
 
 這樣在背景執行例如 =async-shell-command= 就會很不方便
 
 所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：
+
+#+BEGIN_SRC elisp
+(replace-regexp-in-string "\/" "\\\\" path)
+#+END_SRC
+
+或是：
+
+#+BEGIN_SRC elsip
+(replace-regexp-in-string "/" (regexp-quote "\\") path)
+#+END_SRC
+
+這樣就沒問題了，搭配 =projectile-project-root= 就能輕鬆在跟目錄下執行 bat scripts ！
+
 

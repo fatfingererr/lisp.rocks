@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 01:13:00 +0800
+Thu, 28 Dec 2017 01:13:17 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,102 +28,40 @@ http://lisp.rocks/posts-output/2017-12-28-測試chartjs/
 測試chartjs
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;div id=&quot;container&quot; style=&quot;width: 75%;&quot;&gt;&lt;pre&gt;&lt;code&gt;    &amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;button id=&amp;quot;randomizeData&amp;quot;&amp;gt;Randomize Data&amp;lt;/button&amp;gt;
-&amp;lt;button id=&amp;quot;addDataset&amp;quot;&amp;gt;Add Dataset&amp;lt;/button&amp;gt;
-&amp;lt;button id=&amp;quot;removeDataset&amp;quot;&amp;gt;Remove Dataset&amp;lt;/button&amp;gt;
-&amp;lt;button id=&amp;quot;addData&amp;quot;&amp;gt;Add Data&amp;lt;/button&amp;gt;
-&amp;lt;button id=&amp;quot;removeData&amp;quot;&amp;gt;Remove Data&amp;lt;/button&amp;gt;
-&amp;lt;script&amp;gt;
-    var MONTHS = &amp;#91;&amp;quot;January&amp;quot;, &amp;quot;February&amp;quot;, &amp;quot;March&amp;quot;, &amp;quot;April&amp;quot;, &amp;quot;May&amp;quot;, &amp;quot;June&amp;quot;, &amp;quot;July&amp;quot;, &amp;quot;August&amp;quot;, &amp;quot;September&amp;quot;, &amp;quot;October&amp;quot;, &amp;quot;November&amp;quot;, &amp;quot;December&amp;quot;&amp;#93;;
-    var color = Chart.helpers.color;
-    var horizontalBarChartData = {
-        labels: &amp;#91;&amp;quot;January&amp;quot;, &amp;quot;February&amp;quot;, &amp;quot;March&amp;quot;, &amp;quot;April&amp;quot;, &amp;quot;May&amp;quot;, &amp;quot;June&amp;quot;, &amp;quot;July&amp;quot;&amp;#93;,
-        datasets: &amp;#91;{
-            label: 'Dataset 1',
-            backgroundColor: color&amp;#40;window.chartColors.red&amp;#41;.alpha&amp;#40;0.5&amp;#41;.rgbString&amp;#40;&amp;#41;,
-            borderColor: window.chartColors.red,
-            borderWidth: 1,
-            data: &amp;#91;
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;
-            &amp;#93;
-        }, {
-            label: 'Dataset 2',
-            backgroundColor: color&amp;#40;window.chartColors.blue&amp;#41;.alpha&amp;#40;0.5&amp;#41;.rgbString&amp;#40;&amp;#41;,
-            borderColor: window.chartColors.blue,
-            data: &amp;#91;
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;,
-                randomScalingFactor&amp;#40;&amp;#41;
-            &amp;#93;
-        }&amp;#93; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    }; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    window.onload = function&amp;#40;&amp;#41; {
-        var ctx = document.getElementById&amp;#40;&amp;quot;canvas&amp;quot;&amp;#41;.getContext&amp;#40;&amp;quot;2d&amp;quot;&amp;#41;;
-        window.myHorizontalBar = new Chart&amp;#40;ctx, {
-            type: 'horizontalBar',
-            data: horizontalBarChartData,
-            options: {
-                // Elements options apply to all of the options unless overridden in a dataset
-                // In this case, we are setting the border of each horizontal bar to be 2px wide
-                elements: {
-                    rectangle: {
-                        borderWidth: 2,
-                    }
-                },
-                responsive: true,
-                legend: {
-                    position: 'right',
-                },
-                title: {
-                    display: true,
-                    text: 'Chart.js Horizontal Bar Chart'
-                }
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;http://www.chartjs.org/samples/latest/utils.js&quot;&gt;&lt;/script&gt; &lt;canvas id=&quot;myChart&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt; &lt;script&gt; var ctx = document.getElementById(&quot;myChart&quot;).getContext('2d'); var myChart = new Chart(ctx, {&lt;pre&gt;&lt;code&gt;type: 'bar',
+data: {
+    labels: &amp;#91;&amp;quot;Red&amp;quot;, &amp;quot;Blue&amp;quot;, &amp;quot;Yellow&amp;quot;, &amp;quot;Green&amp;quot;, &amp;quot;Purple&amp;quot;, &amp;quot;Orange&amp;quot;&amp;#93;,
+    datasets: &amp;#91;{
+        label: '# of Votes',
+        data: &amp;#91;12, 19, 3, 5, 2, 3&amp;#93;,
+        backgroundColor: &amp;#91;
+            'rgba&amp;#40;255, 99, 132, 0.2&amp;#41;',
+            'rgba&amp;#40;54, 162, 235, 0.2&amp;#41;',
+            'rgba&amp;#40;255, 206, 86, 0.2&amp;#41;',
+            'rgba&amp;#40;75, 192, 192, 0.2&amp;#41;',
+            'rgba&amp;#40;153, 102, 255, 0.2&amp;#41;',
+            'rgba&amp;#40;255, 159, 64, 0.2&amp;#41;'
+        &amp;#93;,
+        borderColor: &amp;#91;
+            'rgba&amp;#40;255,99,132,1&amp;#41;',
+            'rgba&amp;#40;54, 162, 235, 1&amp;#41;',
+            'rgba&amp;#40;255, 206, 86, 1&amp;#41;',
+            'rgba&amp;#40;75, 192, 192, 1&amp;#41;',
+            'rgba&amp;#40;153, 102, 255, 1&amp;#41;',
+            'rgba&amp;#40;255, 159, 64, 1&amp;#41;'
+        &amp;#93;,
+        borderWidth: 1
+    }&amp;#93;
+},
+options: {
+    scales: {
+        yAxes: &amp;#91;{
+            ticks: {
+                beginAtZero:true
             }
-        }&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    }; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    document.getElementById&amp;#40;'randomizeData'&amp;#41;.addEventListener&amp;#40;'click', function&amp;#40;&amp;#41; {
-        var zero = Math.random&amp;#40;&amp;#41; &amp;lt; 0.2 ? true : false;
-        horizontalBarChartData.datasets.forEach&amp;#40;function&amp;#40;dataset&amp;#41; {
-            dataset.data = dataset.data.map&amp;#40;function&amp;#40;&amp;#41; {
-                return zero ? 0.0 : randomScalingFactor&amp;#40;&amp;#41;;
-            }&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;        }&amp;#41;;
-        window.myHorizontalBar.update&amp;#40;&amp;#41;;
-    }&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    var colorNames = Object.keys&amp;#40;window.chartColors&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    document.getElementById&amp;#40;'addDataset'&amp;#41;.addEventListener&amp;#40;'click', function&amp;#40;&amp;#41; {
-        var colorName = colorNames&amp;#91;horizontalBarChartData.datasets.length % colorNames.length&amp;#93;;;
-        var dsColor = window.chartColors&amp;#91;colorName&amp;#93;;
-        var newDataset = {
-            label: 'Dataset ' + horizontalBarChartData.datasets.length,
-            backgroundColor: color&amp;#40;dsColor&amp;#41;.alpha&amp;#40;0.5&amp;#41;.rgbString&amp;#40;&amp;#41;,
-            borderColor: dsColor,
-            data: &amp;#91;&amp;#93;
-        }; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;        for &amp;#40;var index = 0; index &amp;lt; horizontalBarChartData.labels.length; ++index&amp;#41; {
-            newDataset.data.push&amp;#40;randomScalingFactor&amp;#40;&amp;#41;&amp;#41;;
-        } &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;        horizontalBarChartData.datasets.push&amp;#40;newDataset&amp;#41;;
-        window.myHorizontalBar.update&amp;#40;&amp;#41;;
-    }&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    document.getElementById&amp;#40;'addData'&amp;#41;.addEventListener&amp;#40;'click', function&amp;#40;&amp;#41; {
-        if &amp;#40;horizontalBarChartData.datasets.length &amp;gt; 0&amp;#41; {
-            var month = MONTHS&amp;#91;horizontalBarChartData.labels.length % MONTHS.length&amp;#93;;
-            horizontalBarChartData.labels.push&amp;#40;month&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;            for &amp;#40;var index = 0; index &amp;lt; horizontalBarChartData.datasets.length; ++index&amp;#41; {
-                horizontalBarChartData.datasets&amp;#91;index&amp;#93;.data.push&amp;#40;randomScalingFactor&amp;#40;&amp;#41;&amp;#41;;
-            } &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;            window.myHorizontalBar.update&amp;#40;&amp;#41;;
-        }
-    }&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    document.getElementById&amp;#40;'removeDataset'&amp;#41;.addEventListener&amp;#40;'click', function&amp;#40;&amp;#41; {
-        horizontalBarChartData.datasets.splice&amp;#40;0, 1&amp;#41;;
-        window.myHorizontalBar.update&amp;#40;&amp;#41;;
-    }&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    document.getElementById&amp;#40;'removeData'&amp;#41;.addEventListener&amp;#40;'click', function&amp;#40;&amp;#41; {
-        horizontalBarChartData.labels.splice&amp;#40;-1, 1&amp;#41;; // remove the label first &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;        horizontalBarChartData.datasets.forEach&amp;#40;function &amp;#40;dataset, datasetIndex&amp;#41; {
-            dataset.data.pop&amp;#40;&amp;#41;;
-        }&amp;#41;; &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;        window.myHorizontalBar.update&amp;#40;&amp;#41;;
-    }&amp;#41;;
-&amp;lt;/script&amp;gt; &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+        }&amp;#93;
+    }
+} &lt;/code&gt;&lt;/pre&gt;}); &lt;/script&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

@@ -42,6 +42,8 @@
 
 可能就要選第一個方法
 
+<br>
+
 
 ### 3. shell-command + kill-buffer
 

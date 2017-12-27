@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 27 Dec 2017 11:41:48 +0800
+Wed, 27 Dec 2017 11:42:15 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -32,7 +32,7 @@ http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-
   '&amp;#40;&amp;quot;\\&amp;#42;Async Shell Command\\&amp;#42;.&amp;#42;&amp;quot; display-buffer-no-window&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 Spacemacs 中可以把上面兩行加入在 &lt;code&gt;dotspacemacs/user-config&lt;/code&gt; 裡面&lt;/p&gt;&lt;p&gt;缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒&lt;/p&gt;&lt;p&gt;例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法&lt;/p&gt;&lt;p&gt;&lt;br&gt; &lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;2.&amp;#95;call-process-shell-command&quot;&gt;&lt;/a&gt;2. call-process-shell-command&lt;/h3&gt;&lt;p&gt;使用 &lt;code&gt;call-process-shell-command&lt;/code&gt; 要留意指令後需要添加 &lt;code&gt;nil 0&lt;/code&gt; 參數：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;call-process-shell-command
     &amp;#40;async-shell-command 
         ... ;; 做你想做的事情 
-       &amp;#41; nil 0&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這種方式對個別 async-shell-command 可以分別操作，但是缺點是他會問你要不要開新的 buffer&lt;/p&gt;&lt;p&gt;如果你是有透過 after-save-hook 之類的會高頻率地呼叫 asnc-shellc-ommand，那這個方法會很煩&lt;/p&gt;&lt;p&gt;可能就要選第一個方法&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;3.&amp;#95;shell-command&amp;#95;+&amp;#95;kill-buffer&quot;&gt;&lt;/a&gt;3. shell-command + kill-buffer&lt;/h3&gt;&lt;p&gt;如果你的 shell-command 跑起來很快就結束，又會高頻率地呼叫到的話&lt;/p&gt;&lt;p&gt;可以考慮使用 shell-command 而非 async 然後搭配 kill-buffer 來解決一堆 shell command buffer 的問題&lt;/p&gt;&lt;p&gt;也就是說，把 call-process-shell-command 中換成：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;call-process-shell-command
+       &amp;#41; nil 0&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這種方式對個別 async-shell-command 可以分別操作，但是缺點是他會問你要不要開新的 buffer&lt;/p&gt;&lt;p&gt;如果你是有透過 after-save-hook 之類的會高頻率地呼叫 asnc-shellc-ommand，那這個方法會很煩&lt;/p&gt;&lt;p&gt;可能就要選第一個方法&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;3.&amp;#95;shell-command&amp;#95;+&amp;#95;kill-buffer&quot;&gt;&lt;/a&gt;3. shell-command + kill-buffer&lt;/h3&gt;&lt;p&gt;如果你的 shell-command 跑起來很快就結束，又會高頻率地呼叫到的話&lt;/p&gt;&lt;p&gt;可以考慮使用 shell-command 而非 async 然後搭配 kill-buffer 來解決一堆 shell command buffer 的問題&lt;/p&gt;&lt;p&gt;也就是說，把 call-process-shell-command 中換成：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;call-process-shell-command
     &amp;#40;shell-command 
         ... ;; 做你想做的事情 
        &amp;#41;

@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 01:13:17 +0800
+Thu, 28 Dec 2017 01:14:41 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://lisp.rocks/posts-output/2017-12-28-測試chartjs/
 測試chartjs
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;http://www.chartjs.org/samples/latest/utils.js&quot;&gt;&lt;/script&gt; &lt;canvas id=&quot;myChart&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt; &lt;script&gt; var ctx = document.getElementById(&quot;myChart&quot;).getContext('2d'); var myChart = new Chart(ctx, {&lt;pre&gt;&lt;code&gt;type: 'bar',
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;http://www.chartjs.org/samples/latest/utils.js&quot;&gt;&lt;/script&gt; &lt;canvas id=&quot;myChart&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt; &lt;script&gt; var ctx = document.getElementById(&quot;myChart&quot;).getContext('2d'); var myChart = new Chart(ctx, {&lt;pre&gt;&lt;code&gt;type: 'bar',
 data: {
     labels: &amp;#91;&amp;quot;Red&amp;quot;, &amp;quot;Blue&amp;quot;, &amp;quot;Yellow&amp;quot;, &amp;quot;Green&amp;quot;, &amp;quot;Purple&amp;quot;, &amp;quot;Orange&amp;quot;&amp;#93;,
     datasets: &amp;#91;{

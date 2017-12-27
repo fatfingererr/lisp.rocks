@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 27 Dec 2017 11:42:15 +0800
+Wed, 27 Dec 2017 23:57:58 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -37,6 +37,34 @@ http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-
         ... ;; 做你想做的事情 
        &amp;#41;
     &amp;#40;kill-buffer &amp;quot;&amp;#42;Shell Command Output&amp;#42;&amp;quot; nil 0&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這樣即可，就留意可能會頓一下因為是在執行 shell-command&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 27 Dec 2017 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2017-12-27-Windows-batch-中處理-append-file-的方法/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2017-12-27-Windows-batch-中處理-append-file-的方法/
+</link>
+<title>
+Windows batch 中處理 append file 的方法
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 Windows 中如果要透過 batch 來 append file 有三種方法&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;單行&amp;#95;append&quot;&gt;&lt;/a&gt;單行 Append&lt;/h3&gt;&lt;p&gt;如果內容單行可以解決，可以透過 &lt;code&gt;&amp;gt;&amp;gt; file.txt echo something&lt;/code&gt; 來做&lt;/p&gt;&lt;p&gt;這個指令特別的地方在於 &lt;code&gt;echo&lt;/code&gt; 可以放在 &lt;code&gt;&amp;gt;&amp;gt; file.txt&lt;/code&gt; 之後，沒有那麼直覺&lt;/p&gt;&lt;p&gt;如果遇到有空格或是特殊符號，可以先用 &lt;code&gt;set&lt;/code&gt; 的方法建立內容&lt;/p&gt;&lt;p&gt;但是因為 &lt;code&gt;set&lt;/code&gt; 完可能會有雙引號 &lt;code&gt;&amp;quot;&lt;/code&gt; ，要解除得用 &lt;code&gt;%VAR:&amp;quot;=%&lt;/code&gt; 處理&lt;/p&gt;&lt;pre&gt;&lt;code&gt;REM 1. 有空格
+set insertString1=&amp;quot;hello world&amp;quot;
+set insertString1=%insertString1%
+&amp;gt;&amp;gt; file1.txt echo insertString1
+
+REM 2. 有特殊字符（例如 &amp;lt; 和 &amp;gt; ）使用 &amp;#94; 前置處理
+set insertString2=&amp;quot;include &amp;#94;&amp;lt;stdio&amp;#94;&amp;gt;&amp;quot;
+set insertString2=%insertString2%
+&amp;gt;&amp;gt; file2.txt echo insertString2&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;刪除舊有內容，全新&amp;#95;append&amp;#95;(&amp;#95;相當於&amp;#95;write&amp;#95;)&quot;&gt;&lt;/a&gt;刪除舊有內容，全新 Append ( 相當於 Write )&lt;/h3&gt;&lt;p&gt;可以透過 &lt;code&gt;type&lt;/code&gt; 指令完成，例如：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;type src&amp;#95;file.txt &amp;gt; target&amp;#95;file.txt&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;在原有內容上&amp;#95;append&quot;&gt;&lt;/a&gt;在原有內容上 Append&lt;/h3&gt;&lt;p&gt;然而更多的是在原有內容上 Append&lt;/p&gt;&lt;p&gt;所以可以透過 &lt;code&gt;copy /b&lt;/code&gt; 以及 &lt;code&gt;+&lt;/code&gt; 的方式處理：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;copy /b append&amp;#95;file.txt+src&amp;#95;file.txt append&amp;#95;file.txt&lt;/code&gt;&lt;/pre&gt;
 </description>
 <enclosure>
 

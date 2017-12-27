@@ -65,7 +65,102 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h1><a name=""></a></h1><p>測試chartjs</p><p><script src="http://www.chartjs.org/dist/2.7.1/Chart.bundle.js"></script> <script src="data/plot_example.js" type="text/javascript"></script> <div id="container" style="width: 75%;"> <canvas id="canvas"></canvas> </div></p>
+    <h1><a name=""></a></h1><h1><a name=""></a></h1><p>測試chartjs</p><p><div id="container" style="width: 75%;"><pre><code>    &lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+&lt;button id=&quot;randomizeData&quot;&gt;Randomize Data&lt;/button&gt;
+&lt;button id=&quot;addDataset&quot;&gt;Add Dataset&lt;/button&gt;
+&lt;button id=&quot;removeDataset&quot;&gt;Remove Dataset&lt;/button&gt;
+&lt;button id=&quot;addData&quot;&gt;Add Data&lt;/button&gt;
+&lt;button id=&quot;removeData&quot;&gt;Remove Data&lt;/button&gt;
+&lt;script&gt;
+    var MONTHS = &#91;&quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;&#93;;
+    var color = Chart.helpers.color;
+    var horizontalBarChartData = {
+        labels: &#91;&quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;&#93;,
+        datasets: &#91;{
+            label: 'Dataset 1',
+            backgroundColor: color&#40;window.chartColors.red&#41;.alpha&#40;0.5&#41;.rgbString&#40;&#41;,
+            borderColor: window.chartColors.red,
+            borderWidth: 1,
+            data: &#91;
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;
+            &#93;
+        }, {
+            label: 'Dataset 2',
+            backgroundColor: color&#40;window.chartColors.blue&#41;.alpha&#40;0.5&#41;.rgbString&#40;&#41;,
+            borderColor: window.chartColors.blue,
+            data: &#91;
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;,
+                randomScalingFactor&#40;&#41;
+            &#93;
+        }&#93; </code></pre><pre><code>    }; </code></pre><pre><code>    window.onload = function&#40;&#41; {
+        var ctx = document.getElementById&#40;&quot;canvas&quot;&#41;.getContext&#40;&quot;2d&quot;&#41;;
+        window.myHorizontalBar = new Chart&#40;ctx, {
+            type: 'horizontalBar',
+            data: horizontalBarChartData,
+            options: {
+                // Elements options apply to all of the options unless overridden in a dataset
+                // In this case, we are setting the border of each horizontal bar to be 2px wide
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Horizontal Bar Chart'
+                }
+            }
+        }&#41;; </code></pre><pre><code>    }; </code></pre><pre><code>    document.getElementById&#40;'randomizeData'&#41;.addEventListener&#40;'click', function&#40;&#41; {
+        var zero = Math.random&#40;&#41; &lt; 0.2 ? true : false;
+        horizontalBarChartData.datasets.forEach&#40;function&#40;dataset&#41; {
+            dataset.data = dataset.data.map&#40;function&#40;&#41; {
+                return zero ? 0.0 : randomScalingFactor&#40;&#41;;
+            }&#41;; </code></pre><pre><code>        }&#41;;
+        window.myHorizontalBar.update&#40;&#41;;
+    }&#41;; </code></pre><pre><code>    var colorNames = Object.keys&#40;window.chartColors&#41;; </code></pre><pre><code>    document.getElementById&#40;'addDataset'&#41;.addEventListener&#40;'click', function&#40;&#41; {
+        var colorName = colorNames&#91;horizontalBarChartData.datasets.length % colorNames.length&#93;;;
+        var dsColor = window.chartColors&#91;colorName&#93;;
+        var newDataset = {
+            label: 'Dataset ' + horizontalBarChartData.datasets.length,
+            backgroundColor: color&#40;dsColor&#41;.alpha&#40;0.5&#41;.rgbString&#40;&#41;,
+            borderColor: dsColor,
+            data: &#91;&#93;
+        }; </code></pre><pre><code>        for &#40;var index = 0; index &lt; horizontalBarChartData.labels.length; ++index&#41; {
+            newDataset.data.push&#40;randomScalingFactor&#40;&#41;&#41;;
+        } </code></pre><pre><code>        horizontalBarChartData.datasets.push&#40;newDataset&#41;;
+        window.myHorizontalBar.update&#40;&#41;;
+    }&#41;; </code></pre><pre><code>    document.getElementById&#40;'addData'&#41;.addEventListener&#40;'click', function&#40;&#41; {
+        if &#40;horizontalBarChartData.datasets.length &gt; 0&#41; {
+            var month = MONTHS&#91;horizontalBarChartData.labels.length % MONTHS.length&#93;;
+            horizontalBarChartData.labels.push&#40;month&#41;; </code></pre><pre><code>            for &#40;var index = 0; index &lt; horizontalBarChartData.datasets.length; ++index&#41; {
+                horizontalBarChartData.datasets&#91;index&#93;.data.push&#40;randomScalingFactor&#40;&#41;&#41;;
+            } </code></pre><pre><code>            window.myHorizontalBar.update&#40;&#41;;
+        }
+    }&#41;; </code></pre><pre><code>    document.getElementById&#40;'removeDataset'&#41;.addEventListener&#40;'click', function&#40;&#41; {
+        horizontalBarChartData.datasets.splice&#40;0, 1&#41;;
+        window.myHorizontalBar.update&#40;&#41;;
+    }&#41;; </code></pre><pre><code>    document.getElementById&#40;'removeData'&#41;.addEventListener&#40;'click', function&#40;&#41; {
+        horizontalBarChartData.labels.splice&#40;-1, 1&#41;; // remove the label first </code></pre><pre><code>        horizontalBarChartData.datasets.forEach&#40;function &#40;dataset, datasetIndex&#41; {
+            dataset.data.pop&#40;&#41;;
+        }&#41;; </code></pre><pre><code>        window.myHorizontalBar.update&#40;&#41;;
+    }&#41;;
+&lt;/script&gt; </code></pre></p>
 </div>
 
 <div id="post-tags">

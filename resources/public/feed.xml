@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 01:16:50 +0800
+Thu, 28 Dec 2017 01:17:59 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://lisp.rocks/posts-output/2017-12-28-測試chartjs/
 測試chartjs
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;canvas id=&quot;myChart&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt; &lt;script src=&quot;data/plot_example.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;測試chartjs&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://www.chartjs.org/dist/2.7.1/Chart.bundle.js&quot;&gt;&lt;/script&gt; &lt;canvas id=&quot;myChart&quot; width=&quot;400&quot; height=&quot;200&quot;&gt;&lt;/canvas&gt; &lt;script src=&quot;data/plot_example.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

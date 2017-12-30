@@ -1,18 +1,17 @@
-var doc = new jsPDF();
-
-// We'll make our own renderer to skip this editor
-var specialElementHandlers = {
-	  '#editor': function(element, renderer){
-		    return true;
-	  },
-	  '.controls': function(element, renderer){
-		    return true;
-	  }
-};
-
-// All units are in the set measurement for the document
-// This can be changed to "pt" (points), "mm" (Default), "cm", "in"
-doc.fromHTML($('body').get(0), 15, 15, {
-	  'width': 170, 
-	  'elementHandlers': specialElementHandlers
-});
+window.onload = function() {
+    var pdf = new jsPDF('p', 'pt', 'letter');
+    var canvas = pdf.canvas;
+    canvas.height = 72 * 11;
+    canvas.width=72 * 8.5;;
+    // var width = 400;
+    html2pdf(document.body, pdf, function(pdf) {
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
+        document.body.appendChild(iframe);
+        iframe.src = pdf.output('datauristring');
+        //var div = document.createElement('pre');
+        //div.innerText=pdf.output();
+        //document.body.appendChild(div);
+    }
+            );
+}

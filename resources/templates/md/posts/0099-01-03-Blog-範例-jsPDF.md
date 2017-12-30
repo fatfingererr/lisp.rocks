@@ -8,8 +8,8 @@
 
 嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能
 
-<script src="https://raw.githubusercontent.com/eKoopmans/html2pdf/master/dist/html2pdf.js"></script>
-<script src="https://raw.githubusercontent.com/sphilee/jsPDF-CustomFonts-support/master/dist/jspdf.customfonts.min.js"></script>
-<div id="report"></div>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+<script src="https://cdn.bootcss.com/jspdf/1.3.4/jspdf.debug.js"></script>
+<div class="report"></div>
 <script src="../../data/jspdf-example.js">
 

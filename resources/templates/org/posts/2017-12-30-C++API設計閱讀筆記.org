@@ -178,7 +178,17 @@ getter / setter 進行間接存取的好處：
 
 2-2-3-5. 試著將 public 成員變數以 inline getter / setter 重寫並計時，看是否值得 public
 
+<br>
 
+*2-2-4. 隱藏實作方法*
+
+2-2-4-1. 應該將類別穩定的介面和內部設計的實作分離
+
+2-2-4-2. 切勿返回 private 成員變數的非 const 指標和參考，會破壞封裝
+
+2-2-4-3. 採用 pimpl 慣用法，將實作細節完全隱藏
+
+2-2-4-4. 在 cpp 檔案中宣告 private 函式為 static ，而不在 public 表頭中宣告為 private
 
 
 

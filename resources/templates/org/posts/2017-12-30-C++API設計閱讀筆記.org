@@ -188,7 +188,7 @@ getter / setter 進行間接存取的好處：
 
 2-2-4-3. 採用 pimpl 慣用法，將實作細節完全隱藏
 
-2-2-4-4. 在 cpp 檔案中宣告 private 函式為 static ，而不在 public 表頭中宣告為 private
+2-2-4-4. 如果不採用 pipml ，則可在 cpp 檔案中宣告 private 函式為 static ，而在表頭宣告為 private
 
 
 

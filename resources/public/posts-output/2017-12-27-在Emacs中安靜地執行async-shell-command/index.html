@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>(print &quot;Lisp Rocks&quot;): Emacs 中安靜地執行 async-shell-command</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github.min.css">
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"> 
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+    <script>
+    window.klipse_settings = {
+        selector: '.language-klipse' // css selector for the html elements you want to klipsify
+    };
+    </script>
+    <script src="/js/highlight.pack.js" type="text/javascript"></script>
+    <script>
+    hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-title" href="/">(print &quot;Lisp Rocks&quot;)</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="position: absolute; right: 0;">
+            <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li ><a href="/archives/">Archives</a></li>
+                
+                <li >
+                    <a href="/pages-output/about/">About</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+        <!--/.container-fluid -->
+    </nav>
+    <div>
+        <div>
+            <div>
+                <div id="content">
+                    
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
+    </div>
+    <h2>Emacs 中安靜地執行 async-shell-command</h2>
+        <div id="post-date">
+            December 27, 2017
+        </div>
+</div>
+<div>
+    
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>安靜地在 Emacs 中執行 async-shell-command 有兩種方式：</p><p><br></p><h3><a name="1.&#95;display-buffer-alist"></a>1. display-buffer-alist</h3><p>如果你想要對所有的 <code>async-shell-command</code> 都安靜執行，可以透過：</p><pre><code>&#40;add-to-list 'display-buffer-alist
+  '&#40;&quot;\\&#42;Async Shell Command\\&#42;.&#42;&quot; display-buffer-no-window&#41;&#41;</code></pre><p>在 Spacemacs 中可以把上面兩行加入在 <code>dotspacemacs/user-config</code> 裡面</p><p>缺點是所有的 async shell command 都會被安靜執行，有時候有些 async shell command 我們還是希望跳出視窗提醒</p><p>例如執行一些執行 local server 的 command ，不然再開一個可能會開新的 port 所以我推薦第二個方法</p><p><br> </p><h3><a name="2.&#95;call-process-shell-command"></a>2. call-process-shell-command</h3><p>使用 <code>call-process-shell-command</code> 要留意指令後需要添加 <code>nil 0</code> 參數：</p><pre><code>&#40;call-process-shell-command
+    &#40;async-shell-command 
+        ... ;; 做你想做的事情 
+       &#41; nil 0&#41;</code></pre><p>這種方式對個別 async-shell-command 可以分別操作，但是缺點是他會問你要不要開新的 buffer</p><p>如果你是有透過 after-save-hook 之類的會高頻率地呼叫 asnc-shellc-ommand，那這個方法會很煩</p><p>可能就要選第一個方法</p><p><br></p><h3><a name="3.&#95;shell-command&#95;+&#95;kill-buffer"></a>3. shell-command + kill-buffer</h3><p>如果你的 shell-command 跑起來很快就結束，又會高頻率地呼叫到的話</p><p>可以考慮使用 shell-command 而非 async 然後搭配 kill-buffer 來解決一堆 shell command buffer 的問題</p><p>也就是說，把 call-process-shell-command 中換成：</p><pre><code>&#40;call-process-shell-command
+    &#40;shell-command 
+        ... ;; 做你想做的事情 
+       &#41;
+    &#40;kill-buffer &quot;&#42;Shell Command Output&#42;&quot; nil 0&#41;</code></pre><p>這樣即可，就留意可能會頓一下因為是在執行 shell-command</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/config/">config</a>
+    
+    <a href="/tags-output/emacs/">emacs</a>
+    
+    <a href="/tags-output/spacemacs/">spacemacs</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/">&laquo; Windows batch 中處理 append file 的方法</a>
+        
+        
+        <a class="right" href="/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">Emacs 中處理 Windows 路徑轉換 &raquo;</a>
+        
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/";
+            this.page.identifier = "Emacs 中安靜地執行 async-shell-command";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+</div>
+
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+        <footer>Copyright &copy;  fatfingererr
+            <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a> / Design by <a href="http://lambdafunk.com">Lambda Funk</a></p>
+        </footer>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+</body>
+
+</html>

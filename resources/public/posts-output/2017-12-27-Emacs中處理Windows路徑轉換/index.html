@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>(print &quot;Lisp Rocks&quot;): Emacs 中處理 Windows 路徑轉換</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github.min.css">
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"> 
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+    <script>
+    window.klipse_settings = {
+        selector: '.language-klipse' // css selector for the html elements you want to klipsify
+    };
+    </script>
+    <script src="/js/highlight.pack.js" type="text/javascript"></script>
+    <script>
+    hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-title" href="/">(print &quot;Lisp Rocks&quot;)</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="position: absolute; right: 0;">
+            <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li ><a href="/archives/">Archives</a></li>
+                
+                <li >
+                    <a href="/pages-output/about/">About</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+        <!--/.container-fluid -->
+    </nav>
+    <div>
+        <div>
+            <div>
+                <div id="content">
+                    
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
+    </div>
+    <h2>Emacs 中處理 Windows 路徑轉換</h2>
+        <div id="post-date">
+            December 27, 2017
+        </div>
+</div>
+<div>
+    
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中使用 Emacs 時，處理路徑轉換很麻煩，因為你從各種函數中拿到的路徑可能會有：</p><p>1 . 像是 Linux 系統中的路徑，例如 <code>&#126;/.spacemacs.d/</code></p><p>2 . 像是 Windows 系統中的路徑，例如 <code>c:\ \ Users \ \ myName</code> ( Spacemacs 默認 c 是小寫 )</p><p>3 . 又或是兩者的混合版本，例如 <code>c:/Users/myName</code> ，這種最麻煩</p><p><br></p><p>這樣在背景執行例如 <code>async-shell-command</code> 就會很不方便</p><p>所以通常就得在外面再包一層把路徑換掉的函數，使用的方法可以用：</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; path&#41;</code></pre><p>或是：</p><pre><code>&#40;replace-regexp-in-string &quot;/&quot; &#40;regexp-quote &quot;\\&quot;&#41; path&#41;</code></pre><p>這樣就沒問題了，搭配 <code>projectile-project-root</code> 就能輕鬆在跟目錄下執行 bat scripts ！</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/emacs/">emacs</a>
+    
+    <a href="/tags-output/windows/">windows</a>
+    
+    <a href="/tags-output/spacemacs/">spacemacs</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">&laquo; Emacs 中安靜地執行 async-shell-command</a>
+        
+        
+        <a class="right" href="/posts-output/2017-12-26-回顧2017感謝篇/">回顧2017 (感謝篇) &raquo;</a>
+        
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/";
+            this.page.identifier = "Emacs 中處理 Windows 路徑轉換";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+</div>
+
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+        <footer>Copyright &copy;  fatfingererr
+            <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a> / Design by <a href="http://lambdafunk.com">Lambda Funk</a></p>
+        </footer>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+</body>
+
+</html>

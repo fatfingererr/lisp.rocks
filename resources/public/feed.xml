@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 28 Dec 2017 02:11:41 +0800
+Sat, 30 Dec 2017 14:00:02 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -111,6 +111,26 @@ http://lisp.rocks/posts-output/2017-12-26-回顧2017感謝篇/
 </enclosure>
 <pubDate>
 Tue, 26 Dec 2017 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://lisp.rocks/posts-output/0099-01-02-Blog-範例-Flowchartjs/
+</guid>
+<link>
+http://lisp.rocks/posts-output/0099-01-02-Blog-範例-Flowchartjs/
+</link>
+<title>
+Blog-範例-Flowchartjs
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;本文章只是單純測試本部落格如何使用 Flowchartjs &lt;/p&gt;&lt;p&gt;方便未來在文章中插入使用&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.8.0/flowchart.min.js&quot;&gt;&lt;/script&gt; &lt;div id=&quot;diagram&quot;&gt;Diagram will be placed here&lt;/div&gt; &lt;script src=&quot;../../data/flowchart_example.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 02 Jan 0099 00:00:00 +0800
 </pubDate>
 </item>
 <item>

@@ -1,9 +1,9 @@
 document.getElementById("toPdfBtn").onclick = function () {
     var doc = new jsPDF();
-    doc.addFont('msjh.ttc', 'Microsoft JhengHei', 'normal');
+    doc.addFont('wt006.ttf', 'HanWangYenLight', 'normal');
 
-    doc.setFont('Microsoft JhengHei');
-    doc.text(15, 45, '早上好。 很高兴见到你');
+    doc.setFont('HanWangYenLight');
+    doc.text(15, 45, '中文測試');
 
     doc.text('[  ] 1. item1', 10, 10);
     doc.text('[  ] 2. item2', 10, 20);

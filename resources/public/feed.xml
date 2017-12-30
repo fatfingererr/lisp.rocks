@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 30 Dec 2017 14:59:42 +0800
+Sat, 30 Dec 2017 15:02:13 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -124,7 +124,7 @@ http://lisp.rocks/posts-output/0099-01-02-Blog-範例-Flowchartjs/
 Blog 範例 flowchart.js
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;本文章只是單純測試本部落格如何使用 flowchart.js &lt;/p&gt;&lt;p&gt;方便未來在文章中插入使用&lt;/p&gt;&lt;p&gt;&lt;div id=&quot;diagram&quot;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt; &lt;div id=&quot;diagram2&quot;&gt;&lt;/div&gt; &lt;script src=&quot;http://flowchart.js.org/raphael-min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.8.0/flowchart.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;../../data/flowchart-example.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;../../data/flowchart-my-example.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;本文章只是單純測試本部落格如何使用 flowchart.js &lt;/p&gt;&lt;p&gt;方便未來在文章中插入使用&lt;/p&gt;&lt;p&gt;&lt;script src=&quot;http://flowchart.js.org/raphael-min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.8.0/flowchart.min.js&quot;&gt;&lt;/script&gt; &lt;div id=&quot;diagram&quot;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt; &lt;div id=&quot;diagram2&quot;&gt;&lt;/div&gt; &lt;script src=&quot;../../data/flowchart-example.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;../../data/flowchart-my-example.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

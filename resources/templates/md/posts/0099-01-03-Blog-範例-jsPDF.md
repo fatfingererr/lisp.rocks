@@ -16,7 +16,7 @@
     doc.text('[  ] 4. item4', 10, 40);
     doc.text('[  ] 5. item5', 10, 50);
     
-    doc.save('jspdf-example.pdf');
+    doc.save('jspdf-from-lisp-rocks.pdf');
 
 <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
 <script src="https://cdn.bootcss.com/jspdf/1.3.4/jspdf.debug.js"></script>

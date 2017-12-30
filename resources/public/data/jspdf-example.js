@@ -1,47 +1,15 @@
 document.getElementById("toPdfBtn").onclick = function () {
   alert("即将打印，样式会有变化，但不妨碍您继续编辑");
 
-  //为防止打印出黑色背景，需设置白色背景
-  document.getElementsByClassName("step-design-body")[0].style.background = "#FFFFFF";
-  document.getElementsByClassName("right-aside")[0].style.background = "#FFFFFF";
-  
-  html2canvas(document.getElementsByClassName("right-aside")[0], {
-    onrendered:function(canvas) {
+    var doc = new jsPDF();
 
-        var contentWidth = canvas.width;
-        var contentHeight = canvas.height;
+    // 添加文本‘Download PDF’
+    doc.text('[  ] 1. tttt', 10, 10);
+    doc.text('[  ] 2. aaaa', 10, 20);
+    doc.text('[  ] 3. tttt', 10, 30);
+    doc.text('[  ] 4. bbbb', 10, 40);
+    doc.text('[  ] 5. tttt', 10, 50);
 
-        //一页pdf显示html页面生成的canvas高度;
-        var pageHeight = contentWidth / 592.28 * 841.89;
-        //未生成pdf的html页面高度
-        var leftHeight = contentHeight;
-        //页面偏移
-        var position = 0;
-        //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-        var imgWidth = 595.28;
-        var imgHeight = 592.28/contentWidth * contentHeight;
+    doc.save('a4.pdf');
 
-        var pageData = canvas.toDataURL('image/jpeg', 1.0);
-
-        var pdf = new jsPDF('', 'pt', 'a4');
-
-        //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
-        //当内容未超过pdf一页显示的范围，无需分页
-        if (leftHeight < pageHeight) {
-        pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight );
-        } else {
-            while(leftHeight > 0) {
-                pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight);
-                leftHeight -= pageHeight;
-                position -= 841.89;
-                //避免添加空白页
-                if(leftHeight > 0) {
-                  pdf.addPage();
-                }
-            }
-        }
-
-        pdf.save("content.pdf");
-    }
-  });
 };

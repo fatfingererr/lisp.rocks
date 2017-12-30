@@ -8,6 +8,16 @@
 
 嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能
 
+    var doc = new jsPDF();
+    
+    doc.text('[  ] 1. item1', 10, 10);
+    doc.text('[  ] 2. item2', 10, 20);
+    doc.text('[  ] 3. item3', 10, 30);
+    doc.text('[  ] 4. item4', 10, 40);
+    doc.text('[  ] 5. item5', 10, 50);
+    
+    doc.save('jspdf-example.pdf');
+
 <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
 <script src="https://cdn.bootcss.com/jspdf/1.3.4/jspdf.debug.js"></script>
 <div class="report"></div>

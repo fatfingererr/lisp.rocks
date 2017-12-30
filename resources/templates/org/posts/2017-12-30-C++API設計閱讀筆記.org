@@ -99,26 +99,34 @@
 
 2-2-1. 物理隱藏：宣告與定義
 
-#+BEGIN_QUOTE
-1. 宣告 declaration 引入名稱和型別給編譯器，沒有分配記憶體
+2-2-1-1. 宣告 declaration 引入名稱和型別給編譯器，沒有分配記憶體
 
+#+BEGIN_SRC cpp
 extern int i
 
 class MyClass
+#+END_SRC
 
-2. 定義 definition 提供型別結構的詳細資訊為變數分配記憶體
+2-2-1-2. 定義 definition 提供型別結構的詳細資訊為變數分配記憶體
 
+#+BEGIN_SRC cpp
 int i = 0 ;
 
 void MyFunc(int value)
 {
  ...
 }
+#+END_SRC
 
 3. 一般來說在 .h 宣告，在 .cpp 定義
 
+#+BEGIN_SRC cpp
+
+
+#+END_SRC
+
 4. 在 .h 宣告且定義，會要求編譯器内嵌（inline）成員函式
-#+END_QUOTE
+
 
 
 

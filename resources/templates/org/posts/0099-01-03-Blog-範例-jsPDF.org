@@ -12,5 +12,5 @@
 #+BEGIN_EXPORT html
 <script src="https://raw.githubusercontent.com/sphilee/jsPDF-CustomFonts-support/master/dist/jspdf.customfonts.min.js"></script>
 
-
+<script src="../../data/jspdf-example.js">
 #+END_EXPORT

@@ -7,9 +7,9 @@
 
 ** 
 
-嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能
+嘗試使用 [[https://github.com/MrRio/jsPDF][jsPDF]] 來在文章中可以自己產生客製化文件的功能
 
-尤其是中文的部分，使用到 jspdf.customfont 這個套件搭配 jspdf 使用
+尤其是中文的部分，使用到 [[https://github.com/sphilee/jsPDF-CustomFonts-support][jsPDF-CustomFonts-support]] 這個套件搭配 jsPDF 使用
 
 #+BEGIN_SRC javascript
 var doc = new jsPDF();

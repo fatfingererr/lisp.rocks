@@ -1,6 +1,6 @@
 #+OPTIONS: toc:nil
 #+BEGIN_SRC json :noexport:
-{:title "Blog 範例 flowchart.js" :layout :post :tags [""] :toc false}
+{:title "Blog 範例 - flowchart.js" :layout :post :tags [""] :toc false}
 #+END_SRC
 * 
 
@@ -9,7 +9,7 @@
 
 
 
-本文章只是單純測試本部落格如何使用 flowchart.js 
+本文章只是單純測試本部落格如何使用 [[https://github.com/adrai/flowchart.js/][flowchart.js]]
 
 方便未來在文章中插入使用
 

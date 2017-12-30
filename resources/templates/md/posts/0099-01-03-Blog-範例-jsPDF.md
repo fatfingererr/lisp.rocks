@@ -1,4 +1,4 @@
-    {:title "Blog-範例-jsPDF" :layout :post :tags [""] :toc false}
+    {:title "Blog 範例 - jsPDF" :layout :post :tags [""] :toc false}
 
 
 # 

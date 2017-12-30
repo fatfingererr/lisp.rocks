@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 30 Dec 2017 17:03:00 +0800
+Sat, 30 Dec 2017 17:03:52 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -121,7 +121,7 @@ http://lisp.rocks/posts-output/0099-01-03-Blog-範例-jsPDF/
 http://lisp.rocks/posts-output/0099-01-03-Blog-範例-jsPDF/
 </link>
 <title>
-Blog-範例-jsPDF
+Blog 範例 - jsPDF
 </title>
 <description>
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;嘗試使用 &lt;a href='https://github.com/MrRio/jsPDF'&gt;jsPDF&lt;/a&gt; 來在文章中可以自己產生客製化文件的功能&lt;/p&gt;&lt;p&gt;尤其是中文的部分，使用到 &lt;a href='https://github.com/sphilee/jsPDF-CustomFonts-support'&gt;jsPDF-CustomFonts-support&lt;/a&gt; 這個套件搭配 jsPDF 使用&lt;/p&gt;&lt;pre&gt;&lt;code&gt;var doc = new jsPDF&amp;#40;&amp;#41;;

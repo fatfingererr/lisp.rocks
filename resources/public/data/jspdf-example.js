@@ -5,7 +5,7 @@ window.onload = function() {
     canvas.width=72 * 8.5;;
     // var width = 400;
     html2pdf(document.body, pdf, function(pdf) {
-        var iframe = document.createElement('iframe');
+        var iframe = document.getElementById('report');
         iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
         document.body.appendChild(iframe);
         iframe.src = pdf.output('datauristring');

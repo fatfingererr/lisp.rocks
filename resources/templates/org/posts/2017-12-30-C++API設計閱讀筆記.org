@@ -118,14 +118,9 @@ void MyFunc(int value)
 }
 #+END_SRC
 
-3. 一般來說在 .h 宣告，在 .cpp 定義
+2-2-1-3. 一般來說在 .h 宣告，在 .cpp 定義
 
-#+BEGIN_SRC cpp
-
-
-#+END_SRC
-
-4. 在 .h 宣告且定義，會要求編譯器内嵌（inline）成員函式
+2-2-1-4. 在 .h 宣告且定義，會公開實作細節，是種不好的作法
 
 
 

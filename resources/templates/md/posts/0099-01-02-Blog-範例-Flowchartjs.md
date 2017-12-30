@@ -1,4 +1,4 @@
-    {:title "Blog 範例 flowchart.js" :layout :post :tags [""] :toc false}
+    {:title "Blog 範例 - flowchart.js" :layout :post :tags [""] :toc false}
 
 
 # 
@@ -6,7 +6,7 @@
 
 ## 
 
-本文章只是單純測試本部落格如何使用 flowchart.js 
+本文章只是單純測試本部落格如何使用 [flowchart.js](https://github.com/adrai/flowchart.js/)
 
 方便未來在文章中插入使用
 
@@ -15,5 +15,4 @@
 <div id="diagram"></div><br><br>
 <div id="diagram2"></div>
 <script src="../../data/flowchart-example.js"></script>
-<script src="../../data/flowchart-my-example.js"></script>
 

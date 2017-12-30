@@ -86,7 +86,7 @@
 2-1-2. 塑模關鍵物件 Object modeling
 
 #+BEGIN_QUOTE
-2-1-2-1. 定義主要物件的集合
+1) 定義主要物件的集合
 
 #+END_QUOTE
 

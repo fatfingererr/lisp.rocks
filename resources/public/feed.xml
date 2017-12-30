@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 30 Dec 2017 17:22:23 +0800
+Sat, 30 Dec 2017 21:42:00 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2017-12-30-C++API設計閱讀筆記/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2017-12-30-C++API設計閱讀筆記/
+</link>
+<title>
+C++API設計閱讀筆記
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;最近讀完了 &lt;a href='http://www.books.com.tw/products/0010633959'&gt;C++ API設計&lt;/a&gt; 中文版，覺得裡面有很多觀念很不錯，都是自己缺乏的知識&lt;/p&gt;&lt;p&gt;因此稍微在此把各節大綱做個簡要筆記，留做未來工作上做參考&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;api&amp;#95;的幾個面向&quot;&gt;&lt;/a&gt;API 的幾個面向&lt;/h3&gt;&lt;p&gt;1 . 程式碼的高品質&lt;/p&gt;&lt;p&gt;2 . 恰當的設計模式&lt;/p&gt;&lt;p&gt;3 . 符合需求的設計&lt;/p&gt;&lt;p&gt;4 . 選擇適合的風格&lt;/p&gt;&lt;p&gt;5 . 程式語言的用法&lt;/p&gt;&lt;p&gt;6 . 程式執行的效能&lt;/p&gt;&lt;p&gt;7 . 整體的版本控制&lt;/p&gt;&lt;p&gt;8 . 技術文件的生成&lt;/p&gt;&lt;p&gt;9 . 編寫良好的測試&lt;/p&gt;&lt;p&gt;10 . 腳本程式的擴展&lt;/p&gt;&lt;p&gt;11 . 建立插件系統&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 30 Dec 2017 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/

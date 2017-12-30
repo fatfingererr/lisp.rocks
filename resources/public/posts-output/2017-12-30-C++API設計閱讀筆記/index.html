@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Windows batch 中處理 append file 的方法</title>
-    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/">
+    <title>(print &quot;Lisp Rocks&quot;): C++API設計閱讀筆記</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2017-12-30-C++API設計閱讀筆記/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -58,40 +58,28 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Windows batch 中處理 append file 的方法</h2>
+    <h2>C++API設計閱讀筆記</h2>
         <div id="post-date">
-            December 28, 2017
+            December 30, 2017
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Windows 中如果要透過 batch 來 append file 有三種方法</p><p><br></p><h3><a name="單行&#95;append"></a>單行 Append</h3><p>如果內容單行可以解決，可以透過 <code>&gt;&gt; file.txt echo something</code> 來做</p><p>這個指令特別的地方在於 <code>echo</code> 可以放在 <code>&gt;&gt; file.txt</code> 之後，沒有那麼直覺</p><p>如果遇到有空格或是特殊符號，可以先用 <code>set</code> 的方法建立內容</p><p>但是因為 <code>set</code> 完可能會有雙引號 <code>&quot;</code> ，要解除得用 <code>%VAR:&quot;=%</code> 處理</p><pre><code>REM 1. 有空格
-set insertString1=&quot;hello world&quot;
-set insertString1=%insertString1%
-&gt;&gt; file1.txt echo insertString1
-
-REM 2. 有特殊字符（例如 &lt; 和 &gt; ）使用 &#94; 前置處理
-set insertString2=&quot;#include &#94;&lt;stdio&#94;&gt;&quot;
-set insertString2=%insertString2%
-&gt;&gt; file2.txt echo insertString2</code></pre><p><br></p><h3><a name="刪除舊有內容，全新&#95;append&#95;(&#95;相當於&#95;write&#95;)"></a>刪除舊有內容，全新 Append ( 相當於 Write )</h3><p>可以透過 <code>type</code> 指令完成，例如：</p><pre><code>type src&#95;file.txt &gt; target&#95;file.txt</code></pre><p><br></p><h3><a name="在原有內容上&#95;append"></a>在原有內容上 Append</h3><p>然而更多的是在原有內容上 Append</p><p>所以可以透過 <code>copy /b</code> 以及 <code>+</code> 的方式處理：</p><pre><code>copy /b append&#95;file.txt+src&#95;file.txt append&#95;file.txt</code></pre>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>最近讀完了 <a href='http://www.books.com.tw/products/0010633959'>C++ API設計</a> 中文版，覺得裡面有很多觀念很不錯，都是自己缺乏的知識</p><p>因此稍微在此把各節大綱做個簡要筆記，留做未來工作上做參考</p><h3><a name="api&#95;的幾個面向"></a>API 的幾個面向</h3><p>1 . 程式碼的高品質</p><p>2 . 恰當的設計模式</p><p>3 . 符合需求的設計</p><p>4 . 選擇適合的風格</p><p>5 . 程式語言的用法</p><p>6 . 程式執行的效能</p><p>7 . 整體的版本控制</p><p>8 . 技術文件的生成</p><p>9 . 編寫良好的測試</p><p>10 . 腳本程式的擴展</p><p>11 . 建立插件系統</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/batch/">batch</a>
-    
-    <a href="/tags-output/windows/">windows</a>
+    <a href="/tags-output/"></a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts-output/2017-12-30-C++API設計閱讀筆記/">&laquo; C++API設計閱讀筆記</a>
         
-        
-        <a class="right" href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">Emacs 中安靜地執行 async-shell-command &raquo;</a>
+        <a class="right" href="/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/">Windows batch 中處理 append file 的方法 &raquo;</a>
         
     </div>
 
@@ -100,8 +88,8 @@ set insertString2=%insertString2%
 
     <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = "http://lisp.rocks/posts-output/2017-12-28-WindowsBatch處理appendToFile的方法/";
-            this.page.identifier = "Windows batch 中處理 append file 的方法";
+            this.page.url = "http://lisp.rocks/posts-output/2017-12-30-C++API設計閱讀筆記/";
+            this.page.identifier = "C++API設計閱讀筆記";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

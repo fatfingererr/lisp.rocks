@@ -1,4 +1,4 @@
-    {:title "Blog 範例 - ChartJS" :layout :post :tags [""] :toc false}
+    {:title "Blog 範例 - Chart.js" :layout :post :tags [""] :toc false}
 
 
 # 
@@ -6,7 +6,7 @@
 
 ## 
 
-這篇僅單純在本部落格測試使用 ChartJS 的範例
+這篇僅單純在本部落格測試使用 [Chart.js](https://github.com/chartjs/Chart.js) 的範例
 
 方便未來文章中要插入資料圖表時做參考使用
 

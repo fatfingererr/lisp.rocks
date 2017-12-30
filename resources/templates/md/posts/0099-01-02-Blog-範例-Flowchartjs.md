@@ -10,7 +10,7 @@
 
 方便未來在文章中插入使用
 
-<div id="diagram">Diagram will be placed here</div>
+<div id="diagram"></div>
 <script src="http://flowchart.js.org/raphael-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.8.0/flowchart.min.js"></script>
 <script src="../../data/flowchart_example.js"></script>

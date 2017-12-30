@@ -176,6 +176,10 @@ getter / setter 進行間接存取的好處：
 
 2-2-3-4. 資料成員應該總是被宣告為 private 而非 public 或 protected
 
+2-2-3-5. 試著將 public 成員變數以 inline getter / setter 重寫並計時，看是否值得 public
+
+
+
 
 
 

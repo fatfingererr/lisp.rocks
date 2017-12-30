@@ -1,6 +1,6 @@
 document.getElementById("toPdfBtn").onclick = function () {
     var doc = new jsPDF();
-    doc.addFont('wt006.ttf', 'HanWangYenLight', 'normal');
+    doc.addFont('../../fonts/wt006.ttf', 'HanWangYenLight', 'normal');
 
     doc.setFont('HanWangYenLight');
     doc.text(15, 45, '中文測試');

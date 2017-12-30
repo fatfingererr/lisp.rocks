@@ -65,13 +65,18 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能</p><pre><code>var doc = new jsPDF&#40;&#41;;
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能</p><p>尤其是中文的部分，使用到 jspdf.customfont 這個套件搭配 jspdf 使用</p><pre><code>var doc = new jsPDF&#40;&#41;;
 
-doc.text&#40;'&#91;  &#93; 1. item1', 10, 10&#41;;
-doc.text&#40;'&#91;  &#93; 2. item2', 10, 20&#41;;
-doc.text&#40;'&#91;  &#93; 3. item3', 10, 30&#41;;
-doc.text&#40;'&#91;  &#93; 4. item4', 10, 40&#41;;
-doc.text&#40;'&#91;  &#93; 5. item5', 10, 50&#41;;
+// 設定字體為 王翰宗細圓體繁
+doc.addFont&#40;'wt006.ttf', 'HanWangYenLight', 'normal'&#41;;
+doc.setFont&#40;'HanWangYenLight'&#41;;
+
+// 測試中文內容
+doc.text&#40;'&#91;  &#93; 1. 項目一', 10, 10&#41;;
+doc.text&#40;'&#91;  &#93; 2. 項目二', 10, 20&#41;;
+doc.text&#40;'&#91;  &#93; 3. 項目三', 10, 30&#41;;
+doc.text&#40;'&#91;  &#93; 4. 項目四', 10, 40&#41;;
+doc.text&#40;'&#91;  &#93; 5. 項目五', 10, 50&#41;;
 
 doc.save&#40;'jspdf-from-lisp-rocks.pdf'&#41;;</code></pre><p><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script> <script src="../../fonts/jspdf.customfonts.min.js"></script> <script src="../../fonts/default_vfs.js"></script> <div class="report"></div> <button id="toPdfBtn">Download PDF</button> <script src="../../data/jspdf-example.js"></p>
 </div>

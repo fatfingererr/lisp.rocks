@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 30 Dec 2017 16:56:14 +0800
+Sat, 30 Dec 2017 16:58:52 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -124,13 +124,18 @@ http://lisp.rocks/posts-output/0099-01-03-Blog-範例-jsPDF/
 Blog-範例-jsPDF
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能&lt;/p&gt;&lt;pre&gt;&lt;code&gt;var doc = new jsPDF&amp;#40;&amp;#41;;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能&lt;/p&gt;&lt;p&gt;尤其是中文的部分，使用到 jspdf.customfont 這個套件搭配 jspdf 使用&lt;/p&gt;&lt;pre&gt;&lt;code&gt;var doc = new jsPDF&amp;#40;&amp;#41;;
 
-doc.text&amp;#40;'&amp;#91;  &amp;#93; 1. item1', 10, 10&amp;#41;;
-doc.text&amp;#40;'&amp;#91;  &amp;#93; 2. item2', 10, 20&amp;#41;;
-doc.text&amp;#40;'&amp;#91;  &amp;#93; 3. item3', 10, 30&amp;#41;;
-doc.text&amp;#40;'&amp;#91;  &amp;#93; 4. item4', 10, 40&amp;#41;;
-doc.text&amp;#40;'&amp;#91;  &amp;#93; 5. item5', 10, 50&amp;#41;;
+// 設定字體為 王翰宗細圓體繁
+doc.addFont&amp;#40;'wt006.ttf', 'HanWangYenLight', 'normal'&amp;#41;;
+doc.setFont&amp;#40;'HanWangYenLight'&amp;#41;;
+
+// 測試中文內容
+doc.text&amp;#40;'&amp;#91;  &amp;#93; 1. 項目一', 10, 10&amp;#41;;
+doc.text&amp;#40;'&amp;#91;  &amp;#93; 2. 項目二', 10, 20&amp;#41;;
+doc.text&amp;#40;'&amp;#91;  &amp;#93; 3. 項目三', 10, 30&amp;#41;;
+doc.text&amp;#40;'&amp;#91;  &amp;#93; 4. 項目四', 10, 40&amp;#41;;
+doc.text&amp;#40;'&amp;#91;  &amp;#93; 5. 項目五', 10, 50&amp;#41;;
 
 doc.save&amp;#40;'jspdf-from-lisp-rocks.pdf'&amp;#41;;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;../../fonts/jspdf.customfonts.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;../../fonts/default_vfs.js&quot;&gt;&lt;/script&gt; &lt;div class=&quot;report&quot;&gt;&lt;/div&gt; &lt;button id=&quot;toPdfBtn&quot;&gt;Download PDF&lt;/button&gt; &lt;script src=&quot;../../data/jspdf-example.js&quot;&gt;&lt;/p&gt;
 </description>

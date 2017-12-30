@@ -38,5 +38,3 @@ doc.save('jspdf-from-lisp-rocks.pdf');
 #+END_EXPORT
 
 
-
-

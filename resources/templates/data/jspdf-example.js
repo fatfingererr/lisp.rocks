@@ -7,5 +7,5 @@ document.getElementById("toPdfBtn").onclick = function () {
     doc.text('[  ] 4. item4', 10, 40);
     doc.text('[  ] 5. item5', 10, 50);
 
-    doc.save('jspdf-example.pdf');
+    doc.save('jspdf-from-lisp-rocks.pdf');
 };

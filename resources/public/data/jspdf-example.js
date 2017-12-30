@@ -1,9 +1,13 @@
-function () {
-  var target = document.getElementsByClassName("report")[0];
-  target.style.background = "#FFFFFF";
+document.getElementById("toPdfBtn").onclick = function () {
+  alert("即将打印，样式会有变化，但不妨碍您继续编辑");
 
-  html2canvas(target, {
+  //为防止打印出黑色背景，需设置白色背景
+  document.getElementsByClassName("step-design-body")[0].style.background = "#FFFFFF";
+  document.getElementsByClassName("right-aside")[0].style.background = "#FFFFFF";
+  
+  html2canvas(document.getElementsByClassName("right-aside")[0], {
     onrendered:function(canvas) {
+
         var contentWidth = canvas.width;
         var contentHeight = canvas.height;
 
@@ -27,7 +31,7 @@ function () {
         pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight );
         } else {
             while(leftHeight > 0) {
-                pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight);
                 leftHeight -= pageHeight;
                 position -= 841.89;
                 //避免添加空白页
@@ -39,5 +43,5 @@ function () {
 
         pdf.save("content.pdf");
     }
-  })
-}
+  });
+};

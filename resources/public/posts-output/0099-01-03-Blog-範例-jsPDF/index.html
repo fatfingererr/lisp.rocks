@@ -65,9 +65,9 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能</p><p>尤其是中文的部分，使用到 jspdf.customfont 這個套件搭配 jspdf 使用</p><pre><code>var doc = new jsPDF&#40;&#41;;
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>嘗試使用 <a href='https://github.com/MrRio/jsPDF'>jsPDF</a> 來在文章中可以自己產生客製化文件的功能</p><p>尤其是中文的部分，使用到 <a href='https://github.com/sphilee/jsPDF-CustomFonts-support'>jsPDF-CustomFonts-support</a> 這個套件搭配 jsPDF 使用</p><pre><code>var doc = new jsPDF&#40;&#41;;
 
-// 設定字體為 王翰宗細圓體繁
+// 設定字體為 王漢宗細圓體繁
 doc.addFont&#40;'wt006.ttf', 'HanWangYenLight', 'normal'&#41;;
 doc.setFont&#40;'HanWangYenLight'&#41;;
 

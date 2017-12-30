@@ -1,6 +1,6 @@
 #+OPTIONS: toc:nil
 #+BEGIN_SRC json :noexport:
-{:title "Blog-範例-jsPDF" :layout :post :tags [""] :toc false}
+{:title "Blog 範例 - jsPDF" :layout :post :tags [""] :toc false}
 #+END_SRC
 * 
 

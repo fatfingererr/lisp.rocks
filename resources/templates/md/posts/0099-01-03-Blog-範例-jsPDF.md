@@ -6,13 +6,13 @@
 
 ## 
 
-嘗試使用 jsPDF 來在文章中可以自己產生客製化文件的功能
+嘗試使用 [jsPDF](https://github.com/MrRio/jsPDF) 來在文章中可以自己產生客製化文件的功能
 
-尤其是中文的部分，使用到 jspdf.customfont 這個套件搭配 jspdf 使用
+尤其是中文的部分，使用到 [jsPDF-CustomFonts-support](https://github.com/sphilee/jsPDF-CustomFonts-support) 這個套件搭配 jsPDF 使用
 
     var doc = new jsPDF();
     
-    // 設定字體為 王翰宗細圓體繁
+    // 設定字體為 王漢宗細圓體繁
     doc.addFont('wt006.ttf', 'HanWangYenLight', 'normal');
     doc.setFont('HanWangYenLight');
     

@@ -22,6 +22,19 @@
 #+END_EXPORT
 
 
+#+BEGIN_EXPORT html
+<div id="diagram2"></div>
+<script src="http://flowchart.js.org/raphael-min.js"></script>
+<script>
+window.onload = function() {var diagram2 = flowchart.parse('\n'+
+    'st=>start: Start:>http://www.google.com[blank]\n' +
+
+   
+    '\n');diagram.drawSVG('diagram2');
+};
+</script>
+#+END_EXPORT
+
 
 
 

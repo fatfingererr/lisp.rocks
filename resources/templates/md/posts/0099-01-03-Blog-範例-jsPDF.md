@@ -18,8 +18,6 @@
     
     doc.save('jspdf-from-lisp-rocks.pdf');
 
-<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
-<script src="https://cdn.bootcss.com/jspdf/1.3.4/jspdf.debug.js"></script>
 <script src="../../font/default_vfs.js"></script>
 <script src="../../font/jspdf.customfonts.debug.js"></script>
 <div class="report"></div>

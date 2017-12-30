@@ -103,11 +103,13 @@
 1. 宣告 declaration 引入名稱和型別給編譯器，沒有分配記憶體
 
 extern int i
+
 class MyClass
 
 2. 定義 definition 提供型別結構的詳細資訊為變數分配記憶體
 
 int i = 0 ;
+
 void MyFunc(int value)
 {
  ...

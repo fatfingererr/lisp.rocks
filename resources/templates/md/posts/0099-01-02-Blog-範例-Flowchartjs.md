@@ -1,4 +1,4 @@
-    {:title "Blog-範例-Flowchartjs" :layout :post :tags [""] :toc false}
+    {:title "Blog 範例 flowchart.js" :layout :post :tags [""] :toc false}
 
 
 # 
@@ -6,7 +6,7 @@
 
 ## 
 
-本文章只是單純測試本部落格如何使用 Flowchartjs 
+本文章只是單純測試本部落格如何使用 flowchart.js 
 
 方便未來在文章中插入使用
 

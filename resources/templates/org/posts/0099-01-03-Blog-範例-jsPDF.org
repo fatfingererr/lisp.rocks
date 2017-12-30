@@ -14,7 +14,7 @@
 #+BEGIN_SRC javascript
 var doc = new jsPDF();
 
-// 設定字體為 王翰宗細圓體繁
+// 設定字體為 王漢宗細圓體繁
 doc.addFont('wt006.ttf', 'HanWangYenLight', 'normal');
 doc.setFont('HanWangYenLight');
 

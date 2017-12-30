@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 30 Dec 2017 16:47:55 +0800
+Sat, 30 Dec 2017 16:48:27 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -132,7 +132,7 @@ doc.text&amp;#40;'&amp;#91;  &amp;#93; 3. item3', 10, 30&amp;#41;;
 doc.text&amp;#40;'&amp;#91;  &amp;#93; 4. item4', 10, 40&amp;#41;;
 doc.text&amp;#40;'&amp;#91;  &amp;#93; 5. item5', 10, 50&amp;#41;;
 
-doc.save&amp;#40;'jspdf-from-lisp-rocks.pdf'&amp;#41;;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;script src=&quot;../../font/default_vfs.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;../../font/jspdf.customfonts.min.js&quot;&gt;&lt;/script&gt; &lt;div class=&quot;report&quot;&gt;&lt;/div&gt; &lt;button id=&quot;toPdfBtn&quot;&gt;Download PDF&lt;/button&gt; &lt;script src=&quot;../../data/jspdf-example.js&quot;&gt;&lt;/p&gt;
+doc.save&amp;#40;'jspdf-from-lisp-rocks.pdf'&amp;#41;;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;script src=&quot;../../fonts/default_vfs.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;../../fonts/jspdf.customfonts.min.js&quot;&gt;&lt;/script&gt; &lt;div class=&quot;report&quot;&gt;&lt;/div&gt; &lt;button id=&quot;toPdfBtn&quot;&gt;Download PDF&lt;/button&gt; &lt;script src=&quot;../../data/jspdf-example.js&quot;&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

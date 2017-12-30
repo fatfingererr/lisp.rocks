@@ -19,7 +19,7 @@
     doc.save('jspdf-from-lisp-rocks.pdf');
 
 <script src="../../font/default_vfs.js"></script>
-<script src="../../font/jspdf.customfonts.debug.js"></script>
+<script src="../../font/jspdf.customfonts.min.js"></script>
 <div class="report"></div>
 <button id="toPdfBtn">Download PDF</button>
 <script src="../../data/jspdf-example.js">

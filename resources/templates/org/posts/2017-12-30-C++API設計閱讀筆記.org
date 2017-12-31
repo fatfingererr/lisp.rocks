@@ -190,7 +190,7 @@ getter / setter 進行間接存取的好處：
 
 2-2-4-4. 如果不採用 pipml ，則可在 cpp 檔案中宣告 private 函式為 static ，而在表頭宣告為 private
 
-
+<br>
 
 
 

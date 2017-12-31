@@ -1,4 +1,4 @@
-    {:title "Emacs 中對特定 mode 綁定自訂 imenu 匹配" :layout :post :tags [""] :toc false}
+    {:title "Emacs 中對特定 mode 綁定自訂 imenu 匹配" :layout :post :tags ["emacs" "spacemacs" "imenu"] :toc false}
 
 
 # 　　

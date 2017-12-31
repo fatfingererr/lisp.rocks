@@ -12,11 +12,43 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 31 Dec 2017 11:28:07 +0800
+Mon, 01 Jan 2018 02:22:04 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-01-Emacs-中對特定-mode-綁定特定的-imenu-關鍵字/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-01-Emacs-中對特定-mode-綁定特定的-imenu-關鍵字/
+</link>
+<title>
+Emacs 中對特定 mode 綁定自訂 imenu 匹配
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在寫程式的時候大家或多或少都有自己的習慣&lt;/p&gt;&lt;p&gt;例如註解有些特殊寫法、或是控制流程和命名會有特殊的習慣&lt;/p&gt;&lt;p&gt;一般的 imenu 只能做到很細的在例如 if/else , for-loop , switch 間跳轉&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;如果要在一些註解、或是變數宣告間跳轉，這種比較高階的匹配可以自訂 imenu&lt;/p&gt;&lt;p&gt;只需要 hook 住特定 mode 就可以了&lt;/p&gt;&lt;p&gt;例如我想在 octave-mode (也就是 Matlab mode) 綁定基本控制流程可以用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;add-hook 'octave-mode-hook
+          &amp;#40;lambda &amp;#40;&amp;#41;
+            &amp;#40;setq imenu-generic-expression
+                  '&amp;#40;&amp;#40;&amp;quot;for-loop&amp;quot; &amp;quot;&amp;#94;for &amp;#42;\\&amp;#40;.&amp;#42;\\&amp;#41;&amp;quot; 1&amp;#41;
+                    &amp;#40;&amp;quot;if-else&amp;quot; &amp;quot;&amp;#94;if &amp;#42;\\&amp;#40;.&amp;#42;\\&amp;#41;&amp;quot; 1&amp;#41;
+                    &amp;#40;&amp;quot;switch&amp;quot; &amp;quot;&amp;#94;switch &amp;#42;\\&amp;#40;.&amp;#42;\\&amp;#41;&amp;quot; 1&amp;#41;
+                    &amp;#41;&amp;#41;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;也就是說，通用的格式如下：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;add-hook '&amp;#91;某某-mode&amp;#93;-hook
+          &amp;#40;lambda &amp;#40;&amp;#41;
+            &amp;#40;setq imenu-generic-expression
+                  '&amp;#40;&amp;#40;&amp;quot;&amp;#91;標題 1&amp;#93;&amp;quot; &amp;quot;&amp;#91;正則表達式 1&amp;#93;&amp;quot; 1&amp;#41;
+                    &amp;#40;&amp;quot;&amp;#91;標題 2&amp;#93;&amp;quot; &amp;quot;&amp;#91;正則表達式 2&amp;#93;&amp;quot; 1&amp;#41;
+                    &amp;#40;&amp;quot;&amp;#91;標題 3&amp;#93;&amp;quot; &amp;quot;&amp;#91;正則表達式 3&amp;#93;&amp;quot; 1&amp;#41;
+                    &amp;#41;&amp;#41;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果要更細緻地操作正則表達式，可以調整後面的數字來匹配 subexpression，基本可以用 1&lt;/p&gt;&lt;p&gt;如果要從頭匹配請用 &lt;code&gt;&amp;#94;&lt;/code&gt; 開頭，詳細請參考上方範例&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='https://www.gnu.org/software/emacs/manual/html_node/elisp/Imenu.html'&gt;GNU Emacs - 22.5 Imenu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 01 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2017-12-30-C++API設計閱讀筆記/

@@ -9,7 +9,7 @@
 
 有時候執行一些指令希望把結果訊息用 popup-window 顯示出來
 
-這時候可以透過 insert 訊息到 buffer 之後轉 read-only
+這時候可以透過 insert 訊息到 buffer 之後轉 special-mode
 
 這樣看完就可以透過 =q= 退出 buffer 回到原本的 buffer
 

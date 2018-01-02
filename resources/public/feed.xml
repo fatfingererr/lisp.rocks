@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 03 Jan 2018 01:09:51 +0800
+Wed, 03 Jan 2018 01:12:10 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -32,7 +32,7 @@ Emacs 中透過指令建立 read-only buffer
       &amp;#40;current &amp;#40;current-buffer&amp;#41;&amp;#41;&amp;#41;
      &amp;#40;switch-to-buffer new&amp;#41;
      &amp;#40;insert-file-contents log檔案路徑&amp;#41;
-     &amp;#40;special-mode&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在把資訊 insert 到 buffer 後，透過 &lt;code&gt;&amp;#40;special-mode&amp;#41;&lt;/code&gt; 轉成 read-only 即可&lt;/p&gt;
+     &amp;#40;special-mode&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;暫時的 buffer 名稱可以用 &lt;code&gt;&amp;#42;buffer-name&amp;#42;&lt;/code&gt; 表示&lt;/p&gt;&lt;p&gt;在把資訊 insert 到 buffer 後，透過 &lt;code&gt;&amp;#40;special-mode&amp;#41;&lt;/code&gt; 轉成 read-only 即可&lt;/p&gt;
 </description>
 <enclosure>
 

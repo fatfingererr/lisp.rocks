@@ -24,6 +24,7 @@
 #+END_SRC
 
 
+
 暫時的 buffer 名稱可以用 =*buffer-name*= 表示
 
 在把資訊 insert 到 buffer 後，透過 =(special-mode)= 轉成 read-only 即可

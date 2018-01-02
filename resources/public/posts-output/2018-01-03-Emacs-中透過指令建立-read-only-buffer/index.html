@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Emacs 中處理檔名與路徑問題</title>
-    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-02-Emacs-中處理檔名與路徑問題/">
+    <title>(print &quot;Lisp Rocks&quot;): Emacs 中透過指令建立 read-only buffer</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -58,33 +58,32 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Emacs 中處理檔名與路徑問題</h2>
+    <h2>Emacs 中透過指令建立 read-only buffer</h2>
         <div id="post-date">
-            January 2, 2018
+            January 3, 2018
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Emacs 中經常會處理檔案名稱和路徑的問題</p><p>可以使用 <code>default-directory</code> 來得到包含目前路徑的位置，此為變數</p><p>要換成 windows 路徑可以用底下方法</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; default-directory&#41;
-&quot;c:\\Users\\ricky\\foo\\bar&quot;</code></pre><p>如果只是要檔案名稱可以用 <code>&#40;buffer-name&#41;</code> 留意請要加括號，這是函數</p><pre><code>&#40;buffer-name&#41;
-&quot;2018-01-02-Emacs-中處理檔名與路徑問題.org&quot;</code></pre><p>如果是要檔案的完整路徑可以用 <code>&#40;buffer-file-name&#41;</code> 一樣要加括號</p><pre><code>&#40;buffer-file-name&#41;
-&quot;c:/Users/Ricky/lisp.rocks/resources/templates/org/posts/2018-01-02-Emacs-中處理檔名與路徑問題.org&quot;</code></pre><p>如果你想在當前游標位置插入路徑，可以用 <code>C-u C-x C-e</code> 的方式對上面三者求值</p>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>有時候執行一些指令希望把結果訊息用 popup-window 顯示出來</p><p>這時候可以透過 insert 訊息到 buffer 之後轉 read-only</p><p>這樣看完就可以透過 <code>q</code> 退出 buffer 回到原本的 buffer</p><p>假設我們要 insert 紀錄的 log 檔案的話，可以使用：</p><pre><code>&#40;let &#40;&#40;new &#40;get-buffer-create =&#42;暫時的buffer名稱&#42;=&#41;&#41;
+      &#40;current &#40;current-buffer&#41;&#41;&#41;
+     &#40;switch-to-buffer new&#41;
+     &#40;insert-file-contents log檔案路徑&#41;
+     &#40;special-mode&#41;&#41;</code></pre><p>透過 <code>&#40;special-mode&#41;</code> 在把資訊 insert 到 buffer 後轉成 read-only 即可</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/emacs/">emacs</a>
+    <a href="/tags-output/"></a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/">&laquo; Emacs 中透過指令建立 read-only buffer</a>
         
-        
-        <a class="right" href="/posts-output/2018-01-01-Emacs-中對特定-mode-綁定特定的-imenu-關鍵字/">Emacs 中對特定 mode 綁定自訂 imenu 匹配 &raquo;</a>
+        <a class="right" href="/posts-output/2018-01-02-Emacs-中處理檔名與路徑問題/">Emacs 中處理檔名與路徑問題 &raquo;</a>
         
     </div>
 
@@ -93,8 +92,8 @@
 
     <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = "http://lisp.rocks/posts-output/2018-01-02-Emacs-中處理檔名與路徑問題/";
-            this.page.identifier = "Emacs 中處理檔名與路徑問題";
+            this.page.url = "http://lisp.rocks/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/";
+            this.page.identifier = "Emacs 中透過指令建立 read-only buffer";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

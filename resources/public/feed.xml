@@ -12,11 +12,35 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 03 Jan 2018 01:06:52 +0800
+Wed, 03 Jan 2018 01:07:33 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/
+</link>
+<title>
+Emacs 中透過指令建立 read-only buffer
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;有時候執行一些指令希望把結果訊息用 popup-window 顯示出來&lt;/p&gt;&lt;p&gt;這時候可以透過 insert 訊息到 buffer 之後轉 read-only&lt;/p&gt;&lt;p&gt;這樣看完就可以透過 &lt;code&gt;q&lt;/code&gt; 退出 buffer 回到原本的 buffer&lt;/p&gt;&lt;p&gt;假設我們要 insert 紀錄的 log 檔案的話，可以使用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;let &amp;#40;&amp;#40;new &amp;#40;get-buffer-create =&amp;#42;暫時的buffer名稱&amp;#42;=&amp;#41;&amp;#41;
+      &amp;#40;current &amp;#40;current-buffer&amp;#41;&amp;#41;&amp;#41;
+     &amp;#40;switch-to-buffer new&amp;#41;
+     &amp;#40;insert-file-contents log檔案路徑&amp;#41;
+     &amp;#40;special-mode&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;透過 &lt;code&gt;&amp;#40;special-mode&amp;#41;&lt;/code&gt; 在把資訊 insert 到 buffer 後轉成 read-only 即可&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 03 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-02-Emacs-中處理檔名與路徑問題/

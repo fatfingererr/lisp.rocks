@@ -65,7 +65,7 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>有時候執行一些指令希望把結果訊息用 popup-window 顯示出來</p><p>這時候可以透過 insert 訊息到 buffer 之後轉 read-only</p><p>這樣看完就可以透過 <code>q</code> 退出 buffer 回到原本的 buffer</p><p>假設我們要 insert 紀錄的 log 檔案的話，可以使用：</p><pre><code>&#40;let &#40;&#40;new &#40;get-buffer-create 暫時的buffer名稱&#41;&#41;
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>有時候執行一些指令希望把結果訊息用 popup-window 顯示出來</p><p>這時候可以透過 insert 訊息到 buffer 之後轉 special-mode</p><p>這樣看完就可以透過 <code>q</code> 退出 buffer 回到原本的 buffer</p><p>假設我們要 insert 紀錄的 log 檔案的話，可以使用：</p><pre><code>&#40;let &#40;&#40;new &#40;get-buffer-create 暫時的buffer名稱&#41;&#41;
       &#40;current &#40;current-buffer&#41;&#41;&#41;
      &#40;switch-to-buffer new&#41;
      &#40;insert-file-contents log檔案路徑&#41;

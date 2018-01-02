@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 03 Jan 2018 01:12:10 +0800
+Wed, 03 Jan 2018 01:12:37 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://lisp.rocks/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-
 Emacs 中透過指令建立 read-only buffer
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;有時候執行一些指令希望把結果訊息用 popup-window 顯示出來&lt;/p&gt;&lt;p&gt;這時候可以透過 insert 訊息到 buffer 之後轉 read-only&lt;/p&gt;&lt;p&gt;這樣看完就可以透過 &lt;code&gt;q&lt;/code&gt; 退出 buffer 回到原本的 buffer&lt;/p&gt;&lt;p&gt;假設我們要 insert 紀錄的 log 檔案的話，可以使用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;let &amp;#40;&amp;#40;new &amp;#40;get-buffer-create 暫時的buffer名稱&amp;#41;&amp;#41;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;有時候執行一些指令希望把結果訊息用 popup-window 顯示出來&lt;/p&gt;&lt;p&gt;這時候可以透過 insert 訊息到 buffer 之後轉 special-mode&lt;/p&gt;&lt;p&gt;這樣看完就可以透過 &lt;code&gt;q&lt;/code&gt; 退出 buffer 回到原本的 buffer&lt;/p&gt;&lt;p&gt;假設我們要 insert 紀錄的 log 檔案的話，可以使用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;let &amp;#40;&amp;#40;new &amp;#40;get-buffer-create 暫時的buffer名稱&amp;#41;&amp;#41;
       &amp;#40;current &amp;#40;current-buffer&amp;#41;&amp;#41;&amp;#41;
      &amp;#40;switch-to-buffer new&amp;#41;
      &amp;#40;insert-file-contents log檔案路徑&amp;#41;

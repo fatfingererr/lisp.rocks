@@ -14,7 +14,7 @@
 
 假設我們要 insert 紀錄的 log 檔案的話，可以使用：
 
-    (let ((new (get-buffer-create =*暫時的buffer名稱*=))
+    (let ((new (get-buffer-create 暫時的buffer名稱))
           (current (current-buffer)))
          (switch-to-buffer new)
          (insert-file-contents log檔案路徑)

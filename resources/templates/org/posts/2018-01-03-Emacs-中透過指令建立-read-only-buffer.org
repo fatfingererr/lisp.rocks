@@ -1,0 +1,26 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "Emacs 中透過指令建立 read-only buffer" :layout :post :tags [""] :toc false}
+#+END_SRC
+* 　
+
+
+** 　
+
+有時候執行一些指令希望把結果訊息用 popup-window 顯示出來
+
+這時候可以透過 insert 訊息到 buffer 之後轉 read-only
+
+這樣看完就可以透過 =q= 退出 buffer 回到原本的 buffer
+
+假設我們要 insert 紀錄的 log 檔案的話，可以使用：
+
+#+BEGIN_SRC elisp
+(let ((new (get-buffer-create =*暫時的buffer名稱*=))
+      (current (current-buffer)))
+     (switch-to-buffer new)
+     (insert-file-contents log檔案路徑)
+     (special-mode))
+#+END_SRC
+
+透過 =(special-mode)= 在把資訊 insert 到 buffer 後轉成 read-only 即可

@@ -68,7 +68,7 @@
     <h1><a name=""></a></h1><h2><a name=""></a></h2><p>在 Emacs 中經常會處理檔案名稱和路徑的問題</p><p>可以使用 <code>default-directory</code> 來得到包含目前路徑的位置，此為變數</p><p>要換成 windows 路徑可以用底下方法</p><pre><code>&#40;replace-regexp-in-string &quot;\/&quot; &quot;\\\\&quot; default-directory&#41;
 &quot;c:\\Users\\ricky\\foo\\bar&quot;</code></pre><p>如果只是要檔案名稱可以用 <code>&#40;buffer-name&#41;</code> 留意請要加括號，這是函數</p><pre><code>&#40;buffer-name&#41;
 &quot;2018-01-02-Emacs-中處理檔名與路徑問題.org&quot;</code></pre><p>如果是要檔案的完整路徑可以用 <code>&#40;buffer-file-name&#41;</code> 一樣要加括號</p><pre><code>&#40;buffer-file-name&#41;
-&quot;c:/Users/Ricky/lisp.rocks/resources/templates/org/posts/2018-01-02-Emacs-中處理檔名與路徑問題.org&quot;</code></pre><p>有時候在 Windows 中常常會遇到包含空白的檔案路徑，得用雙引號包住</p><p>在 Emacs 中得使用類似 <code>&#40;concat &quot;\&quot;&quot; some-path-include-space &quot;&amp;#92;&quot;&quot;&#41;</code> 的方式處理</p><p>也就是說，雙引號得用 <code>\&quot;</code> 來表達</p><p>如果你想在當前游標位置插入路徑，可以用 <code>C-u C-x C-e</code> 的方式對上面三者求值</p>
+&quot;c:/Users/Ricky/lisp.rocks/resources/templates/org/posts/2018-01-02-Emacs-中處理檔名與路徑問題.org&quot;</code></pre><p>有時候在 Windows 中常常會遇到包含空白的檔案路徑，得用雙引號包住</p><p>在 Emacs 中得使用類似 <code>&#40;concat &quot;\&quot;&quot; some-path-include-space &quot;\&quot;&quot;&#41;</code> 的方式處理</p><p>也就是說，雙引號得用 <code>\&quot;</code> 來表達</p><p>如果你想在當前游標位置插入路徑，可以用 <code>C-u C-x C-e</code> 的方式對上面三者求值</p>
 </div>
 
 <div id="post-tags">

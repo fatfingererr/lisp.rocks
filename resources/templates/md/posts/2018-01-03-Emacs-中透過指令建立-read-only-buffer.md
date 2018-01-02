@@ -20,4 +20,4 @@
          (insert-file-contents log檔案路徑)
          (special-mode))
 
-透過 `(special-mode)` 在把資訊 insert 到 buffer 後轉成 read-only 即可
+在把資訊 insert 到 buffer 後，透過 `(special-mode)` 轉成 read-only 即可

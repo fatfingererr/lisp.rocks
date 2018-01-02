@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 03 Jan 2018 01:21:06 +0800
+Wed, 03 Jan 2018 01:21:45 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -55,7 +55,7 @@ Emacs 中處理檔名與路徑問題
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 Emacs 中經常會處理檔案名稱和路徑的問題&lt;/p&gt;&lt;p&gt;可以使用 &lt;code&gt;default-directory&lt;/code&gt; 來得到包含目前路徑的位置，此為變數&lt;/p&gt;&lt;p&gt;要換成 windows 路徑可以用底下方法&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;replace-regexp-in-string &amp;quot;\/&amp;quot; &amp;quot;\\\\&amp;quot; default-directory&amp;#41;
 &amp;quot;c:\\Users\\ricky\\foo\\bar&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果只是要檔案名稱可以用 &lt;code&gt;&amp;#40;buffer-name&amp;#41;&lt;/code&gt; 留意請要加括號，這是函數&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;buffer-name&amp;#41;
 &amp;quot;2018-01-02-Emacs-中處理檔名與路徑問題.org&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果是要檔案的完整路徑可以用 &lt;code&gt;&amp;#40;buffer-file-name&amp;#41;&lt;/code&gt; 一樣要加括號&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;buffer-file-name&amp;#41;
-&amp;quot;c:/Users/Ricky/lisp.rocks/resources/templates/org/posts/2018-01-02-Emacs-中處理檔名與路徑問題.org&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有時候在 Windows 中常常會遇到包含空白的檔案路徑，得用雙引號包住&lt;/p&gt;&lt;p&gt;在 Emacs 中得使用類似 &lt;code&gt;&amp;#40;concat &amp;quot;&amp;amp;#92;&amp;quot;&amp;quot; some-path-include-space &amp;quot;&amp;amp;#92;&amp;quot;&amp;quot;&amp;#41;&lt;/code&gt; 的方式處理&lt;/p&gt;&lt;p&gt;也就是說，雙引號得用 &lt;code&gt;&amp;amp;#92;&amp;quot;&lt;/code&gt; 來處理&lt;/p&gt;&lt;p&gt;如果你想在當前游標位置插入路徑，可以用 &lt;code&gt;C-u C-x C-e&lt;/code&gt; 的方式對上面三者求值&lt;/p&gt;
+&amp;quot;c:/Users/Ricky/lisp.rocks/resources/templates/org/posts/2018-01-02-Emacs-中處理檔名與路徑問題.org&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;有時候在 Windows 中常常會遇到包含空白的檔案路徑，得用雙引號包住&lt;/p&gt;&lt;p&gt;在 Emacs 中得使用類似 &lt;code&gt;&amp;#40;concat &amp;quot;&amp;amp;#92;&amp;quot;&amp;quot; some-path-include-space &amp;quot;&amp;amp;#92;&amp;quot;&amp;quot;&amp;#41;&lt;/code&gt; 的方式處理&lt;/p&gt;&lt;p&gt;也就是說，雙引號得用 &lt;code&gt;&amp;amp;#92;&amp;quot;&lt;/code&gt; 來表達&lt;/p&gt;&lt;p&gt;如果你想在當前游標位置插入路徑，可以用 &lt;code&gt;C-u C-x C-e&lt;/code&gt; 的方式對上面三者求值&lt;/p&gt;
 </description>
 <enclosure>
 

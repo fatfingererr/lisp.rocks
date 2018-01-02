@@ -1,4 +1,4 @@
-    {:title "Emacs 中透過指令建立 read-only buffer" :layout :post :tags [""] :toc false}
+    {:title "Emacs 中透過指令建立 read-only buffer" :layout :post :tags ["emacs"] :toc false}
 
 
 # 　
@@ -23,3 +23,8 @@
 暫時的 buffer 名稱可以用 `*buffer-name*` 表示
 
 在把資訊 insert 到 buffer 後，透過 `(special-mode)` 轉成 read-only 即可
+
+
+### 參考資料
+
+1.  <https://stackoverflow.com/questions/34432246/how-to-read-contents-of-the-file-programmatically-in-emacs>

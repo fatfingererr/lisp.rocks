@@ -58,18 +58,16 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Emacs 中透過指令建立 read-only buffer</h2>
+    <h2>Emacs 中清除游標後空白直到非空白字元</h2>
         <div id="post-date">
-            January 3, 2018
+            January 4, 2018
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>有時候執行一些指令希望把結果訊息用 popup-window 顯示出來</p><p>這時候可以透過 insert 訊息到 buffer 之後轉 special-mode</p><p>這樣看完就可以透過 <code>q</code> 退出 buffer 回到原本的 buffer</p><p>假設我們要 insert 紀錄的 log 檔案的話，可以使用：</p><pre><code>&#40;let &#40;&#40;new &#40;get-buffer-create 暫時的buffer名稱&#41;&#41;
-      &#40;current &#40;current-buffer&#41;&#41;&#41;
-     &#40;switch-to-buffer new&#41;
-     &#40;insert-file-contents log檔案路徑&#41;
-     &#40;special-mode&#41;&#41;</code></pre><p>暫時的 buffer 名稱可以用 <code>&#42;buffer-name&#42;</code> 表示</p><p>在把資訊 insert 到 buffer 後，透過 <code>&#40;special-mode&#41;</code> 轉成 read-only 即可</p><h3><a name="參考資料"></a>參考資料</h3><ol><li><a href="https://stackoverflow.com/questions/34432246/how-to-read-contents-of-the-file-programmatically-in-emacs">https://stackoverflow.com/questions/34432246/how-to-read-contents-of-the-file-programmatically-in-emacs</a></li></ol>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>經常在打 code 時會遇到段落間，或是單行間因為修改而出現的大量空白</p><p>例如</p><pre><code>// a 和 10 之間有大量空白
+int a  =                        10 ;
+//       &#94;&#126;&#126;&#126; 假設游標停在這</code></pre><p>這時候可以讓游標停在 <code>=</code> 後面，然後執行指令 <code>fixup-whitespace</code> 即可</p><p>就會得到</p><pre><code>int a  = 10 ;</code></pre><p>還有許多行中空白、換行以及縮進的操作，請看 <code>simple.el</code> 檔案</p><p>可以透過 <code>C-h f</code> 搜尋 <code>fixup-whitespace</code> 進入到 <code>simple.el</code> 中</p>
 </div>
 
 <div id="post-tags">
@@ -85,7 +83,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2018-01-03-Emacs-中清除游標後空白直到非空白字元/">Emacs 中清除游標後空白直到非空白字元 &raquo;</a>
+        <a class="right" href="/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/">Emacs 中透過指令建立 read-only buffer &raquo;</a>
         
     </div>
 </div>

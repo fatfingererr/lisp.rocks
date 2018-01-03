@@ -12,11 +12,33 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 03 Jan 2018 09:33:09 +0800
+Wed, 03 Jan 2018 09:35:12 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-04-Emacs-中清除游標後空白直到非空白字元/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-04-Emacs-中清除游標後空白直到非空白字元/
+</link>
+<title>
+Emacs 中清除游標後空白直到非空白字元
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;經常在打 code 時會遇到段落間，或是單行間因為修改而出現的大量空白&lt;/p&gt;&lt;p&gt;例如&lt;/p&gt;&lt;pre&gt;&lt;code&gt;// a 和 10 之間有大量空白
+int a  =                        10 ;
+//       &amp;#94;&amp;#126;&amp;#126;&amp;#126; 假設游標停在這&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這時候可以讓游標停在 &lt;code&gt;=&lt;/code&gt; 後面，然後執行指令 &lt;code&gt;fixup-whitespace&lt;/code&gt; 即可&lt;/p&gt;&lt;p&gt;就會得到&lt;/p&gt;&lt;pre&gt;&lt;code&gt;int a  = 10 ;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;還有許多行中空白、換行以及縮進的操作，請看 &lt;code&gt;simple.el&lt;/code&gt; 檔案&lt;/p&gt;&lt;p&gt;可以透過 &lt;code&gt;C-h f&lt;/code&gt; 搜尋 &lt;code&gt;fixup-whitespace&lt;/code&gt; 進入到 &lt;code&gt;simple.el&lt;/code&gt; 中&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Thu, 04 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/
@@ -33,27 +55,6 @@ Emacs 中透過指令建立 read-only buffer
      &amp;#40;switch-to-buffer new&amp;#41;
      &amp;#40;insert-file-contents log檔案路徑&amp;#41;
      &amp;#40;special-mode&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;暫時的 buffer 名稱可以用 &lt;code&gt;&amp;#42;buffer-name&amp;#42;&lt;/code&gt; 表示&lt;/p&gt;&lt;p&gt;在把資訊 insert 到 buffer 後，透過 &lt;code&gt;&amp;#40;special-mode&amp;#41;&lt;/code&gt; 轉成 read-only 即可&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/34432246/how-to-read-contents-of-the-file-programmatically-in-emacs&quot;&gt;https://stackoverflow.com/questions/34432246/how-to-read-contents-of-the-file-programmatically-in-emacs&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
-</description>
-<enclosure>
-
-</enclosure>
-<pubDate>
-Wed, 03 Jan 2018 00:00:00 +0800
-</pubDate>
-</item>
-<item>
-<guid>
-http://lisp.rocks/posts-output/2018-01-03-Emacs-中清除游標後空白直到非空白字元/
-</guid>
-<link>
-http://lisp.rocks/posts-output/2018-01-03-Emacs-中清除游標後空白直到非空白字元/
-</link>
-<title>
-Emacs 中清除游標後空白直到非空白字元
-</title>
-<description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;經常在打 code 時會遇到段落間，或是單行間因為修改而出現的大量空白&lt;/p&gt;&lt;p&gt;例如&lt;/p&gt;&lt;pre&gt;&lt;code&gt;// a 和 10 之間有大量空白
-int a  =                        10 ;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這時候可以讓游標停在 &lt;code&gt;=&lt;/code&gt; 後面，然後執行指令 &lt;code&gt;fixup-whitespace&lt;/code&gt; 即可&lt;/p&gt;&lt;p&gt;就會得到&lt;/p&gt;&lt;pre&gt;&lt;code&gt;int a  = 10 ;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;還有許多行中空白、換行以及縮進的操作，請看 &lt;code&gt;simple.el&lt;/code&gt; 檔案&lt;/p&gt;&lt;p&gt;可以透過 &lt;code&gt;C-h f&lt;/code&gt; 搜尋 &lt;code&gt;fixup-whitespace&lt;/code&gt; 進入到 &lt;code&gt;simple.el&lt;/code&gt; 中&lt;/p&gt;
 </description>
 <enclosure>
 

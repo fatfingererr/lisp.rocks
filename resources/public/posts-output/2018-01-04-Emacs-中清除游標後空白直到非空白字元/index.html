@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>(print &quot;Lisp Rocks&quot;): Emacs 中清除游標後空白直到非空白字元</title>
-    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-03-Emacs-中清除游標後空白直到非空白字元/">
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-04-Emacs-中清除游標後空白直到非空白字元/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -60,13 +60,14 @@
     </div>
     <h2>Emacs 中清除游標後空白直到非空白字元</h2>
         <div id="post-date">
-            January 3, 2018
+            January 4, 2018
         </div>
 </div>
 <div>
     
     <h1><a name=""></a></h1><h2><a name=""></a></h2><p>經常在打 code 時會遇到段落間，或是單行間因為修改而出現的大量空白</p><p>例如</p><pre><code>// a 和 10 之間有大量空白
-int a  =                        10 ;</code></pre><p>這時候可以讓游標停在 <code>=</code> 後面，然後執行指令 <code>fixup-whitespace</code> 即可</p><p>就會得到</p><pre><code>int a  = 10 ;</code></pre><p>還有許多行中空白、換行以及縮進的操作，請看 <code>simple.el</code> 檔案</p><p>可以透過 <code>C-h f</code> 搜尋 <code>fixup-whitespace</code> 進入到 <code>simple.el</code> 中</p>
+int a  =                        10 ;
+//       &#94;&#126;&#126;&#126; 假設游標停在這</code></pre><p>這時候可以讓游標停在 <code>=</code> 後面，然後執行指令 <code>fixup-whitespace</code> 即可</p><p>就會得到</p><pre><code>int a  = 10 ;</code></pre><p>還有許多行中空白、換行以及縮進的操作，請看 <code>simple.el</code> 檔案</p><p>可以透過 <code>C-h f</code> 搜尋 <code>fixup-whitespace</code> 進入到 <code>simple.el</code> 中</p>
 </div>
 
 <div id="post-tags">
@@ -79,10 +80,8 @@ int a  =                        10 ;</code></pre><p>這時候可以讓游標停�
 
     <div id="prev-next">
         
-        <a href="/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/">&laquo; Emacs 中透過指令建立 read-only buffer</a>
         
-        
-        <a class="right" href="/posts-output/2018-01-02-Emacs-中處理檔名與路徑問題/">Emacs 中處理檔名與路徑問題 &raquo;</a>
+        <a class="right" href="/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/">Emacs 中透過指令建立 read-only buffer &raquo;</a>
         
     </div>
 
@@ -91,7 +90,7 @@ int a  =                        10 ;</code></pre><p>這時候可以讓游標停�
 
     <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = "http://lisp.rocks/posts-output/2018-01-03-Emacs-中清除游標後空白直到非空白字元/";
+            this.page.url = "http://lisp.rocks/posts-output/2018-01-04-Emacs-中清除游標後空白直到非空白字元/";
             this.page.identifier = "Emacs 中清除游標後空白直到非空白字元";
         };
         (function() {

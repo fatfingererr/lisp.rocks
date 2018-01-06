@@ -113,3 +113,34 @@ Object-Relational Impedance 說至少存在三個問題：
 *** 上下游 Upstream and Downstream
 
 上下文之間可能存在上下游
+
+
+*** bounded context 的集成模式
+
+- 合作關係 Partnership
+
+兩個上下文呈現合作關係，其中一個失敗就會造成另一個失敗
+
+兩者的功能實現里程碑應該要在接近的時間點
+
+- 共享內核 Shared Kernel
+
+上下文對程式碼的共享有緊密依賴性
+
+並保持共享內核小型化
+
+- 上下游關係 Customer-Supplier Development
+
+上游團隊可能獨立於下游團隊開發，下游團隊開發可能會很受到上游影響
+
+上游應該顧及下游的團隊需求
+
+- 遵奉者 Conformist
+
+上游團隊可能無力完成，造成下游孤立無援，只能盲目使用上游的模型
+
+- 防腐層 Anticorruption Layer
+
+集成兩個設計良好的限界上下文，翻譯層可能很簡單
+
+但是當以上幾點發生的時候，翻譯就變得複雜

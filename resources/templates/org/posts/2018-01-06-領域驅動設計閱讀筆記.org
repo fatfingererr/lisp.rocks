@@ -2,10 +2,10 @@
 #+BEGIN_SRC json :noexport:
 {:title "〈領域驅動設計〉閱讀筆記" :layout :post :tags ["reading" "note"] :toc false}
 #+END_SRC
-*
+*  　
 
 
-**
+** 　
 
 - Core Domain :
 - Supporting Subdomain

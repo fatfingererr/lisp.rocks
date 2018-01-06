@@ -109,3 +109,7 @@ Object-Relational Impedance 說至少存在三個問題：
                |               -- 領域事件 PersonNameChanged
                |
                -- 領域事件 UserPasswordChanged
+
+*** 上下游 Upstream and Downstream
+
+上下文之間可能存在上下游

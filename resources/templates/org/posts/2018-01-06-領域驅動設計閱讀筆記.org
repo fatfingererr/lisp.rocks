@@ -89,3 +89,6 @@ Object-Relational Impedance 說至少存在三個問題：
 - 這些資產如何集合再一起的？
 
 - 還需要什麼樣的集成
+
+
+*** 過度專業分工：穀倉效應 Silo Effect

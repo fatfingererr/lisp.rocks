@@ -90,5 +90,22 @@ Object-Relational Impedance 說至少存在三個問題：
 
 - 還需要什麼樣的集成
 
+*** 隔離內核的重構 Segregated Core
+
 
 *** 過度專業分工：穀倉效應 Silo Effect
+
+-　一個系統的用戶不能輕易地和其他系統的用戶產生關聯
+
+- 因此架構師需要對安全和權限管理進行集中化處理
+
+
+*** 聚合根 - 實體 - 值對象 - 領域事件
+
+- 身分與訪問 Schema
+
+- 聚合根 User --- 實體 Person --- 值對象 ContactInformation
+               |               |
+               |               -- 領域事件 PersonNameChanged
+               |
+               -- 領域事件 UserPasswordChanged

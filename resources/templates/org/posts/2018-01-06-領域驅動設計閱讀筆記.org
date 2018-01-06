@@ -1,0 +1,28 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "〈領域驅動設計〉閱讀筆記" :layout :post :tags ["reading" "note"] :toc false}
+#+END_SRC
+*
+
+
+**
+
+- Core Domain :
+- Supporting Subdomain
+
+
+*** 貧血領域對象 Anemic DOmain Object
+
+- 大量 getter/setter 而沒有業務邏輯
+
+- 業務對象只有一堆屬性值　
+
+當發生以上兩件事時，代表你的程式碼存在物件－關係阻抗失衡（ Object-Relational Impedance ）
+
+Object-Relational Impedance 說至少存在三個問題：
+
+- 業務意圖不明確
+
+- 方法實現存在潛在的複雜性
+
+- Object 不是 Object ，只是一個數據持有器（data holder）

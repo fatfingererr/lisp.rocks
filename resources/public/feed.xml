@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Mon, 15 Jan 2018 22:09:46 +0800
+Mon, 15 Jan 2018 22:10:38 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://lisp.rocks/posts-output/2018-01-15-Windows中使用Spacemacs和clang-form
 Windows中使用Spacemacs和clang-format
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;目前對於 clang-format 還沒有很深刻的理解&lt;/p&gt;&lt;p&gt;簡單只是為了把 c++ code 對齊和整理&lt;/p&gt;&lt;p&gt;首先到 clang-format 網站去下載，搜尋 LLVM Download Page&lt;/p&gt;&lt;p&gt;下載位置: &lt;a href='http://releases.llvm.org/download.html'&gt;http://releases.llvm.org/download.html&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;點選 Pre-Built Binaries 中的 Clang for Windows (32-bits) 或 (64-bits)&lt;/p&gt;&lt;p&gt;其中 64-bit 網址在此 &lt;a href=&quot;http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe&quot;&gt;http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe&lt;/a&gt;&lt;/p&gt;&lt;p&gt;安裝完記得將 emacs 重新開啟，相關的 terminal 也要重開（才有新的環境變數 ）&lt;/p&gt;&lt;p&gt;接著在 spacemacs 中你引入 C/C++ 套件的位置改成&lt;/p&gt;&lt;pre&gt;&lt;code&gt;dotspacemacs-configuration-layers
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;目前對於 clang-format 還沒有很深刻的理解&lt;/p&gt;&lt;p&gt;簡單只是為了把 c++ code 對齊和整理&lt;/p&gt;&lt;p&gt;首先到 clang-format 網站去下載，搜尋 LLVM Download Page&lt;/p&gt;&lt;p&gt;下載位置: &lt;a href='http://releases.llvm.org/download.html'&gt;http://releases.llvm.org/download.html&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt; 點選 Pre-Built Binaries 中的 Clang for Windows (32-bits) 或 (64-bits)&lt;/p&gt;&lt;p&gt;其中 64-bit 網址在此 &lt;a href=&quot;http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe&quot;&gt;http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe&lt;/a&gt;&lt;/p&gt;&lt;p&gt;安裝完記得將 emacs 重新開啟，相關的 terminal 也要重開（才有新的環境變數 ）&lt;/p&gt;&lt;p&gt;接著在 spacemacs 中你引入 C/C++ 套件的位置改成&lt;/p&gt;&lt;pre&gt;&lt;code&gt;dotspacemacs-configuration-layers
 '&amp;#40;
   ...
   &amp;#40;c-c++ :variables c-c++-enable-clang-support t&amp;#41; ;; 改成這樣

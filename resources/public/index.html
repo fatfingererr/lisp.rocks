@@ -65,7 +65,7 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>目前對於 clang-format 還沒有很深刻的理解</p><p>簡單只是為了把 c++ code 對齊和整理</p><p>首先到 clang-format 網站去下載，搜尋 LLVM Download Page</p><p>下載位置: <a href='http://releases.llvm.org/download.html'>http://releases.llvm.org/download.html</a></p><p><br></p><p>點選 Pre-Built Binaries 中的 Clang for Windows (32-bits) 或 (64-bits)</p><p>其中 64-bit 網址在此 <a href="http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe">http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe</a></p><p>安裝完記得將 emacs 重新開啟，相關的 terminal 也要重開（才有新的環境變數 ）</p><p>接著在 spacemacs 中你引入 C/C++ 套件的位置改成</p><pre><code>dotspacemacs-configuration-layers
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>目前對於 clang-format 還沒有很深刻的理解</p><p>簡單只是為了把 c++ code 對齊和整理</p><p>首先到 clang-format 網站去下載，搜尋 LLVM Download Page</p><p>下載位置: <a href='http://releases.llvm.org/download.html'>http://releases.llvm.org/download.html</a></p><p><br> 點選 Pre-Built Binaries 中的 Clang for Windows (32-bits) 或 (64-bits)</p><p>其中 64-bit 網址在此 <a href="http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe">http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe</a></p><p>安裝完記得將 emacs 重新開啟，相關的 terminal 也要重開（才有新的環境變數 ）</p><p>接著在 spacemacs 中你引入 C/C++ 套件的位置改成</p><pre><code>dotspacemacs-configuration-layers
 '&#40;
   ...
   &#40;c-c++ :variables c-c++-enable-clang-support t&#41; ;; 改成這樣

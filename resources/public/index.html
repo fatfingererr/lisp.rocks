@@ -70,21 +70,51 @@
   ...
   &#40;c-c++ :variables c-c++-enable-clang-support t&#41; ;; 改成這樣
   ...</code></pre><p><br></p><p>接著重新讀取，使用指令 <code>sync-configuration-layers</code> 或是指令 <code>M-m f e R</code></p><p>並進入你的 c++ 檔案，使用 <code>clang-format-buffer</code> 對整個 buffer 做 formatting</p><p>或是 <code>clang-format-region</code> 對選取區域做 formatting</p><p>剛開始可以先使用 <code>clang-format-region</code> 避免 buffer 檔案太大造成 Spacemacs 當機一會兒</p><p><br></p><h2><a name="使用&#95;.clang-format&#95;自訂設置"></a>使用 .clang-format 自訂設置</h2><p>如果你有使用 <code>projectile</code> 的話，可以在你專案的根目錄（可以用 <code>prjectile-project-info</code> 查看）</p><p>中新增檔案 <code>.clang-format</code> 來設定你的 clang-format</p><p>沒使用 <code>projectile</code> 則是得在檔案位置路徑有 <code>.clang-format</code> 檔案</p><p>如果你不知道 clang-format 要設定什麼</p><p>可以先在 command-line 或是 Spacemacs 中使用 shell 執行</p><pre><code>clang-format -style=llvm -dump-config &gt; .clang-format</code></pre><p><br></p><p>裡面影響比較大主要是行數限制，預設是 80 ，可以調整成 127 或更大</p><p>網路上寫 0 也沒用還是會算 80 我沒有試過</p><pre><code>ColumnLimit: 127</code></pre><p><br></p><p>關於其他配置從 <a href='https://github.com/leejayID/ClangFormat'>代码格式化插件教程与配置</a> 貼過來如下（只留下個人在意的部分）：</p><pre><code># 基礎樣式
-BasedOnStyle: LLVM</code></pre><pre><code># 縮排寬度
-IndentWidth: 4</code></pre><pre><code># 大括號的換行模式&#40;Attach，Stroustrup, Allman-所有大括號都換一行&#41;
-BreakBeforeBraces: Allman</code></pre><pre><code># 是否支持單行的if
-AllowShortIfStatementsOnASingleLine: false</code></pre><pre><code># 是否允許單行迴圈
-AllowShortLoopsOnASingleLine: false</code></pre><pre><code># Switch 中的 Case 是否進行縮排
-IndentCaseLabels: true</code></pre><pre><code># 每行字元的位置，0 為不限制
-ColumnLimit: 0</code></pre><pre><code># 註釋對齊
-AlignTrailingComments: true</code></pre><pre><code># 括號後面加空格
-SpaceAfterCStyleCast: true</code></pre><pre><code># 不在小括號裡面加空格
-SpacesInParentheses: false</code></pre><pre><code># 不在中括號裡面加空格
-SpacesInSquareBrackets: false</code></pre><pre><code># 指針對準
-# DerivePointerAlignment: true</code></pre><pre><code># @&#91;&#93;裡面兩邊的空格，預設為true
-SpacesInContainerLiterals: false</code></pre><pre><code># 賦值前&#40;=&#41;的空格 預設為true
-#SpaceBeforeAssignmentOperators: true</code></pre><pre><code># 指針的位置
-PointerAlignment: Right</code></pre><pre><code># 最大空的行數
+BasedOnStyle: LLVM
+#
+# 縮排寬度
+IndentWidth: 4
+#
+# 大括號的換行模式&#40;Attach，Stroustrup, Allman-所有大括號都換一行&#41;
+BreakBeforeBraces: Allman
+#
+# 是否支持單行的if
+AllowShortIfStatementsOnASingleLine: false
+#
+# 是否允許單行迴圈
+AllowShortLoopsOnASingleLine: false
+#
+# Switch 中的 Case 是否進行縮排
+IndentCaseLabels: true
+#
+# 每行字元的位置，0 為不限制
+ColumnLimit: 0
+#
+# 註釋對齊
+AlignTrailingComments: true
+#
+# 括號後面加空格
+SpaceAfterCStyleCast: true
+#
+# 不在小括號裡面加空格
+SpacesInParentheses: false
+#
+# 不在中括號裡面加空格
+SpacesInSquareBrackets: false
+#
+# 指針對準
+DerivePointerAlignment: true
+#
+# @&#91;&#93;裡面兩邊的空格，預設為true
+SpacesInContainerLiterals: false
+#
+# 賦值前&#40;=&#41;的空格 預設為true
+SpaceBeforeAssignmentOperators: true
+#
+# 指針的位置
+PointerAlignment: Right
+#
+# 最大空的行數
 MaxEmptyLinesToKeep: 1</code></pre><p><br></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://shoshino21.logdown.com/posts/448026-currently-in-clang-format-format'>目前在用的 clang-format 格式 - 星野的 iOS 補(不)完計畫</a></li><li><a href='https://github.com/leejayID/ClangFormat'>代码格式化插件教程与配置 - leejayID/ClangFormat</a></li></ol>
 </div>
 

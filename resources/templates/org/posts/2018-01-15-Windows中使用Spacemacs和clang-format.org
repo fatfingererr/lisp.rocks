@@ -71,6 +71,7 @@ ColumnLimit: 127
 關於其他配置從 [[https://github.com/leejayID/ClangFormat][代码格式化插件教程与配置]] 貼過來如下（只留下個人在意的部分）：
 
 #+BEGIN_SRC ini
+
 # 基礎樣式
 BasedOnStyle: LLVM
 

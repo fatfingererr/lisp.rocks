@@ -12,11 +12,51 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 03 Jan 2018 09:35:12 +0800
+Mon, 15 Jan 2018 22:07:11 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-15-Windows中使用Spacemacs和clang-format/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-15-Windows中使用Spacemacs和clang-format/
+</link>
+<title>
+Windows中使用Spacemacs和clang-format
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;目前對於 clang-format 還沒有很深刻的理解，簡單只是為了把 c++ code 對齊和整理&lt;/p&gt;&lt;p&gt;首先到 clang-format 網站去下載，搜尋 LLVM Download Page &lt;a href='http://releases.llvm.org/download.html'&gt;http://releases.llvm.org/download.html&lt;/a&gt;&lt;/p&gt;&lt;p&gt;點選 Pre-Built Binaries 中的 Clang for Windows (32-bits) 或 (64-bits) 其中 64-bit 網址在此 &lt;a href=&quot;http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe&quot;&gt;http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe&lt;/a&gt;&lt;/p&gt;&lt;p&gt;安裝完記得將 emacs 重新開啟，相關的 terminal 也要重開（才有新的環境變數以及 clang-format 的指令 ）&lt;/p&gt;&lt;p&gt;接著在 spacemacs 中你引入 C/C++ 套件的位置改成&lt;/p&gt;&lt;pre&gt;&lt;code&gt;dotspacemacs-configuration-layers
+'&amp;#40;
+  ...
+  &amp;#40;c-c++ :variables c-c++-enable-clang-support t&amp;#41; ;; 改成這樣
+  ...&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接著重新讀取，使用指令 &lt;code&gt;sync-configuration-layers&lt;/code&gt; 或是指令 &lt;code&gt;M-m f e R&lt;/code&gt;&lt;/p&gt;&lt;p&gt;並進入你的 c++ 檔案，使用 &lt;code&gt;clang-format-buffer&lt;/code&gt; 對整個 buffer 做 formatting 或是 &lt;code&gt;clang-format-region&lt;/code&gt; 對選取區域做 formatting&lt;/p&gt;&lt;p&gt;剛開始可以先使用 &lt;code&gt;clang-format-region&lt;/code&gt; 避免需要調整很大的部分，而造成 Spacemacs 當機一會兒&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用&amp;#95;.clang-format&amp;#95;自訂設置&quot;&gt;&lt;/a&gt;使用 .clang-format 自訂設置&lt;/h2&gt;&lt;p&gt;如果你有使用 &lt;code&gt;projectile&lt;/code&gt; 的話，可以在你專案的根目錄（ 可以用 &lt;code&gt;prjectile-project-info&lt;/code&gt; 查看）&lt;/p&gt;&lt;p&gt;中新增檔案 &lt;code&gt;.clang-format&lt;/code&gt; 來設定你的 clang-format  （沒使用 &lt;code&gt;projectile&lt;/code&gt; 則是得在檔案位置路徑有 &lt;code&gt;.clang-format&lt;/code&gt; 檔案）&lt;/p&gt;&lt;p&gt;如果你不知道 clang-format 要設定什麼，可以先在 command-line 或是 Spacemacs 中使用 shell 執行&lt;/p&gt;&lt;pre&gt;&lt;code&gt;clang-format -style=llvm -dump-config &amp;gt; .clang-format&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;裡面影響比較大主要是行數限制，預設是 80 ，可以調整成 127 或更大，網路上寫 0 也沒用還是會算 80 我沒有試過&lt;/p&gt;&lt;pre&gt;&lt;code&gt;ColumnLimit: 127&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;關於其他配置從 &lt;a href='https://github.com/leejayID/ClangFormat'&gt;代码格式化插件教程与配置&lt;/a&gt; 貼過來如下（只留下個人在意的部分）：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;# 基礎樣式
+BasedOnStyle: LLVM&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 縮排寬度
+IndentWidth: 4&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 大括號的換行模式&amp;#40;Attach，Stroustrup, Allman-所有大括號都換一行&amp;#41;
+BreakBeforeBraces: Allman&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 是否支持單行的if
+AllowShortIfStatementsOnASingleLine: false&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 是否允許單行迴圈
+AllowShortLoopsOnASingleLine: false&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# Switch 中的 Case 是否進行縮排
+IndentCaseLabels: true&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 每行字元的位置，0 為不限制
+ColumnLimit: 0&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 註釋對齊
+AlignTrailingComments: true&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 括號後面加空格
+SpaceAfterCStyleCast: true&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 不在小括號裡面加空格
+SpacesInParentheses: false&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 不在中括號裡面加空格
+SpacesInSquareBrackets: false&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 指針對準
+# DerivePointerAlignment: true&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# @&amp;#91;&amp;#93;裡面兩邊的空格，預設為true
+SpacesInContainerLiterals: false&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 賦值前&amp;#40;=&amp;#41;的空格 預設為true
+#SpaceBeforeAssignmentOperators: true&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 指針的位置
+PointerAlignment: Right&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;# 最大空的行數
+MaxEmptyLinesToKeep: 1&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://shoshino21.logdown.com/posts/448026-currently-in-clang-format-format'&gt;目前在用的 clang-format 格式 - 星野的 iOS 補(不)完計畫&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='https://github.com/leejayID/ClangFormat'&gt;代码格式化插件教程与配置 - leejayID/ClangFormat&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 15 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-04-Emacs-中清除游標後空白直到非空白字元/

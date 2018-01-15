@@ -67,6 +67,7 @@
 
 關於其他配置從 [代码格式化插件教程与配置](https://github.com/leejayID/ClangFormat) 貼過來如下（只留下個人在意的部分）：
 
+
     # 基礎樣式
     BasedOnStyle: LLVM
 

@@ -75,49 +75,49 @@ ColumnLimit: 127
 
 # 基礎樣式
 BasedOnStyle: LLVM
-
+#
 # 縮排寬度
 IndentWidth: 4
-
+#
 # 大括號的換行模式(Attach，Stroustrup, Allman-所有大括號都換一行)
 BreakBeforeBraces: Allman
-
+#
 # 是否支持單行的if
 AllowShortIfStatementsOnASingleLine: false
-
+#
 # 是否允許單行迴圈
 AllowShortLoopsOnASingleLine: false
-
+#
 # Switch 中的 Case 是否進行縮排
 IndentCaseLabels: true
-
+#
 # 每行字元的位置，0 為不限制
 ColumnLimit: 0
-
+#
 # 註釋對齊
 AlignTrailingComments: true
-
+#
 # 括號後面加空格
 SpaceAfterCStyleCast: true
-
+#
 # 不在小括號裡面加空格
 SpacesInParentheses: false
-
+#
 # 不在中括號裡面加空格
 SpacesInSquareBrackets: false
-
+#
 # 指針對準
-# DerivePointerAlignment: true
-
+DerivePointerAlignment: true
+#
 # @[]裡面兩邊的空格，預設為true
 SpacesInContainerLiterals: false
-
+#
 # 賦值前(=)的空格 預設為true
-#SpaceBeforeAssignmentOperators: true
-
+SpaceBeforeAssignmentOperators: true
+#
 # 指針的位置
 PointerAlignment: Right
-
+#
 # 最大空的行數
 MaxEmptyLinesToKeep: 1
 #+END_SRC

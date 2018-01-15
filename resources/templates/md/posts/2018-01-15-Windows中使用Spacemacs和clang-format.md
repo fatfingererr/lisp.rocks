@@ -14,6 +14,8 @@
 
 下載位置: [http://releases.llvm.org/download.html](http://releases.llvm.org/download.html)
 
+<br>
+
 點選 Pre-Built Binaries 中的 Clang for Windows (32-bits) 或 (64-bits)
 
 其中 64-bit 網址在此 <http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe>
@@ -41,7 +43,7 @@
 <br>
 
 
-### 使用 .clang-format 自訂設置
+## 使用 .clang-format 自訂設置
 
 如果你有使用 `projectile` 的話，可以在你專案的根目錄（可以用 `prjectile-project-info` 查看）
 
@@ -119,7 +121,7 @@
 <br>
 
 
-### 參考資料
+## 參考資料
 
 1.  [目前在用的 clang-format 格式 - 星野的 iOS 補(不)完計畫](http://shoshino21.logdown.com/posts/448026-currently-in-clang-format-format)
 2.  [代码格式化插件教程与配置 - leejayID/ClangFormat](https://github.com/leejayID/ClangFormat)

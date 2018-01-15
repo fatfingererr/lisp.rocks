@@ -16,7 +16,6 @@
 下載位置: [[http://releases.llvm.org/download.html][http://releases.llvm.org/download.html]]
 
 <br>
-
 點選 Pre-Built Binaries 中的 Clang for Windows (32-bits) 或 (64-bits)
 
 其中 64-bit 網址在此 [[http://releases.llvm.org/5.0.1/LLVM-5.0.1-win64.exe]]

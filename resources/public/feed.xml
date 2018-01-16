@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 16 Jan 2018 10:21:59 +0800
+Tue, 16 Jan 2018 10:23:34 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-17-Spacemacs快速查找layer的定義並修改/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-17-Spacemacs快速查找layer的定義並修改/
+</link>
+<title>
+Spacemacs快速查找layer的定義並修改
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;為了解決 &lt;a href='https://emacs-china.org/t/topic/4353'&gt;Symbol’s function definition is void: org-projectile:per-repo&lt;/a&gt; 的問題&lt;/p&gt;&lt;p&gt;需要去到 &lt;code&gt;org-projectile&lt;/code&gt; 中修改套件的定義，使用到一個少用的功能，特此留作紀錄&lt;/p&gt;&lt;p&gt;也就是 key &lt;code&gt;M-m h SPC&lt;/code&gt; 可以快速查找目前載入的套件的 el 檔案&lt;/p&gt;&lt;p&gt;在本 bug 中需要到 &lt;code&gt;org-projectile&lt;/code&gt; 把 &lt;code&gt;&amp;#40;org-projectile&amp;#41;&lt;/code&gt; 註釋掉&lt;/p&gt;&lt;p&gt;進入檔案中透過 &lt;code&gt;C-s&lt;/code&gt; 搜尋修改即可&lt;/p&gt;&lt;p&gt;這樣就可以繼續使用 &lt;code&gt;org-capture &amp;#40;C-c c&amp;#41;&lt;/code&gt; 了!&lt;/p&gt;&lt;p&gt;此 bug 似乎是 &lt;code&gt;org-projectile&lt;/code&gt; 的問題，暫且不深究了&amp;#x2026;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 17 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-16-Emacs中使用eval-after-load避免使用尚未載入套件的函數/

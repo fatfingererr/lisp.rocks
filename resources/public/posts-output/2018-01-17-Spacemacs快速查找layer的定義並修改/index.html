@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Posts Tagged &quot;spacemacs&quot;</title>
-    <link rel="canonical" href="http://lisp.rocks/tags-output/spacemacs/">
+    <title>(print &quot;Lisp Rocks&quot;): Spacemacs快速查找layer的定義並修改</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-17-Spacemacs快速查找layer的定義並修改/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -53,37 +53,51 @@
             <div>
                 <div id="content">
                     
-<div id="posts-by-tag">
-    <div id="page-header">
-        <h2>Posts Tagged &quot;spacemacs&quot;</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
     </div>
-    <ul>
+    <h2>Spacemacs快速查找layer的定義並修改</h2>
+        <div id="post-date">
+            January 17, 2018
+        </div>
+</div>
+<div>
     
-        <li>
-            <a href="/posts-output/2018-01-17-Spacemacs快速查找layer的定義並修改/">Spacemacs快速查找layer的定義並修改</a>
-        </li>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>為了解決 <a href='https://emacs-china.org/t/topic/4353'>Symbol’s function definition is void: org-projectile:per-repo</a> 的問題</p><p>需要去到 <code>org-projectile</code> 中修改套件的定義，使用到一個少用的功能，特此留作紀錄</p><p>也就是 key <code>M-m h SPC</code> 可以快速查找目前載入的套件的 el 檔案</p><p>在本 bug 中需要到 <code>org-projectile</code> 把 <code>&#40;org-projectile&#41;</code> 註釋掉</p><p>進入檔案中透過 <code>C-s</code> 搜尋修改即可</p><p>這樣就可以繼續使用 <code>org-capture &#40;C-c c&#41;</code> 了!</p><p>此 bug 似乎是 <code>org-projectile</code> 的問題，暫且不深究了&#x2026;</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
     
-        <li>
-            <a href="/posts-output/2018-01-16-Emacs中使用eval-after-load避免使用尚未載入套件的函數/">Emacs中使用eval-after-load避免使用尚未載入套件的函數</a>
-        </li>
+    <a href="/tags-output/spacemacs/">spacemacs</a>
     
-        <li>
-            <a href="/posts-output/2018-01-15-Windows中使用Spacemacs和clang-format/">Windows中使用Spacemacs和clang-format</a>
-        </li>
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts-output/2018-01-16-Emacs中使用eval-after-load避免使用尚未載入套件的函數/">Emacs中使用eval-after-load避免使用尚未載入套件的函數 &raquo;</a>
+        
+    </div>
+
     
-        <li>
-            <a href="/posts-output/2018-01-01-Emacs-中對特定-mode-綁定特定的-imenu-關鍵字/">Emacs 中對特定 mode 綁定自訂 imenu 匹配</a>
-        </li>
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2018-01-17-Spacemacs快速查找layer的定義並修改/";
+            this.page.identifier = "Spacemacs快速查找layer的定義並修改";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
     
-        <li>
-            <a href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">Emacs 中安靜地執行 async-shell-command</a>
-        </li>
-    
-        <li>
-            <a href="/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">Emacs 中處理 Windows 路徑轉換</a>
-        </li>
-    
-    </ul>
 </div>
 
                 </div>

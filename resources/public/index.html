@@ -58,29 +58,18 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Emacs中使用eval-after-load避免使用尚未載入套件的函數</h2>
+    <h2>Spacemacs快速查找layer的定義並修改</h2>
         <div id="post-date">
-            January 16, 2018
+            January 17, 2018
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>今天因為要處理這個問題：</p><p><a href='https://github.com/syl20bnr/spacemacs/issues/9374'>Symbol's function definition is void: org-projectile-per-project #9374</a></p><p>結果把 org-projectile 砍掉重新安裝</p><p>安裝的時候發現因為我定義的函數，有使用到 <code>projectile-project-root</code> 但是套件又被我砍掉</p><p>結果就是安裝完套件我還是初始化失敗，因為我的 layer 使用到為定義的函數</p><p>因此安全起見，應該要把自訂函數有使用到套件功能的部分，在套件讀取後再定義</p><p>也就是要使用 <code>eval-after-load</code> 的功能</p><p>使用方法如下，例如：</p><pre><code>&#40;eval-after-load 'org-projectile ;; 在讀取 org-projectile 後執行
-  &#40;progn
-    ....
-    ....
-    &#40;concat &#40;projectile-project-root&#41; .... &#41; ;; 使用到 projectile-project-root
-    ...
-  &#41;
-&#41;</code></pre><p>可以使用 <code>progn</code> 指令組合多組語句，可以在其中 <code>defun</code> 或 <code>define-key</code></p><p><br></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://emacser.com/eval-after-load.htm'>用eval-after-load避免不必要的elisp包的加载</a></li></ol>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>為了解決 <a href='https://emacs-china.org/t/topic/4353'>Symbol’s function definition is void: org-projectile:per-repo</a> 的問題</p><p>需要去到 <code>org-projectile</code> 中修改套件的定義，使用到一個少用的功能，特此留作紀錄</p><p>也就是 key <code>M-m h SPC</code> 可以快速查找目前載入的套件的 el 檔案</p><p>在本 bug 中需要到 <code>org-projectile</code> 把 <code>&#40;org-projectile&#41;</code> 註釋掉</p><p>進入檔案中透過 <code>C-s</code> 搜尋修改即可</p><p>這樣就可以繼續使用 <code>org-capture &#40;C-c c&#41;</code> 了!</p><p>此 bug 似乎是 <code>org-projectile</code> 的問題，暫且不深究了&#x2026;</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
-    
-    <a href="/tags-output/projectile/">projectile</a>
-    
-    <a href="/tags-output/emacs/">emacs</a>
     
     <a href="/tags-output/spacemacs/">spacemacs</a>
     
@@ -92,7 +81,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2018-01-15-Windows中使用Spacemacs和clang-format/">Windows中使用Spacemacs和clang-format &raquo;</a>
+        <a class="right" href="/posts-output/2018-01-16-Emacs中使用eval-after-load避免使用尚未載入套件的函數/">Emacs中使用eval-after-load避免使用尚未載入套件的函數 &raquo;</a>
         
     </div>
 </div>

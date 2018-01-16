@@ -12,11 +12,38 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Mon, 15 Jan 2018 22:12:02 +0800
+Tue, 16 Jan 2018 10:03:33 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-16-Emacs中使用eval-after-load避免使用尚未載入套件的函數/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-16-Emacs中使用eval-after-load避免使用尚未載入套件的函數/
+</link>
+<title>
+Emacs中使用eval-after-load避免使用尚未載入套件的函數
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;今天因為要處理這個問題：&lt;/p&gt;&lt;p&gt;&lt;a href='https://github.com/syl20bnr/spacemacs/issues/9374'&gt;Symbol's function definition is void: org-projectile-per-project #9374&lt;/a&gt;&lt;/p&gt;&lt;p&gt;結果把 org-projectile 砍掉重新安裝&lt;/p&gt;&lt;p&gt;安裝的時候發現因為我定義的函數，有使用到 &lt;code&gt;projectile-project-root&lt;/code&gt; 但是套件又被我砍掉&lt;/p&gt;&lt;p&gt;結果就是安裝完套件我還是初始化失敗，因為我的 layer 使用到為定義的函數&lt;/p&gt;&lt;p&gt;因此安全起見，應該要把自訂函數有使用到套件功能的部分，在套件讀取後再定義&lt;/p&gt;&lt;p&gt;也就是要使用 &lt;code&gt;eval-after-load&lt;/code&gt; 的功能&lt;/p&gt;&lt;p&gt;使用方法如下，例如：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;eval-after-load 'org-projectile ;; 在讀取 org-projectile 後執行
+  &amp;#40;progn
+    ....
+    ....
+    &amp;#40;concat &amp;#40;projectile-project-root&amp;#41; .... &amp;#41; ;; 使用到 projectile-project-root
+    ...
+  &amp;#41;
+&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以使用 &lt;code&gt;progn&lt;/code&gt; 指令組合多組語句，可以在其中 &lt;code&gt;defun&lt;/code&gt; 或 &lt;code&gt;define-key&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://emacser.com/eval-after-load.htm'&gt;用eval-after-load避免不必要的elisp包的加载&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 16 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-15-Windows中使用Spacemacs和clang-format/

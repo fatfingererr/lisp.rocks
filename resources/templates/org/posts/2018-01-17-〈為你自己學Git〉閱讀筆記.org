@@ -59,3 +59,31 @@ git config --global alias.ls 'log --graph --pretty=format:"%h <%an> %ar %s"'
   l = log --oneline --graph
   ls log --graph --pretty=format="%h <%an> %ar %s"
 #+END_SRC
+
+<br>
+
+** commit
+
+懶惰單行 add + commit : =git commit -a -m "update content"=
+
+** 查看 log
+
+只找某人的 log
+
+#+BEGIN_SRC bash
+git log --oneline --author="somebody"
+# 查找兩人
+git log --oneline --author="someone/|anotherone"
+#+END_SRC
+
+用正則表達式搜尋
+
+#+BEGIN_SRC bash
+git log --oneline --grep "wtf"
+#+END_SRC
+
+搜尋哪些 commit 有用到這個字
+
+#+BEGIN_SRC bash
+git log -S "someword"
+#+END_SRC

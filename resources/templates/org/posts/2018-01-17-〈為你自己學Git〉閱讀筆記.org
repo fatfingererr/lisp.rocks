@@ -87,3 +87,24 @@ git log --oneline --grep "wtf"
 #+BEGIN_SRC bash
 git log -S "someword"
 #+END_SRC
+
+查找時間
+
+#+BEGIN_SRC bash
+git log --oneline --since="9am" --until="12am"
+# 從特定日期起的指定時間
+git log --oneline --since="9am" --until="12am" --after="2017-01"
+#+END_SRC
+
+<br>
+
+** 刪除檔案
+
+目前看到 p.53 ... 繼續作筆記
+
+
+<br>
+
+** 參考資料
+
+1. [[https://kaochenlong.com/2017/09/19/learn-git-for-your-own-good/][為你自己學 Git - 高見龍]]

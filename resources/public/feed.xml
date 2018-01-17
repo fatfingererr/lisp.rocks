@@ -12,11 +12,52 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 16 Jan 2018 10:28:47 +0800
+Wed, 17 Jan 2018 11:27:48 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-17-〈為你自己學Git〉閱讀筆記/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-17-〈為你自己學Git〉閱讀筆記/
+</link>
+<title>
+〈為你自己學Git〉閱讀筆記
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;對於 Git 還是始終不太熟悉，於是在朋友推薦下入手了這本書&lt;/p&gt;&lt;p&gt;原本想買另一本歐若禮更複雜更難那本，但先看完這本再說吧！&lt;/p&gt;&lt;p&gt;底下簡單留下自己的閱讀筆記，大部分應該都是網路找的到的指令&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用者設定&quot;&gt;&lt;/a&gt;使用者設定&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;# 設定
+git config --global user.name &amp;quot;name&amp;quot;
+git config --global user.email &amp;quot;email@mail.com&amp;quot;
+# 檢視
+git config --list
+# local 不同作者
+git config --local user.name &amp;quot;foo&amp;quot;
+git config --local user.email &amp;quot;bar@foo.com&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;local 設定可以針對工作上切換成工作 Email ，在 global 方面就是 GitHub 帳戶&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;自訂縮寫&quot;&gt;&lt;/a&gt;自訂縮寫&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.st status&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;也可以對附加參數做縮寫&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git config --global alias.l &amp;quot;log --oneline --graph&amp;quot;
+git l # 等同 git log --oneline --graph 意思
+# 也可以把 commit msg 包含進來
+git config --global alias.ls 'log --graph --pretty=format:&amp;quot;%h &amp;lt;%an&amp;gt; %ar %s&amp;quot;'&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;也可以直接在 &lt;code&gt;&amp;#126;/.gitconfig&lt;/code&gt; 修改&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#91;alias&amp;#93;
+  co = checkout
+  br = branch
+  st = status
+  l = log --oneline --graph
+  ls log --graph --pretty=format=&amp;quot;%h &amp;lt;%an&amp;gt; %ar %s&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;commit&quot;&gt;&lt;/a&gt;commit&lt;/h2&gt;&lt;p&gt;懶惰單行 add + commit : &lt;code&gt;git commit -a -m &amp;quot;update content&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;查看&amp;#95;log&quot;&gt;&lt;/a&gt;查看 log&lt;/h2&gt;&lt;p&gt;只找某人的 log&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log --oneline --author=&amp;quot;somebody&amp;quot;
+# 查找兩人
+git log --oneline --author=&amp;quot;someone/|anotherone&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用正則表達式搜尋&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log --oneline --grep &amp;quot;wtf&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;搜尋哪些 commit 有用到這個字&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log -S &amp;quot;someword&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查找時間&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log --oneline --since=&amp;quot;9am&amp;quot; --until=&amp;quot;12am&amp;quot;
+# 從特定日期起的指定時間
+git log --oneline --since=&amp;quot;9am&amp;quot; --until=&amp;quot;12am&amp;quot; --after=&amp;quot;2017-01&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;刪除檔案&quot;&gt;&lt;/a&gt;刪除檔案&lt;/h2&gt;&lt;p&gt;目前看到 p.53 &amp;#x2026; 繼續作筆記&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='https://kaochenlong.com/2017/09/19/learn-git-for-your-own-good/'&gt;為你自己學 Git - 高見龍&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 17 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-17-Spacemacs快速查找layer的定義並修改/

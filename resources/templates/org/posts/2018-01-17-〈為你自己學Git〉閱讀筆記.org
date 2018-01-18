@@ -101,9 +101,67 @@ git log --oneline --since="9am" --until="12am" --after="2017-01"
 
 <br>
 
-** 刪除檔案
+** 修改 commit 紀錄
 
-目前看到 p.53 ... 繼續作筆記
+修改最後一次的 commit message
+
+#+BEGIN_SRC bash
+git commit --amend -m "new message"
+#+END_SRC
+
+追加檔案到最新一次的 commit 中
+
+#+BEGIN_SRC bash
+git add 某個檔案
+git commit --amend --no-edit
+#+END_SRC
+
+對於空目錄可以放 palceholder 檔名可以叫做 =.gitkeep= 或 =.keep=
+
+<br>
+
+** gitignore
+
+清除忽略的檔案，假如忽略的檔案是一些記錄或暫存檔案
+
+使用指令 =git clean -fX=
+
+<br>
+
+** git log　
+
+看特定檔案的 commit 紀錄 =git log XXXXX.html=
+
+看檔案每一行是什麼時候被改的，抓兇手用的 =git blame XXXX.html=
+
+<br>
+
+** 檔案刪除
+
+如果有檔案被刪除想找回來，可以使用 =checkout= : =git checkout 被刪除檔案=
+
+如果想把所有刪除檔案找回來，可以使用 =git checkout .=
+
+如果要拿兩個版本之前的，可以使用 =git checkout HEAD~2 某個檔案= 來使用
+
+<br>
+
+** commit 後悔
+
+使用
+
+#+BEGIN_SRC bash
+git reset master^
+git reset HEAD^
+#+END_SRC
+
+回到前一次 commit ，一個 =^= 就代表往回一次，N 次可用 =~N= 的方法
+
+
+
+
+
+
 
 
 <br>

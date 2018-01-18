@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 17 Jan 2018 11:29:33 +0800
+Thu, 18 Jan 2018 23:14:00 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -45,11 +45,13 @@ git config --global alias.ls 'log --graph --pretty=format:&amp;quot;%h &amp;lt;%
   br = branch
   st = status
   l = log --oneline --graph
-  ls log --graph --pretty=format=&amp;quot;%h &amp;lt;%an&amp;gt; %ar %s&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;commit&quot;&gt;&lt;/a&gt;commit&lt;/h2&gt;&lt;p&gt;懶惰單行 add + commit : &lt;code&gt;git commit -a -m &amp;quot;update content&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;查看&amp;#95;log&quot;&gt;&lt;/a&gt;查看 log&lt;/h2&gt;&lt;p&gt;只找某人的 log&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log --oneline --author=&amp;quot;somebody&amp;quot;
+  ls log --graph --pretty=format=&amp;quot;%h &amp;lt;%an&amp;gt; %ar %s&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;commit&quot;&gt;&lt;/a&gt;commit&lt;/h2&gt;&lt;p&gt;懶惰單行 add + commit : &lt;code&gt;git commit -a -m &amp;quot;update content&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;查看&amp;#95;log&quot;&gt;&lt;/a&gt;查看 log&lt;/h2&gt;&lt;p&gt;只找某人的 log&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log --oneline --author=&amp;quot;somebody&amp;quot;
 # 查找兩人
 git log --oneline --author=&amp;quot;someone/|anotherone&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用正則表達式搜尋&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log --oneline --grep &amp;quot;wtf&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;搜尋哪些 commit 有用到這個字&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log -S &amp;quot;someword&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查找時間&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git log --oneline --since=&amp;quot;9am&amp;quot; --until=&amp;quot;12am&amp;quot;
 # 從特定日期起的指定時間
-git log --oneline --since=&amp;quot;9am&amp;quot; --until=&amp;quot;12am&amp;quot; --after=&amp;quot;2017-01&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;刪除檔案&quot;&gt;&lt;/a&gt;刪除檔案&lt;/h2&gt;&lt;p&gt;目前看到 p.53 &amp;#x2026; 繼續作筆記&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='https://kaochenlong.com/2017/09/19/learn-git-for-your-own-good/'&gt;為你自己學 Git - 高見龍&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+git log --oneline --since=&amp;quot;9am&amp;quot; --until=&amp;quot;12am&amp;quot; --after=&amp;quot;2017-01&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;修改&amp;#95;commit&amp;#95;紀錄&quot;&gt;&lt;/a&gt;修改 commit 紀錄&lt;/h2&gt;&lt;p&gt;修改最後一次的 commit message&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git commit --amend -m &amp;quot;new message&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;追加檔案到最新一次的 commit 中&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git add 某個檔案
+git commit --amend --no-edit&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;對於空目錄可以放 palceholder 檔名可以叫做 &lt;code&gt;.gitkeep&lt;/code&gt; 或 &lt;code&gt;.keep&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;gitignore&quot;&gt;&lt;/a&gt;gitignore&lt;/h2&gt;&lt;p&gt;清除忽略的檔案，假如忽略的檔案是一些記錄或暫存檔案&lt;/p&gt;&lt;p&gt;使用指令 &lt;code&gt;git clean -fX&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;git&amp;#95;log&quot;&gt;&lt;/a&gt;git log&lt;/h2&gt;&lt;p&gt;看特定檔案的 commit 紀錄 &lt;code&gt;git log XXXXX.html&lt;/code&gt;&lt;/p&gt;&lt;p&gt;看檔案每一行是什麼時候被改的，抓兇手用的 &lt;code&gt;git blame XXXX.html&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;檔案刪除&quot;&gt;&lt;/a&gt;檔案刪除&lt;/h2&gt;&lt;p&gt;如果有檔案被刪除想找回來，可以使用 &lt;code&gt;checkout&lt;/code&gt; : &lt;code&gt;git checkout 被刪除檔案&lt;/code&gt;&lt;/p&gt;&lt;p&gt;如果想把所有刪除檔案找回來，可以使用 &lt;code&gt;git checkout .&lt;/code&gt;&lt;/p&gt;&lt;p&gt;如果要拿兩個版本之前的，可以使用 &lt;code&gt;git checkout HEAD&amp;#126;2 某個檔案&lt;/code&gt; 來使用&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;commit&amp;#95;後悔&quot;&gt;&lt;/a&gt;commit 後悔&lt;/h2&gt;&lt;p&gt;使用&lt;/p&gt;&lt;pre&gt;&lt;code&gt;git reset master&amp;#94;
+git reset HEAD&amp;#94;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;回到前一次 commit ，一個 &lt;code&gt;&amp;#94;&lt;/code&gt; 就代表往回一次，N 次可用 &lt;code&gt;&amp;#126;N&lt;/code&gt; 的方法&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='https://kaochenlong.com/2017/09/19/learn-git-for-your-own-good/'&gt;為你自己學 Git - 高見龍&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
 </description>
 <enclosure>
 

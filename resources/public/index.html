@@ -82,11 +82,13 @@ git config --global alias.ls 'log --graph --pretty=format:&quot;%h &lt;%an&gt; %
   br = branch
   st = status
   l = log --oneline --graph
-  ls log --graph --pretty=format=&quot;%h &lt;%an&gt; %ar %s&quot;</code></pre><p><br></p><h2><a name="commit"></a>commit</h2><p>懶惰單行 add + commit : <code>git commit -a -m &quot;update content&quot;</code></p><h2><a name="查看&#95;log"></a>查看 log</h2><p>只找某人的 log</p><pre><code>git log --oneline --author=&quot;somebody&quot;
+  ls log --graph --pretty=format=&quot;%h &lt;%an&gt; %ar %s&quot;</code></pre><p><br></p><h2><a name="commit"></a>commit</h2><p>懶惰單行 add + commit : <code>git commit -a -m &quot;update content&quot;</code></p><p><br></p><h2><a name="查看&#95;log"></a>查看 log</h2><p>只找某人的 log</p><pre><code>git log --oneline --author=&quot;somebody&quot;
 # 查找兩人
 git log --oneline --author=&quot;someone/|anotherone&quot;</code></pre><p>用正則表達式搜尋</p><pre><code>git log --oneline --grep &quot;wtf&quot;</code></pre><p>搜尋哪些 commit 有用到這個字</p><pre><code>git log -S &quot;someword&quot;</code></pre><p>查找時間</p><pre><code>git log --oneline --since=&quot;9am&quot; --until=&quot;12am&quot;
 # 從特定日期起的指定時間
-git log --oneline --since=&quot;9am&quot; --until=&quot;12am&quot; --after=&quot;2017-01&quot;</code></pre><p><br></p><h2><a name="刪除檔案"></a>刪除檔案</h2><p>目前看到 p.53 &#x2026; 繼續作筆記</p><p><br></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='https://kaochenlong.com/2017/09/19/learn-git-for-your-own-good/'>為你自己學 Git - 高見龍</a></li></ol>
+git log --oneline --since=&quot;9am&quot; --until=&quot;12am&quot; --after=&quot;2017-01&quot;</code></pre><p><br></p><h2><a name="修改&#95;commit&#95;紀錄"></a>修改 commit 紀錄</h2><p>修改最後一次的 commit message</p><pre><code>git commit --amend -m &quot;new message&quot;</code></pre><p>追加檔案到最新一次的 commit 中</p><pre><code>git add 某個檔案
+git commit --amend --no-edit</code></pre><p>對於空目錄可以放 palceholder 檔名可以叫做 <code>.gitkeep</code> 或 <code>.keep</code></p><p><br></p><h2><a name="gitignore"></a>gitignore</h2><p>清除忽略的檔案，假如忽略的檔案是一些記錄或暫存檔案</p><p>使用指令 <code>git clean -fX</code></p><p><br></p><h2><a name="git&#95;log"></a>git log</h2><p>看特定檔案的 commit 紀錄 <code>git log XXXXX.html</code></p><p>看檔案每一行是什麼時候被改的，抓兇手用的 <code>git blame XXXX.html</code></p><p><br></p><h2><a name="檔案刪除"></a>檔案刪除</h2><p>如果有檔案被刪除想找回來，可以使用 <code>checkout</code> : <code>git checkout 被刪除檔案</code></p><p>如果想把所有刪除檔案找回來，可以使用 <code>git checkout .</code></p><p>如果要拿兩個版本之前的，可以使用 <code>git checkout HEAD&#126;2 某個檔案</code> 來使用</p><p><br></p><h2><a name="commit&#95;後悔"></a>commit 後悔</h2><p>使用</p><pre><code>git reset master&#94;
+git reset HEAD&#94;</code></pre><p>回到前一次 commit ，一個 <code>&#94;</code> 就代表往回一次，N 次可用 <code>&#126;N</code> 的方法</p><p><br></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='https://kaochenlong.com/2017/09/19/learn-git-for-your-own-good/'>為你自己學 Git - 高見龍</a></li></ol>
 </div>
 
 <div id="post-tags">

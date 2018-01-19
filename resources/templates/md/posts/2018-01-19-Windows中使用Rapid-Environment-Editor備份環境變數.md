@@ -18,6 +18,8 @@
 
 內容就像是
 
+<br>
+
     ; System variables
     ...
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment]

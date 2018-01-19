@@ -12,11 +12,43 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Fri, 19 Jan 2018 11:24:13 +0800
+Fri, 19 Jan 2018 11:25:27 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-19-Windows中使用Rapid-Environment-Editor備份環境變數/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-19-Windows中使用Rapid-Environment-Editor備份環境變數/
+</link>
+<title>
+Windows中使用Rapid-Environment-Editor備份環境變數
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;之前一直想要備份 Windows 的環境變數，然後找到一個好用的軟體 &lt;a href='https://www.rapidee.com/en/download'&gt;Rapid Environment Editor&lt;/a&gt;&lt;/p&gt;&lt;p&gt;這個軟體能備份和幫忙檢查有哪些環境變數是無效的&lt;/p&gt;&lt;p&gt;無效的環境變數會以紅色顯示，其中語言也有簡體中文版本，對 Windows 不熟也可以使用&lt;/p&gt;&lt;p&gt;所有變更只有在儲存之後才會真的變更，也不用擔心亂改改錯&lt;/p&gt;&lt;p&gt;備份的部分存成 &lt;code&gt;.reg&lt;/code&gt; 檔案，可以再把它讀取回來&lt;/p&gt;&lt;p&gt;內容就像是&lt;/p&gt;&lt;pre&gt;&lt;code&gt;; System variables
+...
+&amp;#91;HKEY&amp;#95;LOCAL&amp;#95;MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment&amp;#93;
+&amp;quot;CCP&amp;#95;JOBTEMPLATE&amp;quot;=&amp;quot;Default&amp;quot;
+&amp;quot;CCP&amp;#95;LOGROOT&amp;#95;USR&amp;quot;=hex&amp;#40;2&amp;#41;:25,4C,4F,43,41,4C,41,50,50,44,41,54,41,25,5C,4D,69,63,72,6F,73,6F,66,74,5C,48,70,63,5C,4C,6F,67,46,69,6C,65,73,5C,00
+&amp;quot;ChocolateyInstall&amp;quot;=&amp;quot;C:\\ProgramData\\chocolatey&amp;quot;
+&amp;quot;ComSpec&amp;quot;=hex&amp;#40;2&amp;#41;:25,53,79,73,74,65,6D,52,6F,6F,74,25,5C,73,79,73,74,65,6D,33,32,5C,63,6D,64,2E,65,78,65,00
+&amp;quot;CUDA&amp;#95;PATH&amp;quot;=&amp;quot;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v8.0&amp;quot;
+&amp;quot;CUDA&amp;#95;PATH&amp;#95;V8&amp;#95;0&amp;quot;=&amp;quot;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v8.0&amp;quot;
+&amp;quot;DokanLibrary1&amp;quot;=&amp;quot;C:\\Program Files\\Dokan\\Dokan Library-1.0.0\\&amp;quot;
+&amp;quot;GNUPLOT&amp;#95;LIB&amp;quot;=&amp;quot;C:\\Program Files\\gnuplot\\demo;C:\\Program Files\\gnuplot\\demo\\games;C:\\Program Files\\gnuplot\\share&amp;quot;
+&amp;quot;GNUTERM&amp;quot;=&amp;quot;windows&amp;quot;
+...&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中蠻有趣的是部分會用 &lt;code&gt;hex&lt;/code&gt; 來表示，不知道那是什麼意思&amp;#x2026;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://nelson.pixnet.net/blog/post/22360384-%5B%E5%88%86%E4%BA%AB%5D-rapid-environment-editor&amp;mdash;%E6%96%B9%E4%BE%BF%E4%BF%AE%E6%94%B9%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8'&gt;{分享} Rapid Environment Editor - 方便修改環境變數的工具&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='https://dotblogs.com.tw/echo/2017/07/13/windows_tool_rapidenvironmenteditor'&gt;【Windows】環境變數管理工具：Rapid Environment Editor&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 19 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-17-〈為你自己學Git〉閱讀筆記/

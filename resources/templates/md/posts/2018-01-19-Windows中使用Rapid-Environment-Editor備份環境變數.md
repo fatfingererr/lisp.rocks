@@ -1,4 +1,4 @@
-    {:title "Windows中使用Rapid-Environment-Editor備份環境變數" :layout :post :tags ["windows" "backup"] :toc false}
+    {:title "使用 Rapid Environment Editor 備份環境變數" :layout :post :tags ["windows" "backup"] :toc false}
 
 
 # 　

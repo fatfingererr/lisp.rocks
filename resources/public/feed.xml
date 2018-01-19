@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Fri, 19 Jan 2018 11:25:27 +0800
+Fri, 19 Jan 2018 11:25:49 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -25,7 +25,7 @@ http://lisp.rocks/posts-output/2018-01-19-Windows中使用Rapid-Environment-Edit
 http://lisp.rocks/posts-output/2018-01-19-Windows中使用Rapid-Environment-Editor備份環境變數/
 </link>
 <title>
-Windows中使用Rapid-Environment-Editor備份環境變數
+使用 Rapid Environment Editor 備份環境變數
 </title>
 <description>
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;之前一直想要備份 Windows 的環境變數，然後找到一個好用的軟體 &lt;a href='https://www.rapidee.com/en/download'&gt;Rapid Environment Editor&lt;/a&gt;&lt;/p&gt;&lt;p&gt;這個軟體能備份和幫忙檢查有哪些環境變數是無效的&lt;/p&gt;&lt;p&gt;無效的環境變數會以紅色顯示，其中語言也有簡體中文版本，對 Windows 不熟也可以使用&lt;/p&gt;&lt;p&gt;所有變更只有在儲存之後才會真的變更，也不用擔心亂改改錯&lt;/p&gt;&lt;p&gt;備份的部分存成 &lt;code&gt;.reg&lt;/code&gt; 檔案，可以再把它讀取回來&lt;/p&gt;&lt;p&gt;內容就像是&lt;/p&gt;&lt;pre&gt;&lt;code&gt;; System variables

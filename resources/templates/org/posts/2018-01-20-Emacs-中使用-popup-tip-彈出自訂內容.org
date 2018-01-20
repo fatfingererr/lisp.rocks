@@ -79,13 +79,6 @@
 
 
 
-
-
-
-
-
-
-
 ** 參考資料
 
 1. [[http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html][Popup Help In Emacs Lisp]]

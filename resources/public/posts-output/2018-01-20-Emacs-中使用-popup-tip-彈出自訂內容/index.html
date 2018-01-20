@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>(print &quot;Lisp Rocks&quot;): Emacs 中使用 popup-tip 彈出自訂內容</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂內容/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github.min.css">
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"> 
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+    <script>
+    window.klipse_settings = {
+        selector: '.language-klipse' // css selector for the html elements you want to klipsify
+    };
+    </script>
+    <script src="/js/highlight.pack.js" type="text/javascript"></script>
+    <script>
+    hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-title" href="/">(print &quot;Lisp Rocks&quot;)</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="position: absolute; right: 0;">
+            <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li ><a href="/archives/">Archives</a></li>
+                
+                <li >
+                    <a href="/pages-output/about/">About</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+        <!--/.container-fluid -->
+    </nav>
+    <div>
+        <div>
+            <div>
+                <div id="content">
+                    
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
+    </div>
+    <h2>Emacs 中使用 popup-tip 彈出自訂內容</h2>
+        <div id="post-date">
+            January 20, 2018
+        </div>
+</div>
+<div>
+    
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>由於看到了 <a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'>Popup Help In Emacs Lisp</a> 這篇文章，想要來自訂 popup-tip</p><p>其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來</p><p>因為檔案可能搜尋不到，所以多了一行 message</p><pre><code>&#40;defun fatfingererr/coding-dict-at-point &#40;&#41;
+  &#40;interactive&#41;
+  &#40;let&#42; &#40;&#40;content &#40;fatfingererr/search-in-dict
+                   &quot;coding&quot; &#40;thing-at-point 'word&#41;&#41;&#41;&#41;
+    &#40;if content
+        &#40;popup-tip content
+                   :point &#40;point&#41;
+                   :around t
+                   :height 30
+                   :scroll-bar t
+                   :margin t&#41;
+      &#40;message &quot;no match result...&quot;&#41;&#41;&#41;&#41;</code></pre><p>其中因為我建立了一個字典資料夾，放在 <code>&#126;/.spacemacs.d/dictionary</code> 中</p><p>裡面我弄了一個 <code>coding</code> 的資料夾，當作 coding 相關的字典檔案夾</p><p>也就是我只要目前游標停留在 <code>if</code> 他就會去找 <code>&#126;/.spacemacs.d/dictionary/coding/if</code></p><p>然後把檔案內容彈跳出來，例如一個提醒我寫 if 的內容：</p><pre><code># &#126;/.spacemacs.d/dictionary/coding/if</code></pre><pre><code>【 if/else 條件語句 】</code></pre><pre><code>迴圈循環子可考慮寫成 club&#95;i, members&#95;i, users&#95;i
+或是 ci, mi, ui</code></pre><p>所以我首先得先確定游標內容有沒有對應的檔案在字典資料夾裡面</p><pre><code>&#40;defun fatfingererr/search-in-dict-p &#40;dict-name src&#41;
+  &#40;if src &#40;xah-string-match-in-list-p src
+    &#40;directory-files
+     &#40;expand-file-name dict-name my-dict-path&#41;&#41; nil&#41;
+  nil&#41;
+&#41;</code></pre><p>這邊我使用到 <a href='http://ergoemacs.org/emacs/elisp_string_match_in_list.html'>xah-string-match-in-list-p</a> 函數，可以到連結裡面直接複製貼上</p><p>唯一要留意的就是使用這個函數，第三個參數要記得放，也就是 <code>match-case-p</code></p><p>接著我們確認完畢檔案存在，就開始把檔案內容讀出來</p><pre><code>&#40;defun fatfingererr/search-in-dict &#40;dict-name src&#41;
+  &#40;if &#40;fatfingererr/search-in-dict-p dict-name src&#41;
+      &#40;with-temp-buffer
+      &#40;insert-file-contents &#40;expand-file-name
+       &#40;fatfingererr/search-in-dict-p dict-name src&#41;
+       &#40;expand-file-name dict-name my-dict-path&#41;&#41;&#41;
+      &#40;buffer-string&#41;&#41;
+    nil&#41;
+  &#41;</code></pre><p>結果就會是這樣啦！還不錯！</p><p><img src="./search-in-dict-example.gif" alt="img" /></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'>Popup Help In Emacs Lisp</a></li></ol>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/emacs/">emacs</a>
+    
+    <a href="/tags-output/popup-tip/">popup-tip</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts-output/2018-01-20-Wittgensteins-Remarks-on-the-Foundations-of-AI-第二章閱讀筆記/">&laquo; Wittgenstein&#39;s Remarks on the Foundations of AI 第二章閱讀筆記</a>
+        
+        
+        <a class="right" href="/posts-output/2018-01-19-Windows中使用Rapid-Environment-Editor備份環境變數/">使用 Rapid Environment Editor 備份環境變數 &raquo;</a>
+        
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂內容/";
+            this.page.identifier = "Emacs 中使用 popup-tip 彈出自訂內容";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+</div>
+
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+        <footer>Copyright &copy;  fatfingererr
+            <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a> / Design by <a href="http://lambdafunk.com">Lambda Funk</a></p>
+        </footer>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+</body>
+
+</html>

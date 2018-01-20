@@ -76,7 +76,9 @@
 
 結果就會是這樣啦！還不錯！
 
-[[search-in-dict-example.gif]]
+[[./search-in-dict-example.gif]]
+
+
 
 
 

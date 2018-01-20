@@ -37,7 +37,7 @@
 
 然後把檔案內容彈跳出來，例如一個提醒我寫 if 的內容：
 
-#+BEGIN_SRC md
+#+BEGIN_SRC
 # ~/.spacemacs.d/dictionary/coding/if
 
 【 if/else 條件語句 】

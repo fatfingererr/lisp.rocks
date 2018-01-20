@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 20 Jan 2018 22:01:35 +0800
+Sat, 20 Jan 2018 22:02:24 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -45,7 +45,7 @@ http://lisp.rocks/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂
 http://lisp.rocks/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂內容/
 </link>
 <title>
-Emacs-中使用-popup-tip-彈出自訂內容
+Emacs 中使用 popup-tip 彈出自訂內容
 </title>
 <description>
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;../../img/search-in-dict-example.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;由於看到了 &lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt; 這篇文章，想要來自訂 popup-tip&lt;/p&gt;&lt;p&gt;其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來&lt;/p&gt;&lt;p&gt;因為檔案可能搜尋不到，所以多了一行 message&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defun fatfingererr/coding-dict-at-point &amp;#40;&amp;#41;

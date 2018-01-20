@@ -1,4 +1,4 @@
-    {:title "Emacs-中使用-popup-tip-彈出自訂內容" :layout :post :tags ["emacs" "spacemacs" "popup"] :toc false}
+    {:title "Emacs 中使用 popup-tip 彈出自訂內容" :layout :post :tags ["emacs" "spacemacs" "popup"] :toc false}
 
 
 # 　

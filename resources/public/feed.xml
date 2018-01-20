@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 20 Jan 2018 21:58:58 +0800
+Sat, 20 Jan 2018 21:59:23 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -73,7 +73,7 @@ Emacs-中使用-popup-tip-彈出自訂內容
        &amp;#40;expand-file-name dict-name my-dict-path&amp;#41;&amp;#41;&amp;#41;
       &amp;#40;buffer-string&amp;#41;&amp;#41;
     nil&amp;#41;
-  &amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;結果就會是這樣啦！還不錯！&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+  &amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;結果就會是這樣啦！還不錯！&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/search-in-dict-example.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
 </description>
 <enclosure>
 

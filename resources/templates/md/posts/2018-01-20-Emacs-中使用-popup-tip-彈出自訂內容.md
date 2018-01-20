@@ -1,4 +1,4 @@
-    {:title "Emacs-中使用-popup-tip-彈出自訂內容" :layout :post :tags [""] :toc false}
+    {:title "Emacs-中使用-popup-tip-彈出自訂內容" :layout :post :tags ["emacs" "spacemacs" "popup"] :toc false}
 
 
 # 　
@@ -66,6 +66,8 @@
       )
 
 結果就會是這樣啦！還不錯！
+
+![img](../../img/search-in-dict-example.gif)
 
 
 ## 參考資料

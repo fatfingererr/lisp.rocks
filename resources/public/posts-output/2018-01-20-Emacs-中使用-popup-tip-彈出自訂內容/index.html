@@ -65,7 +65,7 @@
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>由於看到了 <a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'>Popup Help In Emacs Lisp</a> 這篇文章，想要來自訂 popup-tip</p><p>其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來</p><p>因為檔案可能搜尋不到，所以多了一行 message</p><pre><code>&#40;defun fatfingererr/coding-dict-at-point &#40;&#41;
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p><img src="../../img/search-in-dict-example.gif" alt="img" /></p><p>由於看到了 <a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'>Popup Help In Emacs Lisp</a> 這篇文章，想要來自訂 popup-tip</p><p>其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來</p><p>因為檔案可能搜尋不到，所以多了一行 message</p><pre><code>&#40;defun fatfingererr/coding-dict-at-point &#40;&#41;
   &#40;interactive&#41;
   &#40;let&#42; &#40;&#40;content &#40;fatfingererr/search-in-dict
                    &quot;coding&quot; &#40;thing-at-point 'word&#41;&#41;&#41;&#41;
@@ -90,7 +90,7 @@
        &#40;expand-file-name dict-name my-dict-path&#41;&#41;&#41;
       &#40;buffer-string&#41;&#41;
     nil&#41;
-  &#41;</code></pre><p>結果就會是這樣啦！還不錯！</p><p><img src="../../img/search-in-dict-example.gif" alt="img" /></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'>Popup Help In Emacs Lisp</a></li></ol>
+  &#41;</code></pre><p>結果就會是像前面的 GIF 啦！還不錯！</p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'>Popup Help In Emacs Lisp</a></li></ol>
 </div>
 
 <div id="post-tags">

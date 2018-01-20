@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 20 Jan 2018 22:01:04 +0800
+Sat, 20 Jan 2018 22:01:35 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -48,7 +48,7 @@ http://lisp.rocks/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂
 Emacs-中使用-popup-tip-彈出自訂內容
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;由於看到了 &lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt; 這篇文章，想要來自訂 popup-tip&lt;/p&gt;&lt;p&gt;其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來&lt;/p&gt;&lt;p&gt;因為檔案可能搜尋不到，所以多了一行 message&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defun fatfingererr/coding-dict-at-point &amp;#40;&amp;#41;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;../../img/search-in-dict-example.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;由於看到了 &lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt; 這篇文章，想要來自訂 popup-tip&lt;/p&gt;&lt;p&gt;其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來&lt;/p&gt;&lt;p&gt;因為檔案可能搜尋不到，所以多了一行 message&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defun fatfingererr/coding-dict-at-point &amp;#40;&amp;#41;
   &amp;#40;interactive&amp;#41;
   &amp;#40;let&amp;#42; &amp;#40;&amp;#40;content &amp;#40;fatfingererr/search-in-dict
                    &amp;quot;coding&amp;quot; &amp;#40;thing-at-point 'word&amp;#41;&amp;#41;&amp;#41;&amp;#41;
@@ -73,7 +73,7 @@ Emacs-中使用-popup-tip-彈出自訂內容
        &amp;#40;expand-file-name dict-name my-dict-path&amp;#41;&amp;#41;&amp;#41;
       &amp;#40;buffer-string&amp;#41;&amp;#41;
     nil&amp;#41;
-  &amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;結果就會是這樣啦！還不錯！&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/search-in-dict-example.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+  &amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;結果就會是像前面的 GIF 啦！還不錯！&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
 </description>
 <enclosure>
 

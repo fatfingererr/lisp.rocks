@@ -6,6 +6,8 @@
 
 ## 　
 
+![img](../../img/search-in-dict-example.gif)
+
 由於看到了 [Popup Help In Emacs Lisp](http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html) 這篇文章，想要來自訂 popup-tip
 
 其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來
@@ -65,9 +67,7 @@
         nil)
       )
 
-結果就會是這樣啦！還不錯！
-
-![img](../../img/search-in-dict-example.gif)
+結果就會是像前面的 GIF 啦！還不錯！
 
 
 ## 參考資料

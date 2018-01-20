@@ -67,7 +67,7 @@
 
 結果就會是這樣啦！還不錯！
 
-![img](./search-in-dict-example.gif)
+![img](c:/search-in-dict-example.gif)
 
 
 ## 參考資料

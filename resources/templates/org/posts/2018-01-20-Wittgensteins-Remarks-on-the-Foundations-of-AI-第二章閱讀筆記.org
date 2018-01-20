@@ -1,0 +1,34 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "Wittgenstein's Remarks on the Foundations of AI 第二章閱讀筆記" :layout :post :tags ["reading" "philosophy"] :toc false}
+#+END_SRC
+* 　
+
+
+** 　
+
+最近參與了本書 [[https://www.amazon.com/Wittgensteins-Remarks-Foundations-Stuart-Shanker/dp/0415408571][Wittgenstein's Remarks on the Foundations of AI]] 的哲學讀書會
+
+所以想說把一些筆記重點紀錄下來
+
+<br>
+
+** 拆解「學習」這個概念
+
+圖靈認為更高層次的學習概念，也可以拆解成更簡單的一些小概念連貫起來
+
+這邊談的概念（ concept ）其實是一種「刺激」與「反映」的聯繫關係
+
+因為對於普通人來說，我們講 *X 具有 Y 概念* 其實往往是意味著 X 能做出某件關於 Y 概念的事情
+
+也因此對於概念的掌握，其實是一種將概念視同等價反應（ equivaience response ）
+
+舉例來說，一個主體 S 如果能適當地回應 Φ 如何使用，並且掌握 Φ 的規則以及解釋 Φ 是什麼
+
+那這樣我們會說主體 S 學習了關於 Φ 的概念
+
+然而對於人工智慧系統來說，在回應、掌握和解釋上面，可能受到嚴重的限制
+
+因此對於人工智慧來說，我們不應該說這樣的系統有什麼概念，而是要換一個講法
+
+我們與其說人工智慧學習了 X，我們可能可以說他「有條件做 X」

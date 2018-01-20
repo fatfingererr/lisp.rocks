@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 20 Jan 2018 21:26:48 +0800
+Sat, 20 Jan 2018 21:29:06 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -29,51 +29,6 @@ Wittgenstein's Remarks on the Foundations of AI 第二章閱讀筆記
 </title>
 <description>
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;最近參與了本書 &lt;a href='https://www.amazon.com/Wittgensteins-Remarks-Foundations-Stuart-Shanker/dp/0415408571'&gt;Wittgenstein's Remarks on the Foundations of AI&lt;/a&gt; 的哲學讀書會&lt;/p&gt;&lt;p&gt;所以想說把一些筆記重點紀錄下來，在第二章大量討論人工智慧與規範性之間的關係&lt;/p&gt;&lt;p&gt;不理解規範性是什麼的話，本文很有可能看不懂，請留意&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;拆解「學習」這個概念&quot;&gt;&lt;/a&gt;拆解「學習」這個概念&lt;/h2&gt;&lt;p&gt;圖靈認為更高層次的學習概念，也可以拆解成更簡單的一些小概念連貫起來&lt;/p&gt;&lt;p&gt;這邊談的概念（ concept ）其實是一種「刺激」與「反映」的聯繫關係&lt;/p&gt;&lt;p&gt;因為對於普通人來說，我們講 &lt;strong&gt;X 具有 Y 概念&lt;/strong&gt; 其實往往是意味著 X 能做出某件關於 Y 概念的事情&lt;/p&gt;&lt;p&gt;也因此對於概念的掌握，其實是一種將概念視同一連串的等價反應（ equivaience response ）&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;舉例來說，一個主體 S 如果能適當地回應 Φ 如何使用，並且掌握 Φ 的規則以及解釋 Φ 是什麼&lt;/p&gt;&lt;p&gt;那這樣我們會說主體 S 學習了關於 Φ 的概念&lt;/p&gt;&lt;p&gt;然而對於人工智慧系統來說，在回應、掌握和解釋上面，可能受到嚴重的限制&lt;/p&gt;&lt;p&gt;因此對於人工智慧來說，我們不應該說這樣的系統學習了什麼概念，而是要換一個講法&lt;/p&gt;&lt;p&gt;我們與其說人工智慧「學習了 X」，我們可能可以說他「有條件做 X」&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;然而圖靈可能會認為，我們在思維上也很難區分這兩者，所以在行為上也很難分辨「學習了」和「有條件」的關係&lt;/p&gt;&lt;p&gt;真的很難區分嗎？實際上「有條件做」和「學習」之間有個因果關係程度上的差異&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;舉例來說，我們不一定要用因果關係的規範性術語，像是「有條件」這樣來描述學習&lt;/p&gt;&lt;p&gt;像是你學習說話，你很難說你從什麼時間點確切開始學習，觸發什麼條件才學習，然後到什麼時間點結束&lt;/p&gt;&lt;p&gt;但是掌握說話的相關概念是很重要的，也就是掌握說話的因果關係，在什麼樣前提條件下說什麼話&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;實踐的規範性：上升的複雜性&quot;&gt;&lt;/a&gt;實踐的規範性：上升的複雜性&lt;/h2&gt;&lt;p&gt;我們可以看到一個真正的「學習」案例，例如我們因為在學加法，學習了 1+1 = 2&lt;/p&gt;&lt;p&gt;然而這學習過程，會遮蔽掉我們去思考加法（+）的意思，這是因為我們要區分「加法」和「做加法」的差異&lt;/p&gt;&lt;p&gt;這種情況會造成「上升的複雜性」，在學習過程中為了區分，需要使用抽象概念暫時代替&lt;/p&gt;&lt;p&gt;也因此我們需要採取各種不同的規範實踐方法&lt;/p&gt;&lt;p&gt;使得我們最後把這個上升的複雜性的異質性降低到一個共同範式，也就是一個功能性的定義&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;然而在圖靈，或是現在的人工智慧系統中，並沒有去掌握這樣的規範性&lt;/p&gt;&lt;p&gt;透過把學習拆解成一連串小部分的連續概念，只會導致破壞「學習」這個概念依賴的規範性基礎&lt;/p&gt;&lt;p&gt;這大概就是 2-3 的重點。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;機器可以學會閱讀嗎？&quot;&gt;&lt;/a&gt;機器可以學會閱讀嗎？&lt;/h2&gt;&lt;p&gt;在 2-4 維根斯坦開始思考底下三者閱讀的差異：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;機械式地閱讀，想成人工智慧系統或機器的閱讀&lt;/li&gt;&lt;li&gt;普通人在不瞭解詞語的情況下閱讀&lt;/li&gt;&lt;li&gt;普通人正常的閱讀&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;維根斯坦指出，我們很難區分 2 和 3 ，例如政治家拿著演講稿照稿念、和小朋友正在開始學習閱讀&lt;/p&gt;&lt;p&gt;維根斯坦好奇的是 1 和 3 之間也有像似 2 和 3 之間的難以區分的情況嗎？&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;這邊比較機器閱讀和正常人閱讀，似乎只差在有沒有一個「意識」的感覺&lt;/p&gt;&lt;p&gt;看起來，機器和正常人都擁有「閱讀」的能力，都可以看著文章，然後機器可以烙印在他的狀態上面&lt;/p&gt;&lt;p&gt;而我們人可以將看到的視覺資訊透過神經系統轉換，然後透過大腦各種奇怪作用達到閱讀行為&lt;/p&gt;&lt;p&gt;看起來之間也有模糊地帶的樣子&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;然而維根斯坦更關心的事情是，在這種問題上面我們常常搞混「擁有（possession）」能力&lt;/p&gt;&lt;p&gt;和「行使（exercise）」能力之間的關係，前面那樣的定義，也緊緊是說明了「行使閱讀能力」層面的說明&lt;/p&gt;&lt;p&gt;但是對「擁有閱讀能力」層面，很明顯機器和人工智慧系統是有差異的&lt;/p&gt;&lt;p&gt;擁有閱讀能力更多的受到規範性影響，包含前面提到的「獲取知識」和「表現出像擁有知識」一樣&lt;/p&gt;
-</description>
-<enclosure>
-
-</enclosure>
-<pubDate>
-Sat, 20 Jan 2018 00:00:00 +0800
-</pubDate>
-</item>
-<item>
-<guid>
-http://lisp.rocks/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂內容/
-</guid>
-<link>
-http://lisp.rocks/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂內容/
-</link>
-<title>
-Emacs 中使用 popup-tip 彈出自訂內容
-</title>
-<description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;由於看到了 &lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt; 這篇文章，想要來自訂 popup-tip&lt;/p&gt;&lt;p&gt;其實函數十分簡單，文章的方法就夠用了，但我想要從自訂的檔案內容讀取出來&lt;/p&gt;&lt;p&gt;因為檔案可能搜尋不到，所以多了一行 message&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defun fatfingererr/coding-dict-at-point &amp;#40;&amp;#41;
-  &amp;#40;interactive&amp;#41;
-  &amp;#40;let&amp;#42; &amp;#40;&amp;#40;content &amp;#40;fatfingererr/search-in-dict
-                   &amp;quot;coding&amp;quot; &amp;#40;thing-at-point 'word&amp;#41;&amp;#41;&amp;#41;&amp;#41;
-    &amp;#40;if content
-        &amp;#40;popup-tip content
-                   :point &amp;#40;point&amp;#41;
-                   :around t
-                   :height 30
-                   :scroll-bar t
-                   :margin t&amp;#41;
-      &amp;#40;message &amp;quot;no match result...&amp;quot;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中因為我建立了一個字典資料夾，放在 &lt;code&gt;&amp;#126;/.spacemacs.d/dictionary&lt;/code&gt; 中&lt;/p&gt;&lt;p&gt;裡面我弄了一個 &lt;code&gt;coding&lt;/code&gt; 的資料夾，當作 coding 相關的字典檔案夾&lt;/p&gt;&lt;p&gt;也就是我只要目前游標停留在 &lt;code&gt;if&lt;/code&gt; 他就會去找 &lt;code&gt;&amp;#126;/.spacemacs.d/dictionary/coding/if&lt;/code&gt;&lt;/p&gt;&lt;p&gt;然後把檔案內容彈跳出來，例如一個提醒我寫 if 的內容：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;# &amp;#126;/.spacemacs.d/dictionary/coding/if&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;【 if/else 條件語句 】&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;迴圈循環子可考慮寫成 club&amp;#95;i, members&amp;#95;i, users&amp;#95;i
-或是 ci, mi, ui&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;所以我首先得先確定游標內容有沒有對應的檔案在字典資料夾裡面&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defun fatfingererr/search-in-dict-p &amp;#40;dict-name src&amp;#41;
-  &amp;#40;if src &amp;#40;xah-string-match-in-list-p src
-    &amp;#40;directory-files
-     &amp;#40;expand-file-name dict-name my-dict-path&amp;#41;&amp;#41; nil&amp;#41;
-  nil&amp;#41;
-&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這邊我使用到 &lt;a href='http://ergoemacs.org/emacs/elisp_string_match_in_list.html'&gt;xah-string-match-in-list-p&lt;/a&gt; 函數，可以到連結裡面直接複製貼上&lt;/p&gt;&lt;p&gt;唯一要留意的就是使用這個函數，第三個參數要記得放，也就是 &lt;code&gt;match-case-p&lt;/code&gt;&lt;/p&gt;&lt;p&gt;接著我們確認完畢檔案存在，就開始把檔案內容讀出來&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defun fatfingererr/search-in-dict &amp;#40;dict-name src&amp;#41;
-  &amp;#40;if &amp;#40;fatfingererr/search-in-dict-p dict-name src&amp;#41;
-      &amp;#40;with-temp-buffer
-      &amp;#40;insert-file-contents &amp;#40;expand-file-name
-       &amp;#40;fatfingererr/search-in-dict-p dict-name src&amp;#41;
-       &amp;#40;expand-file-name dict-name my-dict-path&amp;#41;&amp;#41;&amp;#41;
-      &amp;#40;buffer-string&amp;#41;&amp;#41;
-    nil&amp;#41;
-  &amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;結果就會是這樣啦！還不錯！&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../search-in-dict-example.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://blog.jenkster.com/2013/12/popup-help-in-emacs-lisp.html'&gt;Popup Help In Emacs Lisp&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
 </description>
 <enclosure>
 

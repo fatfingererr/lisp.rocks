@@ -19,23 +19,12 @@
 
 然後在你的 org 檔案裡面就可以依序放入 RSS list
 
-例如
+例如（請把 `#` 換成 `*` ）
 
-\#+BEGIN<sub>SRC</sub>
-
-
-# Emacs     :elfeed:
-
-
-## <http://ergoemacs.org/emacs/blog.xml>
-
-
-## <http://planet.emacsen.org/atom.xml>
-
-
-## <http://nullprogram.com/feed>
-
-\#+END<sub>SRC</sub>
+    # Emacs                                                              :elfeed:
+    ## http://ergoemacs.org/emacs/blog.xml
+    ## http://planet.emacsen.org/atom.xml
+    ## http://nullprogram.com/feed
 
 
 ## 參考資料

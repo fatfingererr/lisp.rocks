@@ -21,7 +21,7 @@
 
 例如
 
-\#+BEGIN<sub>SRC</sub> org
+\#+BEGIN<sub>SRC</sub>
 
 
 # Emacs     :elfeed:
@@ -36,3 +36,9 @@
 ## <http://nullprogram.com/feed>
 
 \#+END<sub>SRC</sub>
+
+
+## 參考資料
+
+1.  [remyhonig/elfeed - An Emacs web feeds client](https://github.com/remyhonig/elfeed:)
+2.  [remyhonig/elfeed-org - Configure the Elfeed RSS reader with an Orgmode file](https://github.com/remyhonig/elfeed-org)

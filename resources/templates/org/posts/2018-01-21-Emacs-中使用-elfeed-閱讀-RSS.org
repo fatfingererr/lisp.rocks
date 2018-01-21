@@ -24,7 +24,7 @@
 
 例如
 
-#+BEGIN_SRC org
+#+BEGIN_SRC
 * Emacs                                                              :elfeed:
 **  http://ergoemacs.org/emacs/blog.xml
 ** http://planet.emacsen.org/atom.xml

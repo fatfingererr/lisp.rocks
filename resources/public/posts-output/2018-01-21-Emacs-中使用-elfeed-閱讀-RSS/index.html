@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Posts Tagged &quot;emacs&quot;</title>
-    <link rel="canonical" href="http://lisp.rocks/tags-output/emacs/">
+    <title>(print &quot;Lisp Rocks&quot;): Emacs 中使用 elfeed 閱讀 RSS</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -53,53 +53,58 @@
             <div>
                 <div id="content">
                     
-<div id="posts-by-tag">
-    <div id="page-header">
-        <h2>Posts Tagged &quot;emacs&quot;</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
     </div>
-    <ul>
+    <h2>Emacs 中使用 elfeed 閱讀 RSS</h2>
+        <div id="post-date">
+            January 21, 2018
+        </div>
+</div>
+<div>
     
-        <li>
-            <a href="/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/">Emacs 中使用 elfeed 閱讀 RSS</a>
-        </li>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>一直想從 feedly 搬到 Emacs 中，趁著有空來研究 elfeed</p><p>基本上在 Spacemacs 中預設就有 elfeed 以及用 org 管理 rss list 的 elfeed-org</p><p>我使用的方法是用 eval-after-load</p><pre><code>&#40;eval-after-load 'elfeed
+  &#40;lambda &#40;&#41;
+    &#40;elfeed-org&#41;
+    &#40;setq rmh-elfeed-org-files &#40;list &quot;&#126;/.spacemacs.d/rss/elfeed.org&quot;&#41;&#41;&#41;&#41;</code></pre><p>然後在你的 org 檔案裡面就可以依序放入 RSS list</p><p>例如</p><p>&#35;+BEGIN<sub>SRC</sub> org</p><h1><a name="emacs&#95;&#95;&#95;&#95;&#95;:elfeed:"></a>Emacs     :elfeed:</h1><h2><a name="<a&#95;href="http://ergoemacs.org/emacs/blog.xml">http://ergoemacs.org/emacs/blog.xml</a>"></a><a href="http://ergoemacs.org/emacs/blog.xml">http://ergoemacs.org/emacs/blog.xml</a></h2><h2><a name="<a&#95;href="http://planet.emacsen.org/atom.xml">http://planet.emacsen.org/atom.xml</a>"></a><a href="http://planet.emacsen.org/atom.xml">http://planet.emacsen.org/atom.xml</a></h2><h2><a name="<a&#95;href="http://nullprogram.com/feed">http://nullprogram.com/feed</a>"></a><a href="http://nullprogram.com/feed">http://nullprogram.com/feed</a></h2><p>&#35;+END<sub>SRC</sub></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
     
-        <li>
-            <a href="/posts-output/2018-01-20-Emacs-中使用-popup-tip-彈出自訂內容/">Emacs 中使用 popup-tip 彈出自訂內容</a>
-        </li>
+    <a href="/tags-output/elfeed/">elfeed</a>
     
-        <li>
-            <a href="/posts-output/2018-01-16-Emacs中使用eval-after-load避免使用尚未載入套件的函數/">Emacs中使用eval-after-load避免使用尚未載入套件的函數</a>
-        </li>
+    <a href="/tags-output/emacs/">emacs</a>
     
-        <li>
-            <a href="/posts-output/2018-01-15-Windows中使用Spacemacs和clang-format/">Windows中使用Spacemacs和clang-format</a>
-        </li>
+    <a href="/tags-output/elfeed-org/">elfeed-org</a>
     
-        <li>
-            <a href="/posts-output/2018-01-04-Emacs-中清除游標後空白直到非空白字元/">Emacs 中清除游標後空白直到非空白字元</a>
-        </li>
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts-output/2018-01-20-Wittgensteins-Remarks-on-the-Foundations-of-AI-第二章閱讀筆記/">Wittgenstein&#39;s Remarks on the Foundations of AI 第二章閱讀筆記 &raquo;</a>
+        
+    </div>
+
     
-        <li>
-            <a href="/posts-output/2018-01-03-Emacs-中透過指令建立-read-only-buffer/">Emacs 中透過指令建立 read-only buffer</a>
-        </li>
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/";
+            this.page.identifier = "Emacs 中使用 elfeed 閱讀 RSS";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
     
-        <li>
-            <a href="/posts-output/2018-01-02-Emacs-中處理檔名與路徑問題/">Emacs 中處理檔名與路徑問題</a>
-        </li>
-    
-        <li>
-            <a href="/posts-output/2018-01-01-Emacs-中對特定-mode-綁定特定的-imenu-關鍵字/">Emacs 中對特定 mode 綁定自訂 imenu 匹配</a>
-        </li>
-    
-        <li>
-            <a href="/posts-output/2017-12-27-在Emacs中安靜地執行async-shell-command/">Emacs 中安靜地執行 async-shell-command</a>
-        </li>
-    
-        <li>
-            <a href="/posts-output/2017-12-27-Emacs中處理Windows路徑轉換/">Emacs 中處理 Windows 路徑轉換</a>
-        </li>
-    
-    </ul>
 </div>
 
                 </div>

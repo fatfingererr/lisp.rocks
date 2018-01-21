@@ -30,3 +30,9 @@
 ** http://planet.emacsen.org/atom.xml
 ** http://nullprogram.com/feed
 #+END_SRC
+
+
+** 參考資料
+
+1. [[https://github.com/remyhonig/elfeed:][remyhonig/elfeed - An Emacs web feeds client]]
+2. [[https://github.com/remyhonig/elfeed-org][remyhonig/elfeed-org - Configure the Elfeed RSS reader with an Orgmode file]]

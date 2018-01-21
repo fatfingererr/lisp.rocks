@@ -12,11 +12,34 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 20 Jan 2018 22:03:00 +0800
+Sun, 21 Jan 2018 12:20:03 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/
+</link>
+<title>
+Emacs 中使用 elfeed 閱讀 RSS
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;一直想從 feedly 搬到 Emacs 中，趁著有空來研究 elfeed&lt;/p&gt;&lt;p&gt;基本上在 Spacemacs 中預設就有 elfeed 以及用 org 管理 rss list 的 elfeed-org&lt;/p&gt;&lt;p&gt;我使用的方法是用 eval-after-load&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;eval-after-load 'elfeed
+  &amp;#40;lambda &amp;#40;&amp;#41;
+    &amp;#40;elfeed-org&amp;#41;
+    &amp;#40;setq rmh-elfeed-org-files &amp;#40;list &amp;quot;&amp;#126;/.spacemacs.d/rss/elfeed.org&amp;quot;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然後在你的 org 檔案裡面就可以依序放入 RSS list&lt;/p&gt;&lt;p&gt;例如&lt;/p&gt;&lt;p&gt;&amp;#35;+BEGIN&lt;sub&gt;SRC&lt;/sub&gt; org&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;emacs&amp;#95;&amp;#95;&amp;#95;&amp;#95;&amp;#95;:elfeed:&quot;&gt;&lt;/a&gt;Emacs     :elfeed:&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&lt;a&amp;#95;href=&quot;http://ergoemacs.org/emacs/blog.xml&quot;&gt;http://ergoemacs.org/emacs/blog.xml&lt;/a&gt;&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://ergoemacs.org/emacs/blog.xml&quot;&gt;http://ergoemacs.org/emacs/blog.xml&lt;/a&gt;&lt;/h2&gt;&lt;h2&gt;&lt;a name=&quot;&lt;a&amp;#95;href=&quot;http://planet.emacsen.org/atom.xml&quot;&gt;http://planet.emacsen.org/atom.xml&lt;/a&gt;&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://planet.emacsen.org/atom.xml&quot;&gt;http://planet.emacsen.org/atom.xml&lt;/a&gt;&lt;/h2&gt;&lt;h2&gt;&lt;a name=&quot;&lt;a&amp;#95;href=&quot;http://nullprogram.com/feed&quot;&gt;http://nullprogram.com/feed&lt;/a&gt;&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://nullprogram.com/feed&quot;&gt;http://nullprogram.com/feed&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&amp;#35;+END&lt;sub&gt;SRC&lt;/sub&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 21 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-20-Wittgensteins-Remarks-on-the-Foundations-of-AI-第二章閱讀筆記/

@@ -71,7 +71,7 @@
     &#40;setq rmh-elfeed-org-files &#40;list &quot;&#126;/.spacemacs.d/rss/elfeed.org&quot;&#41;&#41;&#41;&#41;</code></pre><p>然後在你的 org 檔案裡面就可以依序放入 RSS list</p><p>例如（請把 <code>#</code> 換成 <code>&#42;</code> ）</p><pre><code># Emacs                                                              :elfeed:
 ## http://ergoemacs.org/emacs/blog.xml
 ## http://planet.emacsen.org/atom.xml
-## http://nullprogram.com/feed</code></pre><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='https://github.com/remyhonig/elfeed:'>remyhonig/elfeed - An Emacs web feeds client</a></li><li><a href='https://github.com/remyhonig/elfeed-org'>remyhonig/elfeed-org - Configure the Elfeed RSS reader with an Orgmode file</a></li></ol>
+## http://nullprogram.com/feed</code></pre><p>這邊要特別留意的是，第一個開頭一定要是 <code>&#42; 某開頭          :elfeed:</code> 這樣</p><p>這樣 elfeed 才會認知到你的 feed ，如果你在額外弄一個一級標題但沒有 <code>elfeed</code> 的 tag</p><p>就不會被當作是 elfeed 的 feed ，記得使用 <code>C-c C-q</code> 打上 tags</p><p>此外，如果不知道自己有沒有新增成功，可以透過指令 <code>elfeed-org-export-opml</code> 來看</p><p>如果裡面沒有新增的 RSS，就代表你 org file 沒弄好</p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='https://github.com/remyhonig/elfeed:'>remyhonig/elfeed - An Emacs web feeds client</a></li><li><a href='https://github.com/remyhonig/elfeed-org'>remyhonig/elfeed-org - Configure the Elfeed RSS reader with an Orgmode file</a></li></ol>
 </div>
 
 <div id="post-tags">

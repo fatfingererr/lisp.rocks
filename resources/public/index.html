@@ -58,30 +58,26 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Emacs 中使用 elfeed 閱讀 RSS</h2>
+    <h2>Emacs 中使用 wakatime 追蹤開發時間</h2>
         <div id="post-date">
-            January 21, 2018
+            January 24, 2018
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>一直想從 feedly 搬到 Emacs 中，趁著有空來研究 elfeed</p><p>基本上在 Spacemacs 中預設就有 elfeed 以及用 org 管理 rss list 的 elfeed-org</p><p>我使用的方法是用 eval-after-load</p><pre><code>&#40;eval-after-load 'elfeed
-  &#40;lambda &#40;&#41;
-    &#40;elfeed-org&#41;
-    &#40;setq rmh-elfeed-org-files &#40;list &quot;&#126;/.spacemacs.d/rss/elfeed.org&quot;&#41;&#41;&#41;&#41;</code></pre><p>然後在你的 org 檔案裡面就可以依序放入 RSS list</p><p>例如（請把 <code>#</code> 換成 <code>&#42;</code> ）</p><pre><code># Emacs                                                              :elfeed:
-## http://ergoemacs.org/emacs/blog.xml
-## http://planet.emacsen.org/atom.xml
-## http://nullprogram.com/feed</code></pre><p>這邊要特別留意的是，第一個開頭一定要是 <code>&#42; 某開頭          :elfeed:</code> 這樣</p><p>這樣 elfeed 才會認知到你的 feed ，如果你在額外弄一個一級標題但沒有 <code>elfeed</code> 的 tag</p><p>就不會被當作是 elfeed 的 feed ，記得使用 <code>C-c C-q</code> 打上 tags</p><p>此外，如果不知道自己有沒有新增成功，可以透過指令 <code>elfeed-org-export-opml</code> 來看</p><p>如果裡面沒有新增的 RSS，就代表你 org file 沒弄好</p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='https://github.com/remyhonig/elfeed:'>remyhonig/elfeed - An Emacs web feeds client</a></li><li><a href='https://github.com/remyhonig/elfeed-org'>remyhonig/elfeed-org - Configure the Elfeed RSS reader with an Orgmode file</a></li></ol>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>最近在使用 elfeed 的功能，就順道看了 Spacemacs 的其他 Web Services layer</p><p>然後想說慢慢來用看看，今天先嘗試的是 wakatime</p><p>簡單的介紹可以參考 <a href='http://www.iamlj.com/2016/07/recommend-tools-wakatime/'> WakaTime - 编程时间管理工具 顺便秀秀编程时间 | Jing’s Blog </a></p><p>在 windows 上面安裝需要留意一些事情</p><p>首先是要用 <code>Run as Administer</code> 開啟 cmd</p><p>然後安裝</p><pre><code>pip install wakatime</code></pre><p>接下來使用 Spacemacs 的說明中提到的設定</p><pre><code>;; 在 dotspacemacs-configuration-layers 中新增
+&#40;wakatime :variables
+                wakatime-api-key  &quot;&lt;註冊完帳號就會有API-KEY&gt;&quot;
+                ;; use the actual wakatime path
+                wakatime-cli-path &quot;&lt;可不填,只要python套件在環境變數中&gt;&quot;&#41;</code></pre><p>這邊的 API-KEY 在註冊完畢 wakatime 就會得到，需要驗證 email</p><p>而 Path 的話則是不用輸入，因為在 Windows 上面處理 path 會很麻煩，有斜線問題</p><p>如果你的 python 安裝路徑本身就在環境路徑下，那就不用添加 path</p><p>如果你 wakatime 沒執行成功，他會在 Emacs 的 <code>&#42;messages&#42;</code> buffer 告訴你他想執行的指令</p><p>像我剛改完畢 Spacemacs 設定，馬上就更新到 wakatime 網站了</p><p><img src="../../img/waaktime-try.png" alt="img" /></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://www.iamlj.com/2016/07/recommend-tools-wakatime/'> WakaTime - 编程时间管理工具 顺便秀秀编程时间 | Jing’s Blog </a></li><li><a href='https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bweb-services/wakatime'>spacemacs/layers/+web-services/wakatime at master · syl20bnr/spacemacs · GitHub</a></li></ol>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/elfeed/">elfeed</a>
-    
     <a href="/tags-output/emacs/">emacs</a>
     
-    <a href="/tags-output/elfeed-org/">elfeed-org</a>
+    <a href="/tags-output/wakatime/">wakatime</a>
     
 </div>
 
@@ -91,7 +87,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2018-01-20-Wittgensteins-Remarks-on-the-Foundations-of-AI-第二章閱讀筆記/">Wittgenstein&#39;s Remarks on the Foundations of AI 第二章閱讀筆記 &raquo;</a>
+        <a class="right" href="/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/">Emacs 中使用 elfeed 閱讀 RSS &raquo;</a>
         
     </div>
 </div>

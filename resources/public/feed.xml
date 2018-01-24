@@ -12,11 +12,35 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 21 Jan 2018 12:37:21 +0800
+Wed, 24 Jan 2018 12:19:19 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-24-Emacs-中使用-wakatime-追蹤開發時間/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-24-Emacs-中使用-wakatime-追蹤開發時間/
+</link>
+<title>
+Emacs 中使用 wakatime 追蹤開發時間
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;最近在使用 elfeed 的功能，就順道看了 Spacemacs 的其他 Web Services layer&lt;/p&gt;&lt;p&gt;然後想說慢慢來用看看，今天先嘗試的是 wakatime&lt;/p&gt;&lt;p&gt;簡單的介紹可以參考 &lt;a href='http://www.iamlj.com/2016/07/recommend-tools-wakatime/'&gt; WakaTime - 编程时间管理工具 顺便秀秀编程时间 | Jing’s Blog &lt;/a&gt;&lt;/p&gt;&lt;p&gt;在 windows 上面安裝需要留意一些事情&lt;/p&gt;&lt;p&gt;首先是要用 &lt;code&gt;Run as Administer&lt;/code&gt; 開啟 cmd&lt;/p&gt;&lt;p&gt;然後安裝&lt;/p&gt;&lt;pre&gt;&lt;code&gt;pip install wakatime&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下來使用 Spacemacs 的說明中提到的設定&lt;/p&gt;&lt;pre&gt;&lt;code&gt;;; 在 dotspacemacs-configuration-layers 中新增
+&amp;#40;wakatime :variables
+                wakatime-api-key  &amp;quot;&amp;lt;註冊完帳號就會有API-KEY&amp;gt;&amp;quot;
+                ;; use the actual wakatime path
+                wakatime-cli-path &amp;quot;&amp;lt;可不填,只要python套件在環境變數中&amp;gt;&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這邊的 API-KEY 在註冊完畢 wakatime 就會得到，需要驗證 email&lt;/p&gt;&lt;p&gt;而 Path 的話則是不用輸入，因為在 Windows 上面處理 path 會很麻煩，有斜線問題&lt;/p&gt;&lt;p&gt;如果你的 python 安裝路徑本身就在環境路徑下，那就不用添加 path&lt;/p&gt;&lt;p&gt;如果你 wakatime 沒執行成功，他會在 Emacs 的 &lt;code&gt;&amp;#42;messages&amp;#42;&lt;/code&gt; buffer 告訴你他想執行的指令&lt;/p&gt;&lt;p&gt;像我剛改完畢 Spacemacs 設定，馬上就更新到 wakatime 網站了&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/waaktime-try.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://www.iamlj.com/2016/07/recommend-tools-wakatime/'&gt; WakaTime - 编程时间管理工具 顺便秀秀编程时间 | Jing’s Blog &lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bweb-services/wakatime'&gt;spacemacs/layers/+web-services/wakatime at master · syl20bnr/spacemacs · GitHub&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 24 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/

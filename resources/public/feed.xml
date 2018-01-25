@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 24 Jan 2018 12:19:19 +0800
+Thu, 25 Jan 2018 11:15:25 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-25-Emacs-中使用-gnus-的基本快捷鍵/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-25-Emacs-中使用-gnus-的基本快捷鍵/
+</link>
+<title>
+Emacs 中使用 gnus 的基本快捷鍵
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;最近使用 gnus 管理 Email 但是都搞不太懂他的快捷鍵&lt;/p&gt;&lt;p&gt;網路找了一些資料，整理自己常用的快捷鍵按鈕&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;code&gt;Z C&lt;/code&gt; 標記所有文章為已讀&lt;/li&gt;&lt;li&gt;&lt;code&gt;r&lt;/code&gt; 回信， &lt;code&gt;R&lt;/code&gt; 帶原文的回信&lt;/li&gt;&lt;li&gt;&lt;code&gt;L&lt;/code&gt; 顯示 0 郵件的分類 &lt;code&gt;l&lt;/code&gt; 只顯示有未讀的群組&lt;/li&gt;&lt;li&gt;&lt;code&gt;g&lt;/code&gt; 重新整理並取得最新郵件&lt;/li&gt;&lt;li&gt;&lt;code&gt;m&lt;/code&gt; 寫信 &lt;code&gt;C-c C-c&lt;/code&gt; 寄出 &lt;code&gt;C-x s&lt;/code&gt; 保存草稿 &lt;code&gt;C-c C-d&lt;/code&gt; 退出 &lt;code&gt;C-c C-k&lt;/code&gt; 強制退出&lt;/li&gt;&lt;li&gt;&lt;code&gt;C-c C-a&lt;/code&gt; 添加附件&lt;/li&gt;&lt;li&gt;&lt;code&gt;o / C-o&lt;/code&gt; 在郵件中保存附件&lt;/li&gt;&lt;li&gt;&lt;code&gt;B DEL&lt;/code&gt; 刪除郵件&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;在 gnus 中對已讀和未讀的信有一些標記&lt;/p&gt;&lt;p&gt;例如已讀的信會有 &lt;code&gt;R, r, O, E&lt;/code&gt;&lt;/p&gt;&lt;p&gt;而未讀的信會有 &lt;code&gt;!, ?, &amp;#42;&lt;/code&gt; 的標記&lt;/p&gt;&lt;p&gt;其中&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;R&lt;/code&gt; 表示這次閱讀過了&lt;/li&gt;&lt;li&gt;&lt;code&gt;r&lt;/code&gt; 表示是手動 &lt;code&gt;d&lt;/code&gt; 打上已讀標籤的文章&lt;/li&gt;&lt;li&gt;&lt;code&gt;O&lt;/code&gt; 上次已經閱讀過了，默認不會出現除非使用 &lt;code&gt;/ o&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;!&lt;/code&gt; ticked 保留標記，保留可見，想持續追蹤&lt;/li&gt;&lt;li&gt;&lt;code&gt;?&lt;/code&gt; dormant 休眠標記，除非有人回應否則不會看到這個&lt;/li&gt;&lt;li&gt;&lt;code&gt;&amp;lt;space&amp;gt;&lt;/code&gt; 空格標記及表示仍然是未讀文章&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&amp;#42;&amp;#42;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='http://www.junzilou.com/blog/emacs_gnus_shortcuts.html'&gt; emacs的gnus的一些快捷键 | 君子楼&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='https://www.ibm.com/developerworks/cn/linux/l-cn-emacsgnus/index.html'&gt;Emacs Gnus 的基本配置与使用&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Thu, 25 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-24-Emacs-中使用-wakatime-追蹤開發時間/

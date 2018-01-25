@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Emacs 中使用 wakatime 追蹤開發時間</title>
-    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-24-Emacs-中使用-wakatime-追蹤開發時間/">
+    <title>(print &quot;Lisp Rocks&quot;): Emacs 中使用 gnus 的基本快捷鍵</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-25-Emacs-中使用-gnus-的基本快捷鍵/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -58,36 +58,32 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>Emacs 中使用 wakatime 追蹤開發時間</h2>
+    <h2>Emacs 中使用 gnus 的基本快捷鍵</h2>
         <div id="post-date">
-            January 24, 2018
+            January 25, 2018
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>最近在使用 elfeed 的功能，就順道看了 Spacemacs 的其他 Web Services layer</p><p>然後想說慢慢來用看看，今天先嘗試的是 wakatime</p><p>簡單的介紹可以參考 <a href='http://www.iamlj.com/2016/07/recommend-tools-wakatime/'> WakaTime - 编程时间管理工具 顺便秀秀编程时间 | Jing’s Blog </a></p><p>在 windows 上面安裝需要留意一些事情</p><p>首先是要用 <code>Run as Administer</code> 開啟 cmd</p><p>然後安裝</p><pre><code>pip install wakatime</code></pre><p>接下來使用 Spacemacs 的說明中提到的設定</p><pre><code>;; 在 dotspacemacs-configuration-layers 中新增
-&#40;wakatime :variables
-                wakatime-api-key  &quot;&lt;註冊完帳號就會有API-KEY&gt;&quot;
-                ;; use the actual wakatime path
-                wakatime-cli-path &quot;&lt;可不填,只要python套件在環境變數中&gt;&quot;&#41;</code></pre><p>這邊的 API-KEY 在註冊完畢 wakatime 就會得到，需要驗證 email</p><p>而 Path 的話則是不用輸入，因為在 Windows 上面處理 path 會很麻煩，有斜線問題</p><p>如果你的 python 安裝路徑本身就在環境路徑下，那就不用添加 path</p><p>如果你 wakatime 沒執行成功，他會在 Emacs 的 <code>&#42;messages&#42;</code> buffer 告訴你他想執行的指令</p><p>像我剛改完畢 Spacemacs 設定，馬上就更新到 wakatime 網站了</p><p><img src="../../img/waaktime-try.png" alt="img" /></p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://www.iamlj.com/2016/07/recommend-tools-wakatime/'> WakaTime - 编程时间管理工具 顺便秀秀编程时间 | Jing’s Blog </a></li><li><a href='https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bweb-services/wakatime'>spacemacs/layers/+web-services/wakatime at master · syl20bnr/spacemacs · GitHub</a></li></ol>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>最近使用 gnus 管理 Email 但是都搞不太懂他的快捷鍵</p><p>網路找了一些資料，整理自己常用的快捷鍵按鈕</p><ol><li><code>Z C</code> 標記所有文章為已讀</li><li><code>r</code> 回信， <code>R</code> 帶原文的回信</li><li><code>L</code> 顯示 0 郵件的分類 <code>l</code> 只顯示有未讀的群組</li><li><code>g</code> 重新整理並取得最新郵件</li><li><code>m</code> 寫信 <code>C-c C-c</code> 寄出 <code>C-x s</code> 保存草稿 <code>C-c C-d</code> 退出 <code>C-c C-k</code> 強制退出</li><li><code>C-c C-a</code> 添加附件</li><li><code>o / C-o</code> 在郵件中保存附件</li><li><code>B DEL</code> 刪除郵件</li></ol><p>在 gnus 中對已讀和未讀的信有一些標記</p><p>例如已讀的信會有 <code>R, r, O, E</code></p><p>而未讀的信會有 <code>!, ?, &#42;</code> 的標記</p><p>其中</p><ul><li><code>R</code> 表示這次閱讀過了</li><li><code>r</code> 表示是手動 <code>d</code> 打上已讀標籤的文章</li><li><code>O</code> 上次已經閱讀過了，默認不會出現除非使用 <code>/ o</code></li><li><code>!</code> ticked 保留標記，保留可見，想持續追蹤</li><li><code>?</code> dormant 休眠標記，除非有人回應否則不會看到這個</li><li><code>&lt;space&gt;</code> 空格標記及表示仍然是未讀文章</li></ul><p><br></p><p>&#42;&#42;</p><h2><a name="參考資料"></a>參考資料</h2><ol><li><a href='http://www.junzilou.com/blog/emacs_gnus_shortcuts.html'> emacs的gnus的一些快捷键 | 君子楼</a></li><li><a href='https://www.ibm.com/developerworks/cn/linux/l-cn-emacsgnus/index.html'>Emacs Gnus 的基本配置与使用</a></li></ol>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
+    <a href="/tags-output/gnus/">gnus</a>
+    
     <a href="/tags-output/emacs/">emacs</a>
     
-    <a href="/tags-output/wakatime/">wakatime</a>
+    <a href="/tags-output/spacemacs/">spacemacs</a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts-output/2018-01-25-Emacs-中使用-gnus-的基本快捷鍵/">&laquo; Emacs 中使用 gnus 的基本快捷鍵</a>
         
-        
-        <a class="right" href="/posts-output/2018-01-21-Emacs-中使用-elfeed-閱讀-RSS/">Emacs 中使用 elfeed 閱讀 RSS &raquo;</a>
+        <a class="right" href="/posts-output/2018-01-24-Emacs-中使用-wakatime-追蹤開發時間/">Emacs 中使用 wakatime 追蹤開發時間 &raquo;</a>
         
     </div>
 
@@ -96,8 +92,8 @@
 
     <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = "http://lisp.rocks/posts-output/2018-01-24-Emacs-中使用-wakatime-追蹤開發時間/";
-            this.page.identifier = "Emacs 中使用 wakatime 追蹤開發時間";
+            this.page.url = "http://lisp.rocks/posts-output/2018-01-25-Emacs-中使用-gnus-的基本快捷鍵/";
+            this.page.identifier = "Emacs 中使用 gnus 的基本快捷鍵";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

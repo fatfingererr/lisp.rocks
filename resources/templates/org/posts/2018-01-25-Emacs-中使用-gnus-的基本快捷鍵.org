@@ -1,0 +1,49 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "Emacs 中使用 gnus 的基本快捷鍵" :layout :post :tags ["emacs" "spacemacs" "gnus"] :toc false}
+#+END_SRC
+* 　
+
+
+** 　
+
+最近使用 gnus 管理 Email 但是都搞不太懂他的快捷鍵
+
+網路找了一些資料，整理自己常用的快捷鍵按鈕
+
+1. =Z C= 標記所有文章為已讀
+2. =r= 回信， =R= 帶原文的回信
+3. =L= 顯示 0 郵件的分類 =l= 只顯示有未讀的群組
+4. =g= 重新整理並取得最新郵件
+5. =m= 寫信 =C-c C-c= 寄出 =C-x s= 保存草稿 =C-c C-d= 退出 =C-c C-k= 強制退出
+6. =C-c C-a= 添加附件
+7. =o / C-o= 在郵件中保存附件
+8. =B DEL= 刪除郵件
+
+在 gnus 中對已讀和未讀的信有一些標記
+
+例如已讀的信會有 =R, r, O, E=
+
+而未讀的信會有 =!, ?, *= 的標記
+
+其中
+
+- =R= 表示這次閱讀過了
+- =r= 表示是手動 =d= 打上已讀標籤的文章
+- =O= 上次已經閱讀過了，默認不會出現除非使用 =/ o=
+- =!= ticked 保留標記，保留可見，想持續追蹤
+- =?= dormant 休眠標記，除非有人回應否則不會看到這個
+- =<space>= 空格標記及表示仍然是未讀文章
+
+
+
+
+
+
+<br>
+
+**
+** 參考資料
+
+1. [[http://www.junzilou.com/blog/emacs_gnus_shortcuts.html][ emacs的gnus的一些快捷键 | 君子楼]]
+2. [[https://www.ibm.com/developerworks/cn/linux/l-cn-emacsgnus/index.html][Emacs Gnus 的基本配置与使用]]

@@ -1,0 +1,68 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "〈 Producing Open Source Software 〉閱讀筆記 2" :layout :post :tags ["reading" "open source"] :toc false}
+#+END_SRC
+* 　
+
+
+**  為專案選好名字
+
+- 盡可能好記，也就是以英文好發音
+
+- 可使用雙關語，如果有能聯想到專案內容的連結的話
+
+- 可以盡量不要重複
+
+- 如果有對應的頂級網域就更好
+
+<br>
+
+** 清楚的使命聲明 ( Mission Statement )
+
+- 如何讓使用者在 30 秒內明白專案內容並引起他們的興趣
+
+- 通常在首頁或是專案名稱正下方
+
+- 應該是具體的、限制性、簡短的描述
+
+<br>
+
+** 聲稱為開源專案
+
+- 很多專案都是在下載才列出來
+
+- 甚至沒有選擇許可證
+
+- 應該在專案敘述中強調這件事情並給出確切許可證
+
+- 也可以另外開啟一個文件版面說明專案版權選擇細節
+
+<br>
+
+** 列出專案功能與需求 ( Features and Requirements List )
+
+- 在快速看過這些專案後，通常訪問對象會有 5 分鐘深入了解細節
+
+- 這時候應該要說明專案支持的功能
+
+- 如果尚未完成他，可以加註 (in progress) 或 (planned)
+
+- 同時要說明運行你的專案需要的開發或運行環境需求
+
+例如：
+
+#+BEGIN_SRC markdown
+
+Features:
+
+  - XXXXX
+
+  - (planned) XXXXX
+
+Requirements:
+
+  - Python a.b or higher
+
+#+END_SRC
+
+- 看完這些能使讀者快速判斷他是否能使用或參與你的專案

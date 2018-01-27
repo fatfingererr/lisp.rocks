@@ -151,4 +151,20 @@ Requirements:
 
 <br>
 
-**
+** 維護 FAQ
+
+<br>
+
+** 最基本的溝通工具
+
+- 網站
+
+- 郵件列表 Mailing list
+
+- 議題追蹤 Bug tracking
+
+- 實時討論 Real-time chat
+
+...
+
+有點累了... 剩下我先看完在做筆記吧！

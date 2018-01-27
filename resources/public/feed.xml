@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 25 Jan 2018 11:15:25 +0800
+Sat, 27 Jan 2018 16:03:39 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記/
+</link>
+<title>
+〈 Producing Open Source Software 〉閱讀筆記
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;因為想了解 Open Source 的一些經營和法律問題，所以找了這本書來讀。&lt;/p&gt;&lt;p&gt;針對裡面的一些重點作一些筆記，主要還是會偏向本書中對開源專案的看法，開源的討論就比較少筆記。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;怎樣判斷一個專案的失敗？&quot;&gt;&lt;/a&gt;怎樣判斷一個專案的失敗？&lt;/h3&gt;&lt;p&gt;本書作者首先從如何判斷開源專案破題：&lt;/p&gt;&lt;p&gt;我們一般都不會聽到 Open Source 失敗，大部分就是維護者離開而停止維護&lt;/p&gt;&lt;p&gt;而這個離開是漸漸地，甚至是以另開一個新項目的方式結束，&lt;/p&gt;&lt;p&gt;又或是可以用專案使用的人漸漸變少來判斷呢？這些都顯示判斷一個專案結束很困難&lt;/p&gt;&lt;p&gt;而作者在本書中，想嘗試的就是告知讀者如何「避免專案失敗」&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;最常見錯誤：過高的期待&quot;&gt;&lt;/a&gt;最常見錯誤：過高的期待&lt;/h3&gt;&lt;p&gt;作者提到最常見對開源專案的誤解，就是抱有不切實際的期待&lt;/p&gt;&lt;p&gt;所以專案負責人可能不會投入過多的時間在介紹專案和包裝，把這些視為次要的&lt;/p&gt;&lt;p&gt;然而對於不熟悉的人，這些都很重要，但工程師也無可厚非，他們擅長他們擅長的事情&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;專案管理幾乎不太必要&quot;&gt;&lt;/a&gt;專案管理幾乎不太必要&lt;/h3&gt;&lt;p&gt;在一個成功的開源專案中，很多討論和決定都是在檯面下進行&lt;/p&gt;&lt;p&gt;因為專案的組成成員是隨機而來，大家又幾乎沒有見過面，所以很難思考這個情況下會發生什麼事情&lt;/p&gt;&lt;p&gt;專案管理人們可能會相對活躍，但也是以低調和非正式的方式進行&lt;/p&gt;&lt;p&gt;因此多數管理的目標主要就是確定彼此有共同的看法，並設定溝通的規範&lt;/p&gt;&lt;p&gt;確保不會有人被排擠，並且可以讓專案成為貢獻者經常回來的地方&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;失敗的文化導引&quot;&gt;&lt;/a&gt;失敗的文化導引&lt;/h3&gt;&lt;p&gt;大多數好的專案都會顯示出來他們獎勵、或是懲罰什麼樣的行為&lt;/p&gt;&lt;p&gt;通常專案會鼓勵不再規劃中的事件發生，儘管需要犧牲一些協調溝通的代價&lt;/p&gt;&lt;p&gt;而長期參與者會內化一個標準，使其成為一個貢獻者們共通的大致共識&lt;/p&gt;&lt;p&gt;而不成功的專案通常就是偏離了這個核心文化&lt;/p&gt;&lt;p&gt;使得專案遇到問題時，會突然迅速造成結果惡化，因為貢獻者們沒有對問題有共通的共識來解決分歧&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;開源是選擇性文化&quot;&gt;&lt;/a&gt;開源是選擇性文化&lt;/h3&gt;&lt;p&gt;所有人會參與到一個專案中，是因為他們選擇參與，如果他們不喜歡就會離開。&lt;/p&gt;&lt;p&gt;只要他們喜歡就會付出一些時間，但要形成一個具有凝聚力和專注的團隊需要很長時間&lt;/p&gt;&lt;p&gt;同時要失去一個潛在有興趣的人，是很容易的一件事情，例如差勁的第一印象，別人就不會給予第二次機會&lt;/p&gt;&lt;p&gt;要維持這樣的聯繫很不容易，本書給予了一個很好的評量標準：&lt;/p&gt;&lt;p&gt;&lt;strong&gt;「參與者必須感受到他們與開源專案的聯繫，以及對專案的影響和他們的貢獻是成正比。」&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;選擇的技術框架、宣傳模式以及開發語言，都會影響到這一切。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&amp;#42;&lt;/strong&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;參考資料&quot;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;a href='https://www.amazon.com/Producing-Open-Source-Software-Successful/dp/0596007590'&gt;Producing Open Source Software: How to Run a Successful Free Software Project | Amazon.com Books&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 27 Jan 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-25-Emacs-中使用-gnus-的基本快捷鍵/

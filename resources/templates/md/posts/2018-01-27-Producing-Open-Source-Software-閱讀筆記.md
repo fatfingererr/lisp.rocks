@@ -1,19 +1,19 @@
-#+OPTIONS: toc:nil
-#+BEGIN_SRC json :noexport:
-{:title "〈 Producing Open Source Software 〉閱讀筆記" :layout :post :tags ["reading" "open source"] :toc false}
-#+END_SRC
-* 　
+    {:title "〈 Producing Open Source Software 〉閱讀筆記" :layout :post :tags ["reading" "open source"] :toc false}
 
 
-** 　
+# 　
+
+
+## 　
 
 因為想了解 Open Source 的一些經營和法律問題，所以找了這本書來讀。
 
-針對裡面的一些重點作筆記，主要還是會偏向對開源專案的看法，一般性的討論就比較少。
+針對裡面的一些重點作一些筆記，主要還是會偏向本書中對開源專案的看法，開源的討論就比較少筆記。
 
 <br>
 
-*** 怎樣判斷一個專案的失敗？
+
+### 怎樣判斷一個專案的失敗？
 
 本書作者首先從如何判斷開源專案破題：
 
@@ -27,7 +27,8 @@
 
 <br>
 
-*** 最常見錯誤：過高的期待
+
+### 最常見錯誤：過高的期待
 
 作者提到最常見對開源專案的誤解，就是抱有不切實際的期待
 
@@ -37,7 +38,8 @@
 
 <br>
 
-*** 專案管理幾乎不太必要
+
+### 專案管理幾乎不太必要
 
 在一個成功的開源專案中，很多討論和決定都是在檯面下進行
 
@@ -51,7 +53,8 @@
 
 <br>
 
-*** 失敗的文化導引
+
+### 失敗的文化導引
 
 大多數好的專案都會顯示出來他們獎勵、或是懲罰什麼樣的行為
 
@@ -65,7 +68,8 @@
 
 <br>
 
-*** 開源是選擇性文化
+
+### 開源是選擇性文化
 
 所有人會參與到一個專案中，是因為他們選擇參與，如果他們不喜歡就會離開。
 
@@ -75,20 +79,15 @@
 
 要維持這樣的聯繫很不容易，本書給予了一個很好的評量標準：
 
-*「參與者必須感受到他們與開源專案的聯繫，以及對專案的影響和他們的貢獻是成正比。」*
+**「參與者必須感受到他們與開源專案的聯繫，以及對專案的影響和他們的貢獻是成正比。」**
 
 選擇的技術框架、宣傳模式以及開發語言，都會影響到這一切。
 
 <br>
 
-***
+**\***
 
 
+## 參考資料
 
-
-
-
-
-** 參考資料
-
-1. [[https://www.amazon.com/Producing-Open-Source-Software-Successful/dp/0596007590][Producing Open Source Software: How to Run a Successful Free Software Project | Amazon.com Books]]
+1.  [Producing Open Source Software: How to Run a Successful Free Software Project | Amazon.com Books](https://www.amazon.com/Producing-Open-Source-Software-Successful/dp/0596007590)

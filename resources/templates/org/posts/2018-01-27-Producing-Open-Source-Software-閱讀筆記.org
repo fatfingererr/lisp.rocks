@@ -1,0 +1,48 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "〈 Producing Open Source Software 〉閱讀筆記" :layout :post :tags ["reading" "open source"] :toc false}
+#+END_SRC
+* 　
+
+
+** 　
+
+因為想了解 Open Source 的一些經營和法律問題，所以找了這本書來讀。
+
+針對裡面的一些重點作一些筆記。
+
+<br>
+
+*** 怎樣判斷一個專案的失敗？
+
+本書作者首先從如何判斷開源專案破題：
+
+我們一般都不會聽到 Open Source 失敗，大部分就是維護者離開而停止維護
+
+而這個離開是漸漸地，甚至是以另開一個新項目的方式結束，
+
+又或是可以用專案使用的人漸漸變少來判斷呢？這些都顯示判斷一個專案結束很困難
+
+而作者在本書中，想嘗試的就是告知讀者如何「避免專案失敗」
+
+<br>
+
+*** 最常見錯誤：過高的期待
+
+作者提到最常見對開源專案的誤解，就是抱有不切實際的期待
+
+作者提到 Jamie Zawinski 在 Mozilla 早期的困境，他說道：
+
+> Open source does work, but it is most definitely not a panacea
+
+
+
+
+
+
+
+
+
+** 參考資料
+
+1. [[https://www.amazon.com/Producing-Open-Source-Software-Successful/dp/0596007590][Producing Open Source Software: How to Run a Successful Free Software Project | Amazon.com Books]]

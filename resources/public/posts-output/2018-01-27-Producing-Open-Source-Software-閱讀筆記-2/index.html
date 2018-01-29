@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>(print &quot;Lisp Rocks&quot;): 〈 Producing Open Source Software 〉閱讀筆記 2</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記-2/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github.min.css">
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"> 
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+    <script>
+    window.klipse_settings = {
+        selector: '.language-klipse' // css selector for the html elements you want to klipsify
+    };
+    </script>
+    <script src="/js/highlight.pack.js" type="text/javascript"></script>
+    <script>
+    hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-title" href="/">(print &quot;Lisp Rocks&quot;)</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="position: absolute; right: 0;">
+            <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li ><a href="/archives/">Archives</a></li>
+                
+                <li >
+                    <a href="/pages-output/about/">About</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+        <!--/.container-fluid -->
+    </nav>
+    <div>
+        <div>
+            <div>
+                <div id="content">
+                    
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
+    </div>
+    <h2>〈 Producing Open Source Software 〉閱讀筆記 2</h2>
+        <div id="post-date">
+            January 27, 2018
+        </div>
+</div>
+<div>
+    
+    <h1><a name=""></a></h1><h2><a name="為專案選好名字"></a>為專案選好名字</h2><ul><li>盡可能好記，也就是以英文好發音</li><li>可使用雙關語，如果有能聯想到專案內容的連結的話</li><li>可以盡量不要重複</li><li>如果有對應的頂級網域就更好</li></ul><p><br></p><h2><a name="清楚的使命聲明&#95;(&#95;mission&#95;statement&#95;)"></a>清楚的使命聲明 ( Mission Statement )</h2><ul><li>如何讓使用者在 30 秒內明白專案內容並引起他們的興趣</li><li>通常在首頁或是專案名稱正下方</li><li>應該是具體的、限制性、簡短的描述</li></ul><p><br></p><h2><a name="聲稱為開源專案"></a>聲稱為開源專案</h2><ul><li>很多專案都是在下載才列出來</li><li>甚至沒有選擇許可證</li><li>應該在專案敘述中強調這件事情並給出確切許可證</li><li>也可以另外開啟一個文件版面說明專案版權選擇細節</li></ul><p><br></p><h2><a name="列出專案功能與需求&#95;(&#95;features&#95;and&#95;requirements&#95;list&#95;)"></a>列出專案功能與需求 ( Features and Requirements List )</h2><ul><li>在快速看過這些專案後，通常訪問對象會有 5 分鐘深入了解細節</li><li>這時候應該要說明專案支持的功能</li><li>如果尚未完成他，可以加註 (in progress) 或 (planned)</li><li>同時要說明運行你的專案需要的開發或運行環境需求</li></ul><p>例如：</p><pre><code>Features:</code></pre><pre><code>  - XXXXX</code></pre><pre><code>  - &#40;planned&#41; XXXXX</code></pre><pre><code>Requirements:</code></pre><pre><code>  - Python a.b or higher</code></pre><ul><li>看完這些能使讀者快速判斷他是否能使用或參與你的專案</li></ul><p><br></p><h2><a name="說明開發狀況&#95;(&#95;development&#95;status&#95;)"></a>說明開發狀況 ( Development Status )</h2><ul><li>讀者同時也會想知道你對專案的承諾是否有具體實現</li><li>對於成熟的專案，大家想知道專案的維護模式如何進行、新版本的發行頻率、錯誤報告的修正速度</li><li>為了要回答這些問題，要有一個提說明開發狀況的頁面</li><li>並且列出專案的目標以及近期專案開發上需要協助的地方</li><li>也可以說明歷史版本記錄，以及功能列表</li><li>不要怕告知專案目前的缺陷，如果讓使用者誤以為沒有缺陷是很糟糕的事情</li><li>長遠來看保守一些是好事，如果能比讀者認為的穩定得多自然而然會有口碑</li></ul><p><br></p><h2><a name="提供下載&#95;(&#95;downloads&#95;)"></a>提供下載 ( Downloads )</h2><ul><li>對於很多潛在的專案成員來說，安裝失敗是最挫折的事情</li><li>最好讓發行的機制盡量方便、標準化且低成本</li><li>最好有標準的安裝流程，並且不要偏離太多</li><li>提供執行檔可能初期還不太必要，除非有針對特別普通使用者做簡單發行版本</li><li>要有一個唯一的版本號，這樣使用者才能去比較不同的版本的差異</li></ul><p><br></p><h2><a name="版本控制與議題追蹤"></a>版本控制與議題追蹤</h2><ul><li>比較熟悉就不記了&#x2026;</li></ul><p><br></p><h2><a name="溝通管道"></a>溝通管道</h2><ul><li>很多參與者不一定想投入到專案中，但樂於追蹤最新消息</li><li>專案早期可能有更高比例的開發人員而非使用者，或是兩者相當模糊</li><li>如何平衡兩者的溝通管道很重要，並且不會造成大家反感或覺得太多灌水</li></ul><p><br></p><h2><a name="開發者指南&#95;developer&#95;guidelines"></a>開發者指南 Developer Guidelines</h2><ul><li>如果有人想參與的專案中，可能會想要有一個開發者指南</li><li>開發者指南通常不是太技術性，而是單純解釋了開發者如何與用戶互動和完成工作</li><li>通常包含幾個資訊：<ul><li>說明能和其他貢獻者溝通交流的平台在哪裡</li><li>如果有錯誤要報告或是想提交 Patch 怎麼做</li><li>可以參考 <a href='http://www.openoffice.org/dev_docs/guidelines.html'>OpenOffice.org - Guidelines</a></li></ul></li></ul><p><br></p><h2><a name="撰寫文件"></a>撰寫文件</h2><ul><li>剛開始一個專案時，最好限制文件的範圍，否則很難逐步完成</li><li>一個好的基本文件要包含：<ul><li>告訴讀者他需要的技術水平，並會學習到什麼</li><li>清楚的使用和設置說明，並且告訴使用者如何檢查他正確的設置完成（例如跑個 demo code）</li></ul></li><li>給予一個簡單的教程，使得人們不會過早放棄</li><li>對於尚未完成的文件區塊可以打上未完成標籤，甚至鼓勵大家參與來撰寫</li><li>不要過分強調專案的缺點，專案剛開始有很多缺點很正常，關鍵時刻做說明即可</li></ul><p><br></p><h2><a name="維護&#95;faq"></a>維護 FAQ</h2><p><br></p><h2><a name="最基本的溝通工具"></a>最基本的溝通工具</h2><ul><li>網站</li><li>郵件列表 Mailing list</li><li>議題追蹤 Bug tracking</li><li>實時討論 Real-time chat</li></ul><p>&#x2026;</p><p>有點累了&#x2026; 剩下我先看完在做筆記吧！</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/reading/">reading</a>
+    
+    <a href="/tags-output/open source/">open source</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記/">&laquo; 〈 Producing Open Source Software 〉閱讀筆記 1</a>
+        
+        
+        <a class="right" href="/posts-output/2018-01-25-Emacs-中使用-gnus-的基本快捷鍵/">Emacs 中使用 gnus 的基本快捷鍵 &raquo;</a>
+        
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記-2/";
+            this.page.identifier = "〈 Producing Open Source Software 〉閱讀筆記 2";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+</div>
+
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+        <footer>Copyright &copy;  fatfingererr
+            <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a> / Design by <a href="http://lambdafunk.com">Lambda Funk</a></p>
+        </footer>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+</body>
+
+</html>

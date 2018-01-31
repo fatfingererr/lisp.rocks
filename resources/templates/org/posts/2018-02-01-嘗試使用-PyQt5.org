@@ -47,4 +47,4 @@ if __name__ == "__main__":
 
 執行效果如下
 
-[[../../images/pyqt-hello-world.png]]
+[[../../ig/pyqt-hello-world.png]]

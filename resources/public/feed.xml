@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 01 Feb 2018 00:21:08 +0800
+Thu, 01 Feb 2018 00:21:45 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -37,7 +37,7 @@ from PyQt5.QtWidgets import QApplication, QWidget&lt;/code&gt;&lt;/pre&gt;&lt;pr
         self.setWindowTitle&amp;#40;&amp;quot;Hello World!&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;if &amp;#95;&amp;#95;name&amp;#95;&amp;#95; == &amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
     app = QApplication&amp;#40;sys.argv&amp;#41;
     MainWindow = MainWindow&amp;#40;&amp;#41;
-    sys.exit&amp;#40;app.exec&amp;#95;&amp;#40;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;執行效果如下&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../images/pyqt-hello-world.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+    sys.exit&amp;#40;app.exec&amp;#95;&amp;#40;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;執行效果如下&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../ig/pyqt-hello-world.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

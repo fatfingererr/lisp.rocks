@@ -17,7 +17,7 @@
 
 ** 安裝
 
-使用 Python 3 的話就可以直接透過 =pypi= 安裝
+使用 Python 3 的話就可以直接透過 =pypi= 安裝 PyQt5
 
 #+BEGIN_SRC bash
 pypi install pyqt5

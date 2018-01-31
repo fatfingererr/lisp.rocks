@@ -1,6 +1,6 @@
 #+OPTIONS: toc:nil
 #+BEGIN_SRC json :noexport:
-{:title "嘗試使用-PyQt5" :layout :post :tags [""] :toc false}
+{:title "嘗試使用 PyQt5" :layout :post :tags ["pyqt" "python"] :toc false}
 #+END_SRC
 *  　
 

@@ -44,6 +44,7 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 #+END_SRC
 
+
 執行效果如下
 
 [[../../images/pyqt-hello-world.png]]

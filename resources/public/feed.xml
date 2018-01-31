@@ -12,11 +12,40 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Mon, 29 Jan 2018 11:50:04 +0800
+Thu, 01 Feb 2018 00:19:45 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-02-01-嘗試使用-PyQt5/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-02-01-嘗試使用-PyQt5/
+</link>
+<title>
+嘗試使用-PyQt5
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;原先就想精進 C++ 和 Python 而最近買了書 &lt;a href='https://www.tenlong.com.tw/products/9787302415879'&gt;Python 項目開發實戰&lt;/a&gt;&lt;/p&gt;&lt;p&gt;裡面再介紹怎麼做一個桌面應用專案，介紹到了 PyQt 所以就想說來嘗試看看&lt;/p&gt;&lt;p&gt;為了避免未來忘記，在此僅做一點初步的紀錄&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;安裝&quot;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;p&gt;使用 Python 3 的話就可以直接透過 &lt;code&gt;pypi&lt;/code&gt; 安裝&lt;/p&gt;&lt;pre&gt;&lt;code&gt;pypi install pyqt5&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;安裝完之後建立一個初步的 APP 參考如下&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import sys
+from PyQt5.QtWidgets import QApplication, QWidget&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;class MainWindow&amp;#40;QWidget&amp;#41;:
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        super&amp;#40;self.&amp;#95;&amp;#95;class&amp;#95;&amp;#95;, self&amp;#41;.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;&amp;#41;
+        self.setupUi&amp;#40;&amp;#41;
+        self.show&amp;#40;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;    def setupUi&amp;#40;self&amp;#41;:
+        self.setWindowTitle&amp;#40;&amp;quot;Hello World!&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;if &amp;#95;&amp;#95;name&amp;#95;&amp;#95; == &amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    app = QApplication&amp;#40;sys.argv&amp;#41;
+    MainWindow = MainWindow&amp;#40;&amp;#41;
+    sys.exit&amp;#40;app.exec&amp;#95;&amp;#40;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;執行效果如下&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../images/pyqt-hello-world.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Thu, 01 Feb 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記/

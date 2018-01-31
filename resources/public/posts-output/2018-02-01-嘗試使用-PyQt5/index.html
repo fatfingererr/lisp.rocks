@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): Posts Tagged &quot;&quot;</title>
-    <link rel="canonical" href="http://lisp.rocks/tags-output/">
+    <title>(print &quot;Lisp Rocks&quot;): 嘗試使用-PyQt5</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-02-01-嘗試使用-PyQt5/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -53,29 +53,60 @@
             <div>
                 <div id="content">
                     
-<div id="posts-by-tag">
-    <div id="page-header">
-        <h2>Posts Tagged &quot;&quot;</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        
     </div>
-    <ul>
+    <h2>嘗試使用-PyQt5</h2>
+        <div id="post-date">
+            February 1, 2018
+        </div>
+</div>
+<div>
     
-        <li>
-            <a href="/posts-output/2018-02-01-嘗試使用-PyQt5/">嘗試使用-PyQt5</a>
-        </li>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>原先就想精進 C++ 和 Python 而最近買了書 <a href='https://www.tenlong.com.tw/products/9787302415879'>Python 項目開發實戰</a></p><p>裡面再介紹怎麼做一個桌面應用專案，介紹到了 PyQt 所以就想說來嘗試看看</p><p>為了避免未來忘記，在此僅做一點初步的紀錄</p><p><br></p><h2><a name="安裝"></a>安裝</h2><p>使用 Python 3 的話就可以直接透過 <code>pypi</code> 安裝</p><pre><code>pypi install pyqt5</code></pre><p>安裝完之後建立一個初步的 APP 參考如下</p><pre><code>import sys
+from PyQt5.QtWidgets import QApplication, QWidget</code></pre><pre><code>class MainWindow&#40;QWidget&#41;:
+    def &#95;&#95;init&#95;&#95;&#40;self&#41;:
+        super&#40;self.&#95;&#95;class&#95;&#95;, self&#41;.&#95;&#95;init&#95;&#95;&#40;&#41;
+        self.setupUi&#40;&#41;
+        self.show&#40;&#41;</code></pre><pre><code>    def setupUi&#40;self&#41;:
+        self.setWindowTitle&#40;&quot;Hello World!&quot;&#41;</code></pre><pre><code>if &#95;&#95;name&#95;&#95; == &quot;&#95;&#95;main&#95;&#95;&quot;:
+    app = QApplication&#40;sys.argv&#41;
+    MainWindow = MainWindow&#40;&#41;
+    sys.exit&#40;app.exec&#95;&#40;&#41;&#41;</code></pre><p>執行效果如下</p><p><img src="../../images/pyqt-hello-world.png" alt="img" /></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
     
-        <li>
-            <a href="/posts-output/0099-01-03-Blog-範例-jsPDF/">Blog 範例 - jsPDF</a>
-        </li>
+    <a href="/tags-output/"></a>
     
-        <li>
-            <a href="/posts-output/0099-01-02-Blog-範例-Flowchartjs/">Blog 範例 - flowchart.js</a>
-        </li>
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記/">〈 Producing Open Source Software 〉閱讀筆記 1 &raquo;</a>
+        
+    </div>
+
     
-        <li>
-            <a href="/posts-output/0099-01-01-Blog-範例-Chartjs/">Blog 範例 - Chart.js</a>
-        </li>
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = "http://lisp.rocks/posts-output/2018-02-01-嘗試使用-PyQt5/";
+            this.page.identifier = "嘗試使用-PyQt5";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//fatfingererr.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
     
-    </ul>
 </div>
 
                 </div>

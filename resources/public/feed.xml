@@ -12,11 +12,36 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 01 Feb 2018 00:23:43 +0800
+Tue, 13 Feb 2018 10:55:17 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-02-13-Emacs-中透過-which-function-mode-取得當前游標所在的函數名稱/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-02-13-Emacs-中透過-which-function-mode-取得當前游標所在的函數名稱/
+</link>
+<title>
+Emacs 中透過 (which-function) 取得當前函數名稱
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href='https://www.emacswiki.org/emacs/WhichFuncMode'&gt;Which Func Mode&lt;/a&gt; 是在 Emacs 中他可以自動幫你對應找出當前游標目前處在的函數名稱&lt;/p&gt;&lt;p&gt;他支援多數主要的語言，中文可見 &lt;a href='https://github.com/emacs-china/hello-emacs/blob/master/Emacs_Redux/which-function-mode.org'&gt;Emacs-China 的 hello-emacs 中的說明&lt;/a&gt;&lt;/p&gt;&lt;p&gt;其實很簡單，就是透過 &lt;code&gt;&amp;#40;which-function&amp;#41;&lt;/code&gt; 即可使用&lt;/p&gt;&lt;p&gt;唯一需要留意的事情，如果你要在自己的 code 裡面使用&lt;/p&gt;&lt;p&gt;你可能有 &lt;code&gt;&amp;#40;which-function-mode&amp;#41;&lt;/code&gt; 的函數但沒有啟用 &lt;code&gt;&amp;#40;which-function&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;所以要記得 &lt;code&gt;&amp;#40;require 'which-func&amp;#41;&lt;/code&gt; 來讀取，否則你無法調用函數&lt;/p&gt;&lt;p&gt;此外 &lt;code&gt;&amp;#40;which-function&amp;#41;&lt;/code&gt; 也不是 &lt;code&gt;interactive&lt;/code&gt; 的函數，所以可以自己包一成&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;require 'which-func&amp;#41;
+&amp;#40;defun show-which-function &amp;#40;&amp;#41;
+  &amp;#40;interactive&amp;#41;
+  &amp;#40;setq which-function-mode t&amp;#41;
+  &amp;#40;which-function&amp;#41;
+  &amp;#40;setq which-function-mode nil&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;應該是 Emacs 原生套件，還不錯用&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 13 Feb 2018 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-02-01-嘗試使用-PyQt5/

@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;): 嘗試使用 PyQt5</title>
-    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-02-01-嘗試使用-PyQt5/">
+    <title>(print &quot;Lisp Rocks&quot;): Emacs 中透過 (which-function) 取得當前函數名稱</title>
+    <link rel="canonical" href="http://lisp.rocks/posts-output/2018-02-13-Emacs-中透過-which-function-mode-取得當前游標所在的函數名稱/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -58,41 +58,37 @@
     <div id="post-meta" class="row">
         
     </div>
-    <h2>嘗試使用 PyQt5</h2>
+    <h2>Emacs 中透過 (which-function) 取得當前函數名稱</h2>
         <div id="post-date">
-            February 1, 2018
+            February 13, 2018
         </div>
 </div>
 <div>
     
-    <h1><a name=""></a></h1><h2><a name=""></a></h2><p>原先就想精進 C++ 和 Python 而最近買了書 <a href='https://www.tenlong.com.tw/products/9787302415879'>Python 項目開發實戰</a></p><p>裡面再介紹怎麼做一個桌面應用專案，介紹到了 PyQt 所以就想說來嘗試看看</p><p>為了避免未來忘記，在此僅做一點初步的紀錄</p><p><br></p><h2><a name="安裝"></a>安裝</h2><p>使用 Python 3 的話就可以直接透過 <code>pypi</code> 安裝 PyQt5</p><pre><code>pypi install pyqt5</code></pre><p>安裝完之後建立一個初步的 APP 參考如下</p><pre><code>import sys
-from PyQt5.QtWidgets import QApplication, QWidget</code></pre><pre><code>class MainWindow&#40;QWidget&#41;:
-    def &#95;&#95;init&#95;&#95;&#40;self&#41;:
-        super&#40;self.&#95;&#95;class&#95;&#95;, self&#41;.&#95;&#95;init&#95;&#95;&#40;&#41;
-        self.setupUi&#40;&#41;
-        self.show&#40;&#41;</code></pre><pre><code>    def setupUi&#40;self&#41;:
-        self.setWindowTitle&#40;&quot;Hello World!&quot;&#41;</code></pre><pre><code>if &#95;&#95;name&#95;&#95; == &quot;&#95;&#95;main&#95;&#95;&quot;:
-    app = QApplication&#40;sys.argv&#41;
-    MainWindow = MainWindow&#40;&#41;
-    sys.exit&#40;app.exec&#95;&#40;&#41;&#41;</code></pre><p>執行效果如下</p><p><img src="../../img/pyqt-hello-world.png" alt="img" /></p>
+    <h1><a name=""></a></h1><h2><a name=""></a></h2><p><a href='https://www.emacswiki.org/emacs/WhichFuncMode'>Which Func Mode</a> 是在 Emacs 中他可以自動幫你對應找出當前游標目前處在的函數名稱</p><p>他支援多數主要的語言，中文可見 <a href='https://github.com/emacs-china/hello-emacs/blob/master/Emacs_Redux/which-function-mode.org'>Emacs-China 的 hello-emacs 中的說明</a></p><p>其實很簡單，就是透過 <code>&#40;which-function&#41;</code> 即可使用</p><p>唯一需要留意的事情，如果你要在自己的 code 裡面使用</p><p>你可能有 <code>&#40;which-function-mode&#41;</code> 的函數但沒有啟用 <code>&#40;which-function&#41;</code></p><p>所以要記得 <code>&#40;require 'which-func&#41;</code> 來讀取，否則你無法調用函數</p><p>此外 <code>&#40;which-function&#41;</code> 也不是 <code>interactive</code> 的函數，所以可以自己包一成</p><pre><code>&#40;require 'which-func&#41;
+&#40;defun show-which-function &#40;&#41;
+  &#40;interactive&#41;
+  &#40;setq which-function-mode t&#41;
+  &#40;which-function&#41;
+  &#40;setq which-function-mode nil&#41;&#41;</code></pre><p>應該是 Emacs 原生套件，還不錯用</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/pyqt/">pyqt</a>
+    <a href="/tags-output/which-func/">which-func</a>
     
-    <a href="/tags-output/python/">python</a>
+    <a href="/tags-output/emacs/">emacs</a>
+    
+    <a href="/tags-output/spacemacs/">spacemacs</a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts-output/2018-02-13-Emacs-中透過-which-function-mode-取得當前游標所在的函數名稱/">&laquo; Emacs 中透過 (which-function) 取得當前函數名稱</a>
         
-        
-        <a class="right" href="/posts-output/2018-01-27-Producing-Open-Source-Software-閱讀筆記/">〈 Producing Open Source Software 〉閱讀筆記 1 &raquo;</a>
+        <a class="right" href="/posts-output/2018-02-01-嘗試使用-PyQt5/">嘗試使用 PyQt5 &raquo;</a>
         
     </div>
 
@@ -101,8 +97,8 @@ from PyQt5.QtWidgets import QApplication, QWidget</code></pre><pre><code>class M
 
     <script type="text/javascript">
         var disqus_config = function () {
-            this.page.url = "http://lisp.rocks/posts-output/2018-02-01-嘗試使用-PyQt5/";
-            this.page.identifier = "嘗試使用 PyQt5";
+            this.page.url = "http://lisp.rocks/posts-output/2018-02-13-Emacs-中透過-which-function-mode-取得當前游標所在的函數名稱/";
+            this.page.identifier = "Emacs 中透過 (which-function) 取得當前函數名稱";
         };
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

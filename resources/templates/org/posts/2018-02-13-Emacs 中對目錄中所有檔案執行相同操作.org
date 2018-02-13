@@ -1,0 +1,27 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "Emacs 中對目錄中所有檔案執行相同操作" :layout :post :tags ["emacs" "spacemacs"] :toc false}
+#+END_SRC
+* 　
+
+
+** 　
+
+在 Emacs 中如果要對所有檔案做相同的操作，例如對所有檔案找出 =TODO= 在第幾行
+
+並丟到 Message 中的話，可以使用 =(directory-files-recursively)= 和 =(mapcar)=
+
+並透過 projectile 來在專案目錄下執行
+
+假設我有一個自訂的搜尋方法叫做 =my-search= 那麼我可以這樣
+
+#+BEGIN_SRC elisp
+(defun search-all ()
+  (interactive)
+  (mapcar 'my-search
+    (directory-files-recursively
+      (projectile-project-root) ".py$")))
+#+END_SRC
+
+
+透過指定副檔名結尾來對所有同樣類型的檔案進行特定函數的操作

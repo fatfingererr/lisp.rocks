@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 13 Feb 2018 10:55:17 +0800
+Tue, 13 Feb 2018 11:09:56 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -34,6 +34,30 @@ Emacs 中透過 (which-function) 取得當前函數名稱
   &amp;#40;setq which-function-mode t&amp;#41;
   &amp;#40;which-function&amp;#41;
   &amp;#40;setq which-function-mode nil&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;應該是 Emacs 原生套件，還不錯用&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 13 Feb 2018 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2018-02-13-Emacs 中對目錄中所有檔案執行相同操作/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2018-02-13-Emacs 中對目錄中所有檔案執行相同操作/
+</link>
+<title>
+Emacs 中對目錄中所有檔案執行相同操作
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 Emacs 中如果要對所有檔案做相同的操作，例如對所有檔案找出 &lt;code&gt;TODO&lt;/code&gt; 在第幾行&lt;/p&gt;&lt;p&gt;並丟到 Message 中的話，可以使用 &lt;code&gt;&amp;#40;directory-files-recursively&amp;#41;&lt;/code&gt; 和 &lt;code&gt;&amp;#40;mapcar&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;並透過 projectile 來在專案目錄下執行&lt;/p&gt;&lt;p&gt;假設我有一個自訂的搜尋方法叫做 &lt;code&gt;my-search&lt;/code&gt; 那麼我可以這樣&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defun search-all &amp;#40;&amp;#41;
+  &amp;#40;interactive&amp;#41;
+  &amp;#40;mapcar 'my-search
+    &amp;#40;directory-files-recursively
+      &amp;#40;projectile-project-root&amp;#41; &amp;quot;.py$&amp;quot;&amp;#41;&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;透過指定副檔名結尾來對所有同樣類型的檔案進行特定函數的操作&lt;/p&gt;
 </description>
 <enclosure>
 

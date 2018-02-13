@@ -23,5 +23,4 @@
       (projectile-project-root) ".py$")))
 #+END_SRC
 
-
 透過指定副檔名結尾來對所有同樣類型的檔案進行特定函數的操作

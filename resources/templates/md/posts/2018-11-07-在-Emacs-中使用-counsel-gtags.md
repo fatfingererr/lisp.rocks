@@ -1,4 +1,4 @@
-    {:title "在 Emacs 中使用 counsel-gtags" :layout :post :tags [""] :toc false}
+    {:title "在 Emacs 中使用 counsel-gtags" :layout :post :tags ["emacs", "gtags", "counsel"] :toc false}
 
 
 # 

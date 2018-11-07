@@ -1,6 +1,6 @@
 #+OPTIONS: toc:nil
 #+BEGIN_SRC json :noexport:
-{:title "在 Emacs 中使用 counsel-gtags" :layout :post :tags [""] :toc false}
+{:title "在 Emacs 中使用 counsel-gtags" :layout :post :tags ["emacs", "gtags", "counsel"] :toc false}
 #+END_SRC
 
 * 
@@ -18,4 +18,6 @@
 在游標處立即對該游標前的函數定義處進行跳轉
 
 我個人是把他綁定到 =M-t= 方便快速跳轉到函數定義位置
+
+
 

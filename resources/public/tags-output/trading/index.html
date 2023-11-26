@@ -3,21 +3,21 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>(print &quot;Lisp Rocks&quot;)</title>
-    <link rel="canonical" href="http://lisp.rocks/">
+    <title>(print &quot;Lisp Rocks&quot;): Posts Tagged &quot;trading&quot;</title>
+    <link rel="canonical" href="http://lisp.rocks/tags-output/trading/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github.min.css">
     <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"> 
-    <link href="css/screen.css" rel="stylesheet" type="text/css" />
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
     <script>
     window.klipse_settings = {
         selector: '.language-klipse' // css selector for the html elements you want to klipsify
     };
     </script>
-    <script src="js/highlight.pack.js" type="text/javascript"></script>
+    <script src="/js/highlight.pack.js" type="text/javascript"></script>
     <script>
     hljs.initHighlightingOnLoad();
     </script>
@@ -36,7 +36,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" style="position: absolute; right: 0;">
             <ul class="nav navbar-nav">
-                <li  class="active" ><a href="/">Home</a></li>
+                <li ><a href="/">Home</a></li>
                 <li ><a href="/archives/">Archives</a></li>
                 
                 <li >
@@ -53,49 +53,17 @@
             <div>
                 <div id="content">
                     
-<div id="post">
-    <div class="post-header">
-    <div id="post-meta" class="row">
-        
+<div id="posts-by-tag">
+    <div id="page-header">
+        <h2>Posts Tagged &quot;trading&quot;</h2>
     </div>
-    <h2>使用 bisect 快速匹配商品編號前 2-3 碼並提前訂閱</h2>
-        <div id="post-date">
-            November 26, 2023
-        </div>
-</div>
-<div>
+    <ul>
     
-    <h1><a name="關於&#95;<code>bisect</code>"></a>關於 <code>bisect</code></h1><p>在 Python 中 <code>bisect</code> 有很多種用法，詳細請見 <a href='https://martinheinz.dev/blog/106'>Everything You Can Do with Python's bisect Module</a></p><p>其中一個功能就是對於 str array 快速匹配前綴，並將符合的字串篩選出來。</p><p>當 array 很大時，這個方法基本上都比迭代來的快。</p><p>對於快速匹配股票商品編號，並向券商訂閱報價資訊來說就很方便，例如當使用者輸入 "2" "3" "3"</p><p>就能將其匹配到['2330', '2331', '2332', '2337', '2338', '23383'] 這些商品編號</p><p>進而先提前訂閱這些商品的報價和五檔。</p><p>當使用者輸入到 2330 時，報價就已經訂閱，再把剩餘的 2331, 2332, &#x2026; 解訂即可。</p><p>對於商品檔有幾萬來說，是很方便的功能。</p><pre><code>def prefixSearch&#40;words: list&#91;str&#93;, prefix: str, isSorted: bool = False&#41; -&gt; list&#91;str&#93;:
-    if not isSorted:
-          words.sort&#40;&#41;
-    start = bisect&#95;left&#40;words, prefix&#41;
-    matches = &#91;&#93;
-    for i, s in enumerate&#40;words&#91;start:&#93;&#41;:
-        if s.startswith&#40;prefix&#41;:
-            matches.append&#40;s&#41;
-        else:
-            break
-    return matches</code></pre>
-</div>
-
-<div id="post-tags">
-    <b>Tags: </b>
+        <li>
+            <a href="/posts-output/2023-11-26-使用-bisect-快速匹配商品編號前2-3碼並提前訂閱/">使用 bisect 快速匹配商品編號前 2-3 碼並提前訂閱</a>
+        </li>
     
-    <a href="/tags-output/trading/">trading</a>
-    
-    <a href="/tags-output/python/">python</a>
-    
-</div>
-
-
-    
-
-    <div id="prev-next">
-        
-        
-        <a class="right" href="/posts-output/2018-11-07-在-Emacs-中使用-counsel-gtags/">在 Emacs 中使用 counsel-gtags &raquo;</a>
-        
-    </div>
+    </ul>
 </div>
 
                 </div>

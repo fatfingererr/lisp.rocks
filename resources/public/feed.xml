@@ -12,11 +12,41 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 07 Nov 2018 23:51:48 +0800
+Sun, 26 Nov 2023 16:43:07 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-11-26-使用-bisect-快速匹配商品編號前2-3碼並提前訂閱/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-11-26-使用-bisect-快速匹配商品編號前2-3碼並提前訂閱/
+</link>
+<title>
+使用 bisect 快速匹配商品編號前 2-3 碼並提前訂閱
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;關於&amp;#95;&lt;code&gt;bisect&lt;/code&gt;&quot;&gt;&lt;/a&gt;關於 &lt;code&gt;bisect&lt;/code&gt;&lt;/h1&gt;&lt;p&gt;在 Python 中 &lt;code&gt;bisect&lt;/code&gt; 有很多種用法，詳細請見 &lt;a href='https://martinheinz.dev/blog/106'&gt;Everything You Can Do with Python's bisect Module&lt;/a&gt;&lt;/p&gt;&lt;p&gt;其中一個功能就是對於 str array 快速匹配前綴，並將符合的字串篩選出來。&lt;/p&gt;&lt;p&gt;當 array 很大時，這個方法基本上都比迭代來的快。&lt;/p&gt;&lt;p&gt;對於快速匹配股票商品編號，並向券商訂閱報價資訊來說就很方便，例如當使用者輸入 &quot;2&quot; &quot;3&quot; &quot;3&quot;&lt;/p&gt;&lt;p&gt;就能將其匹配到['2330', '2331', '2332', '2337', '2338', '23383'] 這些商品編號&lt;/p&gt;&lt;p&gt;進而先提前訂閱這些商品的報價和五檔。&lt;/p&gt;&lt;p&gt;當使用者輸入到 2330 時，報價就已經訂閱，再把剩餘的 2331, 2332, &amp;#x2026; 解訂即可。&lt;/p&gt;&lt;p&gt;對於商品檔有幾萬來說，是很方便的功能。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def prefixSearch&amp;#40;words: list&amp;#91;str&amp;#93;, prefix: str, isSorted: bool = False&amp;#41; -&amp;gt; list&amp;#91;str&amp;#93;:
+    if not isSorted:
+          words.sort&amp;#40;&amp;#41;
+    start = bisect&amp;#95;left&amp;#40;words, prefix&amp;#41;
+    matches = &amp;#91;&amp;#93;
+    for i, s in enumerate&amp;#40;words&amp;#91;start:&amp;#93;&amp;#41;:
+        if s.startswith&amp;#40;prefix&amp;#41;:
+            matches.append&amp;#40;s&amp;#41;
+        else:
+            break
+    return matches&lt;/code&gt;&lt;/pre&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 26 Nov 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2018-11-07-在-Emacs-中使用-counsel-gtags/

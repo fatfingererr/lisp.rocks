@@ -1,0 +1,63 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "使用 SymPy 推導選擇權價格公式並試算" :layout :post :tags ["python", "option", "trading", "modeling"] :toc false}
+#+END_SRC
+*
+
+
+** 使用套件
+
+透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol
+
+#+begin_src python
+from sympy import symbols, exp, sqrt, ln, N
+from sympy.stats import Normal, cdf
+#+end_src
+
+** 公式推導
+
+透過 symbols 建立變數， =positive= 說明變數都是正數。
+
+其中關鍵是讓 =Normal= 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。
+
+#+begin_src python
+S0, X, T, r, sigma = symbols('S0 X T r sigma', positive=True)
+
+d1 = (ln(S0 / X) + (r + sigma**2 / 2) * T) / (sigma * sqrt(T))
+d2 = d1 - sigma * sqrt(T)
+
+norm_dist = Normal('StdNormal', 0, 1)
+
+C = S0 * cdf(norm_dist)(d1) - X * exp(-r * T) * cdf(norm_dist)(d2)
+P = X * exp(-r * T) * cdf(norm_dist)(-d2) - S0 * cdf(norm_dist)(-d1)
+
+print(f"買權價格公式: {C}")
+print(f"賣權價格公式: {P}")
+#+end_src
+
+** 價格試算
+
+價格計算只需要把變數名稱一一對應，就能計算而得。
+
+帶入條件後，還得透過 =N= 才會具體取得數值結果。
+
+#+begin_src python
+S0_val = 100
+X_val = 100
+T_val = 1
+r_val = 0.05
+sigma_val = 0.2
+
+conditions = {S0: S0_val, X: X_val, T: T_val, r: r_val, sigma: sigma_val}
+
+C_val = C.subs(conditions)
+P_val = P.subs(conditions)
+
+C_numerical = N(C_val)
+P_numerical = N(P_val)
+
+print(f"給定條件: {conditions}")
+print(f"買權價格: {C_numerical}")
+print(f"賣權價格: {P_numerical}")
+
+#+end_src

@@ -12,11 +12,59 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 26 Nov 2023 16:43:07 +0800
+Thu, 30 Nov 2023 07:28:45 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-11-30-使用-SymPy-推導選擇權價格公式並試算/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-11-30-使用-SymPy-推導選擇權價格公式並試算/
+</link>
+<title>
+使用 SymPy 推導選擇權價格公式並試算
+</title>
+<description>
+&lt;p&gt;&amp;#42;&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;使用套件&quot;&gt;&lt;/a&gt;使用套件&lt;/h1&gt;&lt;p&gt;透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from sympy import symbols, exp, sqrt, ln, N
+from sympy.stats import Normal, cdf&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;&lt;a name=&quot;公式推導&quot;&gt;&lt;/a&gt;公式推導&lt;/h1&gt;&lt;p&gt;透過 symbols 建立變數， &lt;code&gt;positive&lt;/code&gt; 說明變數都是正數。&lt;/p&gt;&lt;p&gt;其中關鍵是讓 &lt;code&gt;Normal&lt;/code&gt; 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0, X, T, r, sigma = symbols&amp;#40;'S0 X T r sigma', positive=True&amp;#41;
+
+d1 = &amp;#40;ln&amp;#40;S0 / X&amp;#41; + &amp;#40;r + sigma&amp;#42;&amp;#42;2 / 2&amp;#41; &amp;#42; T&amp;#41; / &amp;#40;sigma &amp;#42; sqrt&amp;#40;T&amp;#41;&amp;#41;
+d2 = d1 - sigma &amp;#42; sqrt&amp;#40;T&amp;#41;
+
+norm&amp;#95;dist = Normal&amp;#40;'StdNormal', 0, 1&amp;#41;
+
+C = S0 &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;d1&amp;#41; - X &amp;#42; exp&amp;#40;-r &amp;#42; T&amp;#41; &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;d2&amp;#41;
+P = X &amp;#42; exp&amp;#40;-r &amp;#42; T&amp;#41; &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;-d2&amp;#41; - S0 &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;-d1&amp;#41;
+
+print&amp;#40;f&amp;quot;買權價格公式: {C}&amp;quot;&amp;#41;
+print&amp;#40;f&amp;quot;賣權價格公式: {P}&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;&lt;a name=&quot;價格試算&quot;&gt;&lt;/a&gt;價格試算&lt;/h1&gt;&lt;p&gt;價格計算只需要把變數名稱一一對應，就能計算而得。&lt;/p&gt;&lt;p&gt;帶入條件後，還得透過 &lt;code&gt;N&lt;/code&gt; 才會具體取得數值結果。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0&amp;#95;val = 100
+X&amp;#95;val = 100
+T&amp;#95;val = 1
+r&amp;#95;val = 0.05
+sigma&amp;#95;val = 0.2
+
+conditions = {S0: S0&amp;#95;val, X: X&amp;#95;val, T: T&amp;#95;val, r: r&amp;#95;val, sigma: sigma&amp;#95;val}
+
+C&amp;#95;val = C.subs&amp;#40;conditions&amp;#41;
+P&amp;#95;val = P.subs&amp;#40;conditions&amp;#41;
+
+C&amp;#95;numerical = N&amp;#40;C&amp;#95;val&amp;#41;
+P&amp;#95;numerical = N&amp;#40;P&amp;#95;val&amp;#41;
+
+print&amp;#40;f&amp;quot;給定條件: {conditions}&amp;quot;&amp;#41;
+print&amp;#40;f&amp;quot;買權價格: {C&amp;#95;numerical}&amp;quot;&amp;#41;
+print&amp;#40;f&amp;quot;賣權價格: {P&amp;#95;numerical}&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Thu, 30 Nov 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-11-26-使用-bisect-快速匹配商品編號前2-3碼並提前訂閱/

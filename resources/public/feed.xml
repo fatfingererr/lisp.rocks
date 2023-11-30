@@ -12,11 +12,147 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 30 Nov 2023 07:28:45 +0800
+Fri, 01 Dec 2023 07:37:19 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-01-利用-Python-可變預設參數特性，保留歷史報價與計算/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-01-利用-Python-可變預設參數特性，保留歷史報價與計算/
+</link>
+<title>
+利用 Python 可變預設參數特性，保留歷史報價與計算
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;可變預設參數&amp;#95;(mutable&amp;#95;default&amp;#95;arguments)&quot;&gt;&lt;/a&gt;可變預設參數 (Mutable Default Arguments)&lt;/h2&gt;&lt;p&gt;函數的預設參數如果是可變物件 (Mutable Default Arguments)&lt;/p&gt;&lt;p&gt;在 Python 中就只會初始化一次，並不斷復用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def doubled&amp;#40;val, the&amp;#95;list=&amp;#91;&amp;#93;&amp;#41;:
+    the&amp;#95;list.append&amp;#40;val&amp;#41;
+    the&amp;#95;list.append&amp;#40;val&amp;#41;
+    return the&amp;#95;list
+
+print&amp;#40;doubled&amp;#40;10&amp;#41;&amp;#41;
+# &amp;#91;10, 10&amp;#93;
+
+print&amp;#40;doubled&amp;#40;99&amp;#41;&amp;#41;
+# &amp;#91;10, 10, 99, 99&amp;#93;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之所以會這樣，是因為函數是物件，預設參數如同屬性。&lt;/p&gt;&lt;p&gt;而常見的可變物件包含字典、列表等。&lt;/p&gt;&lt;p&gt;在一般情況中，我們都會鼓勵預設參數應該盡量使用不可變物件。&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;利用該特性，保留歷史報價與計算&quot;&gt;&lt;/a&gt;利用該特性，保留歷史報價與計算&lt;/h2&gt;&lt;p&gt;然而在輕量處理快速大量湧入的報價時，反而可以利用這個機制&lt;/p&gt;&lt;p&gt;設計暫存區（Buffer）存放歷史報價在可變的預設參數：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;# 計算平均 Bid Price
+# 並保留最多 maxBuffer 個 Bid Price
+def avgBid&amp;#40;newBid, lookback, histBids=&amp;#91;&amp;#93;, maxBuffer=10&amp;#41;:
+    histBids.append&amp;#40;newBid&amp;#41;
+    histBids = histBids&amp;#91;-maxBuffer:&amp;#93;
+    lookback = min&amp;#40;lookback, len&amp;#40;histBids&amp;#41;&amp;#41;
+    print&amp;#40;f&amp;quot;Bids: {histBids}&amp;quot;&amp;#41;
+    avg = sum&amp;#40;histBids&amp;#91;-lookback:&amp;#93;&amp;#41; / lookback
+
+    return avg
+
+for x in range&amp;#40;2, 100, 7&amp;#41;:
+    print&amp;#40;f&amp;quot;Avg Bid: {avgBid&amp;#40;x, 2&amp;#41;}&amp;quot;&amp;#41;
+
+# 計算最近 2 個平均報價, 並保留 10 個歷史報價
+#
+# Bids: &amp;#91;2&amp;#93;
+# Avg Bid: 2.0
+# Bids: &amp;#91;2, 9&amp;#93;
+# Avg Bid: 5.5
+# Bids: &amp;#91;2, 9, 16&amp;#93;
+# Avg Bid: 12.5
+# Bids: &amp;#91;2, 9, 16, 23&amp;#93;
+#
+# ...
+#
+# Bids: &amp;#91;23, 30, 37, 44, 51, 58, 65, 72, 79, 86&amp;#93;
+# Avg Bid: 82.5
+# Bids: &amp;#91;30, 37, 44, 51, 58, 65, 72, 79, 86, 93&amp;#93;
+# Avg Bid: 89.5&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;顯然的潛在威脅：副作用&quot;&gt;&lt;/a&gt;顯然的潛在威脅：副作用&lt;/h2&gt;&lt;p&gt;請留意，這樣的操作潛在有 很大的副作用 ，例如：&lt;/p&gt;&lt;p&gt;函數重複呼叫，可能會混入重複或其他的輸入到 buffer 中&lt;/p&gt;&lt;p&gt;用 Thread 監聽並執行，並沒有 Thread safe&lt;/p&gt;&lt;p&gt;如果要盡可能降低副作用，可以考慮內嵌函數 (inner function) 的函數工廠&lt;/p&gt;&lt;p&gt;要用就生產一個，函數內的 buffer 間互相獨立：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import threading
+import time
+
+def avgBidFactory&amp;#40;&amp;#41;:
+    def avgBid&amp;#40;id, newBid, lookback, histBids=&amp;#91;&amp;#93;, maxBuffer=10&amp;#41;:
+        histBids.append&amp;#40;newBid&amp;#41;
+        histBids = histBids&amp;#91;-maxBuffer:&amp;#93;
+        print&amp;#40;f&amp;quot;&amp;#40;{id}&amp;#41; Bids: {histBids}&amp;quot;&amp;#41;
+        lookback = min&amp;#40;lookback, len&amp;#40;histBids&amp;#41;&amp;#41;
+        avg = sum&amp;#40;histBids&amp;#91;-lookback:&amp;#93;&amp;#41; / lookback
+        return avg
+    return avgBid
+
+def test&amp;#40;id&amp;#41;:
+    avgBidFunc = avgBidFactory&amp;#40;&amp;#41;
+    for x in range&amp;#40;2, 100, 7&amp;#41;:
+        print&amp;#40;f&amp;quot;&amp;#40;{id}&amp;#41; Avg Bid: {avgBidFunc&amp;#40;id, x, 2&amp;#41;}&amp;quot;&amp;#41;
+        time.sleep&amp;#40;0.3&amp;#41;
+
+t1 = threading.Thread&amp;#40;target=test, args=&amp;#40;1,&amp;#41;&amp;#41;.start&amp;#40;&amp;#41;
+t2 = threading.Thread&amp;#40;target=test, args=&amp;#40;2,&amp;#41;&amp;#41;.start&amp;#40;&amp;#41;
+
+# &amp;#40;2&amp;#41; Bids: &amp;#91;2, 9&amp;#93;
+# &amp;#40;2&amp;#41; Avg Bid: 5.5
+# &amp;#40;1&amp;#41; Bids: &amp;#91;2, 9&amp;#93;
+# &amp;#40;1&amp;#41; Avg Bid: 5.5
+# &amp;#40;2&amp;#41; Bids: &amp;#91;2, 9, 16&amp;#93;
+# &amp;#40;1&amp;#41; Bids: &amp;#91;2, 9, 16&amp;#93;
+# &amp;#40;1&amp;#41; Avg Bid: 12.5
+# &amp;#40;2&amp;#41; Avg Bid: 12.5
+#
+# ...
+#
+# &amp;#40;1&amp;#41; Avg Bid: 82.5
+# &amp;#40;2&amp;#41; Bids: &amp;#91;23, 30, 37, 44, 51, 58, 65, 72, 79, 86&amp;#93;
+# &amp;#40;2&amp;#41; Avg Bid: 82.5
+# &amp;#40;2&amp;#41; Bids: &amp;#91;30, 37, 44, 51, 58, 65, 72, 79, 86, 93&amp;#93;
+# &amp;#40;1&amp;#41; Bids: &amp;#91;30, 37, 44, 51, 58, 65, 72, 79, 86, 93&amp;#93;
+# &amp;#40;1&amp;#41; Avg Bid: 89.5
+# &amp;#40;2&amp;#41; Avg Bid: 89.5&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因此得十分確定函數在掌握之中，最好是輕量、單一的函數。&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;速度也不見得有優勢&quot;&gt;&lt;/a&gt;速度也不見得有優勢&lt;/h2&gt;&lt;p&gt;另外這樣並沒有比較快（通常是更慢）：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import timeit
+import statistics
+
+
+# Method 1: 利用可變預設參數
+def avgBid1&amp;#40;newBid, lookback, histBids=&amp;#91;&amp;#93;, maxBuffer=10&amp;#41;:
+    histBids.append&amp;#40;newBid&amp;#41;
+    histBids = histBids&amp;#91;-maxBuffer:&amp;#93;
+    lookback = min&amp;#40;lookback, len&amp;#40;histBids&amp;#41;&amp;#41;
+    avg = sum&amp;#40;histBids&amp;#91;-lookback:&amp;#93;&amp;#41; / lookback
+    return avg
+
+# Method 2: 一般寫法
+def avgBid2&amp;#40;histBids, lookback&amp;#41;:
+    lookback = min&amp;#40;lookback, len&amp;#40;histBids&amp;#41;&amp;#41;
+    avg = sum&amp;#40;histBids&amp;#91;-lookback:&amp;#93;&amp;#41; / lookback
+    return avg
+
+def test1&amp;#40;&amp;#41;:
+    for x in range&amp;#40;1, 10000, 3&amp;#41;:
+        avgBid1&amp;#40;x, 7&amp;#41;
+
+def test2&amp;#40;&amp;#41;:
+    buffer = &amp;#91;&amp;#93;
+    for x in range&amp;#40;1, 10000, 3&amp;#41;:
+        buffer.append&amp;#40;x&amp;#41;
+        buffer = buffer&amp;#91;-10:&amp;#93;
+        avg = avgBid2&amp;#40;buffer, 7&amp;#41;
+
+executionTimes1 = &amp;#91;timeit.timeit&amp;#40;test1, number=1000&amp;#41; for &amp;#95; in range&amp;#40;10&amp;#41;&amp;#93;
+mean1 = statistics.stdev&amp;#40;executionTimes1&amp;#41;
+stdDev1 = statistics.stdev&amp;#40;executionTimes1&amp;#41;
+print&amp;#40;f&amp;quot;Time1: {mean1:.6f} ±{2&amp;#42;stdDev1:.6f} s&amp;quot;&amp;#41;
+# 利用可變預設參數 Time1: 0.084309 ±0.168618 s
+
+executionTimes2 = &amp;#91;timeit.timeit&amp;#40;test2, number=1000&amp;#41; for &amp;#95; in range&amp;#40;10&amp;#41;&amp;#93;
+mean2 = statistics.stdev&amp;#40;executionTimes2&amp;#41;
+stdDev2 = statistics.stdev&amp;#40;executionTimes2&amp;#41;
+print&amp;#40;f&amp;quot;Time2: {mean2:.6f} ±{2&amp;#42;stdDev2:.6f} s&amp;quot;&amp;#41;
+# 一般寫法 Time2: 0.021163 ±0.042325 s&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;結論：危機就是轉機，謹慎用之&quot;&gt;&lt;/a&gt;結論：危機就是轉機，謹慎用之&lt;/h2&gt;&lt;p&gt;視情況可謹慎使用，例如在業務起頭或末端的輕量處理，就可以考慮。&lt;/p&gt;&lt;p&gt;例如：算完就 print, 寫 file, 送出到網路 … 等。&lt;/p&gt;&lt;p&gt;就不需要特地還要建立一個前值變數保存，然後運算完更新前值，然後前值又暴露在一堆地方。&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 01 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-11-30-使用-SymPy-推導選擇權價格公式並試算/

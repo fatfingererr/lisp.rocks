@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 03 Dec 2023 09:33:38 +0800
+Sun, 03 Dec 2023 12:23:57 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -71,6 +71,66 @@ while True:
 </enclosure>
 <pubDate>
 Sun, 03 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-02-使用-SimpleNamespace-分類管理券商-API-錯誤碼/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-02-使用-SimpleNamespace-分類管理券商-API-錯誤碼/
+</link>
+<title>
+使用 SimpleNamespace 分類管理券商 API 錯誤碼
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;券商錯誤碼&quot;&gt;&lt;/a&gt;券商錯誤碼&lt;/h2&gt;&lt;p&gt;券商 API 錯誤碼通常是扁平（flat）的，也就是錯誤碼不會分類。&lt;/p&gt;&lt;p&gt;假設我們有以下券商錯誤碼，我們可能很自然使用 &lt;code&gt;dict&lt;/code&gt; 管理 mapping：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;mapping = {
+    1001: &amp;quot;登入失敗，請由LOG查看失敗原因。&amp;quot;,
+    1002: &amp;quot;交易帳號不存在。&amp;quot;,
+    1003: &amp;quot;下單帳號類型不正確，是否有證券帳號下期貨之情行。&amp;quot;,
+    1004: &amp;quot;PERIOD 超出選擇範圍。&amp;quot;,
+    1005: &amp;quot;FLAG 超出選擇範圍。&amp;quot;,
+    1006: &amp;quot;BUYSELL 超出選擇範圍。&amp;quot;,
+    1007: &amp;quot;下單主機不存在。&amp;quot;,
+    1009: &amp;quot;TRADE TYPE 超出選擇範圍。&amp;quot;,
+    1010: &amp;quot;DAY TRADE超出選擇範圍。&amp;quot;,
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是我們在使用的時候，是希望登入相關拋出 LoginFailError 然後觸發重新登入操作&lt;/p&gt;&lt;p&gt;而委託相關的 Error，應該拋出 OrderInvalidError 觸發重新設置參數的操作&lt;/p&gt;&lt;p&gt;也就是說，針對不同 Error Code 可能要有不同行為&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用&amp;#95;&lt;code&gt;simplenamespace&lt;/code&gt;&quot;&gt;&lt;/a&gt;使用 &lt;code&gt;SimpleNamespace&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;如果要將 Error Code 分類管理，能使用 &lt;code&gt;SimpleNamespace&lt;/code&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from types import SimpleNamespace
+
+class InSet&amp;#40;set&amp;#41;:
+    def &amp;#95;&amp;#95;eq&amp;#95;&amp;#95;&amp;#40;self, elem&amp;#41;:
+        return elem == self
+
+APIError = SimpleNamespace&amp;#40;
+    isLoginFail=InSet&amp;#40;{1001, 1002, 1003, 1007}&amp;#41;,
+    isOrderInvalid=InSet&amp;#40;{1004, 1005, 1006, 1009, 1010}&amp;#41;
+&amp;#41;
+
+print&amp;#40;APIError&amp;#41;
+# namespace&amp;#40;isLoginFail=InSet&amp;#40;{1001, 1002, 1003, 1007}&amp;#41;,
+# isOrderInvalid=InSet&amp;#40;{1009, 1010, 1004, 1005, 1006}&amp;#41;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而 &lt;code&gt;InSet&lt;/code&gt; 的 &lt;code&gt;&amp;#95;&amp;#95;eq&amp;#95;&amp;#95;&lt;/code&gt; 能幫助我們快速讓 Error Code 進到對應的控制語句&lt;/p&gt;&lt;p&gt;在 3.10 以上就能使用 &lt;code&gt;match/case&lt;/code&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;code = 1002
+
+match code:
+    case APIError.isLoginFail:
+        print&amp;#40;f&amp;quot;The login fail error: {mapping&amp;#91;code&amp;#93;}&amp;quot;&amp;#41;
+    case APIError.isOrderInvalid:
+        print&amp;#40;f&amp;quot;The order invalid error: {mapping&amp;#91;code&amp;#93;}&amp;quot;&amp;#41;
+    case &amp;#95;:
+        print&amp;#40;&amp;quot;Unhandled error code&amp;quot;&amp;#41;
+# 1002 is a login fail error: 交易帳號不存在。&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或是在 3.10 以前可以使用 &lt;code&gt;if/else&lt;/code&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;code = 1002
+
+if code == APIError.isLoginFail:
+    print&amp;#40;f&amp;quot;The login fail error: {mapping&amp;#91;code&amp;#93;}&amp;quot;&amp;#41;
+elif code == APIError.isOrderInvalid:
+    print&amp;#40;f&amp;quot;The order invalid error: {mapping&amp;#91;code&amp;#93;}&amp;quot;&amp;#41;
+else:
+    print&amp;#40;&amp;quot;Unhandled error code&amp;quot;&amp;#41;
+# 1002 is a login fail error: 交易帳號不存在。&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a name=&quot;關於簡易命名空間&amp;#95;&lt;code&gt;simplenamespace&lt;/code&gt;&quot;&gt;&lt;/a&gt;關於簡易命名空間 &lt;code&gt;SimpleNamespace&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;SimpleNamespace&lt;/code&gt; 有以下比 &lt;code&gt;namedtuple&lt;/code&gt;, &lt;code&gt;dict&lt;/code&gt; 好的優勢：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;可以透過 . 訪問屬性，就像一般 Object 般使用&lt;/li&gt;&lt;li&gt;可以設定自帶初始化屬性&lt;/li&gt;&lt;li&gt;比起 class 又更輕量，訪問何存儲更快速&lt;/li&gt;&lt;li&gt;內建 &lt;code&gt;repr&amp;#40;&amp;#41;&lt;/code&gt; 就是屬性自己: &lt;code&gt;eval&amp;#40;repr&amp;#40;sn&amp;#41;&amp;#41;==sn&lt;/code&gt;&lt;/li&gt;&lt;li&gt;比對不是透過 id 而是透過屬性本身的值&lt;/li&gt;&lt;/ol&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 02 Dec 2023 00:00:00 +0800
 </pubDate>
 </item>
 <item>

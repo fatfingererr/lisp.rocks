@@ -12,11 +12,67 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Fri, 01 Dec 2023 07:37:19 +0800
+Sun, 03 Dec 2023 09:33:38 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-03-在-Python-中使用-Screen-Brightness-Control-自動偵測閃電下單視窗並調高亮度/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-03-在-Python-中使用-Screen-Brightness-Control-自動偵測閃電下單視窗並調高亮度/
+</link>
+<title>
+在 Python 中自動偵測閃電下單視窗，並調高亮度
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;python&amp;#95;套件&amp;#95;&lt;code&gt;screen&amp;#95;brightness&amp;#95;control&lt;/code&gt;&quot;&gt;&lt;/a&gt;Python 套件 &lt;code&gt;screen&amp;#95;brightness&amp;#95;control&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;在 Python 中透過亮度控制套件 (&lt;a href='https://github.com/Crozzers/screen_brightness_control'&gt;GitHub&lt;/a&gt;) 可以設定並取得螢幕亮度：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import screen&amp;#95;brightness&amp;#95;control as sbc
+
+# get the brightness
+brightness = sbc.get&amp;#95;brightness&amp;#40;&amp;#41;
+# get the brightness for the primary monitor
+primary = sbc.get&amp;#95;brightness&amp;#40;display=0&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;自動偵測視窗並調整亮度&quot;&gt;&lt;/a&gt;自動偵測視窗並調整亮度&lt;/h2&gt;&lt;p&gt;由於做交易時會有許多顯示器，亮度可以設置成全亮的 80-90%&lt;/p&gt;&lt;p&gt;然後可以設置成當該顯示器打開的視窗發生重要事件時，將亮度調高到 100% 提醒自己&lt;/p&gt;&lt;p&gt;這邊以 &quot;閃電下單&quot; 為例, 閃電下單視窗名稱是 &quot;閃電下單 1&quot;, &quot;閃電下單 2&quot; &amp;#x2026; 等，匹配名字即可：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import time
+import screen&amp;#95;brightness&amp;#95;control as sbc
+import win32gui
+
+# Inputs
+programName = &amp;quot;閃電下單&amp;quot;
+defaultBrightness = 90 # 預設亮度, 80-90%
+targetBrightness = 100 # 當打開閃電下單, 亮度調亮吸引注意力
+
+# Program
+pid = None
+lastCheck = time.time&amp;#40;&amp;#41;
+printPerSec = 15
+while True:
+    monitors = sbc.list&amp;#95;monitors&amp;#40;&amp;quot;wmi&amp;quot;&amp;#41;
+    hwnd = win32gui.GetForegroundWindow&amp;#40;&amp;#41;
+    title = win32gui.GetWindowText&amp;#40;hwnd&amp;#41;
+    if time.time&amp;#40;&amp;#41; &amp;gt;= lastCheck:
+        lastCheck += printPerSec
+        print&amp;#40;f&amp;quot;當前視窗: {title} &amp;#40;顯示器={monitors}&amp;#41;&amp;quot;&amp;#41;
+    if programName in title and pid is None:
+        print&amp;#40;f&amp;quot;將 '{title}' 所在顯示器的螢幕亮度，調整成 &amp;quot;+str&amp;#40;targetBrightness&amp;#41;&amp;#41;
+        sbc.fade&amp;#95;brightness&amp;#40;targetBrightness, display=monitors&amp;#91;0&amp;#93;&amp;#41;
+        if pid is None:
+            pid = hwnd
+    else:
+        prevBrightness = sbc.get&amp;#95;brightness&amp;#40;display=monitors&amp;#91;0&amp;#93;&amp;#41;&amp;#91;0&amp;#93;
+        if prevBrightness == targetBrightness and not programName in title:
+            print&amp;#40;f&amp;quot;將 '{title}' 所在顯示器的螢幕亮度，恢復到預設值 &amp;quot;+str&amp;#40;defaultBrightness&amp;#41;&amp;#41;
+            sbc.fade&amp;#95;brightness&amp;#40;defaultBrightness, display=monitors&amp;#91;0&amp;#93;&amp;#41;
+            pid = None
+    time.sleep&amp;#40;1&amp;#41;&lt;/code&gt;&lt;/pre&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 03 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-01-利用-Python-可變預設參數特性，保留歷史報價與計算/

@@ -12,11 +12,57 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 03 Dec 2023 12:23:57 +0800
+Wed, 06 Dec 2023 07:24:38 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-04-Python-處理效能問題中使用-while-else/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-04-Python-處理效能問題中使用-while-else/
+</link>
+<title>
+Python 處理效能問題中使用 while/else
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;使用情景&quot;&gt;&lt;/a&gt;使用情景&lt;/h2&gt;&lt;p&gt;由於經常得處理 Python 效能的追求與改善，少不了的就是：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;起 Thread 跑 While loop 監聽&lt;/li&gt;&lt;li&gt;起一堆 While loop 對同一個 Queue &lt;code&gt;get&amp;#40;&amp;#41;&lt;/code&gt; ，來大量阻塞和消化不斷湧入到 Queue 的資料&lt;/li&gt;&lt;li&gt;&lt;code&gt;while xxxx.isAlive&amp;#40;&amp;#41;&lt;/code&gt; 卡檔案或第三方 Context/Client 處理 I/O 問題&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;無論是哪個，都免不了 &lt;code&gt;While &amp;lt;condition&amp;gt;:&lt;/code&gt; 中的 condition 可能會出錯，通常就得用 &lt;code&gt;if/else&lt;/code&gt; 打補丁&lt;/p&gt;&lt;p&gt;但是 Python 有一個很獨門的語法，在其他語言中少見的就是 &lt;code&gt;while/else&lt;/code&gt;, &lt;code&gt;for/else&lt;/code&gt; ，可以讓 Code 更簡潔&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;以登入為例&quot;&gt;&lt;/a&gt;以登入為例&lt;/h2&gt;&lt;p&gt;以登入來說，由於受限於第三方回傳登入成功，需要 While loop 等待：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;start&amp;#95;login&amp;#40;&amp;#41;
+while is&amp;#95;logging&amp;#95;in:
+    if is&amp;#95;logged&amp;#95;in:
+        print&amp;#40;&amp;quot;Successfully logged in!&amp;quot;&amp;#41;
+        break&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而在登入函數中，會設置 &lt;code&gt;is&amp;#95;logged&amp;#95;in&lt;/code&gt; 來觸發進到前面 while loop 中的 if break：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import time
+
+is&amp;#95;logging&amp;#95;in = False
+is&amp;#95;logged&amp;#95;in = False
+
+def start&amp;#95;login&amp;#40;&amp;#41;:
+    global is&amp;#95;logging&amp;#95;in, is&amp;#95;logged&amp;#95;in
+    print&amp;#40;&amp;quot;Logging in...&amp;quot;&amp;#41;
+    is&amp;#95;logging&amp;#95;in = True
+    time.sleep&amp;#40;3&amp;#41; # 模擬等 3 秒成功登入
+    is&amp;#95;logged&amp;#95;in = True&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;假如我們考慮登入失敗：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def fail&amp;#95;to&amp;#95;login&amp;#40;&amp;#41;:
+    global is&amp;#95;logging&amp;#95;in, is&amp;#95;logged&amp;#95;in
+    print&amp;#40;&amp;quot;Logging in...&amp;quot;&amp;#41;
+    is&amp;#95;logging&amp;#95;in = True
+    time.sleep&amp;#40;3&amp;#41; # 模擬等 3 秒失敗登入
+    is&amp;#95;logging&amp;#95;in = False&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那我們就可以使用 &lt;code&gt;while/else&lt;/code&gt; 來處理，而不需要再兩三行的 &lt;code&gt;if/else&lt;/code&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;fail&amp;#95;to&amp;#95;login&amp;#40;&amp;#41;
+while is&amp;#95;logging&amp;#95;in:
+    if is&amp;#95;logged&amp;#95;in:
+        is&amp;#95;logging&amp;#95;in = False
+        print&amp;#40;&amp;quot;Successfully logged in!&amp;quot;&amp;#41;
+        break
+else:　　　　　　　　　　　　　　 # &amp;lt;---- while/else
+       print&amp;#40;&amp;quot;Failed to log in!&amp;quot;&amp;#41; # &amp;lt;---- while/else&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;除此之外也可以使用 &lt;code&gt;for/else&lt;/code&gt; 處理經常需要遍歷資料，但是遍歷後沒有找到的情況。&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 04 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-03-在-Python-中使用-Screen-Brightness-Control-自動偵測閃電下單視窗並調高亮度/

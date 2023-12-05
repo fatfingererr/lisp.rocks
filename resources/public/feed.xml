@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 06 Dec 2023 07:24:38 +0800
+Wed, 06 Dec 2023 07:50:30 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-06-test/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-06-test/
+</link>
+<title>
+test
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/Written By Human/SVG/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;&quot; align=&quot;left&quot; title=&quot;image title&quot; class=&quot;img&quot; /&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;測試&quot;&gt;&lt;/a&gt;測試&lt;/h2&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 06 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-04-Python-處理效能問題中使用-while-else/
@@ -28,7 +48,7 @@ http://lisp.rocks/posts-output/2023-12-04-Python-處理效能問題中使用-whi
 Python 處理效能問題中使用 while/else
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;使用情景&quot;&gt;&lt;/a&gt;使用情景&lt;/h2&gt;&lt;p&gt;由於經常得處理 Python 效能的追求與改善，少不了的就是：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;起 Thread 跑 While loop 監聽&lt;/li&gt;&lt;li&gt;起一堆 While loop 對同一個 Queue &lt;code&gt;get&amp;#40;&amp;#41;&lt;/code&gt; ，來大量阻塞和消化不斷湧入到 Queue 的資料&lt;/li&gt;&lt;li&gt;&lt;code&gt;while xxxx.isAlive&amp;#40;&amp;#41;&lt;/code&gt; 卡檔案或第三方 Context/Client 處理 I/O 問題&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;無論是哪個，都免不了 &lt;code&gt;While &amp;lt;condition&amp;gt;:&lt;/code&gt; 中的 condition 可能會出錯，通常就得用 &lt;code&gt;if/else&lt;/code&gt; 打補丁&lt;/p&gt;&lt;p&gt;但是 Python 有一個很獨門的語法，在其他語言中少見的就是 &lt;code&gt;while/else&lt;/code&gt;, &lt;code&gt;for/else&lt;/code&gt; ，可以讓 Code 更簡潔&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;以登入為例&quot;&gt;&lt;/a&gt;以登入為例&lt;/h2&gt;&lt;p&gt;以登入來說，由於受限於第三方回傳登入成功，需要 While loop 等待：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;start&amp;#95;login&amp;#40;&amp;#41;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;*img/not-by-ai/tw/Written By Human/SVG/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;&quot; align=&quot;left&quot; title=&quot;image title&quot; class=&quot;img&quot; /&gt;&lt;br/&gt;&lt;br/&gt; a &lt;img src=&quot;..*../img/not-by-ai/tw/Written By Human/SVG/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;&quot; align=&quot;left&quot; title=&quot;image title&quot; class=&quot;img&quot; /&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用情景&quot;&gt;&lt;/a&gt;使用情景&lt;/h2&gt;&lt;p&gt;由於經常得處理 Python 效能的追求與改善，少不了的就是：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;起 Thread 跑 While loop 監聽&lt;/li&gt;&lt;li&gt;起一堆 While loop 對同一個 Queue &lt;code&gt;get&amp;#40;&amp;#41;&lt;/code&gt; ，來大量阻塞和消化不斷湧入到 Queue 的資料&lt;/li&gt;&lt;li&gt;&lt;code&gt;while xxxx.isAlive&amp;#40;&amp;#41;&lt;/code&gt; 卡檔案或第三方 Context/Client 處理 I/O 問題&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;無論是哪個，都免不了 &lt;code&gt;While &amp;lt;condition&amp;gt;:&lt;/code&gt; 中的 condition 可能會出錯，通常就得用 &lt;code&gt;if/else&lt;/code&gt; 打補丁&lt;/p&gt;&lt;p&gt;但是 Python 有一個很獨門的語法，在其他語言中少見的就是 &lt;code&gt;while/else&lt;/code&gt;, &lt;code&gt;for/else&lt;/code&gt; ，可以讓 Code 更簡潔&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;以登入為例&quot;&gt;&lt;/a&gt;以登入為例&lt;/h2&gt;&lt;p&gt;以登入來說，由於受限於第三方回傳登入成功，需要 While loop 等待：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;start&amp;#95;login&amp;#40;&amp;#41;
 while is&amp;#95;logging&amp;#95;in:
     if is&amp;#95;logged&amp;#95;in:
         print&amp;#40;&amp;quot;Successfully logged in!&amp;quot;&amp;#41;

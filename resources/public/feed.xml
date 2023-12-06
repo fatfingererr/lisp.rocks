@@ -12,31 +12,11 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Wed, 06 Dec 2023 07:50:30 +0800
+Wed, 06 Dec 2023 08:21:06 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
-<item>
-<guid>
-http://lisp.rocks/posts-output/2023-12-06-test/
-</guid>
-<link>
-http://lisp.rocks/posts-output/2023-12-06-test/
-</link>
-<title>
-test
-</title>
-<description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/Written By Human/SVG/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;&quot; align=&quot;left&quot; title=&quot;image title&quot; class=&quot;img&quot; /&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;測試&quot;&gt;&lt;/a&gt;測試&lt;/h2&gt;
-</description>
-<enclosure>
-
-</enclosure>
-<pubDate>
-Wed, 06 Dec 2023 00:00:00 +0800
-</pubDate>
-</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-04-Python-處理效能問題中使用-while-else/

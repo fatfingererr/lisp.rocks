@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 10 Dec 2023 00:59:52 +0800
+Sun, 10 Dec 2023 01:16:00 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -31,37 +31,32 @@ http://lisp.rocks/posts-output/2023-12-10-在-return-後執行來加快子線程
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;商品檔的資訊&quot;&gt;&lt;/a&gt;商品檔的資訊&lt;/h2&gt;&lt;p&gt;通常券商 API 提供商品檔資訊會很豐富，但需要一直處理大量商品檔資料&lt;/p&gt;&lt;p&gt;而通常我們需要商品檔基本資訊，例如商品代碼與商品名稱，然後去處理其他事情&lt;/p&gt;&lt;p&gt;這時候就可以讓處理商品檔的線程，先回傳商品檔的基本資訊，再繼續添加商品檔資訊到商品檔中&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用&amp;#95;&lt;code&gt;try/finally&lt;/code&gt;&amp;#95;提早&amp;#95;return&quot;&gt;&lt;/a&gt;使用 &lt;code&gt;try/finally&lt;/code&gt; 提早 return&lt;/h2&gt;&lt;p&gt;為了達成這個目標，就可以利用 &lt;code&gt;try/finally&lt;/code&gt; 來實現提早回傳並繼續運算&lt;/p&gt;&lt;p&gt;而提早回傳可能就能觸發其他子線程開始工作，就能加快處理速度：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import threading
 import time
 
-g&amp;#95;dataDict = {}
-
 def addData&amp;#40;newData&amp;#41;:
-    global g&amp;#95;dataDict
     try:
-        print&amp;#40;f'原本的字典: {g&amp;#95;dataDict}'&amp;#41;
-        g&amp;#95;dataDict.update&amp;#40;newData&amp;#41;
-        return g&amp;#95;dataDict
+        dataDict = {}
+        print&amp;#40;f'原本的字典: {dataDict}'&amp;#41;
+        dataDict.update&amp;#40;newData&amp;#41;
+        return dataDict
     finally:
-        time.sleep&amp;#40;1&amp;#41;
-        g&amp;#95;dataDict.update&amp;#40;{'漲停': 700}&amp;#41;
-        print&amp;#40;f'回傳後繼續處理 ... {g&amp;#95;dataDict}'&amp;#41;
-        time.sleep&amp;#40;1&amp;#41;
-        g&amp;#95;dataDict.update&amp;#40;{'跌停': 600}&amp;#41;
-        print&amp;#40;f'回傳後繼續處理 ... {g&amp;#95;dataDict}'&amp;#41;
+        def fn&amp;#40;data&amp;#41;:
+            time.sleep&amp;#40;1&amp;#41;
+            data.update&amp;#40;{'漲停': 700}&amp;#41;
+            print&amp;#40;f'回傳後繼續處理 ... {dataDict}'&amp;#41;
+            time.sleep&amp;#40;1&amp;#41;
+            data.update&amp;#40;{'跌停': 600}&amp;#41;
+            print&amp;#40;f'回傳後繼續處理 ... {dataDict}'&amp;#41;
+        threading.Thread&amp;#40;target=fn, args=&amp;#40;dataDict,&amp;#41;&amp;#41;.start&amp;#40;&amp;#41;
 
-def waitingForBar&amp;#40;&amp;#41;:
-    global g&amp;#95;dataDict
-    while True:
-        target = g&amp;#95;dataDict.get&amp;#40;'code'&amp;#41;
-        if target is not None:
-            print&amp;#40;f&amp;quot;先取得商品代碼，下單 '{target}'&amp;quot;&amp;#41;
-            break
+def sendOrder&amp;#40;data&amp;#41;:
+    print&amp;#40;f&amp;quot;先取得商品代碼，立即下單 '{data&amp;#91;'code'&amp;#93;}'&amp;quot;&amp;#41;
 
-threading.Thread&amp;#40;target=waitingForBar&amp;#41;.start&amp;#40;&amp;#41;
-threading.Thread&amp;#40;target=addData, args=&amp;#40;{'code': 2330, 'name': '台積電'},&amp;#41;&amp;#41;.start&amp;#40;&amp;#41;
+data = addData&amp;#40;{'code': 2330}&amp;#41;
+sendOrder&amp;#40;data&amp;#41;
 
 # 原本的字典: {}
 # 先取得商品代碼，下單 '2330'
 # 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700}
-# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700, '跌停': 600}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這就是一個範例，先將商品檔資訊回傳，其中有商品代碼就能執行其他工作&lt;/p&gt;&lt;p&gt;再慢慢把商品檔資訊補進去字典中，在另一個線程也能享有這些新的資訊更新&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700, '跌停': 600}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這就是一個範例，先將商品檔資訊回傳，其中有商品代碼就能執行其他工作&lt;/p&gt;&lt;p&gt;再慢慢把商品檔資訊補進去字典中，在另一個線程也能享有這些新的資訊更新&lt;/p&gt;&lt;p&gt;實際上可能不會在 finally threading start，而是會把 keepHandling 添加到 Pool 中&lt;/p&gt;&lt;p&gt;當然，keepHandling 可以寫在外面，或在 sendOrder 後執行&lt;/p&gt;&lt;p&gt;但是這樣寫的好處在於，finally 要做的事情可以寫在 addData 中&lt;/p&gt;&lt;p&gt;而不會受到 addData 以外的東西影響，又能在回傳後繼續執行，甚至成為監聽器&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

@@ -2,8 +2,10 @@
 #+BEGIN_SRC json :noexport:
 {:title "使用 bisect 快速匹配商品編號前 2-3 碼並提前訂閱" :layout :post :tags ["python", "trading"] :toc false}
 #+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
 
-*  關於 ~bisect~
+**  關於 ~bisect~
 
 在 Python 中 ~bisect~ 有很多種用法，詳細請見 [[https://martinheinz.dev/blog/106][Everything You Can Do with Python's bisect Module]]
 

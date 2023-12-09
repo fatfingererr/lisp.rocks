@@ -3,7 +3,7 @@
 {:title "使用 SimpleNamespace 分類管理券商 API 錯誤碼" :layout :post :tags ["python" "api"] :toc false}
 #+END_SRC
 * 　
-
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
 
 ** 券商錯誤碼
 

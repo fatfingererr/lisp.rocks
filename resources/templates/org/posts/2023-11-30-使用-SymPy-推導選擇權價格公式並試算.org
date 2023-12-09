@@ -2,8 +2,8 @@
 #+BEGIN_SRC json :noexport:
 {:title "使用 SymPy 推導選擇權價格公式並試算" :layout :post :tags ["python", "option", "trading", "modeling"] :toc false}
 #+END_SRC
-*
-
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
 
 ** 使用套件
 

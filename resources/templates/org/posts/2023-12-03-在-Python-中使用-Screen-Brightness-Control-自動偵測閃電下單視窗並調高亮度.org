@@ -3,7 +3,7 @@
 {:title "在 Python 中自動偵測閃電下單視窗，並調高亮度" :layout :post :tags ["python" "trading" "win32gui"] :toc false}
 #+END_SRC
 * 　
-
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
 
 ** Python 套件 =screen_brightness_control=
 

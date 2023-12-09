@@ -3,6 +3,8 @@
 
 # 　
 
+![img](../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg)
+
 
 ## Python 套件 `screen_brightness_control`
 

@@ -65,8 +65,8 @@
 </div>
 <div>
     
-    <p>&#42;</p><h1><a name="使用套件"></a>使用套件</h1><p>透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol</p><pre><code>from sympy import symbols, exp, sqrt, ln, N
-from sympy.stats import Normal, cdf</code></pre><h1><a name="公式推導"></a>公式推導</h1><p>透過 symbols 建立變數， <code>positive</code> 說明變數都是正數。</p><p>其中關鍵是讓 <code>Normal</code> 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。</p><pre><code>S0, X, T, r, sigma = symbols&#40;'S0 X T r sigma', positive=True&#41;
+    <h1><a name=""></a></h1><p><img src="../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg" alt="img" /></p><h2><a name="使用套件"></a>使用套件</h2><p>透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol</p><pre><code>from sympy import symbols, exp, sqrt, ln, N
+from sympy.stats import Normal, cdf</code></pre><h2><a name="公式推導"></a>公式推導</h2><p>透過 symbols 建立變數， <code>positive</code> 說明變數都是正數。</p><p>其中關鍵是讓 <code>Normal</code> 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。</p><pre><code>S0, X, T, r, sigma = symbols&#40;'S0 X T r sigma', positive=True&#41;
 
 d1 = &#40;ln&#40;S0 / X&#41; + &#40;r + sigma&#42;&#42;2 / 2&#41; &#42; T&#41; / &#40;sigma &#42; sqrt&#40;T&#41;&#41;
 d2 = d1 - sigma &#42; sqrt&#40;T&#41;
@@ -77,7 +77,7 @@ C = S0 &#42; cdf&#40;norm&#95;dist&#41;&#40;d1&#41; - X &#42; exp&#40;-r &#42; T
 P = X &#42; exp&#40;-r &#42; T&#41; &#42; cdf&#40;norm&#95;dist&#41;&#40;-d2&#41; - S0 &#42; cdf&#40;norm&#95;dist&#41;&#40;-d1&#41;
 
 print&#40;f&quot;買權價格公式: {C}&quot;&#41;
-print&#40;f&quot;賣權價格公式: {P}&quot;&#41;</code></pre><h1><a name="價格試算"></a>價格試算</h1><p>價格計算只需要把變數名稱一一對應，就能計算而得。</p><p>帶入條件後，還得透過 <code>N</code> 才會具體取得數值結果。</p><pre><code>S0&#95;val = 100
+print&#40;f&quot;賣權價格公式: {P}&quot;&#41;</code></pre><h2><a name="價格試算"></a>價格試算</h2><p>價格計算只需要把變數名稱一一對應，就能計算而得。</p><p>帶入條件後，還得透過 <code>N</code> 才會具體取得數值結果。</p><pre><code>S0&#95;val = 100
 X&#95;val = 100
 T&#95;val = 1
 r&#95;val = 0.05

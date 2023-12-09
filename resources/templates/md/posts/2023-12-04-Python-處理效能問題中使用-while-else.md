@@ -3,7 +3,7 @@
 
 # 　
 
-<img src="\\/img/not-by-ai/tw/Written By Human/SVG/Written-By-Human-Not-By-AI-Badge-white.svg" alt="" align="left" title="image title" class="img" /><br/><br/>
+![img](../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg)
 
 
 ## 使用情景

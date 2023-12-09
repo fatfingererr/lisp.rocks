@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 09 Dec 2023 09:22:02 +0800
+Sat, 09 Dec 2023 09:24:03 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -72,7 +72,7 @@ http://lisp.rocks/posts-output/2023-12-04-Python-處理效能問題中使用-whi
 Python 處理效能問題中使用 while/else
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;&amp;#92;/img/not-by-ai/tw/Written By Human/SVG/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;&quot; align=&quot;left&quot; title=&quot;image title&quot; class=&quot;img&quot; /&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用情景&quot;&gt;&lt;/a&gt;使用情景&lt;/h2&gt;&lt;p&gt;由於經常得處理 Python 效能的追求與改善，少不了的就是：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;起 Thread 跑 While loop 監聽&lt;/li&gt;&lt;li&gt;起一堆 While loop 對同一個 Queue &lt;code&gt;get&amp;#40;&amp;#41;&lt;/code&gt; ，來大量阻塞和消化不斷湧入到 Queue 的資料&lt;/li&gt;&lt;li&gt;&lt;code&gt;while xxxx.isAlive&amp;#40;&amp;#41;&lt;/code&gt; 卡檔案或第三方 Context/Client 處理 I/O 問題&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;無論是哪個，都免不了 &lt;code&gt;While &amp;lt;condition&amp;gt;:&lt;/code&gt; 中的 condition 可能會出錯，通常就得用 &lt;code&gt;if/else&lt;/code&gt; 打補丁&lt;/p&gt;&lt;p&gt;但是 Python 有一個很獨門的語法，在其他語言中少見的就是 &lt;code&gt;while/else&lt;/code&gt;, &lt;code&gt;for/else&lt;/code&gt; ，可以讓 Code 更簡潔&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;以登入為例&quot;&gt;&lt;/a&gt;以登入為例&lt;/h2&gt;&lt;p&gt;以登入來說，由於受限於第三方回傳登入成功，需要 While loop 等待：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;start&amp;#95;login&amp;#40;&amp;#41;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用情景&quot;&gt;&lt;/a&gt;使用情景&lt;/h2&gt;&lt;p&gt;由於經常得處理 Python 效能的追求與改善，少不了的就是：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;起 Thread 跑 While loop 監聽&lt;/li&gt;&lt;li&gt;起一堆 While loop 對同一個 Queue &lt;code&gt;get&amp;#40;&amp;#41;&lt;/code&gt; ，來大量阻塞和消化不斷湧入到 Queue 的資料&lt;/li&gt;&lt;li&gt;&lt;code&gt;while xxxx.isAlive&amp;#40;&amp;#41;&lt;/code&gt; 卡檔案或第三方 Context/Client 處理 I/O 問題&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;無論是哪個，都免不了 &lt;code&gt;While &amp;lt;condition&amp;gt;:&lt;/code&gt; 中的 condition 可能會出錯，通常就得用 &lt;code&gt;if/else&lt;/code&gt; 打補丁&lt;/p&gt;&lt;p&gt;但是 Python 有一個很獨門的語法，在其他語言中少見的就是 &lt;code&gt;while/else&lt;/code&gt;, &lt;code&gt;for/else&lt;/code&gt; ，可以讓 Code 更簡潔&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;以登入為例&quot;&gt;&lt;/a&gt;以登入為例&lt;/h2&gt;&lt;p&gt;以登入來說，由於受限於第三方回傳登入成功，需要 While loop 等待：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;start&amp;#95;login&amp;#40;&amp;#41;
 while is&amp;#95;logging&amp;#95;in:
     if is&amp;#95;logged&amp;#95;in:
         print&amp;#40;&amp;quot;Successfully logged in!&amp;quot;&amp;#41;
@@ -118,7 +118,7 @@ http://lisp.rocks/posts-output/2023-12-03-在-Python-中使用-Screen-Brightness
 在 Python 中自動偵測閃電下單視窗，並調高亮度
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;python&amp;#95;套件&amp;#95;&lt;code&gt;screen&amp;#95;brightness&amp;#95;control&lt;/code&gt;&quot;&gt;&lt;/a&gt;Python 套件 &lt;code&gt;screen&amp;#95;brightness&amp;#95;control&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;在 Python 中透過亮度控制套件 (&lt;a href='https://github.com/Crozzers/screen_brightness_control'&gt;GitHub&lt;/a&gt;) 可以設定並取得螢幕亮度：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import screen&amp;#95;brightness&amp;#95;control as sbc
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;python&amp;#95;套件&amp;#95;&lt;code&gt;screen&amp;#95;brightness&amp;#95;control&lt;/code&gt;&quot;&gt;&lt;/a&gt;Python 套件 &lt;code&gt;screen&amp;#95;brightness&amp;#95;control&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;在 Python 中透過亮度控制套件 (&lt;a href='https://github.com/Crozzers/screen_brightness_control'&gt;GitHub&lt;/a&gt;) 可以設定並取得螢幕亮度：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import screen&amp;#95;brightness&amp;#95;control as sbc
 
 # get the brightness
 brightness = sbc.get&amp;#95;brightness&amp;#40;&amp;#41;
@@ -174,7 +174,7 @@ http://lisp.rocks/posts-output/2023-12-02-使用-SimpleNamespace-分類管理券
 使用 SimpleNamespace 分類管理券商 API 錯誤碼
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;券商錯誤碼&quot;&gt;&lt;/a&gt;券商錯誤碼&lt;/h2&gt;&lt;p&gt;券商 API 錯誤碼通常是扁平（flat）的，也就是錯誤碼不會分類。&lt;/p&gt;&lt;p&gt;假設我們有以下券商錯誤碼，我們可能很自然使用 &lt;code&gt;dict&lt;/code&gt; 管理 mapping：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;mapping = {
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;券商錯誤碼&quot;&gt;&lt;/a&gt;券商錯誤碼&lt;/h2&gt;&lt;p&gt;券商 API 錯誤碼通常是扁平（flat）的，也就是錯誤碼不會分類。&lt;/p&gt;&lt;p&gt;假設我們有以下券商錯誤碼，我們可能很自然使用 &lt;code&gt;dict&lt;/code&gt; 管理 mapping：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;mapping = {
     1001: &amp;quot;登入失敗，請由LOG查看失敗原因。&amp;quot;,
     1002: &amp;quot;交易帳號不存在。&amp;quot;,
     1003: &amp;quot;下單帳號類型不正確，是否有證券帳號下期貨之情行。&amp;quot;,
@@ -234,7 +234,7 @@ http://lisp.rocks/posts-output/2023-12-01-利用-Python-可變預設參數特性
 利用 Python 可變預設參數特性，保留歷史報價與計算
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt;&lt;a name=&quot;可變預設參數&amp;#95;(mutable&amp;#95;default&amp;#95;arguments)&quot;&gt;&lt;/a&gt;可變預設參數 (Mutable Default Arguments)&lt;/h2&gt;&lt;p&gt;函數的預設參數如果是可變物件 (Mutable Default Arguments)&lt;/p&gt;&lt;p&gt;在 Python 中就只會初始化一次，並不斷復用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def doubled&amp;#40;val, the&amp;#95;list=&amp;#91;&amp;#93;&amp;#41;:
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;可變預設參數&amp;#95;(mutable&amp;#95;default&amp;#95;arguments)&quot;&gt;&lt;/a&gt;可變預設參數 (Mutable Default Arguments)&lt;/h2&gt;&lt;p&gt;函數的預設參數如果是可變物件 (Mutable Default Arguments)&lt;/p&gt;&lt;p&gt;在 Python 中就只會初始化一次，並不斷復用：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def doubled&amp;#40;val, the&amp;#95;list=&amp;#91;&amp;#93;&amp;#41;:
     the&amp;#95;list.append&amp;#40;val&amp;#41;
     the&amp;#95;list.append&amp;#40;val&amp;#41;
     return the&amp;#95;list
@@ -370,8 +370,8 @@ http://lisp.rocks/posts-output/2023-11-30-使用-SymPy-推導選擇權價格公�
 使用 SymPy 推導選擇權價格公式並試算
 </title>
 <description>
-&lt;p&gt;&amp;#42;&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;使用套件&quot;&gt;&lt;/a&gt;使用套件&lt;/h1&gt;&lt;p&gt;透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from sympy import symbols, exp, sqrt, ln, N
-from sympy.stats import Normal, cdf&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;&lt;a name=&quot;公式推導&quot;&gt;&lt;/a&gt;公式推導&lt;/h1&gt;&lt;p&gt;透過 symbols 建立變數， &lt;code&gt;positive&lt;/code&gt; 說明變數都是正數。&lt;/p&gt;&lt;p&gt;其中關鍵是讓 &lt;code&gt;Normal&lt;/code&gt; 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0, X, T, r, sigma = symbols&amp;#40;'S0 X T r sigma', positive=True&amp;#41;
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用套件&quot;&gt;&lt;/a&gt;使用套件&lt;/h2&gt;&lt;p&gt;透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from sympy import symbols, exp, sqrt, ln, N
+from sympy.stats import Normal, cdf&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a name=&quot;公式推導&quot;&gt;&lt;/a&gt;公式推導&lt;/h2&gt;&lt;p&gt;透過 symbols 建立變數， &lt;code&gt;positive&lt;/code&gt; 說明變數都是正數。&lt;/p&gt;&lt;p&gt;其中關鍵是讓 &lt;code&gt;Normal&lt;/code&gt; 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0, X, T, r, sigma = symbols&amp;#40;'S0 X T r sigma', positive=True&amp;#41;
 
 d1 = &amp;#40;ln&amp;#40;S0 / X&amp;#41; + &amp;#40;r + sigma&amp;#42;&amp;#42;2 / 2&amp;#41; &amp;#42; T&amp;#41; / &amp;#40;sigma &amp;#42; sqrt&amp;#40;T&amp;#41;&amp;#41;
 d2 = d1 - sigma &amp;#42; sqrt&amp;#40;T&amp;#41;
@@ -382,7 +382,7 @@ C = S0 &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;d1&amp;#41; - X 
 P = X &amp;#42; exp&amp;#40;-r &amp;#42; T&amp;#41; &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;-d2&amp;#41; - S0 &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;-d1&amp;#41;
 
 print&amp;#40;f&amp;quot;買權價格公式: {C}&amp;quot;&amp;#41;
-print&amp;#40;f&amp;quot;賣權價格公式: {P}&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;&lt;a name=&quot;價格試算&quot;&gt;&lt;/a&gt;價格試算&lt;/h1&gt;&lt;p&gt;價格計算只需要把變數名稱一一對應，就能計算而得。&lt;/p&gt;&lt;p&gt;帶入條件後，還得透過 &lt;code&gt;N&lt;/code&gt; 才會具體取得數值結果。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0&amp;#95;val = 100
+print&amp;#40;f&amp;quot;賣權價格公式: {P}&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a name=&quot;價格試算&quot;&gt;&lt;/a&gt;價格試算&lt;/h2&gt;&lt;p&gt;價格計算只需要把變數名稱一一對應，就能計算而得。&lt;/p&gt;&lt;p&gt;帶入條件後，還得透過 &lt;code&gt;N&lt;/code&gt; 才會具體取得數值結果。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0&amp;#95;val = 100
 X&amp;#95;val = 100
 T&amp;#95;val = 1
 r&amp;#95;val = 0.05
@@ -418,7 +418,7 @@ http://lisp.rocks/posts-output/2023-11-26-使用-bisect-快速匹配商品編號
 使用 bisect 快速匹配商品編號前 2-3 碼並提前訂閱
 </title>
 <description>
-&lt;h1&gt;&lt;a name=&quot;關於&amp;#95;&lt;code&gt;bisect&lt;/code&gt;&quot;&gt;&lt;/a&gt;關於 &lt;code&gt;bisect&lt;/code&gt;&lt;/h1&gt;&lt;p&gt;在 Python 中 &lt;code&gt;bisect&lt;/code&gt; 有很多種用法，詳細請見 &lt;a href='https://martinheinz.dev/blog/106'&gt;Everything You Can Do with Python's bisect Module&lt;/a&gt;&lt;/p&gt;&lt;p&gt;其中一個功能就是對於 str array 快速匹配前綴，並將符合的字串篩選出來。&lt;/p&gt;&lt;p&gt;當 array 很大時，這個方法基本上都比迭代來的快。&lt;/p&gt;&lt;p&gt;對於快速匹配股票商品編號，並向券商訂閱報價資訊來說就很方便，例如當使用者輸入 &quot;2&quot; &quot;3&quot; &quot;3&quot;&lt;/p&gt;&lt;p&gt;就能將其匹配到['2330', '2331', '2332', '2337', '2338', '23383'] 這些商品編號&lt;/p&gt;&lt;p&gt;進而先提前訂閱這些商品的報價和五檔。&lt;/p&gt;&lt;p&gt;當使用者輸入到 2330 時，報價就已經訂閱，再把剩餘的 2331, 2332, &amp;#x2026; 解訂即可。&lt;/p&gt;&lt;p&gt;對於商品檔有幾萬來說，是很方便的功能。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def prefixSearch&amp;#40;words: list&amp;#91;str&amp;#93;, prefix: str, isSorted: bool = False&amp;#41; -&amp;gt; list&amp;#91;str&amp;#93;:
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;關於&amp;#95;&lt;code&gt;bisect&lt;/code&gt;&quot;&gt;&lt;/a&gt;關於 &lt;code&gt;bisect&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;在 Python 中 &lt;code&gt;bisect&lt;/code&gt; 有很多種用法，詳細請見 &lt;a href='https://martinheinz.dev/blog/106'&gt;Everything You Can Do with Python's bisect Module&lt;/a&gt;&lt;/p&gt;&lt;p&gt;其中一個功能就是對於 str array 快速匹配前綴，並將符合的字串篩選出來。&lt;/p&gt;&lt;p&gt;當 array 很大時，這個方法基本上都比迭代來的快。&lt;/p&gt;&lt;p&gt;對於快速匹配股票商品編號，並向券商訂閱報價資訊來說就很方便，例如當使用者輸入 &quot;2&quot; &quot;3&quot; &quot;3&quot;&lt;/p&gt;&lt;p&gt;就能將其匹配到['2330', '2331', '2332', '2337', '2338', '23383'] 這些商品編號&lt;/p&gt;&lt;p&gt;進而先提前訂閱這些商品的報價和五檔。&lt;/p&gt;&lt;p&gt;當使用者輸入到 2330 時，報價就已經訂閱，再把剩餘的 2331, 2332, &amp;#x2026; 解訂即可。&lt;/p&gt;&lt;p&gt;對於商品檔有幾萬來說，是很方便的功能。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def prefixSearch&amp;#40;words: list&amp;#91;str&amp;#93;, prefix: str, isSorted: bool = False&amp;#41; -&amp;gt; list&amp;#91;str&amp;#93;:
     if not isSorted:
           words.sort&amp;#40;&amp;#41;
     start = bisect&amp;#95;left&amp;#40;words, prefix&amp;#41;

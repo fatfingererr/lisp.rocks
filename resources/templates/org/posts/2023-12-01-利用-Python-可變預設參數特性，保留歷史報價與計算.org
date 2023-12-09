@@ -4,6 +4,7 @@
 #+END_SRC
 
 * 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
 
 ** 可變預設參數 (Mutable Default Arguments)
 

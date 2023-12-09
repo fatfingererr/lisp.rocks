@@ -93,7 +93,7 @@ sendOrder&#40;data&#41;
 # 原本的字典: {}
 # 先取得商品代碼，下單 '2330'
 # 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700}
-# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700, '跌停': 600}</code></pre><p>這就是一個範例，先將商品檔資訊回傳，其中有商品代碼就能執行其他工作</p><p>再慢慢把商品檔資訊補進去字典中，在另一個線程也能享有這些新的資訊更新</p><p>實際上可能不會在 <code>finally</code> threading start，而是會把 <code>fn</code> 添加到 Pool 中</p><p>當然， <code>keepHandling</code> 可以寫在外面，或在 <code>sendOrder</code> 後執行</p><p>但是這樣寫的好處在於， <code>finally</code> 要做的事情可以寫在 <code>addData</code> 中</p><p>而不會受到 <code>addData</code> 以外的東西影響，又能在回傳後繼續執行，甚至成為監聽器</p><p><br/></p>
+# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700, '跌停': 600}</code></pre><p>這就是一個範例，先將商品檔資訊回傳，其中有商品代碼就能執行其他工作</p><p>再慢慢把商品檔資訊補進去字典中，在另一個線程也能享有這些新的資訊更新</p><p>實際上可能不會在 <code>finally</code> threading start，而是會把 <code>fn</code> 添加到 Pool 中</p><p>當然， <code>fn</code> 可以寫在外面，或在 <code>sendOrder</code> 後執行</p><p>但是這樣寫的好處在於， <code>finally</code> 要做的事情可以寫在 <code>addData</code> 中</p><p>而不會受到 <code>addData</code> 以外的東西影響，又能在回傳後繼續執行，甚至成為監聽器</p><p><br/></p>
 </div>
 
 <div id="post-tags">

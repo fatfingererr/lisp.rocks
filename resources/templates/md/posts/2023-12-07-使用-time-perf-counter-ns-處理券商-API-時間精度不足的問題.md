@@ -3,7 +3,7 @@
 
 # 　
 
-<img src="![img](https://www.lisp.rocks/img/not-by-ai/tw/WrittenByHuman/SVG/Written-By-Human-Not-By-AI-Badge-white.svg)" alt="" align="left" title="image title" class="img" /><br/><br/>
+<img src="![img](https://www.lisp.rocks/img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg)" alt="Written<sub>By</sub><sub>Human</sub>" align="left" title="Written<sub>By</sub><sub>Human</sub>" class="img" /><br/><br/>
 
 
 ## 券商 API 回傳結果時間精度不足問題

@@ -3,6 +3,8 @@
 {:title "使用 perf_counter 處理券商 API 時間精度不足的問題" :layout :post :tags ["python" "trading" "performance"] :toc false}
 #+END_SRC
 * 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
 <img src="https://www.lisp.rocks/img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written_By_Human" align="left" title="Written_By_Human" class="img" /><br/><br/>
 
 ** 券商 API 回傳結果時間精度不足問題

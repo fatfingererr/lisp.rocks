@@ -3,6 +3,8 @@
 
 # 　
 
+![img](../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg)
+
 <img src="![img](https://www.lisp.rocks/img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg)" alt="Written<sub>By</sub><sub>Human</sub>" align="left" title="Written<sub>By</sub><sub>Human</sub>" class="img" /><br/><br/>
 
 

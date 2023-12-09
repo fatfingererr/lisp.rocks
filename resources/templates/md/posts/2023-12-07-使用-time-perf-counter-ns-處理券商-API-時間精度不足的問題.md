@@ -5,8 +5,6 @@
 
 ![img](../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg)
 
-<img src="![img](https://www.lisp.rocks/img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg)" alt="Written<sub>By</sub><sub>Human</sub>" align="left" title="Written<sub>By</sub><sub>Human</sub>" class="img" /><br/><br/>
-
 
 ## 券商 API 回傳結果時間精度不足問題
 
@@ -30,7 +28,7 @@
 
 甚至影響其他註冊函數的觸發（這將導致大量問題，未來持續探討）
 
-<img src="\\/img/2023-12-07/1.png" alt="" align="left" title="image title" class="img" /><br/><br/>
+![img](../../img/2023-12-07/1.png)
 
 為了盡快地離開事件函數，通常就會用各種非同步、併發的方式處理
 
@@ -38,7 +36,7 @@
 
 但是為了不阻塞，你的非同步處理過程就可能導致結果亂序。
 
-<img src="\\/img/2023-12-07/2.png" alt="" align="left" title="image title" class="img" /><br/><br/>
+![img](../../img/2023-12-07/2.png)
 
 而資料本身的若有附帶時間，通常也不會足夠精細，例如只到毫秒等級
 
@@ -48,7 +46,7 @@
 
 再根據流水號對應處理，例如等待、累積批次 … 等。
 
-<img src="\\/img/2023-12-07/3.png" alt="" align="left" title="image title" class="img" /><br/><br/>
+![img](../../img/2023-12-07/3.png)
 
 
 ## 使用 `time.perf_counter_ns()`

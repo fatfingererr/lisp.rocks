@@ -12,11 +12,57 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 09 Dec 2023 09:24:03 +0800
+Sat, 09 Dec 2023 15:27:17 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-09-使用-frozenset-處理委託書號與序號對應問題/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-09-使用-frozenset-處理委託書號與序號對應問題/
+</link>
+<title>
+使用 frozenset 處理委託書號與序號對應問題
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;委託書號與序號&quot;&gt;&lt;/a&gt;委託書號與序號&lt;/h2&gt;&lt;p&gt;只要交易委託有送到交易所，你就會收到委託書編號 (Book Number, bookNo)，簡稱 &lt;strong&gt;委託書號&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;在台灣委託書號原則上都是 5 碼英數字混合，不分大小寫 &lt;sup&gt;&lt;a id=&quot;fnr.1&quot; class=&quot;footref&quot; href=&quot;#fn.1&quot; role=&quot;doc-backlink&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12-09/1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;而預約單或智慧單&lt;sup&gt;&lt;a id=&quot;fnr.2&quot; class=&quot;footref&quot; href=&quot;#fn.2&quot; role=&quot;doc-backlink&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;，可能還未送到交易所，但券商已經收到&lt;/p&gt;&lt;p&gt;就會自己編委託書序號（Sequence number, seqNo)，簡稱 &lt;strong&gt;委託序號&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;每家券商編法不同，一種方式是編 13 碼純數字&lt;/p&gt;&lt;p&gt;所以一個委託，他就可能存在多個可以當作委託索引 (index) 的東西：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;在還沒有抵達交易所前，在券商那預約中，僅有委託序號&lt;/li&gt;&lt;li&gt;交易所開始接收券商委託，會有委託序號和委託書號&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;對於這種多重且不定的鍵值的情況，可以使用 Python &lt;code&gt;frozenset&lt;/code&gt; 當字典的 key&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;&lt;code&gt;frozenset&lt;/code&gt;&amp;#95;的用法&quot;&gt;&lt;/a&gt;&lt;code&gt;frozenset&lt;/code&gt; 的用法&lt;/h2&gt;&lt;p&gt;先來複習一下 &lt;code&gt;frozenset&lt;/code&gt; 有兩個主要功能：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;不可更改且不會重複的集合&lt;/li&gt;&lt;li&gt;可做為字典的 key&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;第一點衍生的使用情境就是，在跨進程間共享不可重複變數。&lt;/p&gt;&lt;p&gt;第二點的使用情境比較多，基本上可以分成兩類：&lt;/p&gt;&lt;p&gt;a. 時間面, 紀錄資料的版本或更新&lt;/p&gt;&lt;p&gt;b. 空間面, 表示資料的複數特徵&lt;/p&gt;&lt;p&gt;例如你原本有一個基本資料表單，並且紀錄每個版本使用者完成並審核通過的欄位&lt;/p&gt;&lt;p&gt;透過 &lt;code&gt;frozenset&lt;/code&gt; 可以有另一種寫法：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;data = &amp;#91;{ version: 1, verified: set&amp;#40;&amp;#91;&amp;quot;name&amp;quot;&amp;#93;&amp;#41; },                # 新增名字, 驗證通過
+        { version: 2, verified: set&amp;#40;&amp;#91;&amp;quot;name&amp;quot; &amp;quot;phonenumber&amp;quot;&amp;#93;&amp;#41; },  # 新增手機號碼, 驗證通過
+        { version: 3, verified: set&amp;#40;&amp;#91;&amp;quot;name&amp;quot; &amp;quot;address&amp;quot;&amp;#93;&amp;#41;},       # 修改手機號碼, 沒有驗證 ; 新增地址, 驗證通過
+
+# frozenset
+data = {
+    frozenset&amp;#40;&amp;#91;&amp;quot;name&amp;quot;&amp;#93;&amp;#41;: {version: 1},
+    frozenset&amp;#40;&amp;#91;&amp;quot;name&amp;quot;, &amp;quot;phonenumber&amp;quot;&amp;#93;&amp;#41;: {version: 2},
+    frozenset&amp;#40;&amp;#91;&amp;quot;name&amp;quot;, &amp;quot;address&amp;quot;&amp;#93;&amp;#41;: {version: 3}
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用 &lt;code&gt;frozenset&lt;/code&gt; 作為字典 key，通常代表狀態比較確定，或是有固定有限的複數特徵&lt;/p&gt;&lt;p&gt;並且作為複雜的 key, 通常對應的東西應該要簡單單一，否則複雜對應複雜，就失去意義&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;委託書號與序號對應問題&quot;&gt;&lt;/a&gt;委託書號與序號對應問題&lt;/h2&gt;&lt;p&gt;所以我們就能使用 &lt;code&gt;frozenset&lt;/code&gt; 作為字典 key, 例如：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;replyDict = {
+    frozenset&amp;#40;&amp;#91;&amp;quot;V01M0&amp;quot;, &amp;quot;12345678&amp;quot;&amp;#93;&amp;#41;: reply1,
+    frozenset&amp;#40;&amp;#91;&amp;quot;23456789&amp;quot;&amp;#93;&amp;#41;: reply2
+}
+
+# 查找非常簡單:
+seqNo = &amp;quot;23456789&amp;quot;
+for key, value in replyDict.items&amp;#40;&amp;#41;:
+  if seqNo in key:
+      reply = value
+      break&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查找就變得非常簡單，委託書號和序號都會找到同一個 Reply&lt;/p&gt;&lt;p&gt;而如果一旦送到交易所有委託序號了，就能：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;# 得到委託書號了，新增 key 也非常方便
+seqNo = &amp;quot;23456789&amp;quot;
+bookNo = &amp;quot;ABC12&amp;quot;
+for key, value in replyDict.items&amp;#40;&amp;#41;:
+  if seqNo in key:
+      replyDict&amp;#91;frozenset&amp;#40;key | {bookNo}&amp;#41;&amp;#93; = value
+      del replyDict&amp;#91;key&amp;#93;
+      break&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就算在多線程, 多進程中, 用原始 &lt;code&gt;seqNo&lt;/code&gt; 找也會找到對的, 所以不用擔心&lt;/p&gt;&lt;p&gt;透過這個方式，就可以無論委託書號或序號，都能指向同一個資料，就不需要判斷了&lt;/p&gt;&lt;p&gt;甚至改單、刪單要互相指向同一個 Order，也都可以很容易做&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;footnotes&quot;&gt;&lt;/a&gt;Footnotes&lt;/h1&gt;&lt;p&gt;&lt;sup&gt;&lt;a id=&quot;fn.1&quot; href=&quot;#fnr.1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 委託書編號原則 (公文) &lt;a href=&quot;https://www.tpex.org.tw/storage/eb&lt;i&gt;data/9905/0500057.htm&quot;&gt;https://www.tpex.org.tw/storage/eb&lt;/i&gt;data/9905/0500057.htm&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a id=&quot;fn.2&quot; href=&quot;#fnr.2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 在台灣洗價、觸價單、多重IOC單是券商服務，概括是智慧單&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 09 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-07-使用-time-perf-counter-ns-處理券商-API-時間精度不足的問題/

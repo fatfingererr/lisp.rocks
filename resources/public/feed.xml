@@ -12,11 +12,64 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 09 Dec 2023 15:27:17 +0800
+Sun, 10 Dec 2023 00:59:52 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-10-在-return-後執行來加快子線程的運作，以商品檔資訊為例/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-10-在-return-後執行來加快子線程的運作，以商品檔資訊為例/
+</link>
+<title>
+處理商品檔資訊並在 return 後執行來加快子線程的運作
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;商品檔的資訊&quot;&gt;&lt;/a&gt;商品檔的資訊&lt;/h2&gt;&lt;p&gt;通常券商 API 提供商品檔資訊會很豐富，但需要一直處理大量商品檔資料&lt;/p&gt;&lt;p&gt;而通常我們需要商品檔基本資訊，例如商品代碼與商品名稱，然後去處理其他事情&lt;/p&gt;&lt;p&gt;這時候就可以讓處理商品檔的線程，先回傳商品檔的基本資訊，再繼續添加商品檔資訊到商品檔中&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用&amp;#95;&lt;code&gt;try/finally&lt;/code&gt;&amp;#95;提早&amp;#95;return&quot;&gt;&lt;/a&gt;使用 &lt;code&gt;try/finally&lt;/code&gt; 提早 return&lt;/h2&gt;&lt;p&gt;為了達成這個目標，就可以利用 &lt;code&gt;try/finally&lt;/code&gt; 來實現提早回傳並繼續運算&lt;/p&gt;&lt;p&gt;而提早回傳可能就能觸發其他子線程開始工作，就能加快處理速度：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import threading
+import time
+
+g&amp;#95;dataDict = {}
+
+def addData&amp;#40;newData&amp;#41;:
+    global g&amp;#95;dataDict
+    try:
+        print&amp;#40;f'原本的字典: {g&amp;#95;dataDict}'&amp;#41;
+        g&amp;#95;dataDict.update&amp;#40;newData&amp;#41;
+        return g&amp;#95;dataDict
+    finally:
+        time.sleep&amp;#40;1&amp;#41;
+        g&amp;#95;dataDict.update&amp;#40;{'漲停': 700}&amp;#41;
+        print&amp;#40;f'回傳後繼續處理 ... {g&amp;#95;dataDict}'&amp;#41;
+        time.sleep&amp;#40;1&amp;#41;
+        g&amp;#95;dataDict.update&amp;#40;{'跌停': 600}&amp;#41;
+        print&amp;#40;f'回傳後繼續處理 ... {g&amp;#95;dataDict}'&amp;#41;
+
+def waitingForBar&amp;#40;&amp;#41;:
+    global g&amp;#95;dataDict
+    while True:
+        target = g&amp;#95;dataDict.get&amp;#40;'code'&amp;#41;
+        if target is not None:
+            print&amp;#40;f&amp;quot;先取得商品代碼，下單 '{target}'&amp;quot;&amp;#41;
+            break
+
+threading.Thread&amp;#40;target=waitingForBar&amp;#41;.start&amp;#40;&amp;#41;
+threading.Thread&amp;#40;target=addData, args=&amp;#40;{'code': 2330, 'name': '台積電'},&amp;#41;&amp;#41;.start&amp;#40;&amp;#41;
+
+# 原本的字典: {}
+# 先取得商品代碼，下單 '2330'
+# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700}
+# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700, '跌停': 600}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這就是一個範例，先將商品檔資訊回傳，其中有商品代碼就能執行其他工作&lt;/p&gt;&lt;p&gt;再慢慢把商品檔資訊補進去字典中，在另一個線程也能享有這些新的資訊更新&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 10 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-09-使用-frozenset-處理委託書號與序號對應問題/
@@ -417,18 +470,20 @@ http://lisp.rocks/posts-output/2023-11-30-使用-SymPy-推導選擇權價格公�
 </title>
 <description>
 &lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用套件&quot;&gt;&lt;/a&gt;使用套件&lt;/h2&gt;&lt;p&gt;透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from sympy import symbols, exp, sqrt, ln, N
-from sympy.stats import Normal, cdf&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a name=&quot;公式推導&quot;&gt;&lt;/a&gt;公式推導&lt;/h2&gt;&lt;p&gt;透過 symbols 建立變數， &lt;code&gt;positive&lt;/code&gt; 說明變數都是正數。&lt;/p&gt;&lt;p&gt;其中關鍵是讓 &lt;code&gt;Normal&lt;/code&gt; 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0, X, T, r, sigma = symbols&amp;#40;'S0 X T r sigma', positive=True&amp;#41;
+from sympy.stats import Normal, cdf&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;公式推導&quot;&gt;&lt;/a&gt;公式推導&lt;/h2&gt;&lt;p&gt;透過 symbols 建立變數， &lt;code&gt;positive&lt;/code&gt; 說明變數都是正數。&lt;/p&gt;&lt;p&gt;其中關鍵是讓 &lt;code&gt;Normal&lt;/code&gt; 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0, X, T, r, sigma = symbols&amp;#40;'S0 X T r sigma', positive=True&amp;#41;
 
 d1 = &amp;#40;ln&amp;#40;S0 / X&amp;#41; + &amp;#40;r + sigma&amp;#42;&amp;#42;2 / 2&amp;#41; &amp;#42; T&amp;#41; / &amp;#40;sigma &amp;#42; sqrt&amp;#40;T&amp;#41;&amp;#41;
 d2 = d1 - sigma &amp;#42; sqrt&amp;#40;T&amp;#41;
-
 norm&amp;#95;dist = Normal&amp;#40;'StdNormal', 0, 1&amp;#41;
 
 C = S0 &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;d1&amp;#41; - X &amp;#42; exp&amp;#40;-r &amp;#42; T&amp;#41; &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;d2&amp;#41;
 P = X &amp;#42; exp&amp;#40;-r &amp;#42; T&amp;#41; &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;-d2&amp;#41; - S0 &amp;#42; cdf&amp;#40;norm&amp;#95;dist&amp;#41;&amp;#40;-d1&amp;#41;
 
 print&amp;#40;f&amp;quot;買權價格公式: {C}&amp;quot;&amp;#41;
-print&amp;#40;f&amp;quot;賣權價格公式: {P}&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a name=&quot;價格試算&quot;&gt;&lt;/a&gt;價格試算&lt;/h2&gt;&lt;p&gt;價格計算只需要把變數名稱一一對應，就能計算而得。&lt;/p&gt;&lt;p&gt;帶入條件後，還得透過 &lt;code&gt;N&lt;/code&gt; 才會具體取得數值結果。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0&amp;#95;val = 100
+print&amp;#40;f&amp;quot;賣權價格公式: {P}&amp;quot;&amp;#41;
+
+# 買權價格公式: S0&amp;#42;&amp;#40;erf&amp;#40;sqrt&amp;#40;2&amp;#41;&amp;#42;&amp;#40;T&amp;#42;&amp;#40;r + sigma&amp;#42;&amp;#42;2/2&amp;#41; + log&amp;#40;S0/X&amp;#41;&amp;#41;/&amp;#40;2&amp;#42;sqrt&amp;#40;T&amp;#41;&amp;#42;sigma&amp;#41;&amp;#41;/2 + 1/2&amp;#41;- X&amp;#42;&amp;#40;erf&amp;#40;sqrt&amp;#40;2&amp;#41;&amp;#42;&amp;#40;-sqrt&amp;#40;T&amp;#41;&amp;#42;sigma + &amp;#40;T&amp;#42;&amp;#40;r + sigma&amp;#42;&amp;#42;2/2&amp;#41; + log&amp;#40;S0/X&amp;#41;&amp;#41;/&amp;#40;sqrt&amp;#40;T&amp;#41;&amp;#42;sigma&amp;#41;&amp;#41;/2&amp;#41;/2 + 1/2&amp;#41;&amp;#42;exp&amp;#40;-T&amp;#42;r&amp;#41;
+# 賣權價格公式: -S0&amp;#42;&amp;#40;1/2 - erf&amp;#40;sqrt&amp;#40;2&amp;#41;&amp;#42;&amp;#40;T&amp;#42;&amp;#40;r + sigma&amp;#42;&amp;#42;2/2&amp;#41; + log&amp;#40;S0/X&amp;#41;&amp;#41;/&amp;#40;2&amp;#42;sqrt&amp;#40;T&amp;#41;&amp;#42;sigma&amp;#41;&amp;#41;/2&amp;#41; + X&amp;#42;&amp;#40;erf&amp;#40;sqrt&amp;#40;2&amp;#41;&amp;#42;&amp;#40;sqrt&amp;#40;T&amp;#41;&amp;#42;sigma - &amp;#40;T&amp;#42;&amp;#40;r + sigma&amp;#42;&amp;#42;2/2&amp;#41; + log&amp;#40;S0/X&amp;#41;&amp;#41;/&amp;#40;sqrt&amp;#40;T&amp;#41;&amp;#42;sigma&amp;#41;&amp;#41;/2&amp;#41;/2 + 1/2&amp;#41;&amp;#42;exp&amp;#40;-T&amp;#42;r&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;價格試算&quot;&gt;&lt;/a&gt;價格試算&lt;/h2&gt;&lt;p&gt;價格計算只需要把變數名稱一一對應，就能計算而得。&lt;/p&gt;&lt;p&gt;帶入條件後，還得透過 &lt;code&gt;N&lt;/code&gt; 才會具體取得數值結果。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;S0&amp;#95;val = 100
 X&amp;#95;val = 100
 T&amp;#95;val = 1
 r&amp;#95;val = 0.05
@@ -443,8 +498,12 @@ C&amp;#95;numerical = N&amp;#40;C&amp;#95;val&amp;#41;
 P&amp;#95;numerical = N&amp;#40;P&amp;#95;val&amp;#41;
 
 print&amp;#40;f&amp;quot;給定條件: {conditions}&amp;quot;&amp;#41;
-print&amp;#40;f&amp;quot;買權價格: {C&amp;#95;numerical}&amp;quot;&amp;#41;
-print&amp;#40;f&amp;quot;賣權價格: {P&amp;#95;numerical}&amp;quot;&amp;#41;&lt;/code&gt;&lt;/pre&gt;
+print&amp;#40;f&amp;quot;買權價格: $ {C&amp;#95;numerical:.2f}&amp;quot;&amp;#41;
+print&amp;#40;f&amp;quot;賣權價格: $ {P&amp;#95;numerical:.2f}&amp;quot;&amp;#41;
+
+# 給定條件: {S0: 100, X: 100, T: 1, r: 0.05, sigma: 0.2}
+# 買權價格: $ 10.45
+# 賣權價格: $ 5.57&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

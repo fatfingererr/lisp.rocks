@@ -14,6 +14,8 @@ from sympy import symbols, exp, sqrt, ln, N
 from sympy.stats import Normal, cdf
 #+end_src
 
+<br/>
+
 ** 公式推導
 
 透過 symbols 建立變數， =positive= 說明變數都是正數。
@@ -25,7 +27,6 @@ S0, X, T, r, sigma = symbols('S0 X T r sigma', positive=True)
 
 d1 = (ln(S0 / X) + (r + sigma**2 / 2) * T) / (sigma * sqrt(T))
 d2 = d1 - sigma * sqrt(T)
-
 norm_dist = Normal('StdNormal', 0, 1)
 
 C = S0 * cdf(norm_dist)(d1) - X * exp(-r * T) * cdf(norm_dist)(d2)
@@ -33,7 +34,12 @@ P = X * exp(-r * T) * cdf(norm_dist)(-d2) - S0 * cdf(norm_dist)(-d1)
 
 print(f"買權價格公式: {C}")
 print(f"賣權價格公式: {P}")
+
+# 買權價格公式: S0*(erf(sqrt(2)*(T*(r + sigma**2/2) + log(S0/X))/(2*sqrt(T)*sigma))/2 + 1/2)- X*(erf(sqrt(2)*(-sqrt(T)*sigma + (T*(r + sigma**2/2) + log(S0/X))/(sqrt(T)*sigma))/2)/2 + 1/2)*exp(-T*r)
+# 賣權價格公式: -S0*(1/2 - erf(sqrt(2)*(T*(r + sigma**2/2) + log(S0/X))/(2*sqrt(T)*sigma))/2) + X*(erf(sqrt(2)*(sqrt(T)*sigma - (T*(r + sigma**2/2) + log(S0/X))/(sqrt(T)*sigma))/2)/2 + 1/2)*exp(-T*r)
 #+end_src
+
+<br/>
 
 ** 價格試算
 
@@ -57,7 +63,12 @@ C_numerical = N(C_val)
 P_numerical = N(P_val)
 
 print(f"給定條件: {conditions}")
-print(f"買權價格: {C_numerical}")
-print(f"賣權價格: {P_numerical}")
+print(f"買權價格: $ {C_numerical:.2f}")
+print(f"賣權價格: $ {P_numerical:.2f}")
 
+# 給定條件: {S0: 100, X: 100, T: 1, r: 0.05, sigma: 0.2}
+# 買權價格: $ 10.45
+# 賣權價格: $ 5.57
 #+end_src
+
+<br/>

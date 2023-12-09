@@ -1,0 +1,63 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "處理商品檔資訊並在 return 後執行來加快子線程的運作" :layout :post :tags ["python" "trading" "threading"] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+** 商品檔的資訊
+
+通常券商 API 提供商品檔資訊會很豐富，但需要一直處理大量商品檔資料
+
+而通常我們需要商品檔基本資訊，例如商品代碼與商品名稱，然後去處理其他事情
+
+這時候就可以讓處理商品檔的線程，先回傳商品檔的基本資訊，再繼續添加商品檔資訊到商品檔中
+
+** 使用 =try/finally= 提早 return
+
+為了達成這個目標，就可以利用 =try/finally= 來實現提早回傳並繼續運算
+
+而提早回傳可能就能觸發其他子線程開始工作，就能加快處理速度：
+
+#+begin_src python
+import threading
+import time
+
+g_dataDict = {}
+
+def addData(newData):
+    global g_dataDict
+    try:
+        print(f'原本的字典: {g_dataDict}')
+        g_dataDict.update(newData)
+        return g_dataDict
+    finally:
+        time.sleep(1)
+        g_dataDict.update({'漲停': 700})
+        print(f'回傳後繼續處理 ... {g_dataDict}')
+        time.sleep(1)
+        g_dataDict.update({'跌停': 600})
+        print(f'回傳後繼續處理 ... {g_dataDict}')
+
+def waitingForBar():
+    global g_dataDict
+    while True:
+        target = g_dataDict.get('code')
+        if target is not None:
+            print(f"先取得商品代碼，下單 '{target}'")
+            break
+
+threading.Thread(target=waitingForBar).start()
+threading.Thread(target=addData, args=({'code': 2330, 'name': '台積電'},)).start()
+
+# 原本的字典: {}
+# 先取得商品代碼，下單 '2330'
+# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700}
+# 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700, '跌停': 600}
+#+end_src
+
+這就是一個範例，先將商品檔資訊回傳，其中有商品代碼就能執行其他工作
+
+再慢慢把商品檔資訊補進去字典中，在另一個線程也能享有這些新的資訊更新
+
+<br/>

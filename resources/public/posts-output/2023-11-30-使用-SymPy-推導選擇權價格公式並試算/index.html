@@ -66,18 +66,20 @@
 <div>
     
     <h1><a name=""></a></h1><p><img src="../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg" alt="img" /></p><h2><a name="使用套件"></a>使用套件</h2><p>透過 SymPy 我們可以進行數學符號運算，並建立公式的 symbol</p><pre><code>from sympy import symbols, exp, sqrt, ln, N
-from sympy.stats import Normal, cdf</code></pre><h2><a name="公式推導"></a>公式推導</h2><p>透過 symbols 建立變數， <code>positive</code> 說明變數都是正數。</p><p>其中關鍵是讓 <code>Normal</code> 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。</p><pre><code>S0, X, T, r, sigma = symbols&#40;'S0 X T r sigma', positive=True&#41;
+from sympy.stats import Normal, cdf</code></pre><p><br/></p><h2><a name="公式推導"></a>公式推導</h2><p>透過 symbols 建立變數， <code>positive</code> 說明變數都是正數。</p><p>其中關鍵是讓 <code>Normal</code> 參與進來，有統計分配，可以自由調用 cdf 來作為 cdf 函數。</p><pre><code>S0, X, T, r, sigma = symbols&#40;'S0 X T r sigma', positive=True&#41;
 
 d1 = &#40;ln&#40;S0 / X&#41; + &#40;r + sigma&#42;&#42;2 / 2&#41; &#42; T&#41; / &#40;sigma &#42; sqrt&#40;T&#41;&#41;
 d2 = d1 - sigma &#42; sqrt&#40;T&#41;
-
 norm&#95;dist = Normal&#40;'StdNormal', 0, 1&#41;
 
 C = S0 &#42; cdf&#40;norm&#95;dist&#41;&#40;d1&#41; - X &#42; exp&#40;-r &#42; T&#41; &#42; cdf&#40;norm&#95;dist&#41;&#40;d2&#41;
 P = X &#42; exp&#40;-r &#42; T&#41; &#42; cdf&#40;norm&#95;dist&#41;&#40;-d2&#41; - S0 &#42; cdf&#40;norm&#95;dist&#41;&#40;-d1&#41;
 
 print&#40;f&quot;買權價格公式: {C}&quot;&#41;
-print&#40;f&quot;賣權價格公式: {P}&quot;&#41;</code></pre><h2><a name="價格試算"></a>價格試算</h2><p>價格計算只需要把變數名稱一一對應，就能計算而得。</p><p>帶入條件後，還得透過 <code>N</code> 才會具體取得數值結果。</p><pre><code>S0&#95;val = 100
+print&#40;f&quot;賣權價格公式: {P}&quot;&#41;
+
+# 買權價格公式: S0&#42;&#40;erf&#40;sqrt&#40;2&#41;&#42;&#40;T&#42;&#40;r + sigma&#42;&#42;2/2&#41; + log&#40;S0/X&#41;&#41;/&#40;2&#42;sqrt&#40;T&#41;&#42;sigma&#41;&#41;/2 + 1/2&#41;- X&#42;&#40;erf&#40;sqrt&#40;2&#41;&#42;&#40;-sqrt&#40;T&#41;&#42;sigma + &#40;T&#42;&#40;r + sigma&#42;&#42;2/2&#41; + log&#40;S0/X&#41;&#41;/&#40;sqrt&#40;T&#41;&#42;sigma&#41;&#41;/2&#41;/2 + 1/2&#41;&#42;exp&#40;-T&#42;r&#41;
+# 賣權價格公式: -S0&#42;&#40;1/2 - erf&#40;sqrt&#40;2&#41;&#42;&#40;T&#42;&#40;r + sigma&#42;&#42;2/2&#41; + log&#40;S0/X&#41;&#41;/&#40;2&#42;sqrt&#40;T&#41;&#42;sigma&#41;&#41;/2&#41; + X&#42;&#40;erf&#40;sqrt&#40;2&#41;&#42;&#40;sqrt&#40;T&#41;&#42;sigma - &#40;T&#42;&#40;r + sigma&#42;&#42;2/2&#41; + log&#40;S0/X&#41;&#41;/&#40;sqrt&#40;T&#41;&#42;sigma&#41;&#41;/2&#41;/2 + 1/2&#41;&#42;exp&#40;-T&#42;r&#41;</code></pre><p><br/></p><h2><a name="價格試算"></a>價格試算</h2><p>價格計算只需要把變數名稱一一對應，就能計算而得。</p><p>帶入條件後，還得透過 <code>N</code> 才會具體取得數值結果。</p><pre><code>S0&#95;val = 100
 X&#95;val = 100
 T&#95;val = 1
 r&#95;val = 0.05
@@ -92,8 +94,12 @@ C&#95;numerical = N&#40;C&#95;val&#41;
 P&#95;numerical = N&#40;P&#95;val&#41;
 
 print&#40;f&quot;給定條件: {conditions}&quot;&#41;
-print&#40;f&quot;買權價格: {C&#95;numerical}&quot;&#41;
-print&#40;f&quot;賣權價格: {P&#95;numerical}&quot;&#41;</code></pre>
+print&#40;f&quot;買權價格: $ {C&#95;numerical:.2f}&quot;&#41;
+print&#40;f&quot;賣權價格: $ {P&#95;numerical:.2f}&quot;&#41;
+
+# 給定條件: {S0: 100, X: 100, T: 1, r: 0.05, sigma: 0.2}
+# 買權價格: $ 10.45
+# 賣權價格: $ 5.57</code></pre><p><br/></p>
 </div>
 
 <div id="post-tags">

@@ -1,0 +1,79 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "使用 Dictizable 在進程間傳遞 Struct 來下單" :layout :post :tags ["python", "trading", "multiprocessing"] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+** 券商 API 的 Struct
+
+有些券商 Python API 是透過 C# 介接過來的，所以下單往往得給他一個 struct，類似 Python 字典
+
+不只下單，其實在取得一些報價資訊、查詢帳務等，都可能需要給一個 struct
+
+如果 API 的 lib 元件與下單操作是在同一個進程，你可以很輕鬆的透過券商 API 建立 struct
+
+並把 struct 中的欄位填滿並送出，以此來下單
+
+<br/>
+
+** 跨進程物件共享：共享變數、PIPE 通信與 Queue
+
+通常在跨進程間，保守作法是不考慮共享變數，避免同個進程同時使用到相同變數
+
+一個安全做法是透過 PIPE 通信與 Queue，然而這就只允許你傳遞基本類別，例如字典和文字數字[fn:: multiprocessing 基本上就是複製一份 PIPE 處理，所以 Class 都不能傳遞。詳見：<br/>https://docs.python.org/3/library/multiprocessing.html]
+
+那為了在整個進程內都正確的使用 Struct，我們可以針對券商的每個 struct 建立一個字典
+
+透過字典轉 struct 與 struct 轉字典，來傳遞物件並下單
+
+<br/>
+
+** Dictizable：Dict 的可聽寫模式的封裝
+
+如果只是單純用字典，很容易被亂塞東西，如果用類過深的封裝，又難以轉換為字典在進程間傳遞
+
+所以一個簡單的方式就是建立一個簡單的可讀寫字典 (Dictizable) 的類來包裝[fn:: Dictizable 的想法與實作來自於 Joey Greco:<br/>https://joeyagreco.medium.com/the-dictizable-pattern-in-python-1008f37efde7 ]
+
+
+*Dictizable 意指 dict- (字典) 與 dictizable (可讀寫) 的含意*
+
+也就是我們個別拆分寫入 (Serializable) 與讀取 (Deserializable) 兩個要求，並組合成一個介面：
+
+#+begin_src python
+   from __future__ import annotations
+   from abc import ABC, abstractmethod
+
+   class DictSerializable(ABC):
+     @abstractmethod
+     def to_dict(self) -> dict:
+         """
+         Takes *this* instance of the implemented method's class and returns its representation as a dictionary.
+         """
+
+   class DictDeserializable(ABC):
+       @staticmethod
+       @abstractmethod
+       def from_dict(d: dict) -> DictDeserializable:
+           """
+           Takes a dict and turns it into an instance of *this* class.
+           """
+  class Dictizable(DictSerializable, DictDeserializable):
+      pass
+#+end_src
+
+<br/>
+
+這樣的好處是，在進程間操作可以是單向的，對於下單介面視窗的進程
+
+可以使用 DictSerializable 寫入下單資訊
+
+在執行 API 操作的進程收到字典後，立刻封裝到 DictDeserializable 的類並唯讀使用
+
+確保該進程不能修改視窗傳遞來的物件
+
+反之，在視窗介面應該以唯讀的方式讀取報價資訊，而個別物件寫入與讀取的方法都要寫好
+
+這個方式原意是要處理資料庫與 Python 之間的問題，但也很適合延伸到交易軟體設計中思考
+
+<br/>

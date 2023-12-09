@@ -5,7 +5,6 @@
 * 　
 <img src="https://www.lisp.rocks/img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written_By_Human" align="left" title="Written_By_Human" class="img" /><br/><br/>
 
-
 ** 券商 API 回傳結果時間精度不足問題
 
 對於多數券商 API 而言，無論你取得報價、回報等資料，券商 API 通常只會保證：
@@ -87,7 +86,7 @@ OnNewTick({'bid': 603, 'ask': 760})
 # (No.21863400) 新的 Tick: {'bid': 603, 'ask': 760}
 #+end_src
 
-在絕大多數情況下，=time.time()= 是可以的，但是若：
+在絕大多數情況下， =time.time()= 是可以的，但是若：
 
 1. 遇到日光節約時間，或各種時間調整情況
 2. 或是程式在運行中物理移動導致系統時間自動校正

@@ -1,0 +1,58 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "使用 bidict 對交易物件建立 ID 對照表" :layout :post :tags ["python" "trading" "bidict"] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+<br/>
+
+** 為什麼要建立自己的 ID
+
+通常在開發交易軟體時，除了前端的控件可能會有使用框架內建的 ID (例如 WidgetID)
+
+後端的委託、回報與報價，也可能有自己的 ID，例如委託書號、序號等
+
+然而無論是前端框架或後端第三方資料查詢，他們的 ID 操作規則是不可控制的
+
+例如一個委託狀態變化，可能委託序號不會改變，但會有新的回報
+
+又或是前端控件按鈕移除，重新建立新的按鈕，結果 ID 重複 ... 等
+
+又或是軟體視窗打開後的進程 ID，也可能關閉重開後重複
+
+所以就需要建立一個 "第三方物件 ID" 與 "交易軟體內物件的 ID" 的映射
+
+然後自己透過 =uuid4= 之類的，建立自己物件的 ID
+
+<br/>
+
+** 使用 =bidict=
+
+如果能雙向查詢 ID，就能大幅度節省物件判斷，就可以透過 =bidict= 套件處理
+
+例如中英文對照、自定義與第三方 ID 對照，都有很多使用情境
+
+使用方式很簡單：
+
+#+begin_src python
+from bidict import bidict
+
+bookNoToId = bidict(
+    {
+        "ABC12": "7e7bcbcb-8e09-4ee1-925a-536b699eea4d",
+        "BCD34": "753ea335-0e90-4b5f-8004-fcbaec9f375f",
+        "CDE45": "64342cb9-7c7b-4456-937b-8ecf89758359",
+        "DEF56": "d5d3c329-0810-4752-9264-67dc7b573793",
+    }
+)
+
+print(bookNoToId["BCD34"])
+# 753ea335-0e90-4b5f-8004-fcbaec9f375f
+print(bookNoToId.inverse["64342cb9-7c7b-4456-937b-8ecf89758359"])
+# CDE45
+#+end_src
+
+透過一個 =.inverse= 就能取得反向的參照字典，非常方便
+
+<br/>

@@ -12,7 +12,7 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 10 Dec 2023 01:25:13 +0800
+Sun, 10 Dec 2023 17:42:30 +0800
 </lastBuildDate>
 <generator>
 clj-rss
@@ -57,6 +57,40 @@ sendOrder&amp;#40;data&amp;#41;
 # 先取得商品代碼，下單 '2330'
 # 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700}
 # 回傳後繼續處理 ... {'code': 2330, 'name': '台積電', '漲停': 700, '跌停': 600}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這就是一個範例，先將商品檔資訊回傳，其中有商品代碼就能執行其他工作&lt;/p&gt;&lt;p&gt;再慢慢把商品檔資訊補進去字典中，在另一個線程也能享有這些新的資訊更新&lt;/p&gt;&lt;p&gt;實際上可能不會在 &lt;code&gt;finally&lt;/code&gt; threading start，而是會把 &lt;code&gt;fn&lt;/code&gt; 添加到 Pool 中&lt;/p&gt;&lt;p&gt;當然， &lt;code&gt;fn&lt;/code&gt; 可以寫在外面，或在 &lt;code&gt;sendOrder&lt;/code&gt; 後執行&lt;/p&gt;&lt;p&gt;但是這樣寫的好處在於， &lt;code&gt;finally&lt;/code&gt; 要做的事情可以寫在 &lt;code&gt;addData&lt;/code&gt; 中&lt;/p&gt;&lt;p&gt;而不會受到 &lt;code&gt;addData&lt;/code&gt; 以外的東西影響，又能在回傳後繼續執行，甚至成為監聽器&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 10 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-10-使用-bidict-對交易有關的物件建立自己的-id/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-10-使用-bidict-對交易有關的物件建立自己的-id/
+</link>
+<title>
+使用 bidict 對交易物件建立 ID 對照表
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;為什麼要建立自己的&amp;#95;id&quot;&gt;&lt;/a&gt;為什麼要建立自己的 ID&lt;/h2&gt;&lt;p&gt;通常在開發交易軟體時，除了前端的控件可能會有使用框架內建的 ID (例如 WidgetID)&lt;/p&gt;&lt;p&gt;後端的委託、回報與報價，也可能有自己的 ID，例如委託書號、序號等&lt;/p&gt;&lt;p&gt;然而無論是前端框架或後端第三方資料查詢，他們的 ID 操作規則是不可控制的&lt;/p&gt;&lt;p&gt;例如一個委託狀態變化，可能委託序號不會改變，但會有新的回報&lt;/p&gt;&lt;p&gt;又或是前端控件按鈕移除，重新建立新的按鈕，結果 ID 重複 &amp;#x2026; 等&lt;/p&gt;&lt;p&gt;又或是軟體視窗打開後的進程 ID，也可能關閉重開後重複&lt;/p&gt;&lt;p&gt;所以就需要建立一個 &quot;第三方物件 ID&quot; 與 &quot;交易軟體內物件的 ID&quot; 的映射&lt;/p&gt;&lt;p&gt;然後自己透過 &lt;code&gt;uuid4&lt;/code&gt; 之類的，建立自己物件的 ID&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用&amp;#95;&lt;code&gt;bidict&lt;/code&gt;&quot;&gt;&lt;/a&gt;使用 &lt;code&gt;bidict&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;如果能雙向查詢 ID，就能大幅度節省物件判斷，就可以透過 &lt;code&gt;bidict&lt;/code&gt; 套件處理&lt;/p&gt;&lt;p&gt;例如中英文對照、自定義與第三方 ID 對照，都有很多使用情境&lt;/p&gt;&lt;p&gt;使用方式很簡單：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from bidict import bidict
+
+bookNoToId = bidict&amp;#40;
+    {
+        &amp;quot;ABC12&amp;quot;: &amp;quot;7e7bcbcb-8e09-4ee1-925a-536b699eea4d&amp;quot;,
+        &amp;quot;BCD34&amp;quot;: &amp;quot;753ea335-0e90-4b5f-8004-fcbaec9f375f&amp;quot;,
+        &amp;quot;CDE45&amp;quot;: &amp;quot;64342cb9-7c7b-4456-937b-8ecf89758359&amp;quot;,
+        &amp;quot;DEF56&amp;quot;: &amp;quot;d5d3c329-0810-4752-9264-67dc7b573793&amp;quot;,
+    }
+&amp;#41;
+
+print&amp;#40;bookNoToId&amp;#91;&amp;quot;BCD34&amp;quot;&amp;#93;&amp;#41;
+# 753ea335-0e90-4b5f-8004-fcbaec9f375f
+print&amp;#40;bookNoToId.inverse&amp;#91;&amp;quot;64342cb9-7c7b-4456-937b-8ecf89758359&amp;quot;&amp;#93;&amp;#41;
+# CDE45&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;透過一個 &lt;code&gt;.inverse&lt;/code&gt; 就能取得反向的參照字典，非常方便&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 </description>
 <enclosure>
 

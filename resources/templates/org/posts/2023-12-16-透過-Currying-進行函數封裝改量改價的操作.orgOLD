@@ -1,0 +1,115 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "透過 Currying 進行函數封裝改量改價的操作" :layout :post :tags ["python", "currying", ""] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+** 柯里化 (Currying) 的好處之一：從傳遞實體改成函數
+
+柯里化[fn:: 關於柯里化可以見 Wiki:<br/>https://zh.wikipedia.org/zh-tw/%E6%9F%AF%E9%87%8C%E5%8C%96]
+基本上就是把多個參數的函數，變成只接受少數或一個參數的函數
+
+但對於涉及到大量不同類別的系統而言
+
+個人陋見柯里化最大的好處，就是不用傳遞類的實體 (instance)
+
+也就是不用將整個類與其他類做過多的暴露，減少類與類之間的耦合
+
+舉例來說，我們有一個委託 (Order) 類別，可以透過 =modify= 進行修改：
+
+#+begin_src python
+class Order:
+    def __init__(self, orderDict={}):
+        self.orderDict = orderDict
+
+    def get(self, key):
+        return self.orderDict[key]
+
+    def modify(self, price, volume, buysell, orderType, orderFlag, tradeType):
+        self.orderDict["price"] = price
+        self.orderDict["volume"] = volume
+        self.orderDict["buysell"] = buysell  # buy, sell
+        self.orderDict["orderType"] = orderType  # market, limit
+        self.orderDict["orderFlag"] = orderFlag  # 現, 資, 券, 無券
+        self.orderDict["tradeType"] = tradeType  # ROD, IOC, FOK
+
+    def __repr__(self):
+        return str(self.orderDict)
+
+
+order1 = Order()
+order1.modify(100, 1, "buy", "limit", "現", "ROD")
+print(order1)
+# {'price': 100, 'volume': 1, 'buysell': 'buy',
+#  'orderType': 'limit', 'orderFlag': '現',
+#  'tradeType': 'ROD'}
+#+end_src
+
+由於成功送到交易所的委託，事後只能改量或改價，我們就能將 =modify= 柯里化：
+
+#+begin_src python
+def modifyPrice(order):
+    return lambda price: order.modify(
+        price,
+        order.get("volume"),
+        order.get("buysell"),
+        order.get("orderType"),
+        order.get("orderFlag"),
+        order.get("tradeType"),
+    )
+
+
+order1ModifyPrice = modifyPrice(order1)
+print(order1)
+# {'price': 100, ..., 'tradeType': 'ROD'}
+order1ModifyPrice(300)
+print(order1)
+# {'price': 300, ..., 'tradeType': 'ROD'}
+#+end_src
+
+這樣我們就成功把 =order.modify()= 包裝成了 =order1ModifyPrice()=
+
+而類的實體被引用封裝在函數中，並且只接受需該函數所要的輸入
+
+接著你可能只需要一個字典或 list，把這些柯里化函數蒐集起來，放到類中：
+
+#+begin_src python
+class OrderPriceModifier:
+    def __init__(self, mapping):
+        self.mapping = mapping
+
+    def modify(self, orderId, price):
+        return self.mapping[orderId](price)
+
+
+mapping = {
+    "order1": modifyPrice(order1),
+    # 'order2': modifyPrice(order2),
+    # ...
+    # 'orderN': modifyPrice(orderN)
+}
+modifier = OrderPriceModifier(mapping)
+
+
+print(order1)
+# # {'price': 100, ..., 'tradeType': 'ROD'}
+modifier.modify("order1", 300)
+print(order1)
+# {'price': 300, ..., 'tradeType': 'ROD'}
+#+end_src
+
+這樣 =OrderPriceModifier= 就不需要持有所有 order 的引用
+
+並且不用擔心這個類會改到任何 =Order= 的價格以外的部分，非常安全，但也少了彈性
+
+就是得斟酌並評估使用情境來用
+
+
+
+
+
+
+
+
+<br/>

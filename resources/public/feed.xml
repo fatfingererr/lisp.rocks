@@ -12,11 +12,81 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Mon, 11 Dec 2023 10:03:44 +0800
+Tue, 12 Dec 2023 08:54:59 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-12-使用-SciPy-solve_ivp-建立投資組合調倉策略/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-12-使用-SciPy-solve_ivp-建立投資組合調倉策略/
+</link>
+<title>
+使用 SciPy 的 solve_ivp 建立投資組合調倉策略
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;避險&amp;#95;=&amp;#95;對時間的微分方程&quot;&gt;&lt;/a&gt;避險 = 對時間的微分方程&lt;/h2&gt;&lt;p&gt;如果我們假設市場存在一個風險特徵 &lt;code&gt;V&amp;#40;t&amp;#41;&lt;/code&gt; ，而我們避險策略是 &lt;code&gt;E&amp;#40;t&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;當避險目標和風險特徵吻合， &lt;code&gt;V&amp;#40;t&amp;#95;k&amp;#41; = E&amp;#40;t&amp;#95;k&amp;#41;&lt;/code&gt; ，我們在 &lt;code&gt;t=t&amp;#95;k&lt;/code&gt; 時點的投資組合不需要調整&lt;/p&gt;&lt;p&gt;如果當風險特徵大於避險策略 &lt;code&gt;V&amp;#40;t&amp;#95;k&amp;#41; &amp;gt; E&amp;#40;t&amp;#95;k&amp;#41;&lt;/code&gt; ，需要提高我們的避險幅度 &lt;code&gt;E&amp;#40;t&amp;#95;k+1&amp;#41; &amp;gt; E&amp;#40;t&amp;#95;k&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;當風險特徵小於避險策略 &lt;code&gt;V&amp;#40;t&amp;#95;k&amp;#41; &amp;lt; E&amp;#40;t&amp;#95;k&amp;#41;&lt;/code&gt; ，需要降低我們的避險幅度 &lt;code&gt;E&amp;#40;t&amp;#95;k+1&amp;#41; &amp;lt; E&amp;#40;t&amp;#95;k&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;這樣的概念，就能轉化成一個 ODE： &lt;code&gt;dE&amp;#40;t&amp;#41;/dt = f&amp;#40;t&amp;#41; &amp;#42; &amp;#40; V&amp;#40;t&amp;#41; - E&amp;#40;t&amp;#41; &amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;其中的 &lt;code&gt;f&amp;#40;t&amp;#41;&lt;/code&gt; 就是應對這個風險特徵與避險目標落差幅度所需的操作&lt;/p&gt;&lt;p&gt;我們就能把任何避險調倉操作，轉換成一個 ODE 問題來求解&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;scipy&amp;#95;的&amp;#95;&lt;code&gt;solve&amp;#95;ivp&lt;/code&gt;&quot;&gt;&lt;/a&gt;SciPy 的 &lt;code&gt;solve&amp;#95;ivp&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;solve&amp;#95;ivp&lt;/code&gt; 是 SciPy 的一個函數，可以基於給定的初始值對 ODE 求解&lt;/p&gt;&lt;p&gt;也就是將 ODE 看成是一個初始值問題&lt;sup&gt;&lt;a id=&quot;fnr.1&quot; class=&quot;footref&quot; href=&quot;#fn.1&quot; role=&quot;doc-backlink&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (Initial Value Problem, IVP) 進行求解 (Solve)&lt;/p&gt;&lt;p&gt;我們可以對 &lt;code&gt;solve&amp;#95;ivp&lt;/code&gt; 指定求解的精度，透過使用 &lt;code&gt;numpy&lt;/code&gt; 指定涉及變量的網格採樣點&lt;/p&gt;&lt;p&gt;並且也能針對給定位置檢測零值、極值發生的事件，一個簡單的初始值問題如下：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from scipy.integrate import solve&amp;#95;ivp
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 定義一個 ODE: dy/dt = -2y, 其中初始值條件為 y&amp;#40;0&amp;#41; = 1
+y0 = &amp;#91;1&amp;#93;
+def odefn&amp;#40;t, y&amp;#41;:
+    return -2 &amp;#42; y
+
+# 定義時間的採樣點範圍，並在該範圍採樣
+t&amp;#95;span = &amp;#40;0, 5&amp;#41;
+t&amp;#95;eval = np.linspace&amp;#40;0, 5, 100&amp;#41;
+sol = solve&amp;#95;ivp&amp;#40;odefn, t&amp;#95;span, y0, t&amp;#95;eval=t&amp;#95;eval&amp;#41;
+
+# 各時間點的對應的解
+print&amp;#40;sol.t&amp;#41;
+print&amp;#40;sol.y&amp;#41;
+
+# 繪圖
+plt.plot&amp;#40;sol.t, sol.y&amp;#91;0, :&amp;#93;, label='y&amp;#40;t&amp;#41;'&amp;#41;
+plt.xlabel&amp;#40;'Time t'&amp;#41;
+plt.ylabel&amp;#40;'y&amp;#40;t&amp;#41;'&amp;#41;
+plt.title&amp;#40;'Solution of the ODE dy/dt = -2y'&amp;#41;
+plt.legend&amp;#40;&amp;#41;
+plt.show&amp;#40;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;求解調倉策略&quot;&gt;&lt;/a&gt;求解調倉策略&lt;/h2&gt;&lt;p&gt;如果考慮調倉操作為一個固定速度 &lt;code&gt;k&lt;/code&gt; ，風險與避險目標差距越大，就要越積極做避險：&lt;/p&gt;&lt;p&gt;&lt;code&gt;dE&amp;#40;t&amp;#41;/dt = k &amp;#42; &amp;#40; V&amp;#40;t&amp;#41; - E&amp;#40;t&amp;#41; &amp;#41;, k &amp;gt; 0&lt;/code&gt;&lt;/p&gt;&lt;p&gt;接著我們就能對風險建模，常用的方法可能是均值回歸的時間序列模型&lt;/p&gt;&lt;p&gt;在此我們以 &lt;code&gt;sin&lt;/code&gt; 來示範：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import numpy as np
+from scipy.integrate import solve&amp;#95;ivp
+import matplotlib.pyplot as plt
+
+def PortfolioDynamics&amp;#40;t, E, k, V&amp;#95;func&amp;#41;:
+    return k &amp;#42; &amp;#40;V&amp;#95;func&amp;#40;t&amp;#41; - E&amp;#41;
+
+def Risk&amp;#40;t&amp;#41;:
+    # 這裡假設風險變化是時間的正弦函數
+    return 2 + np.sin&amp;#40;t / 5&amp;#41;
+
+# 初始值
+k = 0.1
+E0 = &amp;#91;0.4&amp;#93;
+
+# 求解 ODE
+t&amp;#95;span = &amp;#40;0, 100&amp;#41;  # 給定時間範圍
+t&amp;#95;eval = np.linspace&amp;#40;t&amp;#95;span&amp;#91;0&amp;#93;, t&amp;#95;span&amp;#91;1&amp;#93;, 300&amp;#41;
+sol = solve&amp;#95;ivp&amp;#40;PortfolioDynamics, t&amp;#95;span, E0, args=&amp;#40;k, Risk&amp;#41;, t&amp;#95;eval=t&amp;#95;eval&amp;#41;
+
+# 繪圖
+plt.plot&amp;#40;sol.t, sol.y&amp;#91;0&amp;#93;, label='Hedge'&amp;#41;
+plt.plot&amp;#40;sol.t, &amp;#91;Risk&amp;#40;t&amp;#41; for t in sol.t&amp;#93;, label='Risk'&amp;#41;
+plt.xlabel&amp;#40;'Time'&amp;#41;
+plt.ylabel&amp;#40;'Hedge / Risk'&amp;#41;
+plt.legend&amp;#40;&amp;#41;
+plt.show&amp;#40;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/4.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;從這張圖可以看到：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;初始值對初始值問題 IVP 的影響，起始避險目標不足，就得花更大的功夫追上風險特徵&lt;/li&gt;&lt;li&gt;由於調倉是基於風險與避險目標的差值做決策，始終落後於風險變化，有週期錯位的感覺&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;反之亦然：從風險和交易結果，反過來對行為建模&quot;&gt;&lt;/a&gt;反之亦然：從風險和交易結果，反過來對行為建模&lt;/h2&gt;&lt;p&gt;這個 ODE 求解本身並沒有太多厲害之處，但是如果你現在有兩條線，就能反推你的交易行為建模&lt;/p&gt;&lt;p&gt;將你的交易行為還原成一種 ODE，可能不只一階，有二階、三階甚至高階&lt;/p&gt;&lt;p&gt;最常見的就是市場波動度，與你的交易策略在不同波動度底下的交易行為，反過來建模&lt;/p&gt;&lt;p&gt;建模起來就能推測你後續的交易行為，這也可以作為一種對交易結果逆向工程破解交易策略的方法&lt;/p&gt;&lt;p&gt;再一個反之，如果破解不了，就代表沒有蘊含清晰的時變動力系統 (Time-varying dynamics)&lt;/p&gt;&lt;p&gt;可能是基於事件、其他因素做交易，而非簡易的計算邏輯，可能很多交易來自特殊決策&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;footnotes&quot;&gt;&lt;/a&gt;Footnotes&lt;/h1&gt;&lt;p&gt;&lt;sup&gt;&lt;a id=&quot;fn.1&quot; href=&quot;#fnr.1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 初始值問題是微分方程的一種問題，請見:&lt;br/&gt;&lt;a href=&quot;https://zh.wikipedia.org/zh-tw/%E5%88%9D%E5%80%BC%E5%95%8F%E9%A1%8C&quot;&gt;https://zh.wikipedia.org/zh-tw/%E5%88%9D%E5%80%BC%E5%95%8F%E9%A1%8C&lt;/a&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 12 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-11-使用-Dictizable-在進程間傳遞-Struct-來下單/

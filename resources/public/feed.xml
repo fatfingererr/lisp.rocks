@@ -12,11 +12,32 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 12 Dec 2023 08:54:59 +0800
+Thu, 14 Dec 2023 07:33:46 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-14-交易軟體中的雙時態資料設計與投影估計/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-14-交易軟體中的雙時態資料設計與投影估計/
+</link>
+<title>
+交易軟體中的雙時態資料設計與定時單功能
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;交易軟體中的雙時態數據&amp;#95;(bi-temporal&amp;#95;data)&quot;&gt;&lt;/a&gt;交易軟體中的雙時態數據 (Bi-temporal data)&lt;/h2&gt;&lt;p&gt;雙時態數據&lt;sup&gt;&lt;a id=&quot;fnr.1&quot; class=&quot;footref&quot; href=&quot;#fn.1&quot; role=&quot;doc-backlink&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 是指一個事件具有兩個時間的數據，例如報價 (Quote)：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;生效時間 (Effective Time, ET): 報價具體指涉或生效的時間，例如 9:10:00 AM 的報價&lt;/li&gt;&lt;li&gt;應用時間 (Application Time, AT): 報價具體進到應用程式的時間，後一秒 9:10:01&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;在報價中生效時間 100% 是落後應用時間，但是像是我們送出的委託：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;生效時間：委託具體送到券商或交易所，在券商與交易所上打上的時間，例如 9:15:10&lt;/li&gt;&lt;li&gt;應用時間：委託送出應用程式的時間，可能是 9:15:09 (早一秒)&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;所以如果無關業務邏輯的話，雙時態數據的 ET 和 AT 可能有先有後。&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;相比一般軟體設計，關聯的可能是自己的資料庫，在交易軟體中關聯的是第三方&lt;/p&gt;&lt;p&gt;也就是不需要擔心生效時間與應用時間衝突，永遠都是生效時間優先&lt;/p&gt;&lt;p&gt;從生效時間去預測應用時間，或是從應用時間去預測生效時間，就是所謂的 &lt;strong&gt;預測 (Projection)&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;為什麼需要對&amp;#95;et&amp;#95;與&amp;#95;at&amp;#95;進行預測？&quot;&gt;&lt;/a&gt;為什麼需要對 ET 與 AT 進行預測？&lt;/h2&gt;&lt;p&gt;如果使用者有一個定時單，要在 9:15 送出一個台積電 2330 掛買一張&lt;/p&gt;&lt;p&gt;他是希望 ET 在 9:15，還是 AT 在 9:15？他是希望 9:15 送到交易所，還是 9:15 從電腦送出？&lt;/p&gt;&lt;p&gt;如果使用者要藉由 9:40 的台積電報價去生成另一個委託&lt;/p&gt;&lt;p&gt;他是希望以 ET 在 9:40 的報價來生成呢，還是 9:40 的應用時間&lt;/p&gt;&lt;p&gt;更複雜一點的狀況還包含，應用時間是在何時打上，可能是在報價進到電腦的時候打上&lt;/p&gt;&lt;p&gt;也有可能是在報價具體渲染到使用者畫面時打上，渲染前打上或渲染後打上&lt;/p&gt;&lt;p&gt;怎麼打都可以， &lt;strong&gt;關鍵是你就會需要去預測 ET 與 AT 的落差&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;並且根據使用者需求，去使用這個落差，例如提前操作、延後操作&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;以定時單為例&quot;&gt;&lt;/a&gt;以定時單為例&lt;/h2&gt;&lt;p&gt;使用者有一個單，他需要基於生效時間在 9:50 的報價，計算掛單量&lt;/p&gt;&lt;p&gt;然後定時在 10:00 要掛出，他希望盡可能生效時間接近 10:00 整掛出&lt;/p&gt;&lt;p&gt;而使用的報價也希望盡可能接近 9:50&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;由於我們要基於我們的大致預測去行為，就可能不那麼精準&lt;/p&gt;&lt;p&gt;這時候最關鍵的是，他對於提前的容忍度：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;1. &amp;#91; &amp;#93; 可以接受使用到 9:49:59 的報價嗎？
+2. &amp;#91; &amp;#93; 可以接受掛單到 9:59:59 的情況嗎？&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果使用者不能接受提前，ET 與 AT 的落差就不能使用來調整操作時間&lt;/p&gt;&lt;p&gt;如果使用者可以接受，你就可以盡量考量 ET/AT 的落差，讓 ET 落在使用者期待的時間&lt;/p&gt;&lt;p&gt;當然，這裡面可能就有很多規則，甚至啟動應用程式時還得試算 ET/AT 與評估網路情況&lt;/p&gt;&lt;p&gt;但大致的原則就是這樣，雙時態數據在例如開盤、尾盤與一些時間事件的交易處理上很有幫助&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;延伸討論：et&amp;#95;與&amp;#95;at&amp;#95;只會有一個嗎？&quot;&gt;&lt;/a&gt;延伸討論：ET 與 AT 只會有一個嗎？&lt;/h2&gt;&lt;p&gt;雙時態數據可能是最基本、最有表達力的方式，但有時候你可能需要更多時態描述事件&lt;/p&gt;&lt;p&gt;例如 ET 可能是個範圍，你的操作具體生效開始到生效結束有一個範圍&lt;/p&gt;&lt;p&gt;而 AT 也可能是個範圍，你的操作具體在應用程式中開始，到應用程式接收／發送完畢&lt;/p&gt;&lt;p&gt;完全可以根據你的需求延伸去做設計，以及根據 API 呼叫可能有的限制，去調整你的預測&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;footnotes&quot;&gt;&lt;/a&gt;Footnotes&lt;/h1&gt;&lt;p&gt;&lt;sup&gt;&lt;a id=&quot;fn.1&quot; href=&quot;#fnr.1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 雙時態數據在資料庫處理中，屬於事件溯源的範疇&lt;br/&gt;見：&lt;a href=&quot;https://www.planetgeek.ch/2023/12/04/our-experience-with-bi-temporal-event-sourcing/&quot;&gt;https://www.planetgeek.ch/2023/12/04/our-experience-with-bi-temporal-event-sourcing/&lt;/a&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Thu, 14 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-12-使用-SciPy-solve_ivp-建立投資組合調倉策略/

@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Thu, 14 Dec 2023 07:33:46 +0800
+Fri, 15 Dec 2023 07:33:50 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-15-停損與停利操作沒有那麼簡單/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-15-停損與停利操作沒有那麼簡單/
+</link>
+<title>
+證券停損與停利操作，沒有你想的那麼簡單
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;停損停利：證券與期貨的差異&quot;&gt;&lt;/a&gt;停損停利：證券與期貨的差異&lt;/h2&gt;&lt;p&gt;在期貨市場中，券商通常會允許你掛單的同時，可以設定停損與停利價位&lt;/p&gt;&lt;p&gt;因為你有放保證金，所以無論是往停損與停利方向如何移動&lt;/p&gt;&lt;p&gt;券商大抵上都能幫你執行觸價單，不用擔心你是否有庫存、額度的問題&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;然而在證券市場中，你如果買進一張台積電，想要設定停損與停利&lt;/p&gt;&lt;p&gt;通常你只能在停損與停利其中一邊掛賣單，因為你只有庫存一張&lt;/p&gt;&lt;p&gt;而另一邊你得自己在客戶端跑洗價，或是借券、無券空，多空一張&lt;/p&gt;&lt;p&gt;事情就沒那麼容易了&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;情況&amp;#95;i：停利送出委託，停損本地洗價&quot;&gt;&lt;/a&gt;情況 I：停利送出委託，停損本地洗價&lt;/h2&gt;&lt;p&gt;若暫時不考慮有庫存或額度上的操作，我們可以看下圖：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/20231215_1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;假設我們買進了一張台積電，一個合理的做法是對能限價的那一邊&lt;/p&gt;&lt;p&gt;掛出委託，也就是停利價位掛出一張 Sell Limit，庫存就用完了&lt;/p&gt;&lt;p&gt;然後在停損這一邊，本地洗價 Sell Stop&lt;/p&gt;&lt;p&gt;只要 #SL 和 #TP 有一邊成交，我們就把另一邊取消，類似二擇一操作&lt;/p&gt;&lt;p&gt;只是在這個情況中，我們 #TP 的委託是已經送到交易所&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/20231215_2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;我們現在考慮價格碰到 #TP 價位並且成交 &lt;code&gt;&amp;#40;1&amp;#41;&lt;/code&gt; ，你會收到成交回報 &lt;code&gt;&amp;#40;2&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;這時候你就需要停止 #SL 的本地洗價並取消 &lt;code&gt;&amp;#40;3&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;並且由於成交回報會領先其他人收到成交通知 &lt;code&gt;&amp;#40;4&amp;#41;&lt;/code&gt; ，順序就會像：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/20231215_3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;接著我們可以考慮價格是先觸碰到 #SL，由於本地在洗價 &lt;code&gt;&amp;#40;1&amp;#41;&lt;/code&gt; 被觸發&lt;/p&gt;&lt;p&gt;就會送 #SL 到交易所，然後在 &lt;code&gt;&amp;#40;2&amp;#41;&lt;/code&gt; 收到回報：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/20231215_4.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;這時候你想要把 #TP 刪單，但問題會比想像中複雜&lt;/p&gt;&lt;p&gt;我們先考慮理想情況，你送出刪單請求到交易所 &lt;code&gt;&amp;#40;3&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;接著收到交易所刪單成功的回報 &lt;code&gt;&amp;#40;4&amp;#41;&lt;/code&gt; ，多數情況是這樣沒錯：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/20231215_5.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;然而你可能遇到刪單失敗的情況，假如價格突然拉回&lt;/p&gt;&lt;p&gt;你的 #TP 由於在交易所，所以可能會在 &lt;code&gt;&amp;#40;2&amp;#41;&lt;/code&gt; ~ &lt;code&gt;&amp;#40;3&amp;#41;&lt;/code&gt; 中間的時候&lt;/p&gt;&lt;p&gt;被觸發成交 &lt;code&gt;&amp;#40;2.5&amp;#41;&lt;/code&gt; ，並且在你刪單送出到拿刪單結果的中間 &lt;code&gt;&amp;#40;3&amp;#41;&lt;/code&gt; ~ &lt;code&gt;&amp;#40;4&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;你會先收到成交通知 &lt;code&gt;&amp;#40;3.5&amp;#41;&lt;/code&gt; ，然後再收到刪單失敗的通知 &lt;code&gt;&amp;#40;4&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/20231215_6.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;像這樣買一張，卻賣到兩張的情況，要怎麼解決呢？&lt;/p&gt;&lt;p&gt;我們會在第二篇來討論，兩邊都放本地洗價的方式，並且這也是 OCO 二擇一單的基本原理&lt;/p&gt;&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 15 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-14-交易軟體中的雙時態資料設計與投影估計/

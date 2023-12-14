@@ -1,0 +1,46 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "如何撰寫使用委託書號與序號的複雜列表推導式 TBD" :layout :post :tags [""] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+<br/>
+
+** 複雜的列表推導式
+
+一種常見的複雜列表推導式[fn:: 本篇想法來自於：https://www.kdnuggets.com/why-you-should-not-overuse-list-comprehensions-in-python]
+如下：
+
+#+begin_src python
+import math
+
+upper_limit = 50
+
+primes = [x for x in range(2, upper_limit + 1) if  x > 1 and all(x % i != 0 for i in range(2, int(math.sqrt(x)) + 1))]
+
+print(primes)
+#+end_src
+
+其中的推導式包含了 =for, in, range, if= 其中 =all()= 又包含了 =for, in, range=
+
+所一一種重寫就是 *分行* ：
+
+#+begin_src python
+import math
+
+upper_limit = 50
+
+primes = [
+  x
+  for x in range(2, upper_limit + 1)
+  if x > 1 and all(x % i != 0 for i in range(2, int(math.sqrt(x)) + 1))
+]
+
+print(primes)
+#+end_src
+
+
+
+
+<br/>

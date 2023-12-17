@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sun, 17 Dec 2023 13:25:19 +0800
+Mon, 18 Dec 2023 06:43:20 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-18-交易與量化史-1-亞里斯多德的量化金三角/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-18-交易與量化史-1-亞里斯多德的量化金三角/
+</link>
+<title>
+交易與量化史 (1) 亞里斯多德的量化金三角
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;形上學：人的本能，探討超越自然的學問&quot;&gt;&lt;/a&gt;形上學：人的本能，探討超越自然的學問&lt;/h2&gt;&lt;p&gt;在古希臘，Pyhsics 這個詞不只是物理，是泛指整個感知、存在的自然&lt;/p&gt;&lt;p&gt;而形上學的英文是 Metaphysics，可以理解成 Meta- (超越) -physics (自然) 的學問&lt;/p&gt;&lt;p&gt;也就是站在更大的視野，研究感知到的這整個物質世界的學問&lt;/p&gt;&lt;p&gt;形上學不是可怕的哲學名詞，他是很自然會出現的&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;例如，一個將軍在帶兵打仗多年，除了精熟打仗的學問，也會去思考&lt;/p&gt;&lt;p&gt;「戰爭是什麼？」「武術是什麼？」「死亡是什麼？」&lt;/p&gt;&lt;p&gt;對他來說，自然就是打仗的戰術、戰略，超越自然的就是戰爭、武術與死亡&lt;/p&gt;&lt;p&gt;又或是一個球隊教練，在帶球隊拿下冠軍後，也會有記者堵麥訪問&lt;/p&gt;&lt;p&gt;「成功是什麼？」「贏球意味著什麼？」「團隊合作是最重要的嗎？」&lt;/p&gt;&lt;p&gt;對於交易員來說，自然就是金融市場、交易機制、價格走勢&lt;/p&gt;&lt;p&gt;超越自然的就是，交易、策略、獲利與虧損這些概念的探討&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;不客氣地說，甚至可以將形上學當成是 &lt;strong&gt;成功心法&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;當你反覆驗證了你的思考，不斷取得進步，就會開始認為自己碰觸到問題的本質&lt;/p&gt;&lt;p&gt;找到自己在做的事情的真理，你認為的 &lt;strong&gt;正確概念&lt;/strong&gt; 就是一種形上學&lt;/p&gt;&lt;p&gt;所以哲學的書從來沒有少過，書架上有多少成功學的書，就可以當成有多少形上學&lt;/p&gt;&lt;p&gt;而世界上第一個對自然研究的十分深入，並且將對心法沉澱下來的&lt;/p&gt;&lt;p&gt;就是西元前 400 年左右的古希臘哲學家—亞里斯多德&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;科學為什麼叫「科」&quot;&gt;&lt;/a&gt;科學為什麼叫「科」&lt;/h2&gt;&lt;p&gt;亞里斯多德首先發現，我們的語言在使用「是」的時候存在一種規範&lt;/p&gt;&lt;p&gt;例如你不會說「三角形是冷的」、「火是圓的」，為什麼呢？&lt;/p&gt;&lt;p&gt;因為我們在描述一個東西、探討的一個東西時，我們本能就會做分類&lt;/p&gt;&lt;p&gt;這個分科的學問，就是「科」學，在企業裡面也會有不同「科」&lt;/p&gt;&lt;p&gt;也是代表他們擅長與專精的領域是完全不同的，例如「業務科」、「行政科」&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;亞里斯多德就將科學分成三個層次：理論科學、實踐科學和創制科學&lt;/p&gt;&lt;p&gt;首先從理論出發，其次從經驗總結實踐心得，接著從實踐經驗沉澱創造製造的工藝&lt;/p&gt;&lt;p&gt;而其中理論科學又分成 &lt;strong&gt;形上學&lt;/strong&gt; 、 &lt;strong&gt;數理幾何學&lt;/strong&gt; 與 &lt;strong&gt;自然哲學&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;形上學在探討的是：1. [v] 能獨立存在  2. [v] 不會改變的事物&lt;/p&gt;&lt;p&gt;數理幾何學則是在探討: 1. [x] 不能獨立存在 2. [v] 但是不會改變的事物&lt;/p&gt;&lt;p&gt;自然哲學則是探討：1. [v] 能獨立存在 2. [x] 但是會改變的事物&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;量化金三角：形上學、數理幾何學、自然哲學&quot;&gt;&lt;/a&gt;量化金三角：形上學、數理幾何學、自然哲學&lt;/h2&gt;&lt;p&gt;亞里斯多德將理論科學分成三類，各自個別探討&lt;/p&gt;&lt;p&gt;因為亞里斯多德認為，在語言的範疇中，這三類東西的描述是不能混合的&lt;/p&gt;&lt;p&gt;例如，你不能說「神是冷的」，因為神是形上學概念、冷是自然哲學概念&lt;/p&gt;&lt;p&gt;你不能用會改變的描述，描述不會改變的事物&lt;/p&gt;&lt;p&gt;又例如，你不能說「三角形是熱的」，因為三角是數理幾何的概念&lt;/p&gt;&lt;p&gt;而熱是自然哲學的概念，三角形不是一個能獨立存在的東西，而熱是描述一個獨立存在的東西&lt;/p&gt;&lt;p&gt;如果要說，你就得說「三角形的桌子是熱的」&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;亞里斯多德如果聽到一個交易大神說「漲 30% 跌 10% 回來買就會賺錢」時&lt;/p&gt;&lt;p&gt;他就會說：「漲 30% 和跌 10% 是一個數理幾何概念，他是不能獨立存在的」&lt;/p&gt;&lt;p&gt;「賺錢應該是在能獨立存在的真實事物上，例如某支股票，你不能這樣說話」&lt;/p&gt;&lt;p&gt;而不是只是簡單膚淺的反駁說：「你又沒說哪支股票！」&lt;/p&gt;&lt;p&gt;所以透過亞里斯多德這樣的分類，可以幫助我們在思考交易問題時更加謹慎&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;量化交易也是一樣，交易本身是一個自然哲學，有實際的應用場域&lt;/p&gt;&lt;p&gt;你不做交易，交易仍然存在、且市場在不斷改變&lt;/p&gt;&lt;p&gt;而你手上有的量化分析技術是一個確定的東西，一套原則或方法&lt;/p&gt;&lt;p&gt;但是是一個不能獨立存在的概念，要應用出來才有用&lt;/p&gt;&lt;p&gt;而這整個流程，你為什麼要掌握這套技術，而不用另一套，你用它的意義是什麼？&lt;/p&gt;&lt;p&gt;這整個超越自然的思考，就是形上學的範疇，這三個方面就是思考量化問題的金三角&lt;/p&gt;&lt;p&gt;也是亞里斯多德留給我們的重大寶物&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 18 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-17-交易軟體中的設計模式-1-代理模式與-COM-元件生命週期/

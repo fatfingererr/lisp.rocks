@@ -1,0 +1,23 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "交易軟體中的設計模式 (3) 外觀模式與前後端分離" :layout :post :tags ["python" "gui" "trading" "architecture"] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+** 交易軟體的前後端
+
+交易軟體除了前端有複雜的交互需求外，對使用者本地電腦的要求也很高
+
+例如一個使用者他訂閱了 100 檔商品的報價，30 檔來自於券商 A，70 檔來自於券商 B
+
+那使用者電腦就會不斷收到大量報價，就得高效能的展示這些報價變化
+
+
+
+
+
+
+*** References
+
+-

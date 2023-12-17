@@ -1,0 +1,64 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "交易軟體中的設計模式 (2) 享元模式與 GUI 物件" :layout :post :tags ["python" "gui" "trading" "architecture"] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+** GUI 物件的精確需求
+
+在《交易軟體中對 GUI 元件的精確需求》中談到，交易軟體中對於 GUI 的精確需求
+
+這會導致在前端開發時，我們並不會像是網頁開發一樣大量產生 UI 元件
+
+當然現今的網頁也有包含類似分頁、觸底再讀取更多這些功能
+
+但仍然傾向於透過 javascript 不斷的附加新元件上來，並不會把舊元件更新與重用
+
+這點就和在交易軟體中精確交互的需求有很大的不同
+
+也因此，交易軟體中的 GUI 元件更傾向於復用，那通常都會考慮的就是享元模式
+
+<br/>
+
+** 享元模式 Flyweight Pattern
+
+相較於在過往歷史中，享元模式更多在解決的是大量物件的記憶體使用問題
+
+在當今的 GUI 開發上，更多是避免物件生成與消滅所花的成本，因而複用舊元件
+
+因為在 GUI 中建立物件的成本是非常高的，你要定位它、要把它納入更大的 Frame 或 Group 中
+
+如果此時整個 Group 正在改顏色，那物件要在生成前就設定好顏色呢，還是等生成好了再更新顏色？
+
+這些種種在整個畫面中同步、協調新的 GUI 元件的成本是非常昂貴的
+
+所以能重用舊有的物件，避免大量更新 GUI 元件的狀態，是 GUI 開發考慮享元模式的重要考量
+
+<br/>
+
+讓我們先來走一遍享元模式，考慮你有一個表格 =Table= ，他持有 (has-a) 很多欄的資料 =RowContent=
+
+欄有很多種，例如在欄位內展示圖片的 =ImageRowContent= 與展示數據的 =DataRowContent=
+
+[[../../img/2023-12/flyweight_1.png]]
+
+=RowContent= 綁定點擊的事件 =leftClick()= ，以及可以取得 =content()= 來更新對應的 GUI 元件
+
+<br/>
+
+假設現在整個 Table 被滑，觸發事件 =ScrollEvent= 的 =tableScrollDown()= ：
+
+[[../../img/2023-12/flyweight_2.png]]
+
+那 =Table= 就會檢查這次向下滾動是否超過已有的資料 ，如果有，就建立新的 =RowContent=
+
+建立完之後，整個 =RowContent= 都平移更新到對應欄位的 GUI 元件上
+
+[[../../img/2023-12/gui_needs_4.png]]
+
+例如 =("$ 13", partial(self.buy, 13))= 就會被更新為 =("$ 16", partial(self.buy, 16))=
+
+透過這個方式，就能避免 GUI 元件被反覆的創建，而是沒有就創建、有就複用
+
+<br/>

@@ -12,11 +12,31 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Sat, 16 Dec 2023 14:53:02 +0800
+Sun, 17 Dec 2023 13:25:19 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-17-交易軟體中的設計模式-1-代理模式與-COM-元件生命週期/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-17-交易軟體中的設計模式-1-代理模式與-COM-元件生命週期/
+</link>
+<title>
+交易軟體中的設計模式 (1) 代理模式與 COM 元件
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;代理模式&amp;#95;proxy&amp;#95;pattern&quot;&gt;&lt;/a&gt;代理模式 Proxy Pattern&lt;/h2&gt;&lt;p&gt;我們先走一遍，代理模式的結構是如何產生的&lt;/p&gt;&lt;p&gt;我們現在有一個 &lt;code&gt;Client&lt;/code&gt; ，而他的 &lt;code&gt;main&amp;#40;&amp;#41;&lt;/code&gt; 會需要使用到 &lt;code&gt;X&lt;/code&gt; 的 &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; ：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/proxy_1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;由於 &lt;strong&gt;設計需求&lt;/strong&gt; (後面討論)，我們希望 &lt;code&gt;Client&lt;/code&gt; 不要直接接觸 &lt;code&gt;X&lt;/code&gt;&lt;/p&gt;&lt;p&gt;例如， &lt;code&gt;X&lt;/code&gt; 可能還有很多其他函數： &lt;code&gt;unsafeFunc1&lt;/code&gt; , &lt;code&gt;unsafeFunc2&lt;/code&gt; , &lt;code&gt;unsafeFunc3&lt;/code&gt;&lt;/p&gt;&lt;p&gt;但我們不希望 &lt;code&gt;Client&lt;/code&gt; 碰到，所以我們先定義一個介面，這個介面只有 &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; ：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/proxy_2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;接著我們依照介面實作 &lt;code&gt;NewX&lt;/code&gt; 作為 &lt;code&gt;Client&lt;/code&gt; 互動對象，並且只有 &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; 可用：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/proxy_3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;你還可以在 &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; 前後做些準備，讓調用 &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; 之前與之後做好充足準備&lt;/p&gt;&lt;p&gt;例如透過 &lt;code&gt;beforeFunc&amp;#40;&amp;#41;&lt;/code&gt; 檢查傳入的東西是否合法， &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; 是否可以執行&lt;/p&gt;&lt;p&gt;或是透過 &lt;code&gt;afterFunc&amp;#40;&amp;#41;&lt;/code&gt; 把結果做些處理，再返回給 &lt;code&gt;Client&lt;/code&gt;&lt;/p&gt;&lt;p&gt;你也可以把 &lt;code&gt;X&lt;/code&gt; 的 &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; code 抄過來，讓 &lt;code&gt;Client&lt;/code&gt; 與整個 &lt;code&gt;X&lt;/code&gt; 解耦&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;然而事情可能沒有那麼簡單， &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; 高度依賴 &lt;code&gt;X&lt;/code&gt; 內部的屬性與方法&lt;/p&gt;&lt;p&gt;那你就必須讓 &lt;code&gt;NewX&lt;/code&gt; 持有 (has-a) &lt;code&gt;X&lt;/code&gt; ，那這就是最經典的 &lt;strong&gt;組合代理模式&lt;/strong&gt; ：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/proxy_4.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;這時候 &lt;code&gt;NewX&lt;/code&gt; 就是 &lt;code&gt;XProxy&lt;/code&gt; ，並持有 &lt;code&gt;X&lt;/code&gt; ，透過 &lt;code&gt;self.x.func&amp;#40;&amp;#41;&lt;/code&gt; 調用&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;有時候，你可能無法持有 &lt;code&gt;X&lt;/code&gt; ，例如 &lt;code&gt;X&lt;/code&gt; 在另一個進程、在另一個電腦&lt;/p&gt;&lt;p&gt;那你就需要在 &lt;code&gt;XProxy&lt;/code&gt; 與 &lt;code&gt;X&lt;/code&gt; 之間建立通信，考慮 &lt;strong&gt;通信代理模式&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;這邊先最簡單的多進程共享 Queue 舉例&lt;/p&gt;&lt;p&gt;假設 &lt;code&gt;X&lt;/code&gt; 在另一個進程中，初始化設置好與 &lt;code&gt;XProxy&lt;/code&gt; 共享一個 &lt;code&gt;xqueue&lt;/code&gt; ：&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/proxy_5.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;所以你可以在 &lt;code&gt;XProxy&lt;/code&gt; 中透過往 &lt;code&gt;xqueue&lt;/code&gt; 放入 args &lt;code&gt;&amp;#40;a, b&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;並讓 &lt;code&gt;X&lt;/code&gt; 透過對 &lt;code&gt;xqueue&lt;/code&gt; 的監聽，取出後執行 &lt;code&gt;func&amp;#40;&amp;#41;&lt;/code&gt; ，達成代理的功能&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;交易軟體中的設計需求：com&amp;#95;元件的生命週期&quot;&gt;&lt;/a&gt;交易軟體中的設計需求：COM 元件的生命週期&lt;/h2&gt;&lt;p&gt;如果券商提供的 API 是透過 COM 元件連線，有時候連線中斷後，你可能要重新連線&lt;/p&gt;&lt;p&gt;然而 COM 元件內部他怎麼紀錄使用狀態你不知道，就可能造成重新連線並沒有把狀態全部重置&lt;/p&gt;&lt;p&gt;而我們執行的 COM 元件，可能也要重啟 Event loop，然後重新 coInitialize&lt;sup&gt;&lt;a id=&quot;fnr.1&quot; class=&quot;footref&quot; href=&quot;#fn.1&quot; role=&quot;doc-backlink&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;由於無法確保獲信賴第三方套件，最安全的做法就法就是讓 COM 元件跑在另一個進程&lt;/strong&gt; &lt;sup&gt;&lt;a id=&quot;fnr.2&quot; class=&quot;footref&quot; href=&quot;#fn.2&quot; role=&quot;doc-backlink&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;p&gt;如果券商 API 執行在另一個進程，那就像是前面的 &lt;code&gt;X&lt;/code&gt; 一樣&lt;/p&gt;&lt;p&gt;我們在主進程中，就得透過 &lt;code&gt;XProxy&lt;/code&gt; 來使用 API，並且可以監控 &lt;code&gt;X&lt;/code&gt; 的狀況&lt;/p&gt;&lt;p&gt;而在 API 出問題時，可以透過 &lt;code&gt;XProxy&lt;/code&gt; 直接把進程殺死並重啟，確保環境狀態完整重置&lt;/p&gt;&lt;p&gt;當然，這些都是有附加的代價，設計永遠都是各種權衡&lt;/p&gt;&lt;p&gt;關於代理模式的優缺點網路上有很多文章，大家需要根據自己的需求自己選擇&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;footnotes&quot;&gt;&lt;/a&gt;Footnotes&lt;/h1&gt;&lt;p&gt;&lt;sup&gt;&lt;a id=&quot;fn.1&quot; href=&quot;#fnr.1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 在 Python 中，得透過 &lt;code&gt;comtypes.CoInitialize&lt;/code&gt; 初始化環境，包含確保線程安全、管理生命週期&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a id=&quot;fn.2&quot; href=&quot;#fnr.2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 相比之下，多數 DB 的 Client 端是開源的且封裝良好，需要使用到的設計模式是 repository pattern&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 17 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-16-Python-交易軟體開發如何應對-GIL-移除的未來/

@@ -12,11 +12,117 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Mon, 18 Dec 2023 06:43:20 +0800
+Tue, 19 Dec 2023 07:08:05 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-19-透過-heapq-設置下單優先級/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-19-透過-heapq-設置下單優先級/
+</link>
+<title>
+透過 heapq 設置下單優先級以便洗價與定時單優先處理
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;下單優先級的需求&quot;&gt;&lt;/a&gt;下單優先級的需求&lt;/h2&gt;&lt;p&gt;通常在開發一個交易軟體，除了使用者介面操作觸發下單行為之外&lt;/p&gt;&lt;p&gt;可能也會有系統本身排程觸發的下單行為，例如客戶端洗價、客戶端定時單、客戶端預風控等&lt;/p&gt;&lt;p&gt;這些下單可能會存在優先級，例如洗價第一、定時單第二、用戶手動下單第三&lt;/p&gt;&lt;p&gt;當然這個順序也可能根據需求不同，或是有更複雜的優先級評判原則&lt;/p&gt;&lt;p&gt;例如各種不同市場的商品都是使用相同 API，而 API 本身會依序執行&lt;/p&gt;&lt;p&gt;那可能現貨的單必須先送出，其次是期貨的單 &amp;#x2026; 類似這樣的情況&lt;/p&gt;&lt;p&gt;總之，送單優先級的需求一定有，甚至其他各種層面也會有優先級的需求&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;使用&amp;#95;&lt;code&gt;heapq&lt;/code&gt;&quot;&gt;&lt;/a&gt;使用 &lt;code&gt;heapq&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;Python 的 &lt;code&gt;heapq&lt;/code&gt; 本身實現了堆隊列的功能，可以讓我們實現優先級隊列：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import heapq
+
+class PriorityOrderQueue:
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        self.orderQueue = &amp;#91;&amp;#93;
+
+    def push&amp;#40;self, order&amp;#41;:
+        heapq.heappush&amp;#40;self.orderQueue, &amp;#40;-order&amp;#91;0&amp;#93;, order&amp;#91;1:&amp;#93;&amp;#41;&amp;#41;
+
+    def pop&amp;#40;self&amp;#41;:
+        if self.orderQueue:
+            return heapq.heappop&amp;#40;self.orderQueue&amp;#41;&amp;#91;1&amp;#93;
+        raise IndexError&amp;#40;&amp;quot;不能對空的優先級隊列做彈出&amp;quot;&amp;#41;
+
+    def items&amp;#40;self&amp;#41;:
+        return self.orderQueue
+
+    def &amp;#95;&amp;#95;bool&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        return bool&amp;#40;self.orderQueue&amp;#41;
+
+pendingOrders = PriorityOrderQueue&amp;#40;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這個優先級下單隊列，需要放入 &lt;code&gt;&amp;#40;優先級, 流水號, 資料&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;然後在插入 (push) 會轉換成二元組 &lt;code&gt;&amp;#40;優先級, &amp;#40;流水號, 資料&amp;#41;&amp;#41;&lt;/code&gt;&lt;/p&gt;&lt;p&gt;並以優先級的負值作為堆隊列根節點的彈出 (pop) 的參考，越小值越先彈出&lt;/p&gt;&lt;p&gt;除了 &lt;code&gt;push&lt;/code&gt; , &lt;code&gt;pop&lt;/code&gt; 之外，還需要 &lt;code&gt;&amp;#95;&amp;#95;bool&amp;#95;&amp;#95;&lt;/code&gt; 以便我們阻塞消化， &lt;code&gt;items&lt;/code&gt; 取得全部是為了畫圖&lt;/p&gt;&lt;p&gt;以下是一個範例：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;pendingOrders = PriorityOrderQueue&amp;#40;&amp;#41;
+
+pendingOrders.push&amp;#40;&amp;#40;5, 1, &amp;quot;洗價處價單, 買進 10 張, 台積電&amp;quot;&amp;#41;&amp;#41;
+pendingOrders.push&amp;#40;&amp;#40;1, 2, &amp;quot;手動下單, 賣出 5 張, 長榮&amp;quot;&amp;#41;&amp;#41;
+pendingOrders.push&amp;#40;&amp;#40;3, 3, &amp;quot;定時單, 買進 20 張, 廣達&amp;quot;&amp;#41;&amp;#41;
+
+while pendingOrders:
+    print&amp;#40;pendingOrders.pop&amp;#40;&amp;#41;&amp;#41;
+
+# &amp;#40;1, '洗價觸價單, 買進 10 張, 台積電'&amp;#41;
+# &amp;#40;3, '定時單, 買進 20 張, 廣達'&amp;#41;
+# &amp;#40;2, '手動下單, 賣出 5 張, 長榮'&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a name=&quot;對&amp;#95;&lt;code&gt;heapq&lt;/code&gt;&amp;#95;繪圖&quot;&gt;&lt;/a&gt;對 &lt;code&gt;heapq&lt;/code&gt; 繪圖&lt;/h2&gt;&lt;p&gt;我們也可以繪圖來看看我們的堆隊列：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;pendingOrders = PriorityOrderQueue&amp;#40;&amp;#41;
+
+# 插入一些交易数据，格式为 &amp;#40;优先级, 交易信息&amp;#41;
+pendingOrders.push&amp;#40;&amp;#40;5, 1, &amp;quot;洗價觸價單, 買進 10 張, 台積電&amp;quot;&amp;#41;&amp;#41;
+pendingOrders.push&amp;#40;&amp;#40;1, 2, &amp;quot;手動下單, 賣出 5 張, 長榮&amp;quot;&amp;#41;&amp;#41;
+pendingOrders.push&amp;#40;&amp;#40;3, 3, &amp;quot;定時單, 買進 20 張, 廣達&amp;quot;&amp;#41;&amp;#41;
+pendingOrders.push&amp;#40;&amp;#40;5, 4, &amp;quot;洗價觸價單, 買進 3 張, 群益證&amp;quot;&amp;#41;&amp;#41;
+pendingOrders.push&amp;#40;&amp;#40;1, 5, &amp;quot;手動下單, 賣出 5 張, 台積電&amp;quot;&amp;#41;&amp;#41;
+
+def plotHeap&amp;#40;heap&amp;#41;:
+    # 計算二項樹深度
+    heapSize = len&amp;#40;heap&amp;#41;
+    depth = int&amp;#40;np.ceil&amp;#40;np.log2&amp;#40;heapSize + 1&amp;#41;&amp;#41;&amp;#41;
+
+    # 繪圖設定
+    &amp;#95;, ax = plt.subplots&amp;#40;&amp;#41;
+    ax.set&amp;#95;aspect&amp;#40;'equal'&amp;#41;
+    plt.axis&amp;#40;'off'&amp;#41;
+
+    # 遞迴繪製節點和邊
+    def drawNode&amp;#40;nodeIdx, x, y, dx&amp;#41;:
+        if nodeIdx &amp;lt; heapSize:
+            # 繪製節點
+            ax.text&amp;#40;x, y, &amp;quot;#&amp;quot;+str&amp;#40;heap&amp;#91;nodeIdx&amp;#93;&amp;#91;1&amp;#93;&amp;#91;0&amp;#93;&amp;#41;, ha='center', va='center',
+                    bbox=dict&amp;#40;facecolor='white', edgecolor='black', boxstyle='circle'&amp;#41;&amp;#41;
+
+            # 左子節點
+            leftChildIdx = 2 &amp;#42; nodeIdx + 1
+            if leftChildIdx &amp;lt; heapSize:
+                leftX, leftY = x - dx, y - 1
+                ax.plot&amp;#40;&amp;#91;x, leftX&amp;#93;, &amp;#91;y, leftY&amp;#93;, c='black'&amp;#41;
+                drawNode&amp;#40;leftChildIdx, leftX, leftY, dx / 2&amp;#41;
+
+            # 右子節點
+            rightChildIdx = leftChildIdx + 1
+            if rightChildIdx &amp;lt; heapSize:
+                rightX, rightY = x + dx, y - 1
+                ax.plot&amp;#40;&amp;#91;x, rightX&amp;#93;, &amp;#91;y, rightY&amp;#93;, c='black'&amp;#41;
+                drawNode&amp;#40;rightChildIdx, rightX, rightY, dx / 2&amp;#41;
+
+    # 最終從根節點開始繪製
+    drawNode&amp;#40;0, 0, 0, 2 &amp;#42;&amp;#42; &amp;#40;depth - 2&amp;#41;&amp;#41;
+
+    # 調整邊界與顯示
+    plt.xlim&amp;#40;-2&amp;#42;&amp;#42;&amp;#40;depth-1&amp;#41;, 2&amp;#42;&amp;#42;&amp;#40;depth-1&amp;#41;&amp;#41;
+    plt.ylim&amp;#40;-depth, 1&amp;#41;
+    plt.show&amp;#40;&amp;#41;
+
+plotHeap&amp;#40;pendingOrdersHeap&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/5.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;依序操作就會從根節點依序往下處理：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;while pendingOrders:
+    print&amp;#40;pendingOrders.pop&amp;#40;&amp;#41;&amp;#41;
+
+# &amp;#40;1, '洗價觸價單, 買進 10 張, 台積電'&amp;#41;
+# &amp;#40;4, '洗價觸價單, 買進 3 張, 群益證'&amp;#41;
+# &amp;#40;3, '定時單, 買進 20 張, 廣達'&amp;#41;
+# &amp;#40;2, '手動下單, 賣出 5 張, 長榮'&amp;#41;
+# &amp;#40;5, '手動下單, 賣出 5 張, 台積電'&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 19 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-18-交易與量化史-1-亞里斯多德的量化金三角/

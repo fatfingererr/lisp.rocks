@@ -1,0 +1,90 @@
+#+OPTIONS: toc:nil
+#+BEGIN_SRC json :noexport:
+{:title "使用hex() 處理交易軟體的字元與 Emoji 存儲與顯示" :layout :post :tags ["python" "trading" "encoding"] :toc false}
+#+END_SRC
+* 　
+[[../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg]]
+
+** 交易軟體中的中文字問題
+
+網頁應用有瀏覽器處理編碼問題，自動檢測與自動切換編碼方式
+
+而開發直接關聯作業系統的 GUI 交易軟體，得花一點時間處理字元，尤其是中文
+
+有些 GUI Framework 並沒有綁定作業系統，因此初始化階段需要註冊字形
+
+並把所有字都轉成圖像，匯集在一張圖 (Bitmap Font)
+
+結果造成打開程式，就有大量字形被載入 memory，開太多視窗還有可能遇到重複加載的問題
+
+因此事先盡量蒐集好整個交易軟體用到的字元，並只加載特定範圍就變得特別重要
+
+<br/>
+
+** =hex()= 處理字元的用法
+
+當然，一個交易軟體不可能只有中英文字，當代需求就是 Emoji
+
+基本上大致都能轉換成字節，考慮我們有一堆詞如下：
+
+#+begin_src python
+import sys
+
+words = ["登入", "登入中", "登入成功✅"]
+
+strarr = set()
+for word in words:
+    for char in word:
+        strarr.add(char)
+strarr = tuple(strarr)
+
+strarrEncoded = tuple([str.encode("utf-8") for str in strarr])
+for i, str in enumerate(strarrEncoded):
+    print(f"{strarr[i]}: {str}, size: {sys.getsizeof(str)}")
+print(f"str encoded size: {sys.getsizeof(strarrEncoded)}")
+
+# 登: b'\xe7\x99\xbb', size: 36
+# 成: b'\xe6\x88\x90', size: 36
+# 入: b'\xe5\x85\xa5', size: 36
+# ✅: b'\xe2\x9c\x85', size: 36
+# 中: b'\xe4\xb8\xad', size: 36
+# 功: b'\xe5\x8a\x9f', size: 36
+# str encoded size: 88
+#+end_src
+
+接著我們就能將它轉換成 =hex()= 方便存儲：
+
+#+begin_src python
+strarrEncodedHex = tuple([str.hex().encode("utf-8") for str in strarrEncoded])
+for i, str in enumerate(strarrEncodedHex):
+    print(f"{strarr[i]}: {str}, size: {sys.getsizeof(str)}")
+print(f"str hex size: {sys.getsizeof(strarrEncodedHex)}")
+
+# 功: b'e58a9f', size: 39
+# 成: b'e68890', size: 39
+# 中: b'e4b8ad', size: 39
+# 入: b'e585a5', size: 39
+# ✅: b'e29c85', size: 39
+# 登: b'e799bb', size: 39
+# str hex size: 88
+#+end_src
+
+並且還原回來顯示：
+
+#+begin_src python
+originalStrarr = tuple(
+    [
+        bytes.fromhex(str.decode('utf-8')).decode("utf-8")
+        for str in strarrEncodedHex
+    ])
+for i, str in enumerate(originalStrarr):
+    print(f"{strarr[i]}: {str}, size: {sys.getsizeof(str)}")
+# 功: 功, size: 76
+# 成: 成, size: 76
+# 中: 中, size: 76
+# 入: 入, size: 76
+# ✅: ✅, size: 76
+# 登: 登, size: 76
+#+end_src
+
+<br/>

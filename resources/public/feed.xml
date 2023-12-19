@@ -12,11 +12,91 @@ http://lisp.rocks/
 Lisp Rocks
 </description>
 <lastBuildDate>
-Tue, 19 Dec 2023 07:08:05 +0800
+Wed, 20 Dec 2023 06:46:15 +0800
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://lisp.rocks/posts-output/2023-12-20-使用-PySimpleGUI-3-分鐘製作下單程式/
+</guid>
+<link>
+http://lisp.rocks/posts-output/2023-12-20-使用-PySimpleGUI-3-分鐘製作下單程式/
+</link>
+<title>
+使用 PySimpleGUI 3 分鐘製作下單程式
+</title>
+<description>
+&lt;h1&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;../../img/not-by-ai/tw/written-by-human/svg/Written-By-Human-Not-By-AI-Badge-white.svg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;券商&amp;#95;api&amp;#95;與&amp;#95;pysimplegui&quot;&gt;&lt;/a&gt;券商 API 與 PySimpleGUI&lt;/h2&gt;&lt;p&gt;PySimpleGUI&lt;sup&gt;&lt;a id=&quot;fnr.1&quot; class=&quot;footref&quot; href=&quot;#fn.1&quot; role=&quot;doc-backlink&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 顧名思義就是非常簡單，它是建立在 Tkinter 與 Qt 之上，更加簡便&lt;/p&gt;&lt;p&gt;由於台股大多數券商 API 都是提供 dll 接到 Python 中，因此都要自己起事件循環&lt;/p&gt;&lt;p&gt;最好的方式就是搭一個簡單的 GUI 程式來學習券商 API&lt;/p&gt;&lt;p&gt;如果不想要花太多時間學習 GUI 開發，PySimpleGUI 就非常方便&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h2&gt;&lt;a name=&quot;快速復刻超級贏家下單介面&quot;&gt;&lt;/a&gt;快速復刻超級贏家下單介面&lt;/h2&gt;&lt;p&gt;超級贏家的下單介面類似這樣：&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/6.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;PySimpleGUI 就是一行就是一個 list，超贏這個就是兩個 list：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import PySimpleGUI as sg
+
+# 選項設置
+accounts = &amp;#91;&amp;quot;證-1234-5678901-王小明  &amp;quot;&amp;#93;
+flags = &amp;#91;&amp;quot;普通   &amp;quot;, &amp;quot;盤後   &amp;quot;&amp;#93;
+tradeTypes = &amp;#91;&amp;quot;ROD &amp;quot;, &amp;quot;IOC &amp;quot;, &amp;quot;FOK &amp;quot;&amp;#93;
+
+# 建立每個控件
+layout = &amp;#91;
+    &amp;#91;
+        sg.Button&amp;#40;&amp;quot;證&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;零&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;期&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;權&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;興&amp;quot;&amp;#41;,
+        sg.Combo&amp;#40;accounts, default&amp;#95;value=accounts&amp;#91;0&amp;#93;, key=&amp;quot;-ACCOUNT-&amp;quot;&amp;#41;,
+        sg.Radio&amp;#40;&amp;quot;買進&amp;quot;, &amp;quot;RadioBuysell&amp;quot;, key=&amp;quot;-RADIO-BUY-&amp;quot;&amp;#41;,
+        sg.Radio&amp;#40;&amp;quot;賣出&amp;quot;, &amp;quot;RadioBuysell&amp;quot;, key=&amp;quot;-RADIO-SELL-&amp;quot;&amp;#41;,
+    &amp;#93;,
+    &amp;#91;
+        sg.Combo&amp;#40;flags, default&amp;#95;value=flags&amp;#91;0&amp;#93;, key=&amp;quot;-FLAG-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;現&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;資&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;券&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;無券&amp;quot;&amp;#41;,
+        sg.Text&amp;#40;&amp;quot;&amp;quot;, size=&amp;#40;1, 1&amp;#41;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;代碼&amp;quot;&amp;#41;,
+        sg.InputText&amp;#40;size=&amp;#40;7, 1&amp;#41;, key=&amp;quot;-SYMBOL-CODE-&amp;quot;&amp;#41;,
+        sg.InputText&amp;#40;
+            size=&amp;#40;15, 1&amp;#41;, disabled=True, background&amp;#95;color=&amp;quot;gray&amp;quot;, key=&amp;quot;-SYMBOL-NAME-&amp;quot;
+        &amp;#41;,
+        sg.Text&amp;#40;&amp;quot;張數：&amp;quot;, size=&amp;#40;4, 1&amp;#41;&amp;#41;,
+        sg.InputText&amp;#40;&amp;quot;0&amp;quot;, key=&amp;quot;-VOLUME-&amp;quot;, size=&amp;#40;5, 1&amp;#41;, justification=&amp;quot;right&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;+&amp;quot;, key=&amp;quot;-INCREASE-VOLUME-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;-&amp;quot;, key=&amp;quot;-DECREASE-VOLUME-&amp;quot;&amp;#41;,
+        sg.Text&amp;#40;&amp;quot;價格：&amp;quot;, size=&amp;#40;4, 1&amp;#41;&amp;#41;,
+        sg.InputText&amp;#40;&amp;quot;0&amp;quot;, key=&amp;quot;-PRICE-&amp;quot;, size=&amp;#40;5, 1&amp;#41;, justification=&amp;quot;right&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;+&amp;quot;, key=&amp;quot;-INCREASE-PRICE-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;-&amp;quot;, key=&amp;quot;-DECREASE-PRICE-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;現&amp;quot;, key=&amp;quot;-PRICE-CURRENT-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;漲&amp;quot;, key=&amp;quot;-PRICE-UP-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;跌&amp;quot;, key=&amp;quot;-PRICE-DOWN-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;平&amp;quot;, key=&amp;quot;-PRICE-FLAT-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;市&amp;quot;, key=&amp;quot;-PRICE-MARKET-&amp;quot;&amp;#41;,
+        sg.Combo&amp;#40;tradeTypes, default&amp;#95;value=tradeTypes&amp;#91;0&amp;#93;, key=&amp;quot;-TRADE-TYPES-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;立即下單&amp;quot;, key=&amp;quot;-SEND-ORDER-&amp;quot;&amp;#41;,
+        sg.Button&amp;#40;&amp;quot;清除&amp;quot;, key=&amp;quot;-CLEAR-ALL-&amp;quot;&amp;#41;,
+    &amp;#93;,
+&amp;#93;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這邊我們使用到一些控件，例如按鈕 &lt;code&gt;Button&lt;/code&gt;, 文字 &lt;code&gt;Text&lt;/code&gt;, 輸入框 &lt;code&gt;InputText&lt;/code&gt;, 下拉選單 &lt;code&gt;Combo&lt;/code&gt;&lt;/p&gt;&lt;p&gt;最重要就是知道 &lt;code&gt;size&lt;/code&gt; 和 &lt;code&gt;key&lt;/code&gt; ，分別設定大小和事件觸發時知道是哪裡來的&lt;/p&gt;&lt;p&gt;通常 &lt;code&gt;key&lt;/code&gt; 的命名習慣是 &lt;code&gt;-XXX-XXX-&lt;/code&gt; 這樣，顏色、預設值也是很直覺與通用的 kwargs&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;建立完控件之後，就可以建立視窗並啟動事件循環：&lt;/p&gt;&lt;pre&gt;&lt;code&gt;window = sg.Window&amp;#40;&amp;quot;快速下單&amp;quot;, layout, size=&amp;#40;1100, 80&amp;#41;&amp;#41;
+
+# 建立事件循環
+while True:
+    event, values = window.read&amp;#40;&amp;#41;
+    if event in &amp;#40;None, &amp;quot;Cancel&amp;quot;&amp;#41;:
+        break
+    print&amp;#40;f&amp;quot;Event: {event}&amp;quot;&amp;#41;
+    print&amp;#40;str&amp;#40;values&amp;#41;&amp;#41;
+window.close&amp;#40;&amp;#41;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;../../img/2023-12/7.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;當你點擊或在輸入框打字、下拉選單選取，就會觸發事件&lt;/p&gt;&lt;p&gt;會透過 &lt;code&gt;window.read&amp;#40;&amp;#41;&lt;/code&gt; 給你 &lt;code&gt;event, values&lt;/code&gt; ，例如點擊 &lt;code&gt;立即下單&lt;/code&gt; 就會觸發：&lt;/p&gt;  &lt;br /&gt;&lt;pre&gt;&lt;code&gt;# Event: -SEND-ORDER-
+# {'-ACCOUNT-': '證-1234-5678901-王小明  ', '-RADIO-BUY-': False,
+#  '-RADIO-SELL-': False, '-FLAG-': '普通   ', '-SYMBOL-CODE-': '',
+#  '-SYMBOL-NAME-': '', '-VOLUME-': '0', '-TRADE-TYPES-': 'ROD '}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就可以透過事件名稱來源（也就是 &lt;code&gt;key&lt;/code&gt; ）與當前視窗的輸入字典資料來完成相關操作&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h1&gt;&lt;a name=&quot;footnotes&quot;&gt;&lt;/a&gt;Footnotes&lt;/h1&gt;&lt;p&gt;&lt;sup&gt;&lt;a id=&quot;fn.1&quot; href=&quot;#fnr.1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; PySimpleGUI 到 2023 都仍然開發活躍&lt;br/&gt;GitHub 請見: &lt;a href=&quot;https://github.com/PySimpleGUI/PySimpleGUI&quot;&gt;https://github.com/PySimpleGUI/PySimpleGUI&lt;/a&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 20 Dec 2023 00:00:00 +0800
+</pubDate>
+</item>
 <item>
 <guid>
 http://lisp.rocks/posts-output/2023-12-19-透過-heapq-設置下單優先級/
